@@ -1,0 +1,56 @@
+name: Transform bug
+description: A defect in the Codex transform, its session-start hook, or the agent transposition.
+title: "[transform] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        If the defect is exploitable — a path escape, a cycle, or any other refusal
+        that turns into a pass — do not file it here. Use private vulnerability
+        reporting instead; see SECURITY.md.
+
+  - type: input
+    id: harness
+    attributes:
+      label: Harness and version
+      description: The CLI and version the loader runs under.
+      placeholder: codex 0.x.y
+    validations:
+      required: true
+
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+      description: The interpreter the hook was invoked with — `python3 -V`.
+      placeholder: "3.12.4"
+    validations:
+      required: true
+
+  - type: textarea
+    id: behaviour
+    attributes:
+      label: What the loader did
+      description: >-
+        What was injected, what was not, and what it refused. If it exited non-zero,
+        the message it printed. If it injected partial canon, say which files made it
+        in and which did not — that is the failure the loader exists to prevent.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations:
+      required: true
+
+  - type: textarea
+    id: layout
+    attributes:
+      label: Entrypoint layout
+      description: >-
+        The global and project entrypoints, and the `@import` lines involved. Relative
+        paths matter here — the containment root is what most of the refusals turn on.
+      render: text

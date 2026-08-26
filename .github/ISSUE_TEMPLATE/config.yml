@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: A provision you would write differently
+    url: https://github.com/EricBLivingston/corpus-iuris/blob/main/adopting.md
+    about: >-
+      Doctrine changes are not accepted here, so this is not an issue — it is a fork.
+      adopting.md carries the mechanism: key over the provision in your own instance
+      ambit, or mint a replacement from I1. Your version stays yours and keeps merging
+      with revisions here wherever you did not overlay.
+  - name: A security defect in the session-start hook
+    url: https://github.com/EricBLivingston/corpus-iuris/security/advisories/new
+    about: >-
+      The hook runs inside your session at your privilege. Report anything exploitable
+      through private vulnerability reporting rather than in public. See SECURITY.md.

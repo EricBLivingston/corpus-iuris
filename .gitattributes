@@ -1,0 +1,4 @@
+# Linguist ignores Markdown by default, so a corpus that is prose almost end to end
+# renders on GitHub as a repository of pure Python — the few hundred lines of loader
+# and transform standing in for the whole. Count the prose.
+*.md linguist-detectable=true

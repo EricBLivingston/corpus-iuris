@@ -1,0 +1,40 @@
+name: test
+
+# The one executable thing published here is the Codex session-start hook, which runs
+# inside an adopter's session at their privilege. Its suite is the only gate that can
+# say so before they install it, so it runs on every push and every pull request.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # The hook is stdlib-only and pinned to no version; the matrix is the claim
+        # that it stays that way across the interpreters an adopter is likely to have.
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # pytest is the whole dependency. The suite resolves the hook by path and runs
+      # it as a subprocess, so there is nothing to install and no package to build.
+      - run: python -m pip install --upgrade pip pytest
+
+      - run: python -m pytest transforms/codex/src/hooks/tests -q

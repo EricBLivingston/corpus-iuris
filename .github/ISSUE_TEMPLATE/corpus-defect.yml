@@ -1,0 +1,55 @@
+name: Corpus defect
+description: A citation that resolves to nothing, a broken link or path, or a factual error in the References table.
+title: "[corpus] "
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        This form is for the corpus contradicting itself or contradicting the record.
+        A provision you would have written differently is not a defect — see
+        [`adopting.md`](https://github.com/EricBLivingston/corpus-iuris/blob/main/adopting.md)
+        and CONTRIBUTING.md.
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of defect
+      options:
+        - Dead citation — a token with no defining site in the published set
+        - Dead cross-reference — a pointer into a file that was never published
+        - Broken link or path
+        - Factual error in the README's References table
+        - Internal contradiction between two provisions
+      multiple: false
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Where
+      description: The file, and the heading or line that carries it.
+      placeholder: rules/caselaw.md, under ⊨4
+    validations:
+      required: true
+
+  - type: textarea
+    id: quote
+    attributes:
+      label: The text as published
+      description: Paste the sentence or row containing the defect, so the report survives a later renumbering.
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: defect
+    attributes:
+      label: What is wrong with it
+      description: >-
+        For a dead citation, the token and where you looked for it. For a link, what it
+        returns. For a References row, which half of the row is wrong — the claim, or
+        the work it is attributed to — and what the cited work actually says.
+    validations:
+      required: true
