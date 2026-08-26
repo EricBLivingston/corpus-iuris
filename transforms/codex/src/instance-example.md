@@ -22,6 +22,6 @@
 | `{core-rubric}` | `~/.codex/AGENTS.md`, the always-loaded global guidance file. |
 | `{rules-root}` | `~/.codex/corpus/rules/` |
 | `{reference-root}` | `~/.codex/corpus/reference/`, reference artifacts not auto-loaded. |
-| `{skill-root}` | `~/.agents/skills/`, the user-level skill-discovery root. |
+| `{skill-root}` | `~/.codex/skills/`, the user-level skill-discovery root. |
 | `{agent-root}` | `~/.codex/agents/`, user-level custom agents. |
-| `{command-root}` | `~/.agents/skills/`, shared with `{skill-root}`. Commands resolve to skills. |
+| `{command-root}` | `~/.codex/skills/`, shared with `{skill-root}`. Commands resolve to skills. |
