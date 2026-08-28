@@ -259,7 +259,7 @@
 </section>
 
 <!-- 8 -->
-<section class="slide" data-notes="Pre-empt the obvious objection: why not invent nonsense words, which would be even rarer? Because tokens a model has barely seen carry degenerate embeddings and behave erratically. And where a term does appear in training, its trained sense should agree with yours — a term whose default contradicts your stipulated use sets the context against the weights, and that conflict resolves unpredictably. The win is avoiding the fight, not winning it. The slide title is the method demonstrating itself: one trained name, Goldilocks, and the whole not-too-much-not-too-little frame arrives with it. That is the move the next slide names.">
+<section class="slide" data-notes="Pre-empt the obvious objection: why not invent nonsense words, which would be even rarer? Because tokens a model has barely seen carry degenerate embeddings and behave erratically. And where a term does appear in training, its trained sense should agree with yours — a term whose default contradicts your stipulated use sets the context against the weights. And the prior does not go away when you redefine it — it keeps competing underneath, and the stronger it is the more often the override leaks. The win is avoiding the fight, not winning it. The slide title is the method demonstrating itself: one trained name, Goldilocks, and the whole not-too-much-not-too-little frame arrives with it. That is the move the next slide names.">
   <p class="kicker">Corpus Iuris</p>
   <h2>The Goldilocks band</h2>
   <p class="lede">We seek terms and symbols rare enough to offer low competition to our use, yet common enough to pull relevant meaning from training.</p>
@@ -375,8 +375,8 @@
     <tr><td>A model resolves a repeated token by matching its earlier occurrence and attending to what followed.</td>
         <td class="mut">In-context Learning and Induction Heads <a class="ref" href="https://arxiv.org/abs/2209.11895" target="_blank" rel="noopener">arXiv:2209.11895</a></td></tr>
     <tr><td>Attention is a finite budget that softmax dilutes as context grows; length alone degrades performance.</td>
-        <td class="mut">Long Context, Less Focus <a class="ref" href="https://arxiv.org/abs/2602.15028" target="_blank" rel="noopener">arXiv:2602.15028</a> &middot;
-          Context Length Alone Hurts LLM Performance <a class="ref" href="https://arxiv.org/abs/2510.05381" target="_blank" rel="noopener">arXiv:2510.05381</a></td></tr>
+        <td class="mut">Context Length Alone Hurts LLM Performance <a class="ref" href="https://arxiv.org/abs/2510.05381" target="_blank" rel="noopener">arXiv:2510.05381</a> &middot;
+          Long Context, Less Focus <a class="ref" href="https://arxiv.org/abs/2602.15028" target="_blank" rel="noopener">arXiv:2602.15028</a></td></tr>
     <tr><td>Irrelevant context competes with the signal rather than sitting beside it.</td>
         <td class="mut">Large Language Models Can Be Easily Distracted by Irrelevant Context <a class="ref" href="https://arxiv.org/abs/2302.00093" target="_blank" rel="noopener">arXiv:2302.00093</a></td></tr>
     <tr><td>Distraction scales with resemblance to the question.</td>
@@ -386,8 +386,8 @@
         <td class="mut">NoLiMa: Long-Context Evaluation Beyond Literal Matching <a class="ref" href="https://arxiv.org/abs/2502.05167" target="_blank" rel="noopener">arXiv:2502.05167</a></td></tr>
     <tr><td>Context and the parametric prior conflict, and which one wins is not reliably predictable.</td>
         <td class="mut">Knowledge Conflicts for LLMs: A Survey <a class="ref" href="https://arxiv.org/abs/2403.08319" target="_blank" rel="noopener">arXiv:2403.08319</a></td></tr>
-    <tr><td>Operating a term against its trained default carries a measured performance cost.</td>
-        <td class="mut">Reasoning or Reciting? <a class="ref" href="https://arxiv.org/abs/2307.02477" target="_blank" rel="noopener">arXiv:2307.02477</a></td></tr>
+    <tr><td>Redefining a familiar term does not replace its trained sense; the prior keeps competing, and its strength predicts where the override fails.</td>
+        <td class="mut">Priors Persist Through Suppression <a class="ref" href="https://arxiv.org/abs/2606.07555" target="_blank" rel="noopener">arXiv:2606.07555</a></td></tr>
     <tr><td>Tokens too rare in training are undertrained, with degenerate embeddings.</td>
         <td class="mut">Fishing for Magikarp <a class="ref" href="https://arxiv.org/abs/2405.05417" target="_blank" rel="noopener">arXiv:2405.05417</a></td></tr>
   </table>
