@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Corpus Iuris — a body of rules for directing agentic work</title>
+<link rel="icon" type="image/svg+xml" href="../logo.svg">
+<style>
+  :root{
+    --bg:#ffffff; --ink:#1f2328; --mut:#656d76; --line:#d0d7de;
+    --soft:#f6f8fa; --sec:#0969da; --kome:#b42318; --num:#9a6700;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#0d1117; --ink:#e6edf3; --mut:#8b949e; --line:#30363d;
+           --soft:#161b22; --sec:#58a6ff; --kome:#ff7b72; --num:#d29922; }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    overflow:hidden}
+  code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+  h1,h2{font-family:Palatino,"Palatino Linotype","Book Antiqua",Georgia,"Times New Roman",serif}
+
+  #viewport{position:absolute;inset:0;display:grid;place-items:start center;overflow:auto;outline:none}
+  #stage{width:1280px;height:720px;position:relative;transform-origin:top center}
+  .slide{position:absolute;inset:0;padding:44px 92px 64px;display:none;flex-direction:column}
+  .slide.on{display:flex;animation:arrive .3s ease-out}
+  /* Slides drop in from above: block-start overflow is unscrollable, so the
+     animation can never flash a scrollbar in a height-bound window. */
+  @keyframes arrive{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.slide.on{animation:none}}
+
+  h1{font-size:64px;line-height:1.1;margin:0 0 20px;letter-spacing:-.012em}
+  h2{font-size:38px;line-height:1.18;margin:0 0 8px;letter-spacing:-.006em;font-weight:600}
+  .kicker{display:flex;align-items:center;gap:14px;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--kome);font-weight:600;margin:0 0 22px}
+  .kicker::before{content:"";width:30px;height:30px;flex:none;background:url("../logo.svg") no-repeat center/contain}
+  .lede{font-size:21px;line-height:1.5;color:var(--mut);margin:0 0 28px}
+  .byline{font-size:17px;color:var(--mut);margin:18px 0 0}
+  .byline b{color:var(--ink);font-weight:600}
+  .byline em{font-size:15px}
+  .byline a{color:var(--sec);text-decoration:none}
+  .ref{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+    font-size:12.5px;color:var(--sec);text-decoration:none;white-space:nowrap}
+  /* Prose spans the slide's content box — the 92px margins the title, lede
+     and footer share. Widths narrower than the box are the container's job
+     (cards, tables, the ladder), never a measure cap on the paragraph. */
+  p{font-size:19px;line-height:1.55;margin:0 0 16px}
+  .mut{color:var(--mut)}
+  .sec{color:var(--sec)} .kome{color:var(--kome)} .num{color:var(--num)} .ink{color:var(--ink)}
+  em{font-style:italic}
+
+  .fig{flex:1;display:grid;place-items:center start;min-height:0;margin-top:6px}
+  .fig img{max-width:100%;max-height:100%;object-fit:contain}
+  .fig svg{max-width:100%;max-height:100%}
+
+  /* inline slide diagrams */
+  .dg-ink{fill:var(--ink)} .dg-mut{fill:var(--mut)} .dg-secf{fill:var(--sec)} .dg-num{fill:var(--num)}
+  .dg-track{fill:var(--soft);stroke:var(--line)}
+  .dg-panel{fill:var(--soft);stroke:var(--line)}
+  .dg-tick{fill:var(--mut);opacity:.55}
+  .dg-arc{fill:none;stroke:var(--sec);stroke-width:2.5}
+  .dg-arcw{fill:none;stroke:var(--mut);stroke-width:1.3;opacity:.5}
+  .dg-beam{fill:var(--soft);stroke:var(--line)}
+
+  /* Full-sheet slides: the SVG is the whole slide, authored on the same 1280x720
+     canvas with its title in the h2 face at the h2 position, so it renders 1:1
+     and sheet titles align with slide titles across a flip. The SVG title
+     baseline (y=131) was measured against this machine's resolution of the
+     Palatino stack; other platforms' metrics can shift the h2 a few px. */
+  .slide.sheet{padding:0}
+  .slide.sheet .fig{margin:0}
+  /* The sheet SVG cannot load the logo itself (external refs are inert inside
+     an img), so the kicker overlays the sheet's empty header zone instead. */
+  .slide.sheet .kicker{position:absolute;top:44px;left:92px;margin:0}
+
+  .cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:14px}
+  .card{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:22px 24px}
+  .card h3{margin:0 0 10px;font-size:20px;font-weight:600}
+  .card p{font-size:16px;margin:0 0 10px;color:var(--mut)}
+  .card p:last-child{margin:0}
+
+  .ladder{list-style:none;margin:10px 0 0;padding:0;counter-reset:s}
+  .ladder li{display:flex;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)}
+  .ladder li:last-child{border-bottom:1px solid var(--line)}
+  .ladder .n{font-size:13px;color:var(--mut);width:20px;flex:none}
+  .ladder .t{font-size:20px}
+  .ladder .t:not(.mono){font-family:Palatino,"Palatino Linotype","Book Antiqua",Georgia,"Times New Roman",serif;font-style:italic;font-size:21px}
+  .ladder .g{font-size:15px;color:var(--mut);margin-left:auto;text-align:right;flex:none;max-width:34ch}
+
+  table{border-collapse:collapse;width:100%;margin-top:10px}
+  .refs th,.refs td{padding:8px 14px;font-size:15px}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);font-size:16.5px;vertical-align:top}
+  th{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);font-weight:600}
+  td.tok{white-space:nowrap;width:1%}
+
+  .foot{position:absolute;left:92px;right:92px;bottom:34px;display:flex;
+    justify-content:space-between;align-items:baseline;font-size:12.5px;color:var(--mut)}
+
+  #notes{position:absolute;left:0;right:0;bottom:0;max-height:38%;overflow:auto;
+    background:var(--soft);border-top:1px solid var(--line);padding:16px 22px;
+    font-size:14px;line-height:1.55;color:var(--ink);display:none}
+  #notes.on{display:block}
+  #notes b{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--mut);margin-bottom:6px}
+  #help{position:absolute;right:14px;top:12px;font-size:11.5px;color:var(--mut);z-index:5}
+</style>
+</head>
+<body>
+<div id="help">← → navigate · N notes</div>
+<div id="viewport" tabindex="0"><div id="stage">
+
+<!-- 1 -->
+<section class="slide" data-notes="Open cold. Do not explain the Latin yet — it lands better after the problem. The whole talk is one claim: a rule you can cite is worth more than a rule you can only restate.">
+  <p class="kicker">Corpus Iuris</p>
+  <h1>Corpus Iuris - A body of rules<br>for directing agentic work.</h1>
+  <p class="lede">Spec-driven development, a vocabulary built for retrieval,
+    and a pipeline that keeps every agent's context small and focused.</p>
+  <p class="byline"><b>Eric Livingston</b>, PhD (Artificial Intelligence)<br>
+    <em><a href="https://github.com/EricBLivingston/corpus-iuris/discussions" target="_blank" rel="noopener">github.com/EricBLivingston/corpus-iuris/discussions</a></em></p>
+</section>
+
+<!-- 2 -->
+<section class="slide" data-notes="The scene everyone in the room has lived: the rules file grown by accretion, one line per incident, and demonstrably not obeyed. No mechanism on this slide — earn the recognition first. Walk the three cards as three different diseases hiding under that one symptom: attention is a salience problem, nothing to do with conflict; coherence is a collision problem, and the model resolves it silently and differently each time; abidance is a dilution problem — the rule held at 8k and the model has strayed from it by 500k, with nothing marking the moment it let go. The thesis line to say over this slide, before advancing: a rule the model does not notice is not a rule — attention, not phrasing, is the binding constraint. Then the next slide is the remedy map.">
+  <p class="kicker">Corpus Iuris</p>
+  <h2>Problem: Your rules file has four hundred lines</h2>
+  <p class="lede">And yet, the file is still not obeyed.</p>
+  <div class="cols3">
+    <div class="card">
+      <h3>Attention</h3>
+      <p>The rule is in context and does not pop out of the background.</p>
+      <p>The model never notices it, or misinterprets it.</p>
+      <p><em>Result: misdirected behaviour</em></p>
+    </div>
+    <div class="card">
+      <h3>Coherence</h3>
+      <p>Two rules collide, or one collides with what the harness injected.</p>
+      <p>The model picks one. Silently, and differently next time.</p>
+      <p><em>Result: erratic behaviour</em></p>
+    </div>
+    <div class="card">
+      <h3>Abidance</h3>
+      <p>The window fills, and the context dilutes.</p>
+      <p>The rules held at 8k tokens; by 500k, the model has none.</p>
+      <p><em>Result: rogue behaviour</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="slide sheet" data-notes="The map, and a slide with nothing on it to define. Two claims. Point at the left panel and say 'this is the next ten minutes', then the right panel and say 'this is the ten after that'. Both pull quotes are the ones to land: say it once and point at it after that, and what you leave out is attention you get back. Do not preview the vocabulary here — the Latin lands after the problem, not before it.">
+  <p class="kicker">Corpus Iuris</p>
+  <div class="fig"><img src="../diagrams/framework-in-brief.svg" alt="The whole system as two ideas: give each rule a name, and show each agent less"></div>
+</section>
+
+<!-- 4 -->
+<section class="slide" data-notes="Everyone in the room has written forms 1 and 2 — get the laugh of recognition here; it buys you the next ten minutes. Form 3 is the one they have never written, and that is the talk. The ad hoc instruction is not wrong; it just cannot be cited, so it is re-typed every time and competes with everything else in the window.">
+  <p class="kicker">Corpus Iuris</p>
+  <h2>The rule you keep retyping</h2>
+  <p class="lede">Two of these you have written many times. The third is <i>Corpus Iuris.</i></p>
+  <ul class="ladder">
+    <li><span class="n">1</span><span class="t">&ldquo;When writing this, make sure not to introduce functions
+      and things we don't need right now&hellip;&rdquo;</span><span class="g">ad hoc, retyped forever</span></li>
+    <li><span class="n">2</span><span class="t">&ldquo;When writing this, remember our Rule about going out of scope&rdquo;</span>
+      <span class="g">named, but still vague</span></li>
+    <li><span class="n">3</span><span class="t mono">&ldquo;Abide by <span class="sec">&sect;</span><span class="num">2</span>.&rdquo;</span>
+      <span class="g">an anchor that resolves</span></li>
+  </ul>
+</section>
+
+<!-- 5 -->
+<section class="slide sheet" data-nofoot data-notes="Anchor, not address: the token's defining line is the single source of truth for the rule, the one prior occurrence an induction head zeroes in on and copies the definition straight out of. Walk the four positions left to right. The colours track the positions — ambit purple, lingua green, number amber, instruments keeping their own — and repeat in the reading examples, so name them once. Emphasise that blank is meaningful in two of them — that is what keeps the common case short. Read the four examples out loud; they teach the grammar faster than the table does.">
+  <p class="kicker">Corpus Iuris</p>
+  <div class="fig"><img src="../diagrams/token-grammar.svg" alt="Token grammar: instrument, ambit, lingua, number"></div>
+</section>
+
+<!-- 6 -->
+<section class="slide" data-notes="This is the load-bearing slide of the first half. A model resolves a repeated token by finding its earlier occurrences and attending to what followed — so precision degrades as a token accumulates prior occurrences pulling in different directions. The count for a rare symbol does not grow with the window. The count for an English word does. Do not oversell the neuroscience; the practical claim stands on its own.">
+  <p class="kicker">Corpus Iuris</p>
+  <h2>Why a symbol and not a word</h2>
+  <p class="lede">A citation resolves by attending back to the token's earlier occurrences.
+    The question is how many candidates it finds.</p>
+  <div class="fig">
+    <svg viewBox="0 0 1096 348" role="img" aria-label="Two context windows compared: a citation of §2 attends back to one defining line; a use of the word scope finds dozens of competing occurrences">
+      <defs>
+        <marker id="ah-sec" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0 0 L10 5 L0 10 z" class="dg-secf"/>
+        </marker>
+        <marker id="ah-mut" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0 0 L10 5 L0 10 z" class="dg-mut"/>
+        </marker>
+      </defs>
+
+      <text x="40" y="26" class="mono" font-size="22" font-weight="600"><tspan class="dg-secf">&sect;</tspan><tspan class="dg-num">2</tspan></text>
+      <text x="96" y="26" class="dg-mut" font-size="15">one prior occurrence: its own defining line. Still one at 500k tokens.</text>
+      <rect class="dg-track" x="40" y="70" width="1016" height="54" rx="8"/>
+      <rect class="dg-secf" x="88" y="80" width="8" height="34" rx="2"/>
+      <rect class="dg-secf" x="986" y="80" width="8" height="34" rx="2"/>
+      <path class="dg-arc" d="M986 66 Q540 20 100 64" marker-end="url(#ah-sec)"/>
+      <text x="88" y="146" class="dg-mut" font-size="12.5">the defining line</text>
+      <text x="994" y="146" class="dg-mut" font-size="12.5" text-anchor="end">cited at 500k</text>
+
+      <text x="40" y="214" class="dg-ink" font-size="18" font-weight="600">&ldquo;scope&rdquo;</text>
+      <text x="140" y="214" class="dg-mut" font-size="15">dozens of prior occurrences, each pulling somewhere else. Thousands by the time the window is full.</text>
+      <rect class="dg-track" x="40" y="258" width="1016" height="54" rx="8"/>
+      <rect class="dg-tick" x="70"  y="270" width="6" height="30"/>
+      <rect class="dg-tick" x="130" y="270" width="6" height="30"/>
+      <rect class="dg-tick" x="176" y="270" width="6" height="30"/>
+      <rect class="dg-tick" x="241" y="270" width="6" height="30"/>
+      <rect class="dg-tick" x="300" y="270" width="6" height="30"/>
+      <rect class="dg-tick" x="346" y="270" width="6" height="30"/>
+      <rect class="dg-tick" x="411" y="270" width="6" height="30"/>
+      <rect class="dg-tick" x="470" y="270" width="6" height="30"/>
+      <rect class="dg-tick" x="521" y="270" width="6" height="30"/>
+      <rect class="dg-tick" x="586" y="270" width="6" height="30"/>
+      <rect class="dg-tick" x="640" y="270" width="6" height="30"/>
+      <rect class="dg-tick" x="701" y="270" width="6" height="30"/>
+      <rect class="dg-tick" x="746" y="270" width="6" height="30"/>
+      <rect class="dg-tick" x="801" y="270" width="6" height="30"/>
+      <rect class="dg-tick" x="851" y="270" width="6" height="30"/>
+      <rect class="dg-tick" x="901" y="270" width="6" height="30"/>
+      <rect class="dg-ink" x="986" y="268" width="8" height="34" rx="2"/>
+      <path class="dg-arcw" d="M986 254 Q560 224 136 262" marker-end="url(#ah-mut)"/>
+      <path class="dg-arcw" d="M986 254 Q650 228 306 262" marker-end="url(#ah-mut)"/>
+      <path class="dg-arcw" d="M986 254 Q730 232 476 262" marker-end="url(#ah-mut)"/>
+      <path class="dg-arcw" d="M986 254 Q815 236 646 262" marker-end="url(#ah-mut)"/>
+      <path class="dg-arcw" d="M986 254 Q895 240 806 262" marker-end="url(#ah-mut)"/>
+      <path class="dg-arcw" d="M986 254 Q945 244 906 262" marker-end="url(#ah-mut)"/>
+      <text x="88" y="334" class="dg-mut" font-size="12.5">your prose, your commit messages, the harness system prompt&hellip;</text>
+      <text x="994" y="334" class="dg-mut" font-size="12.5" text-anchor="end">used again at 500k</text>
+    </svg>
+  </div>
+  <p class="mut" style="margin-top:14px;font-size:16px">Retrieval that can lean on a literal token match holds up under pressure. Retrieval relying on common words degrades sharply as the haystack grows.</p>
+</section>
+
+<!-- 7 -->
+<section class="slide" data-notes="The 'why the Latin' slide — same two selection properties as the symbol slide, applied to words. Rarity first: these terms are rare in a codebase, in commit messages, and in anything a harness injects — 'rubric' has one antecedent in a session for the same reason ※11 does. Then alignment: each is borrowed from a field where its trained sense already agrees with our use, so nothing in the weights has to be overridden — the borrow is selection, not decoration, and adventitia is the row that proves it. Read that one aloud. The full inventory is the README's term table. Spoken close, before advancing: most of this vocabulary never leaves the ius; day to day only the symbols surface.">
+  <p class="kicker">Corpus Iuris</p>
+  <h2>Why the obscure vocabulary?</h2>
+  <p class="lede">Each term has characteristics we exploit: rare in code, and trained with a compatible sense.</p>
+  <table>
+    <tr><th>Term</th><th>Trained sense/definition</th><th>How we use that</th></tr>
+    <tr><td class="tok"><em>Ius</em></td>
+        <td class="mut">Roman law: law as a body of right, against <em>lex</em>, the single statute.</td>
+        <td>Names the body itself, so no one rule can be mistaken for the whole.</td></tr>
+    <tr><td class="tok"><em>Provision</em></td>
+        <td class="mut">A clause of a statute or contract: a discrete, citable term.</td>
+        <td>Every rule gets a single, discrete identifier (<span class="mono sec">&sect;</span> <span class="mono kome">&#8251;</span>
+         <span class="mono ink">&#8866;</span> <span class="mono ink">&#8872;</span>), citable from anywhere.</td></tr>
+    <tr><td class="tok"><em>Rubric</em></td>
+        <td class="mut">Liturgy: the red-letter directions for performing a rite, as against the words of the rite.</td>
+        <td>Procedure, separated from the precepts it carries out.</td></tr>
+    <tr><td class="tok"><em>Adventitia</em></td>
+        <td class="mut">Literal: &ldquo;externally added.&rdquo; Descartes&rsquo; <em>adventitious ideas</em>: ideas arriving from outside, neither innate nor self-made.</td>
+        <td>What the harness supplies from outside; not always editable, handled case-by-case.</td></tr>
+    <tr><td class="tok"><em>Lex specialis</em></td>
+        <td class="mut"><em>Lex specialis derogat legi generali</em>: the specific rule displaces the general one.</td>
+        <td>Adopted directly as our precedence rule.</td></tr>
+  </table>
+</section>
+
+<!-- 8 -->
+<section class="slide" data-notes="Pre-empt the obvious objection: why not invent nonsense words, which would be even rarer? Because tokens a model has barely seen carry degenerate embeddings and behave erratically. And where a term does appear in training, its trained sense should agree with yours — a term whose default contradicts your stipulated use sets the context against the weights, and that conflict resolves unpredictably. The win is avoiding the fight, not winning it. The slide title is the method demonstrating itself: one trained name, Goldilocks, and the whole not-too-much-not-too-little frame arrives with it. That is the move the next slide names.">
+  <p class="kicker">Corpus Iuris</p>
+  <h2>The Goldilocks band</h2>
+  <p class="lede">We seek terms and symbols rare enough to offer low competition to our use, yet common enough to pull relevant meaning from training.</p>
+  <div class="cols3">
+    <div class="card">
+      <h3>Too common</h3>
+      <p>&ldquo;rule&rdquo;, &ldquo;scope&rdquo;, &ldquo;standard&rdquo;.</p>
+      <p>Competes with itself. Every occurrence in your own docs makes the next citation worse.</p>
+    </div>
+    <div class="card" style="border-color:var(--sec)">
+      <h3 class="sec">Just right</h3>
+      <p><span class="mono sec">&sect;</span> <span class="mono kome">&#8251;</span>
+         <span class="mono ink">&#8866;</span> <span class="mono ink">&#8872;</span>,
+         <em>provision</em>, <em>ambit</em>, <em>rubric</em>.</p>
+      <p>Rare in your artifacts, rare in ordinary technical usage, and where the prior exists it already agrees.</p>
+    </div>
+    <div class="card">
+      <h3>Too rare</h3>
+      <p>Invented strings.</p>
+      <p>Undertrained vocabulary carries degenerate embeddings, leading to erratic behavior.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9 -->
+<section class="slide" data-notes="This is minted law, not color: ※11's closing sentence and ⊨5's name. If Tamarian needs unpacking: the Darmok episode — a language spoken entirely in allusion, 'Darmok and Jalad at Tanagra', a whole narrative in five tokens, but only for a listener who already holds the stories. That is both the licence and the bound: evocation is free exactly where the prior holds the referent. ⊨5 is the corpus practising this on itself — its name is the ending of the film, the pursuit abandoned the moment it runs over budget. 'Just-in-time context', coming in the second half, is the same move aimed at a business audience.">
+  <p class="kicker">Corpus Iuris</p>
+  <h2>Evocation is compression</h2>
+  <p class="lede">The previous slide demonstrates the principle. We read Goldilocks and we understand far more than the single word imparts. A synergistic label the training already holds can retrieve what would cost paragraphs to say.</p>
+  <div class="fig">
+    <svg viewBox="0 0 1096 320" role="img" aria-label="One token, THX-1138, fans out into the whole holding it retrieves">
+      <polygon class="dg-beam" points="292,142 430,52 430,272 292,192"/>
+      <text x="167" y="98" class="dg-mut" font-size="14.5" text-anchor="middle">low-token term in context</text>
+      <rect class="dg-panel" x="42" y="116" width="250" height="102" rx="10"/>
+      <text x="167" y="176" class="mono dg-ink" font-size="31" font-weight="600" text-anchor="middle">THX-1138</text>
+      <text x="167" y="248" class="dg-mut" font-size="13.5" text-anchor="middle">the name of ruling <tspan class="mono dg-ink">&#8872;</tspan><tspan class="mono dg-num">5</tspan></text>
+
+      <text x="743" y="40" class="dg-mut" font-size="14.5" text-anchor="middle">what it retrieves, free, from training</text>
+      <rect class="dg-panel" x="430" y="52" width="626" height="220" rx="10" style="stroke:var(--sec)"/>
+      <text x="472" y="122" class="dg-ink" font-size="26" font-weight="600">The pursuit, abandoned the moment</text>
+      <text x="472" y="158" class="dg-ink" font-size="26" font-weight="600">it runs over budget.</text>
+      <text x="472" y="206" class="dg-mut" font-size="16.5">The film's ending, re-purposed to support the Corpus:</text>
+      <text x="472" y="232" class="dg-mut" font-size="16.5">process cost scales to the size of the work.</text>
+    </svg>
+  </div>
+</section>
+
+<!-- 10 -->
+<section class="slide sheet" data-nofoot data-notes="Membership is the interesting move here. Corpus is defined by something reaching the content — a loader, an invoker, or a live reference — not by the file being on disk. That single definition is what lets 'delete dead code' be a rule with teeth rather than a preference; make that point aloud off the outermost ring rather than off the title.">
+  <p class="kicker">Corpus Iuris</p>
+  <div class="fig"><img src="../diagrams/corpus-taxonomy.svg" alt="Nested sets: corpus, precepts, canon, doctrine, rubric, adventitia"></div>
+</section>
+
+<!-- 11 -->
+<section class="slide" data-notes="Four instruments, two of which are the interesting ones. The turnstiles are borrowed intact from logic: derivable from what you already hold, versus true in the model you observed. That distinction is the difference between a conflict you can reason out at the desk and one only the field can surface. Read one example aloud — the §5 line usually lands.">
+  <p class="kicker">Corpus Iuris</p>
+  <h2>Two instruments legislate, two adjudicate</h2>
+  <p class="lede">The following provision types comprise the Doctrine of the Corpus Iuris</p>
+  <table>
+    <tr><th>Token</th><th>Instrument</th><th>Example from the corpus</th></tr>
+    <tr><td class="tok mono sec" style="font-size:22px">&sect;</td>
+        <td><b>Directives</b><br><span class="mut">what you produce</span></td>
+        <td><b><span class="mono sec">&sect;</span><span class="mono num">5</span> &mdash; Required means Required.</b> <span class="mut">A required parameter with a <span class="mono">None</span> default is a lie the type system cannot catch.</span></td></tr>
+    <tr><td class="tok mono kome" style="font-size:22px">&#8251;</td>
+        <td><b>Rules</b><br><span class="mut">how you work</span></td>
+        <td><b><span class="mono kome">&#8251;</span><span class="mono num">10</span> &mdash; Leave It Better Than You Found It.</b> <span class="mut">Never withhold a file from scrutiny because it was just written or reviewed: recency of edit is risk, not safety.</span></td></tr>
+    <tr><td class="tok mono" style="font-size:22px">&#8866;</td>
+        <td><b>Interpretive rulings</b><br><span class="mut">a priori</span></td>
+        <td><span class="mut">Two provisions contradict in principle, or doctrine is silent where it needed to
+          speak. We decide it here, once; the holding binds every later reading.</span></td></tr>
+    <tr><td class="tok mono" style="font-size:22px">&#8872;</td>
+        <td><b>Empirical resolutions</b><br><span class="mut">a posteriori</span></td>
+        <td><span class="mut">The same office, but the conflict or the silence only surfaced in the field. These are field-based lessons learned about how the corpus provisions interact.</span></td></tr>
+  </table>
+</section>
+
+<!-- 12 -->
+<section class="slide sheet" data-nofoot data-notes="Precedence is the boring-but-essential slide, kept deliberately to two shapes: the four ranks, and the ambit ladder inside them. Everything deeper — keyed overlays, adventitia, ⊢3 — is talk-track only, and only if asked. Two points worth making aloud: a keyed entry overlays its base rather than replacing it, so what does not conflict stays live; and precedence is not authority — uncontested rubric binds exactly as hard as a provision. And if anyone asks about customising: never renumber to close a gap; a dead link announces itself, a live link to the wrong target does not.">
+  <p class="kicker">Corpus Iuris</p>
+  <div class="fig"><img src="../diagrams/precedence.svg" alt="Precedence ranks and ambit ordering"></div>
+</section>
+
+<!-- 13 -->
+<section class="slide sheet" data-nofoot data-notes="Transition slide: the vocabulary was half the system. This is the other half. Lean on the inventory analogy — everyone in a business audience knows JIT: holding stock costs money whether or not you use it, and holding context costs attention whether or not it is relevant. The window is the warehouse. 'Just-in-time context', now the lede's opening phrase, is the promised payoff of 'Evocation is compression': a name chosen because it retrieves everything — holding cost, waste, lean flow — none of which now has to be said. Call that back explicitly. Note that /prepare changes no code and that /finalize produces a binary yes/no with no third bucket. A grep for tri-state wording ('deferred', 'tbd', 'revisit') backs that up — but the corpus is careful to call the pattern a net rather than the rule: a clean grep is evidence of a binary draft, not proof of one. That is ⊨4 applied to its own tooling.">
+  <p class="kicker">Corpus Iuris</p>
+  <div class="fig"><img src="../diagrams/sdd-pipeline.svg" alt="prepare, phase, orchestrate, debrief, finalize"></div>
+</section>
+
+<!-- 14 -->
+<section class="slide sheet" data-nofoot data-notes="The reviewer is never skippable — skipping it for small changes was a consistent source of defects, and that finding is why the rule reads absolutely. Point at the loop targets: review findings and failing tests both re-enter at the coder, never at the analysis. And the chain can contract when the work is smaller than the round trip that would move it — that ruling is ⊨5, THX-1138 from earlier, doing its job.">
+  <p class="kicker">Corpus Iuris</p>
+  <div class="fig"><img src="../diagrams/phase-cycle.svg" alt="analyzer, coder, reviewer, tester, governor"></div>
+</section>
+
+<!-- 15 -->
+<section class="slide sheet" data-nofoot data-notes="The payoff slide. Two independent reasons to prune: irrelevant material actively competes with the signal rather than sitting inertly beside it, and length alone degrades performance even when everything present is harmless. Then the sharp bit — distraction scales with resemblance, so phase 2 is close to the worst possible distractor for phase 3. Same project, same vocabulary, same file paths, adjacent intent, no longer relevant. The simplified figure carries only the length claim; the distraction claim is talk-track.">
+  <p class="kicker">Corpus Iuris</p>
+  <div class="fig"><img src="../diagrams/context-narrowing.svg" alt="Context accumulation compared"></div>
+</section>
+
+<!-- 16 -->
+<section class="slide sheet" data-nofoot data-notes="The callback to slide 3, the recap, and the close. Nothing on it is new — walk the three headings: the left column is why any of this exists, the middle is the four instruments, the bottom is the pipeline. The left column's first two cards are slide 2's attention and coherence failures restated as goals; its third, token efficiency, is the remedy for slide 2's abidance — a model strays as the window dilutes, so the goal is to hold less in it. Make that link aloud; the columns' names differ. The middle band's right column — rarity, alignment, the band — is slides 6 through 9 compressed; point at it on the callback. Do not read it out; they can read faster than you can talk. If someone photographs one slide, this is the one, so leave it up while you take the first question. It ships as docs/diagrams/framework-overview.svg. Two talk-track threads to deliver over it. First, doctrine, not design: none of this was reasoned out in advance — every provision is a scar, an a posteriori remediation of an observed failure, and each ⊨ carries the record in its Origin line. Read ⊨4's verbatim if you want the credibility hit: 'Four gates in one plan each passed while matching less than they certified — an identifier grep, a close-out criterion resting on it, a four-path deletion sweep that left a 458 MB tree standing through a full subagent audit, and a replacement grep that missed 2 of the 13 sites its own pass had just fixed.' Second, what to take: if one idea, give your standing instructions an anchor and delete everything the current step does not need — both halves are the same claim. If the repo: it is highly opinionated by construction, a structural model more than a framework to install; adopting.md is the entry point, the instance file is the first thing to write, key over what does not fit, and never renumber to close a gap. CC BY-SA 4.0.">
+  <p class="kicker">Corpus Iuris</p>
+  <div class="fig"><img src="../diagrams/framework-overview.svg" alt="Corpus Iuris: a cohesive agentic ecosystem — the three goals, the four instruments, and the spec-driven development layer"></div>
+</section>
+
+<!-- 17 -->
+<section class="slide" data-nofoot data-notes="Backup slide. Only go here if someone asks what the design claims rest on. Each row is a claim the corpus makes and the work it leans on. Also the natural place for adoption questions: point at adopting.md as the entry point and the instance file as the first thing anyone should write.">
+  <p class="kicker">Appendix</p>
+  <h2>A research-based approach, claims backed by references</h2>
+  <table class="refs">
+    <tr><th>Claim</th><th>Work</th></tr>
+    <tr><td>A model resolves a repeated token by matching its earlier occurrence and attending to what followed.</td>
+        <td class="mut">In-context Learning and Induction Heads <a class="ref" href="https://arxiv.org/abs/2209.11895" target="_blank" rel="noopener">arXiv:2209.11895</a></td></tr>
+    <tr><td>Attention is a finite budget that softmax dilutes as context grows; length alone degrades performance.</td>
+        <td class="mut">Long Context, Less Focus <a class="ref" href="https://arxiv.org/abs/2602.15028" target="_blank" rel="noopener">arXiv:2602.15028</a> &middot;
+          Context Length Alone Hurts LLM Performance <a class="ref" href="https://arxiv.org/abs/2510.05381" target="_blank" rel="noopener">arXiv:2510.05381</a></td></tr>
+    <tr><td>Irrelevant context competes with the signal rather than sitting beside it.</td>
+        <td class="mut">Large Language Models Can Be Easily Distracted by Irrelevant Context <a class="ref" href="https://arxiv.org/abs/2302.00093" target="_blank" rel="noopener">arXiv:2302.00093</a></td></tr>
+    <tr><td>Distraction scales with resemblance to the question.</td>
+        <td class="mut">How Reasoning Models Fail with Contextual Distractors <a class="ref" href="https://arxiv.org/abs/2601.07226" target="_blank" rel="noopener">arXiv:2601.07226</a> &middot;
+          The Distracting Effect <a class="ref" href="https://arxiv.org/abs/2505.06914" target="_blank" rel="noopener">arXiv:2505.06914</a></td></tr>
+    <tr><td>Long-context retrieval leans on literal token overlap and degrades sharply without it.</td>
+        <td class="mut">NoLiMa: Long-Context Evaluation Beyond Literal Matching <a class="ref" href="https://arxiv.org/abs/2502.05167" target="_blank" rel="noopener">arXiv:2502.05167</a></td></tr>
+    <tr><td>Context and the parametric prior conflict, and which one wins is not reliably predictable.</td>
+        <td class="mut">Knowledge Conflicts for LLMs: A Survey <a class="ref" href="https://arxiv.org/abs/2403.08319" target="_blank" rel="noopener">arXiv:2403.08319</a></td></tr>
+    <tr><td>Operating a term against its trained default carries a measured performance cost.</td>
+        <td class="mut">Reasoning or Reciting? <a class="ref" href="https://arxiv.org/abs/2307.02477" target="_blank" rel="noopener">arXiv:2307.02477</a></td></tr>
+    <tr><td>Tokens too rare in training are undertrained, with degenerate embeddings.</td>
+        <td class="mut">Fishing for Magikarp <a class="ref" href="https://arxiv.org/abs/2405.05417" target="_blank" rel="noopener">arXiv:2405.05417</a></td></tr>
+  </table>
+</section>
+
+</div></div>
+
+<div id="notes"><b>Speaker notes</b><span id="notetext"></span></div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage = document.getElementById('stage');
+  var viewport = document.getElementById('viewport');
+  var notes = document.getElementById('notes');
+  var noteText = document.getElementById('notetext');
+  var i = 0, showNotes = false;
+
+  // General footer on every slide except data-nofoot: sheets that embed
+  // their own for standalone portability, and the appendix, which goes without.
+  slides.forEach(function(s){
+    if (s.hasAttribute('data-nofoot')) return;
+    var f = document.createElement('div');
+    f.className = 'foot';
+    f.innerHTML = '<span>github.com/EricBLivingston/corpus-iuris</span>' +
+                  '<span>Corpus Iuris © 2026 Eric Livingston · CC BY-SA 4.0</span>';
+    s.appendChild(f);
+  });
+
+  function fit(){
+    var avail = viewport.clientHeight - notes.offsetHeight; // 0 while notes are hidden
+    var s = Math.min(viewport.clientWidth / 1280, avail / 720);
+    stage.style.transform = 'scale(' + s + ')';
+    // scale() leaves the 1280x720 layout box untouched; shrink the footprint to
+    // match, or the viewport scrolls into phantom space around the slide.
+    // Floored so the layout box errs small against the continuous transform.
+    stage.style.marginLeft = stage.style.marginRight = Math.floor((1280 * s - 1280) / 2) + 'px';
+    stage.style.marginBottom = Math.floor(720 * s - 720) + 'px';
+  }
+  function render(){
+    slides.forEach(function(s,n){ s.classList.toggle('on', n === i); });
+    noteText.textContent = ' ' + (slides[i].dataset.notes || '—');
+    if (location.hash !== '#' + (i+1)) history.replaceState(null,'','#'+(i+1));
+    fit();
+  }
+  function go(d){ i = Math.max(0, Math.min(slides.length-1, i+d)); render(); }
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(-1); }
+    else if (e.key === 'Home') { i = 0; render(); }
+    else if (e.key === 'End') { i = slides.length-1; render(); }
+    else if (e.key === 'n' || e.key === 'N') {
+      showNotes = !showNotes; notes.classList.toggle('on', showNotes); fit();
+    }
+  });
+  document.addEventListener('click', function(e){
+    if (e.target.closest('a') || notes.contains(e.target)) return;
+    go(e.clientX < viewport.clientWidth * 0.25 ? -1 : 1);
+  });
+  window.addEventListener('resize', fit);
+
+  var start = parseInt((location.hash||'').slice(1), 10);
+  if (start >= 1 && start <= slides.length) i = start - 1;
+  render();
+  viewport.focus(); // unbound ArrowUp/Down scroll genuine overflow
+})();
+</script>
+</body>
+</html>

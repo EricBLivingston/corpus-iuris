@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-labelledby="t d">
+<title id="t">The spec-driven development pipeline</title>
+<desc id="d">The commands run in order — prepare, phase, orchestrate, debrief, finalize — the user re-enters at phase, and the source specs drop to the archive instead of travelling down the line.</desc>
+<style>
+  text{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+  .title{font-family:Palatino,"Palatino Linotype","Book Antiqua",Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:-.006em}
+  .ink{fill:#1f2328}.mut{fill:#656d76}.sec{fill:#0969da}
+  .stage{fill:#f6f8fa;stroke:#8c959f;stroke-width:1.5}
+  .tray{fill:#ffffff;stroke:#d0d7de;stroke-dasharray:4 3}
+  .ln{fill:none;stroke:#8c959f;stroke-width:1.5}
+  .ah{fill:#8c959f}
+  @media (prefers-color-scheme:dark){
+    .ink{fill:#e6edf3}.mut{fill:#8b949e}.sec{fill:#58a6ff}
+    .stage{fill:#161b22;stroke:#6e7681}.tray{fill:#0d1117;stroke:#30363d}
+    .ln{stroke:#6e7681}.ah{fill:#6e7681}
+  }
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0 0 L10 5 L0 10 z" class="ah"/>
+  </marker>
+</defs>
+
+<!-- ============ header — title set in the deck's h2 face at the deck's h2 position ============ -->
+<text x="92" y="131" class="ink title" font-size="38">The spec-driven development pipeline</text>
+<text x="92" y="170" class="mut" font-size="21">Just-in-time context: minimize context overhead; focus on just what's needed at the moment.</text>
+<text x="92" y="201" class="mut" font-size="21">Each phase of an orchestration is handed just what is required to complete that phase.</text>
+
+<!-- return loop -->
+<path class="ln" d="M1092 350 L1092 292 L414 292 L414 350" marker-end="url(#a)"/>
+<text x="753" y="280" class="mut" font-size="14" text-anchor="middle">user reviews, then re-enters</text>
+
+<!-- ============ stages ============ -->
+<rect class="stage" x="92" y="350" width="192" height="92" rx="7"/>
+<text x="112" y="388" class="mono sec" font-size="20" font-weight="600">/prepare</text>
+<text x="112" y="418" class="mut" font-size="14.5">author the specs</text>
+
+<rect class="stage" x="318" y="350" width="192" height="92" rx="7"/>
+<text x="338" y="388" class="mono sec" font-size="20" font-weight="600">/phase</text>
+<text x="338" y="418" class="mut" font-size="14.5">split and prune</text>
+
+<rect class="stage" x="544" y="350" width="192" height="92" rx="7"/>
+<text x="564" y="388" class="mono sec" font-size="20" font-weight="600">/orchestrate</text>
+<text x="564" y="418" class="mut" font-size="14.5">run each phase</text>
+
+<rect class="stage" x="770" y="350" width="192" height="92" rx="7"/>
+<text x="790" y="388" class="mono sec" font-size="20" font-weight="600">/debrief</text>
+<text x="790" y="418" class="mut" font-size="14.5">collect what is left</text>
+
+<rect class="stage" x="996" y="350" width="192" height="92" rx="7"/>
+<text x="1016" y="388" class="mono sec" font-size="20" font-weight="600">/finalize</text>
+<text x="1016" y="418" class="mut" font-size="14.5">close out, yes or no</text>
+
+<path class="ln" d="M284 396 L314 396" marker-end="url(#a)"/>
+<path class="ln" d="M510 396 L540 396" marker-end="url(#a)"/>
+<path class="ln" d="M736 396 L766 396" marker-end="url(#a)"/>
+<path class="ln" d="M962 396 L992 396" marker-end="url(#a)"/>
+
+<!-- ============ archive drop ============ -->
+<path class="ln" d="M414 442 L414 494" marker-end="url(#a)"/>
+<rect class="tray" x="318" y="498" width="192" height="76" rx="7"/>
+<text x="340" y="528" class="mono ink" font-size="17">archive/</text>
+<text x="340" y="552" class="mut" font-size="13.5">the specs it was built from</text>
+
+<text x="568" y="540" class="mut" font-size="15">An executing phase reads <tspan class="mono">Overview.md</tspan> and its own <tspan class="mono">Phase-N.md</tspan>. Nothing else.</text>
+
+<!-- ============ footer ============ -->
+<text x="92" y="680" class="mut" font-size="12.5">github.com/EricBLivingston/corpus-iuris</text>
+<text x="1188" y="680" class="mut" font-size="12.5" text-anchor="end">Corpus Iuris © 2026 Eric Livingston · CC BY-SA 4.0</text>
+</svg>

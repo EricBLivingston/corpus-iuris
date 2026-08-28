@@ -28,6 +28,7 @@ Each term takes one field's sense, not the nearest one.
 - **Instrument** — the statutory sense: a class of enactment, not a single document.
 - **Provision** — the statutory sense: a discrete, citable clause.
 - **Rubric** — the liturgical sense: the red-letter directions for performing the rite, as against the words of the rite.
+- **Adventitia** — the Cartesian sense: *ideae adventitiae*, ideas arriving from outside the mind, neither innate nor self-made. What one authors one may edit; the adventitious admit only adoption or rejection.
 - **Doctrine** — principle systematized out of accumulated experience. Each provision is an a posteriori remediation of an observed failure.
 - **Caselaw** — the litigants are the colliding provisions; the bench is the author and the model, arguing to a holding; the holding is codified here. A ruling is amended by rewriting it.
 

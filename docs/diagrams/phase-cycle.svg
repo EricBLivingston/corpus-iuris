@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-labelledby="t d">
+<title id="t">Inside one phase</title>
+<desc id="d">Analyzer, coder, reviewer and tester run in order, with loops back to the coder, then the governor tests the bounds.</desc>
+<style>
+  text{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+  .title{font-family:Palatino,"Palatino Linotype","Book Antiqua",Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:-.006em}
+  .ink{fill:#1f2328}.mut{fill:#656d76}.sec{fill:#0969da}.kome{fill:#b42318}.num{fill:#9a6700}
+  .node{fill:#f6f8fa;stroke:#8c959f;stroke-width:1.5}
+  .gate{fill:#ffffff;stroke:#8c959f;stroke-width:1.5}
+  .out{fill:#ffffff;stroke:#d0d7de}
+  .ln{fill:none;stroke:#8c959f;stroke-width:1.5}
+  .loop{fill:none;stroke:#8c959f;stroke-width:1.2;stroke-dasharray:4 3}
+  .ah{fill:#8c959f}
+  @media (prefers-color-scheme:dark){
+    .ink{fill:#e6edf3}.mut{fill:#8b949e}.sec{fill:#58a6ff}.kome{fill:#ff7b72}.num{fill:#d29922}
+    .node{fill:#161b22;stroke:#6e7681}.gate{fill:#0d1117;stroke:#6e7681}
+    .out{fill:#0d1117;stroke:#30363d}.ln{stroke:#6e7681}.loop{stroke:#6e7681}.ah{fill:#6e7681}
+  }
+</style>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M0 0 L10 5 L0 10 z" class="ah"/>
+  </marker>
+</defs>
+
+<!-- ============ header — title set in the deck's h2 face at the deck's h2 position ============ -->
+<text x="92" y="131" class="ink title" font-size="38">Inside one phase</text>
+<text x="92" y="170" class="mut" font-size="21">Review findings and failing tests can cycle back to the coder.</text>
+<text x="92" y="201" class="mut" font-size="21">The reviewer, tester, and governor all contribute to scoping and monitoring the coder's work.</text>
+
+<!-- ============ the chain ============ -->
+<rect class="node" x="92" y="300" width="192" height="88" rx="6"/>
+<text x="112" y="332" class="ink" font-size="17" font-weight="600">analyzer</text>
+<text x="266" y="332" class="mut" font-size="12" text-anchor="end">opus</text>
+<text x="112" y="364" class="mut" font-size="13.5">investigate, write up</text>
+
+<rect class="node" x="318" y="300" width="192" height="88" rx="6"/>
+<text x="338" y="332" class="ink" font-size="17" font-weight="600">coder</text>
+<text x="492" y="332" class="mut" font-size="12" text-anchor="end">opus</text>
+<text x="338" y="364" class="mut" font-size="13.5">write code only</text>
+
+<rect class="node" x="544" y="300" width="192" height="88" rx="6"/>
+<text x="564" y="332" class="ink" font-size="17" font-weight="600">reviewer</text>
+<text x="718" y="332" class="mut" font-size="12" text-anchor="end">opus</text>
+<text x="564" y="364" class="kome" font-size="13.5">never skippable</text>
+
+<rect class="node" x="770" y="300" width="192" height="88" rx="6"/>
+<text x="790" y="332" class="ink" font-size="17" font-weight="600">tester</text>
+<text x="944" y="332" class="mut" font-size="12" text-anchor="end">sonnet</text>
+<text x="790" y="364" class="mut" font-size="13.5"><tspan class="mono sec">§</tspan><tspan class="mono num">16</tspan> end-to-end gate</text>
+
+<rect class="gate" x="996" y="300" width="192" height="88" rx="6"/>
+<text x="1016" y="332" class="ink" font-size="17" font-weight="600">governor</text>
+<text x="1170" y="332" class="mut" font-size="12" text-anchor="end">sonnet</text>
+<text x="1016" y="364" class="mut" font-size="13.5">test the bounds</text>
+
+<path class="ln" d="M284 344 L314 344" marker-end="url(#a)"/>
+<path class="ln" d="M510 344 L540 344" marker-end="url(#a)"/>
+<path class="ln" d="M736 344 L766 344" marker-end="url(#a)"/>
+<path class="ln" d="M962 344 L992 344" marker-end="url(#a)"/>
+
+<!-- ============ loops ============ -->
+<path class="loop" d="M640 388 L640 428 L432 428 L432 392" marker-end="url(#a)"/>
+<text x="536" y="420" class="mut" font-size="13" text-anchor="middle">critical findings send it back</text>
+
+<path class="loop" d="M866 388 L866 470 L396 470 L396 392" marker-end="url(#a)"/>
+<text x="631" y="462" class="mut" font-size="12.5" text-anchor="middle">a failing test re-enters at the coder, repeating the code-review-test cycle.</text>
+
+<!-- ============ governor verdicts ============ -->
+<rect class="out" x="996" y="432" width="192" height="140" rx="6"/>
+<text x="1016" y="460" class="ink" font-size="15" font-weight="600">CLEAR</text>
+<text x="1016" y="480" class="mut" font-size="12.5">on to the next phase</text>
+<line x1="1012" y1="496" x2="1172" y2="496" class="ln" stroke-width="1"/>
+<text x="1016" y="524" class="kome" font-size="15" font-weight="600">STOP</text>
+<text x="1016" y="544" class="mut" font-size="12.5">Terminal: halt, revert</text>
+<text x="1016" y="562" class="mut" font-size="12.5">nothing, notify</text>
+<path class="ln" d="M1092 388 L1092 428" marker-end="url(#a)"/>
+
+<!-- ============ footer ============ -->
+<text x="92" y="680" class="mut" font-size="12.5">github.com/EricBLivingston/corpus-iuris</text>
+<text x="1188" y="680" class="mut" font-size="12.5" text-anchor="end">Corpus Iuris © 2026 Eric Livingston · CC BY-SA 4.0</text>
+</svg>

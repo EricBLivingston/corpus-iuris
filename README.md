@@ -1,5 +1,9 @@
 # Corpus Iuris
 
+![Corpus Iuris: the three goals, the four instruments, and the spec-driven development layer](docs/diagrams/framework-overview.svg)
+
+[Presentation deck](https://ericblivingston.github.io/corpus-iuris/docs/deck/index.html)
+
 This repository contains my own "Body of Rules" for directing agentic work. The base is harness-neutral, Claude Code is the harness I run it on, and `adopting.md` and the `transforms/` packages carry it to others (e.g. Codex, Gemini, Grok). It is highly opinionated; it represents how I think of, design, and build code, and is expected to be more of a structural model and example of how you might implement a similar set of precepts.
 
 ## What it actually is
@@ -61,7 +65,7 @@ Below is a table of our terms and symbols, and what each was chosen for.
 | ---- | ---- | ---- |
 | **Ius** | Roman law: law as a body of right (*ius civile*), as against *lex*, the single enacted statute. | Names the body itself, so no one rule can be mistaken for the whole. |
 | **Corpus** | In scholarly publishing, the live collection, with withdrawn and archived material excluded by definition; in ML, a curated dataset, where membership follows from active inclusion rather than mere availability. | Membership by inclusion, not by presence on disk: what no loader, invoker, or live reference reaches is dead code, and dead code is not corpus. |
-| **Adventitia** | Arriving from outside; in anatomy, the outer coat a vessel acquires from the tissue around it. | Marks content the harness supplies that no source edit can reach — a claim about provenance, not authority. |
+| **Adventitia** | Latin: "externally added"; Descartes' *ideae adventitiae*, ideas arriving from outside the mind — neither innate nor self-made. | Marks content the harness supplies that no source edit can reach — a claim about provenance, not authority. |
 | **Precept** | A rule of conduct laid down by an authority. | The umbrella for everything that binds, whichever instrument minted it. |
 | **Canon** | The closed, admitted set of texts constituting a body — always read, as against material that may be read but is not guaranteed. | Admission by guaranteed presence, so a citation always resolves in context; what lies outside is deuterocanonical, and binds once read. |
 | **Provision** | A clause of a statute or contract: a discrete, citable term. | Gives every rule an address, so it can be cited from anywhere instead of quoted. |

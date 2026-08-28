@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-labelledby="t d">
+<title id="t">Corpus Iuris</title>
+<desc id="d">The four instruments, quartered: directives, rules, interpretive rulings, empirical resolutions.</desc>
+<style>
+  .ink{fill:#1f2328}.sec{fill:#0969da}.kome{fill:#b42318}
+  .inks{stroke:#1f2328}.komes{stroke:#b42318}
+  .tile{fill:#f6f8fa;stroke:#d0d7de;stroke-width:2}
+  .rule{stroke:#d0d7de;stroke-width:1.5}
+  .st{fill:none;stroke-width:5.5;stroke-linecap:round}
+  @media (prefers-color-scheme:dark){
+    .ink{fill:#e6edf3}.sec{fill:#58a6ff}.kome{fill:#ff7b72}
+    .inks{stroke:#e6edf3}.komes{stroke:#ff7b72}
+    .tile{fill:#161b22;stroke:#30363d}
+    .rule{stroke:#30363d}
+  }
+</style>
+
+<rect class="tile" x="6" y="6" width="228" height="228" rx="30"/>
+<line class="rule" x1="120" y1="26" x2="120" y2="214"/>
+<line class="rule" x1="26" y1="120" x2="214" y2="120"/>
+
+<!-- section sign, outlined from DejaVu Sans Mono -->
+<path class="sec" transform="translate(66 66)" d="M10.4 -26.11V-20.75Q7.69 -22.02 5.36 -22.66Q3.02 -23.3 1.16 -23.3Q-2.01 -23.3 -3.76 -21.99Q-5.5 -20.69 -5.5 -18.37Q-5.5 -15.43 1.19 -11.67Q2.04 -11.18 2.5 -10.92Q9.42 -7.04 11.54 -4.52Q13.67 -2.01 13.67 1.29Q13.67 4.23 12.18 6.51Q10.69 8.8 7.66 10.53Q9.65 12.23 10.6 14.01Q11.54 15.79 11.54 17.88Q11.54 22.51 8.21 25.26Q4.88 28 -0.77 28Q-3.15 28 -5.68 27.53Q-8.21 27.05 -11.05 26.11V20.75Q-8.21 22.02 -5.8 22.66Q-3.38 23.3 -1.52 23.3Q1.81 23.3 3.66 21.93Q5.5 20.56 5.5 18.07Q5.5 14.74 -1.71 10.73L-2.5 10.27Q-9.49 6.35 -11.58 3.85Q-13.67 1.36 -13.67 -1.98Q-13.67 -4.95 -12.15 -7.28Q-10.63 -9.62 -7.66 -11.22Q-9.62 -12.65 -10.58 -14.48Q-11.54 -16.31 -11.54 -18.56Q-11.54 -22.81 -8.28 -25.4Q-5.01 -28 0.44 -28Q2.79 -28 5.29 -27.53Q7.79 -27.05 10.4 -26.11ZM-4.33 -8.93Q-6.35 -7.46 -7.35 -5.99Q-8.34 -4.52 -8.34 -2.99Q-8.34 -0.51 -6.04 1.7Q-3.74 3.9 4.33 8.24Q6.35 6.78 7.33 5.31Q8.31 3.84 8.31 2.3Q8.31 -0.18 5.98 -2.4Q3.64 -4.62 -4.33 -8.93Z"/>
+
+<!-- reference mark -->
+<g class="st komes" transform="translate(174 66)">
+  <path d="M-16.5 -16.5 L16.5 16.5 M16.5 -16.5 L-16.5 16.5"/>
+</g>
+<g class="kome" transform="translate(174 66)">
+  <circle cx="0" cy="-22" r="4.3"/><circle cx="0" cy="22" r="4.3"/>
+  <circle cx="-22" cy="0" r="4.3"/><circle cx="22" cy="0" r="4.3"/>
+</g>
+
+<!-- turnstile -->
+<g class="st inks" transform="translate(66 174)">
+  <path d="M-13 -23 V23 M-13 0 H21"/>
+</g>
+
+<!-- double turnstile -->
+<g class="st inks" transform="translate(174 174)">
+  <path d="M-15 -23 V23 M-15 -8 H21 M-15 8 H21"/>
+</g>
+</svg>

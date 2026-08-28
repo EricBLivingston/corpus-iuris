@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-labelledby="t d">
+<title id="t">Corpus Iuris: a cohesive agentic ecosystem</title>
+<desc id="d">Three panels. Why the corpus exists — clarity, cohesion, token efficiency. The lexicon — the four instruments and the two properties every term is selected for. The spec-driven development layer — prepare, phase, orchestrate, debrief, finalize.</desc>
+<style>
+  text{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+  .title{font-family:Palatino,"Palatino Linotype","Book Antiqua",Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:-.006em}
+  .ink{fill:#1f2328}.mut{fill:#656d76}.sec{fill:#0969da}.kome{fill:#b42318}.num{fill:#9a6700}
+  .card{fill:#f6f8fa;stroke:#d0d7de;stroke-width:1}
+  .row{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+  .ln{fill:none;stroke:#d0d7de;stroke-width:1}
+  @media (prefers-color-scheme:dark){
+    .ink{fill:#e6edf3}.mut{fill:#8b949e}.sec{fill:#58a6ff}.kome{fill:#ff7b72}.num{fill:#d29922}
+    .card{fill:#161b22;stroke:#30363d}
+    .row{fill:#0d1117;stroke:#30363d}
+    .ln{stroke:#30363d}
+  }
+</style>
+
+<!-- ============ header — title set in the deck's h2 face at the deck's h2 position ============ -->
+<text x="92" y="131" class="ink title" font-size="38">Corpus Iuris: a cohesive agentic ecosystem</text>
+<text x="1188" y="126" class="mono" font-size="24" text-anchor="end"><tspan class="sec">§</tspan><tspan class="mut">  </tspan><tspan class="kome">※</tspan><tspan class="mut">  </tspan><tspan class="ink">⊢</tspan><tspan class="mut">  </tspan><tspan class="ink">⊨</tspan></text>
+<line class="ln" x1="92" y1="150" x2="1188" y2="150"/>
+
+<!-- ============ section labels ============ -->
+<text x="92" y="178" class="ink" font-size="13" font-weight="600">Why it exists</text>
+<text x="432" y="178" class="ink" font-size="13" font-weight="600">The lexicon, and why it is built this way</text>
+
+<!-- ============ left column: the three goals ============ -->
+<rect class="card" x="92" y="188" width="320" height="88" rx="6"/>
+<text x="110" y="212" class="ink" font-size="13" font-weight="600">Clarity and attentive power</text>
+<text x="110" y="232" class="mut" font-size="11">A precept must pop out of the background and</text>
+<text x="110" y="247" class="mut" font-size="11">arrest attention. <tspan class="mono sec">§</tspan><tspan class="mono num">4</tspan> has one antecedent in a</text>
+<text x="110" y="262" class="mut" font-size="11">session; a word like “scope” has dozens.</text>
+
+<rect class="card" x="92" y="294" width="320" height="88" rx="6"/>
+<text x="110" y="318" class="ink" font-size="13" font-weight="600">Context cohesion and integrity</text>
+<text x="110" y="338" class="mut" font-size="11">Precepts must not fight each other, or what the</text>
+<text x="110" y="353" class="mut" font-size="11">harness injects. <tspan font-style="italic">Lex specialis</tspan> decides a live</text>
+<text x="110" y="368" class="mut" font-size="11">collision; caselaw records the settled ones.</text>
+
+<rect class="card" x="92" y="400" width="320" height="88" rx="6"/>
+<text x="110" y="424" class="ink" font-size="13" font-weight="600">Token efficiency</text>
+<text x="110" y="444" class="mut" font-size="11">Every token is paid for twice: in cost and in</text>
+<text x="110" y="459" class="mut" font-size="11">attention. Citation is the saving: a rule is</text>
+<text x="110" y="474" class="mut" font-size="11">invoked by token, never restated.</text>
+
+<!-- ============ instruments table ============ -->
+<rect class="card" x="432" y="188" width="360" height="300" rx="6"/>
+<text x="450" y="212" class="ink" font-size="12.5" font-weight="600">The four instruments</text>
+<text x="450" y="229" class="mut" font-size="10.5">Every provision is minted as one of these types.</text>
+
+<rect class="row" x="446" y="246" width="332" height="54" rx="5"/>
+<text x="474" y="282" class="mono sec" font-size="26" text-anchor="middle">§</text>
+<text x="516" y="267" class="ink" font-size="12" font-weight="600">Directives</text>
+<text x="516" y="282" class="mut" font-size="10.5">What you produce. Statutory weight, plus</text>
+<text x="516" y="295" class="mut" font-size="10.5">an anchor that resolves corpus-wide.</text>
+
+<rect class="row" x="446" y="306" width="332" height="54" rx="5"/>
+<text x="474" y="342" class="mono kome" font-size="26" text-anchor="middle">※</text>
+<text x="516" y="327" class="ink" font-size="12" font-weight="600">Rules</text>
+<text x="516" y="342" class="mut" font-size="10.5">How you work. Promoted from annotation</text>
+<text x="516" y="355" class="mut" font-size="10.5">to obligation: nothing it marks is optional.</text>
+
+<rect class="row" x="446" y="366" width="332" height="54" rx="5"/>
+<text x="474" y="402" class="mono ink" font-size="26" text-anchor="middle">⊢</text>
+<text x="516" y="387" class="ink" font-size="12" font-weight="600">Interpretive rulings</text>
+<text x="516" y="402" class="mut" font-size="10.5">Reconciles conflicts and silences in</text>
+<text x="516" y="415" class="mut" font-size="10.5">doctrine,<tspan font-style="italic">a priori</tspan>, from provisions in hand.</text>
+
+<rect class="row" x="446" y="426" width="332" height="54" rx="5"/>
+<text x="474" y="462" class="mono ink" font-size="26" text-anchor="middle">⊨</text>
+<text x="516" y="447" class="ink" font-size="12" font-weight="600">Empirical resolutions</text>
+<text x="516" y="462" class="mut" font-size="10.5">The same office, <tspan font-style="italic">a posteriori</tspan>: surfaced</text>
+<text x="516" y="475" class="mut" font-size="10.5">in application rather than derived.</text>
+
+<!-- ============ right column: the selection criteria ============ -->
+<rect class="card" x="808" y="188" width="380" height="88" rx="6"/>
+<text x="826" y="212" class="ink" font-size="13" font-weight="600">Rarity — one antecedent in context</text>
+<text x="826" y="232" class="mut" font-size="11"><tspan class="mono kome">※</tspan><tspan class="mono num">11</tspan> does not reach into training data for its</text>
+<text x="826" y="247" class="mut" font-size="11">meaning; its defining site is already in context.</text>
+<text x="826" y="262" class="mut" font-size="11">One antecedent at 8k. Still one at 500k.</text>
+
+<rect class="card" x="808" y="294" width="380" height="88" rx="6"/>
+<text x="826" y="318" class="ink" font-size="13" font-weight="600">Semantic alignment — no fight with the prior</text>
+<text x="826" y="338" class="mut" font-size="11">Where a term does occur in training, its sense</text>
+<text x="826" y="353" class="mut" font-size="11">there should be close to ours. <tspan class="ink">Provision</tspan> already</text>
+<text x="826" y="368" class="mut" font-size="11">means a citable clause; nothing is overridden.</text>
+
+<rect class="card" x="808" y="400" width="380" height="88" rx="6"/>
+<text x="826" y="424" class="ink" font-size="13" font-weight="600">The Goldilocks Zone — rare, but not untrained</text>
+<text x="826" y="444" class="mut" font-size="11">Too common, and a term competes for its own</text>
+<text x="826" y="459" class="mut" font-size="11">referent. Too rare, and it is undertrained, its</text>
+<text x="826" y="474" class="mut" font-size="11">embedding degenerate. We aim between.</text>
+
+<!-- ============ SDD strip ============ -->
+<text x="92" y="516" class="ink" font-size="13" font-weight="600">The spec-driven development layer</text>
+<text x="1188" y="516" class="mut" font-size="11" text-anchor="end">Each stage narrows what the next one is allowed to see.</text>
+
+<rect class="card" x="92" y="528" width="204" height="130" rx="6"/>
+<text x="108" y="552" class="mono sec" font-size="13.5" font-weight="600">/prepare</text>
+<text x="108" y="571" class="ink" font-size="11" font-weight="600">Author the specs</text>
+<text x="108" y="590" class="mut" font-size="10">PRD, then Design, then</text>
+<text x="108" y="604" class="mut" font-size="10">Implementation. Each one</text>
+<text x="108" y="618" class="mut" font-size="10">filled from its template,</text>
+<text x="108" y="632" class="mut" font-size="10">reading the precursors</text>
+<text x="108" y="646" class="mut" font-size="10">already written.</text>
+
+<text x="305.5" y="598" class="mut" font-size="12" text-anchor="middle">→</text>
+
+<rect class="card" x="315" y="528" width="204" height="130" rx="6"/>
+<text x="331" y="552" class="mono sec" font-size="13.5" font-weight="600">/phase</text>
+<text x="331" y="571" class="ink" font-size="11" font-weight="600">Split and prune</text>
+<text x="331" y="590" class="mut" font-size="10">Specs become an Overview</text>
+<text x="331" y="604" class="mut" font-size="10">plus one Phase-N file per</text>
+<text x="331" y="618" class="mut" font-size="10">unit of work. The source</text>
+<text x="331" y="632" class="mut" font-size="10">specs are archived, not</text>
+<text x="331" y="646" class="mut" font-size="10">carried forward.</text>
+
+<text x="528.5" y="598" class="mut" font-size="12" text-anchor="middle">→</text>
+
+<rect class="card" x="538" y="528" width="204" height="130" rx="6"/>
+<text x="554" y="552" class="mono sec" font-size="13.5" font-weight="600">/orchestrate</text>
+<text x="554" y="571" class="ink" font-size="11" font-weight="600">Run each phase</text>
+<text x="554" y="590" class="mut" font-size="10">Analyze, code, review, test.</text>
+<text x="554" y="604" class="mut" font-size="10">Done per phase, in isolation.</text>
+<text x="554" y="618" class="mut" font-size="10">The agent sees its Overview</text>
+<text x="554" y="632" class="mut" font-size="10">and its own phase file. The</text>
+<text x="554" y="646" class="mut" font-size="10">adjacent phases are noise.</text>
+
+<text x="751.5" y="598" class="mut" font-size="12" text-anchor="middle">→</text>
+
+<rect class="card" x="761" y="528" width="204" height="130" rx="6"/>
+<text x="777" y="552" class="mono sec" font-size="13.5" font-weight="600">/debrief</text>
+<text x="777" y="571" class="ink" font-size="11" font-weight="600">Collect what is left</text>
+<text x="777" y="590" class="mut" font-size="10">Suggestions, warnings,</text>
+<text x="777" y="604" class="mut" font-size="10">deferred items, debt,</text>
+<text x="777" y="618" class="mut" font-size="10">failing or skipped tests; all</text>
+<text x="777" y="632" class="mut" font-size="10">swept into one severity-</text>
+<text x="777" y="646" class="mut" font-size="10">ranked file.</text>
+
+<text x="974.5" y="598" class="mut" font-size="12" text-anchor="middle">→</text>
+
+<rect class="card" x="984" y="528" width="204" height="130" rx="6"/>
+<text x="1000" y="552" class="mono sec" font-size="13.5" font-weight="600">/finalize</text>
+<text x="1000" y="571" class="ink" font-size="11" font-weight="600">Close out, yes or no</text>
+<text x="1000" y="590" class="mut" font-size="10">Every carried item gets a</text>
+<text x="1000" y="604" class="mut" font-size="10">binary verdict; no maybe.</text>
+<text x="1000" y="618" class="mut" font-size="10">The Yes list becomes an</text>
+<text x="1000" y="632" class="mut" font-size="10">Implementation.md, ready</text>
+<text x="1000" y="646" class="mut" font-size="10">to re-phase.</text>
+
+<!-- ============ footer ============ -->
+<text x="92" y="680" class="mut" font-size="12.5">github.com/EricBLivingston/corpus-iuris</text>
+<text x="640" y="680" class="mut" font-size="12.5" text-anchor="middle">A body of rules for directing agentic work</text>
+<text x="1188" y="680" class="mut" font-size="12.5" text-anchor="end">Corpus Iuris © 2026 Eric Livingston · CC BY-SA 4.0</text>
+</svg>
