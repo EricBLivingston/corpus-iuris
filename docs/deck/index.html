@@ -78,6 +78,10 @@
   .card h3{margin:0 0 10px;font-size:20px;font-weight:600}
   .card p{font-size:16px;margin:0 0 10px;color:var(--mut)}
   .card p:last-child{margin:0}
+  /* Footnote under a card row: the aside that names the mechanism the cards
+     illustrate, set below the fold of the argument and above the slide footer. */
+  .note{font-size:15px;line-height:1.5;color:var(--mut);margin:22px 0 0;
+    padding-top:14px;border-top:1px solid var(--line)}
 
   .ladder{list-style:none;margin:10px 0 0;padding:0;counter-reset:s}
   .ladder li{display:flex;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)}
@@ -259,7 +263,7 @@
 </section>
 
 <!-- 8 -->
-<section class="slide" data-notes="Pre-empt the obvious objection: why not invent nonsense words, which would be even rarer? Because tokens a model has barely seen carry degenerate embeddings and behave erratically. And where a term does appear in training, its trained sense should agree with yours — a term whose default contradicts your stipulated use sets the context against the weights. And the prior does not go away when you redefine it — it keeps competing underneath, and the stronger it is the more often the override leaks. The win is avoiding the fight, not winning it. The slide title is the method demonstrating itself: one trained name, Goldilocks, and the whole not-too-much-not-too-little frame arrives with it. That is the move the next slide names.">
+<section class="slide" data-notes="Pre-empt the obvious objection: why not invent nonsense words, which would be even rarer? Because tokens a model has barely seen carry degenerate embeddings and behave erratically. And where a term does appear in training, its trained sense should agree with yours — a term whose default contradicts your stipulated use sets the context against the weights. And the prior does not go away when you redefine it — it keeps competing underneath, and the stronger it is the more often the override leaks. The win is avoiding the fight, not winning it. The footnote gives the formal handle for anyone who wants one: this is TF-IDF, term frequency in our corpus against inverse document frequency over training, and the two outer cards are the two ways that product goes to nothing. Do not read it out — it is there for the photograph and for the question. The slide title is the method demonstrating itself: one trained name, Goldilocks, and the whole not-too-much-not-too-little frame arrives with it. That is the move the next slide names.">
   <p class="kicker">Corpus Iuris</p>
   <h2>The Goldilocks band</h2>
   <p class="lede">We seek terms and symbols rare enough to offer low competition to our use, yet common enough to pull relevant meaning from training.</p>
@@ -282,6 +286,7 @@
       <p>Undertrained vocabulary carries degenerate embeddings, leading to erratic behavior.</p>
     </div>
   </div>
+  <p class="note">The band employs TF&ndash;IDF ideas applied to the context window: a term gains signal by being frequent in our corpus and rare in the model's training distribution. The lower bound breaks the analogy; a token with insufficient training presence lacks coherence and works against us.</p>
 </section>
 
 <!-- 9 -->

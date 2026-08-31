@@ -1,4 +1,4 @@
-# Corpus Iuris
+# <img src="docs/logo.svg" alt="" width="60" align="middle"> Corpus Iuris
 
 ![Corpus Iuris: the three goals, the four instruments, and the spec-driven development layer](docs/diagrams/framework-overview.svg)
 
