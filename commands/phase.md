@@ -26,20 +26,26 @@ B. Create one or more `Phase-X.md` files in the plan folder:
 2. Not redundant with Overview (both are provided during each implementation phase)
 3. Specific, actionable tasks for that phase
 
-C. Populate the `## Governance Bounds` section of `Overview.md` and of every `Phase-X.md`, extracting the bounds from the plan folder's PRD and Design — the limits those documents place on the work, in their own words. Overview carries the bounds spanning phases; each phase file carries the bounds scoped to that phase alone. The section in each template states the shape a bound must take; follow it.
+C. Populate the `## Governance Bounds` section of `Overview.md` and of every `Phase-X.md` from the limits the plan folder's source documents place on the work, in those documents' own words. Overview carries the bounds spanning phases; each phase file carries the bounds scoped to that phase alone. Each template states the shape a bound must take, and `bounds-sources.md` beside them states the authority and evaluability filters every candidate passes before it is written; work both.
 
 #### Templates
 
-Use the following templates when creating plan files. Provide both paths to the analyzer.
+Use the following templates when creating plan files. Provide all three paths to the analyzer.
 
 - `{reference-root}/templates/plan/Overview-template.md` — skeleton for `Overview.md`
 - `{reference-root}/templates/plan/Phase-X-template.md` — skeleton for each `Phase-N.md`
+- `{reference-root}/templates/plan/bounds-sources.md` — the source map and filters step C mandates
 
 ### Review
 
-Invoke the reviewer agent to compare the Overview and Phase files against the source specs:
+Invoke the reviewer agent to compare the Overview and Phase files against the source specs, handing it `bounds-sources.md` as well — the enforcement list below turns on terms defined there. The Sweep below archives the sources, leaving a coder `Overview.md` plus one phase file. The standard is reconstruction, not mention: a canonical file *discussing* the subject is a miss, and a decision surviving only in a source document is lost whatever its quality.
 
-1. **Completion**: Overview and phase files carry the full specification forward from the source specs — after the Sweep below, nothing else is read
+1. **Completion**: walk every section and every table row of every source document, `Implementation.md` and later arrivals included, keying the sweep to source location, never to bolding — bold marks conclusions, so a bold-keyed sweep misses warrant by construction and reads a table as zero items. Test three things per item:
+
+   - **Conclusion carried** — the decision is reconstructible from the canonical set.
+   - **Warrant carried** — why-this-constraint-must-hold travels with the constraint, or an implementer tidies the rule away; why-it-was-chosen-over-the-alternatives stays behind with the source. Test each: needed to build correctly and resist undoing → travels; record of how it was decided → stays. Report a constraint carried without its warrant as a partial loss.
+   - **Qualification carried** — rank this highest. `(UNMEASURED)` markers, "provisional", "in practice", stated scope limits and explicit exceptions travel with what they qualify. Enumerate the sources' own qualifiers directly.
+
 2. **Efficiency**: Phase files are not redundant and don't introduce content beyond the source specs
 
 Edit the files as needed to satisfy these criteria.
@@ -55,6 +61,7 @@ Edit the files as needed to satisfy these criteria.
 - Flag any AC that lacks a verifier hint (soft rule — flag, do not reject)
 - Confirm the Deviations section is present and filled (not left as a `<placeholder>`)
 - Reject any file that still contains literal `<placeholder>` markers
+- Reject any bound a governor could not evaluate from the enumerated list alone — an intent clause, a bare ordinal into another document, or a constraint whose substance lives only in its citation; flag any bound whose warrant traces no further than a source document's own elaboration
 
 ### Sweep
 

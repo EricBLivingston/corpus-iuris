@@ -4,6 +4,8 @@ description: Writes and modifies source code — a feature, a bug fix, a refacto
 model: opus
 color: green
 background: true
+experimental:
+  cacheTtl: "1h"
 ---
 
 # Role

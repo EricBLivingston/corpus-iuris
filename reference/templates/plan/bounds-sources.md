@@ -6,6 +6,22 @@ Work whichever table matches the section being written — the plan-wide table f
 
 ---
 
+## Filters on every row's output
+
+A row's conversion produces a candidate, not a bound. Apply both filters before writing anything into the list; a faithful quotation of the source clears neither on its own.
+
+**Authority.** A bound's source is a decision the user ratified, durable project canon, or a measurement — never the source document's own elaboration, however well it reasons. Quoting elaboration faithfully launders it into a bound with a verifier pointed at the build, and every fidelity check on the quotation passes clean. Give prohibitions the closer look: an invented value reads as a claim and invites challenge, an invented prohibition reads as discipline and gets praised for caution. Where a candidate traces no further than elaboration, leave it in the source file's body as a design note, or carry it explicitly marked unverified and put it to the user; do not write it into the list.
+
+Qualifications travel into the bound's own text — `(UNMEASURED)`, "in practice", a stated scope limit, an explicit exception. A hedge promoted to an assertion is how an unverified claim becomes an enforced rule.
+
+**Evaluability.** A governor evaluates each bound from the enumerated list alone. The constraint's substance sits in the bound's own text; a citation is provenance only. Three shapes fail that:
+
+- **An intent clause** — "no alternative is derived", "none removed as redundant" — asks after motive, which no evidence settles, so it returns undetermined every run. State the observable; move the reason into the citation.
+- **A bare ordinal** — "the columns listed in step 2". Restate the set by its defining property (§17).
+- **Two bounds worded identically over different objects** collide into a false blocker, the plan-wide and phase-scoped lists being read as one. Name the object each governs.
+
+---
+
 ## Plan-wide sources
 
 Read for limits no single phase can breach on its own.

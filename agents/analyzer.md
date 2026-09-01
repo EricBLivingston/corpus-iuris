@@ -4,6 +4,8 @@ description: Investigates a codebase or text at scale — architecture, control 
 model: opus
 color: orange
 background: true
+experimental:
+  cacheTtl: "1h"
 ---
 
 # Role

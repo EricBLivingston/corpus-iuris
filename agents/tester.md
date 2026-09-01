@@ -4,6 +4,8 @@ description: Writes tests, runs suites, and diagnoses failures — unit, integra
 model: sonnet
 color: cyan
 background: true
+experimental:
+  cacheTtl: "1h"
 ---
 
 # Role

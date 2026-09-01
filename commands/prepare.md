@@ -18,6 +18,19 @@ The argument is the **target artifact's path** — e.g. `/prepare plans/<name>/D
 | `Design.md` | `Design-template.md` | the sibling `PRD.md` | always → Implementation |
 | `Implementation.md` | `Implementation-template.md` | the sibling `PRD.md`, plus `Design.md` if present (short-circuit: PRD only) | terminal → `/implement` or `/orchestrate` |
 
+## The Regimes
+
+An artifact's boundary is the swap that would rewrite it.
+
+| Artifact | Regime | Rewritten by |
+| ---- | ---- | ---- |
+| `Background.md` | the ground — why there is a plan at all | — |
+| `PRD.md` | Why (Need) | a different problem: web UI → headless LLM tool |
+| `Design.md` | What (Solution) | a different conceptual approach: local stateless CLI → cloud stateful server |
+| `Implementation.md` | How (Tools & Tech) | a different technology stack: Postgres/Rust → SQLite/Python |
+
+Rows above the rewritten one stand. Each regime keeps its own deliberation and passes on only its result: why we need this at all stays in the PRD, why this design and not another stays in Design. Justification is a context sink — compartmentalizing it is what keeps each artifact focused on its own job.
+
 ## Workflow (identical for every target)
 
 1. **Clarify** (if needed) — use AskUserQuestion for ambiguous requests.
