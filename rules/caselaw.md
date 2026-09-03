@@ -31,10 +31,10 @@
 **Governs:** ※1, built-in-tool-description adventitia.
 **Origin:** built-in-tool-description adventitia cannot know a symbolic toolserver is present, so they never defer on their own. The rationalizations that followed — "the file is small", "the path is known", "this is one call versus three" — were each wrong in practice.
 
-**⊨2. Damage an insertion does to numbered or ordered content is the insertion's.** When a change inserts into a numbered list, an ordered table, or any sequence others cite by position, the renumbering and every citation it invalidates are that change's collateral damage. Find them, report them, repair them in the same change; never classify them as pre-existing defects lying outside the diff.
+**⊨2. Damage a change does to content others cite is the change's.** When a change inserts into a numbered list, an ordered table, or any sequence cited by position, the renumbering and every citation it invalidates are its collateral damage. When a change deletes or renames a cited target, every citation left dangling is the same. Find them, report them, repair them in the same change; never classify them as pre-existing defects lying outside the diff.
 
 **Governs:** ※10, ※8.
-**Origin:** review passes repeatedly returned post-insertion renumbering breakage as "pre-existing" and moved on, leaving citations resolving to the wrong entries. ※10 forecloses the "out of scope" evasion for small fixes but is silent on damage the change itself caused; ※8's chain had no reason to look outside the inserted lines.
+**Origin:** review passes repeatedly returned post-insertion renumbering breakage as "pre-existing" and moved on, leaving citations resolving to the wrong entries. A later pass retired a cited section and renamed a cited file, orphaning a `Governs:` target, a worked example and eight pointers — the same damage by the opposite operation. ※10 forecloses the "out of scope" evasion for small fixes but is silent on damage the change itself caused; ※8's chain had no reason to look outside the changed lines.
 
 **⊨3. Replacement is not addition — purge the replaced thing's whole footprint.** When one tool, convention, or artifact replaces another, the same change deletes everything the old one owned — permission rules, environment-variable prefixes, config stanzas, aliases, inbound pointers — never left standing beside the new. A migration instruction phrased additively — "add a mirroring X" — is itself the defect.
 
@@ -46,7 +46,12 @@
 **Governs:** ※8, §17.
 **Origin:** four gates in one plan each passed while matching less than they certified — an identifier grep, a close-out criterion resting on it, a four-path deletion sweep that left a 458 MB tree standing through a full subagent audit, and a replacement grep that missed 2 of the 13 sites its own pass had just fixed.
 
-**⊨5. THX-1138: scale costs to the work.** ※4 and ※7 invert where the content is smaller than the round trip that would move it; ※11 then governs. Reasonable risk/return estimates guide subagent and CLI delegation. ※8 can **contract** (analysis and testing fall away) and can **reduce** (coding in main session, review dispatched with bounded charter). Unchecked, delegated work can re-inflate in a context the dispatcher never reads. Derived work carries ※12's gate cost; that bears on whether to launch, never on whether to gate.
+**⊨5. THX-1138: scale costs to the work.** ※4 and ※7 invert where the content is smaller than the round trip that would move it; ※11 then governs. Reasonable risk/return estimates guide delegation. ※8 can **contract** (analysis and testing fall away) and can **reduce** (coding in main session, review dispatched with bounded charter). Unchecked, delegated work can re-inflate in a context the dispatcher never reads. Derived work carries ※12's gate cost; that bears on whether to launch, never on whether to gate.
 
 **Governs:** ※3, ※4, ※7, ※8, ※11, ※12.
 **Origin:** requests that named their own files and their own three-line edits ran the full chain — analyzer, coder, reviewer, each re-loading canon — at ~10× the edit's cost, spawning a coder for edits the main session could have made trivially. Nothing on ※4's or ※8's face bounds the mechanism to the change's size.
+
+**⊨6. Write for a competent delegate.** Precepts, charters and plan files address a model that infers; supply what it cannot infer and stop. A clause guarding against speculative misreading violates §2. Test: would a competent reader have acted differently without it? Where ambiguity is real and observed, ※11 governs the remedy.
+
+**Governs:** ※5, ※11, ※12.
+**Origin:** Ongoing proposed instructions providing tautological or trivial guidance to periti, such as a guard against a model not knowing which model it is. ※5 and ※11 bound how much is said, not whether it needs saying, and a safeguard always argues its tokens are worth it.

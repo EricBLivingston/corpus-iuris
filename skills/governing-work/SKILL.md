@@ -1,6 +1,6 @@
 ---
 name: governing-work
-description: Use this skill when scoping work — a plan phase, a subagent charter, any actions not explicitly requested by the user — and again when that work returns and must be held to its bounds. Carries the bound-authoring form, the test for when the assay earns a dispatch, the governor dispatch shape, and the routing on its return, including the door by which a bound is amended rather than broken.
+description: Use this skill when scoping work — a plan phase, a delegate's charter, any actions not explicitly requested by the user — and again when that work returns and must be held to its bounds. Carries the bound-authoring form, the test for when the assay earns a dispatch, the governor dispatch shape, and the routing on its return, including the door by which a bound is amended rather than broken.
 ---
 
 # Governing Work
@@ -14,7 +14,7 @@ A bound is a limit on produced content, decidable by a reader holding only the c
 Where the set lives — the first that applies:
 
 - **Plan-governed work** — the `## Governance Bounds` section of an Overview, phase, or other plan file.
-- **A dispatched subagent** — its dispatch prompt, which is its own ask and its own bound (⊢5).
+- **A dispatched delegate** — its dispatch prompt, which is its own ask and its own bound (⊢5).
 - **Otherwise** — a stated block in the session, fixed before the first edit.
 
 Fixed *before* is critical: a bound written afterward certifies whatever happened.
@@ -32,7 +32,7 @@ Write each by defining shape, never by enumerated vocabulary; where no shape-wis
 
 The artifact is cheap; the dispatch is not (⊨5). Dispatch the governor when any holds:
 
-- The work ran unwatched — an orchestrated phase, a background chain, a subagent whose output you did not follow.
+- The work ran unwatched — an orchestrated phase, a background chain, a delegate whose output you did not follow.
 - The produced content is larger than the dispatcher will actually read.
 - The bounds are numerous, or turn on shape a skim will not settle.
 - A gate in the governing plan calls for it.

@@ -32,7 +32,7 @@ An assertion in prose, a code comment, or a document's own rationale is conceiva
 ## The two-stage gate
 
 1. **Assess the table. A denial is final.** Return it with the failing row and your reasoning. No second party is consulted; the matter ends.
-2. **A grant issues as interim and escalates.** Assemble the artifacts and arguments that justify it, submit the statement and that package to an external auditor for independent review — routed through a delegated CLI — and adopt its judgment: concurrence returns the grant, dissent returns a denial carrying the auditor's rationale.
+2. **A grant issues as interim and escalates.** Assemble the artifacts and arguments that justify it, submit the statement and that package to a peritus for independent review — and adopt its judgment: concurrence returns the grant, dissent returns a denial carrying the auditor's rationale.
 
 ## The response
 

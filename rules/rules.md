@@ -1,10 +1,10 @@
 # Universal Behavioral Rules
 
-**※0. *Quo praecepto? Cita prius*** — Before acting, cite by token every provision that altered your plan of action, each with a short impact statement, under the label *Quo praecepto*. A diagnostic of provision efficacy, not a compliance record: an unaltered act cites nothing. Report deviations. e.g. `Quo praecepto: ⊨5 — main session, no analyzer; ※12 — expansion withheld.`
+**※0. *Quo praecepto? Cita prius*** — Before acting, cite every precept that altered your plan of action, each with a short impact statement, under the label *Quo praecepto*. A provision cites by token; a precept carrying none cites by the hardest handle it affords — rubric by its heading-form target, adventitia by the shortest fragment that resolves it. A diagnostic of precept efficacy, not a compliance record: an unaltered act cites nothing. Report deviations. e.g. `Quo praecepto: ⊨5 — main session, no analyzer; CLAUDE.md § MANDATE: No Broad Home-Directory Scans — search scoped to the project.`
 
 **※1. Tool Correctness** — Prefer an applicable non-shell harness-provided tool over a shell stand-in for every file operation (abides ※11). Shell operations can consume disproportionate time and tokens. Reserve the shell for operations that genuinely require it, or if explicitly instructed.
 
-**※2. No Recursive Self-Launch** — Invoke same-system subagents exclusively through the harness’s subagent workflow. Never launch the current agent system recursively through a shell or CLI stand-in: it creates an unmanaged second main session, floods context with stdout, and defeats delegation (※4). External agent systems with CLI interfaces are exempt.
+**※2. No Recursive Self-Launch** — Invoke same-system subagents exclusively through the harness’s subagent workflow. Never launch the current agent system recursively through a shell or CLI stand-in: it creates an unmanaged second main session, floods context with stdout, and defeats delegation (※4).
 
 **※3. Async Agent Channels** — After invoking a background agent, stop processing and quiesce: the harness will notify on completion. Do not poll or start redundant agents thinking the first failed; ※11 and risk of conflicting work. However, notification is not proof of completion: confirm the deliverable is on disk. A notification can fire mid-write or land in another agent's context.
 

@@ -61,7 +61,7 @@ The table is the assay's record, not a launch order. Draft it, band it, and then
 
 ## Launch procedure
 
-1. Fill the template at `{reference-root}/templates/fmea-statement.md` into a file of its own, named `FMEA-YYYY-MM-DD-<slug>.md`, the slug naming the ask in three to five kebab-case words. Cost is a bound, never an estimate; the ATO row travels present and empty. One file per request, never one accumulating file per folder: subagents run concurrently, and two of them appending to one file collide.
+1. Fill the template at `{reference-root}/templates/fmea-statement.md` into a file of its own, named `FMEA-YYYY-MM-DD-<slug>.md`, the slug naming the ask in three to five kebab-case words. Cost is a bound, never an estimate; the ATO row travels present and empty. One file per request, never one accumulating file per folder: delegates run concurrently, and two of them appending to one file collide.
 
    Where it lands — the first of these three that applies:
 
@@ -79,7 +79,7 @@ Where the framing deviates from what the borrowed term already carries:
 - The AO is the authorizer agent, not you and not the user.
 - The authorization boundary is the statement's Cost bound. Crossing it is not overrun, it is operating unauthorized: re-assay, re-grant.
 - The user sits above the framework: standing veto over any grant. Where a request's true cost runs far past what it implied, surface the estimate before the spend, not after.
-- The statement binds the session that drafted it. A subagent's dispatch prompt is its own ask and its own bound (※12); the drafting session's Cost bound reaches that subagent only as the prompt writes it in (⊢5).
+- The statement binds the session that drafted it. A delegate's dispatch prompt is its own ask and its own bound (※12); the drafting session's Cost bound reaches that delegate only as the prompt writes it in (⊢5).
 
 ## Collisions
 

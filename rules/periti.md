@@ -1,6 +1,6 @@
 # Periti
 
-Within the corpus ius, periti has a precise definition: an AI model reached through a command-line harness program, engaged per question and returning one responsum. A peritus is engaged for peritia this session lacks: reach, speed, a second judgement. No instruction to engage a peritus obliges it.
+Within the corpus ius, periti has a precise definition: AI models reached through command-line harness programs, engaged per question and returning one responsum. A peritus is engaged for peritia this session lacks: reach, speed, a second judgement. No precept obliges an engagement.
 
 ## The engagement
 
@@ -14,6 +14,6 @@ Never disable a peritus's approval gate or sandbox, and never suppress its sessi
 
 ## Reference by class
 
-The periti are a set assayable from its source of truth: an AI model is a peritus when canon includes its CLI-invoking skill. §17 therefore governs every mention: name the class, or name the single peritus a sentence is actually about.
+The periti are a set assayable from its source of truth: an AI model is a peritus when canon includes its CLI-invoking skill's description. §17 therefore governs every mention: name the class, or name the single peritus a sentence is actually about.
 
 A peritus is a mechanism, as a subagent is; a delegate is a relationship — anything handed work, by either mechanism. Rules about delegated work therefore say delegate, and only what turns on the CLI says peritus.

@@ -31,6 +31,8 @@ Each term takes one field's sense, not the nearest one.
 - **Adventitia** — the Cartesian sense: *ideae adventitiae*, ideas arriving from outside the mind, neither innate nor self-made. What one authors one may edit; the adventitious admit only adoption or rejection.
 - **Doctrine** — principle systematized out of accumulated experience. Each provision is an a posteriori remediation of an observed failure.
 - **Caselaw** — the litigants are the colliding provisions; the bench is the author and the model, arguing to a holding; the holding is codified here. A ruling is amended by rewriting it.
+- **Peritus** — the civil-law sense: the expert a tribunal appoints and questions, not the expert witness a party retains and an opponent cross-examines. It answers what is asked; the tribunal weighs the answer and is not bound by it.
+- **Responsum** — the Roman-law sense: *responsa prudentium*, a jurist's written answer to the question as put. Its authority is the answerer's standing; its scope is no wider than the question.
 
 Within the ius regime (not bound thusly in non-canon corpus):
 
@@ -60,7 +62,7 @@ A provision's token has four positions:
 | Ambit | Reach |
 | ---- | ---- |
 | Universal | every installation of the corpus |
-| Instance | one installation — a machine, a deployment, one delegate's whole environment |
+| Instance | one installation — a machine, a deployment, one peritus's whole environment |
 | Project | one project |
 | Agent | one agent |
 
