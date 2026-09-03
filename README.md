@@ -76,6 +76,7 @@ Below is a table of our terms and symbols, and what each was chosen for.
 | **Ambit** | The scope or reach of a rule — "within the ambit of the statute". | The reach position in a token: universal, one installation, one project, or one agent. |
 | **Lingua** | Latin: tongue, a language as such. | Scopes a provision to a language by membership, so `cc` reaches `.cc`, `.cpp`, and `.h` alike. |
 | ***Lex specialis*** | *Lex specialis derogat legi generali* — the specific rule displaces the general one. | Adopted intact as the precedence rule; the ambit ladder supplies the ranking it needs. |
+| **Peritus** | Later civil and canon law: the expert a tribunal engages for an opinion it cannot reach itself. | *Culpa in eligendo* — engaged for peritia this session lacks. |
 | `§` | Section sign (silcrow): marks a numbered section or clause of a statute, contract, or treatise. | Statutory weight, plus an address: `§4` resolves corpus-wide, never to nearby prose. |
 | `※` | Kome / reference mark: in Japanese and Chinese typography, prefixes a note the reader must not miss. | Rare enough to arrest attention, and promoted from annotation to obligation — nothing it prefixes is optional. |
 | `⊢` `⊨` | Turnstiles: `Γ ⊢ φ`, "φ is derivable from Γ"; `M ⊨ φ`, "φ holds in model M". | The distinction carries over intact: `⊢` is derivable a priori from the provisions in hand, `⊨` needs a posteriori experience to show it. |

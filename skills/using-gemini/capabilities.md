@@ -53,7 +53,7 @@ Output is plain text and there is no structured-output mode. Where structured da
 
 ## Write Gate
 
-agy (the Antigravity CLI) does not use gemini's `~/.gemini/policies/*.toml` policy engine. Its config file is **`~/.gemini/antigravity-cli/settings.json`**, and writes are gated by one key in that file and by nothing else. Three similarly-named mechanisms exist; only one works.
+agy (the Antigravity CLI) does not use the retired `gemini` CLI's `~/.gemini/policies/*.toml` policy engine. Its config file is **`~/.gemini/antigravity-cli/settings.json`**, and writes are gated by one key in that file and by nothing else. Three similarly-named mechanisms exist; only one works.
 
 - **`agentMode` must be present with the value `accept-edits`.** With it set, agy logs `Accept-edits mode: auto-approving file write` and the write lands. The operator sets it by hand.
 - **`--mode` on the command line does nothing.** It is not a substitute for the key; passed with the key absent, the write still fails.

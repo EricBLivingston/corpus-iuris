@@ -22,7 +22,7 @@ The canonical shapes are **Case 1** and **Case 2**, in [SKILL.md](SKILL.md) § I
 
 ## Opt-In Flags
 
-Absent from an ordinary delegation; each is reached for deliberately.
+Absent from an ordinary engagement; each is reached for deliberately.
 
 | Flag | Purpose |
 | ---- | ---- |
@@ -71,7 +71,7 @@ Only search and operate within the following path(s): $PROJECT_DIR" </dev/null >
 cat "$LAST_MSG"; rm -f "$LAST_MSG"
 ```
 
-The working-tree comparison is the general answer to an unrequested edit by *either* delegate, not a `review`-only precaution; the shared workflow makes it part of verifying before relaying.
+The working-tree comparison is the general answer to an unrequested edit by any peritus, not a `review`-only precaution; the shared workflow makes it part of verifying before relaying.
 
 ---
 
@@ -97,7 +97,7 @@ Approval is implicit `never` on `codex exec` — there is no interactive prompt 
 
 ## Divergences from agy
 
-Nothing generalises from one CLI to the other, prompt discipline least of all — the first row is a habit that carries across as a silent no-op rather than an error. Each row below is a place where borrowing produces a broken command.
+Nothing generalises from one CLI to another, prompt discipline least of all — the first row is a habit that carries across as a silent no-op rather than an error. Each row below is a place where borrowing produces a broken command.
 
 | Concern | Gemini (`using-gemini`) | Codex (`using-codex`) |
 | ---- | ---- | ---- |

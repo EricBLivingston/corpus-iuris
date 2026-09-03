@@ -10,7 +10,7 @@ description: Runs the implementation cycle over a change — the analyzer agent 
 Four agents, four steps, always in this order (※8):
 
 1. **Analyze** — the analyzer agent establishes scope: affected files, dependencies, risks, recommended approach. Understanding that spans 2+ files, refactor and migration planning, duplication hunts, and anything phrased "across the codebase" or "all files" all land here.
-2. **Implement** — the coder agent makes the changes, delegating mechanical bulk edits itself (see `{reference-root}/delegation-workflow.md`).
+2. **Implement** — the coder agent makes the changes, delegating mechanical bulk edits itself (see `{reference-root}/periti-workflow.md`).
 3. **Review** — the reviewer agent.
 4. **Test** — only after review passes, the tester agent.
 

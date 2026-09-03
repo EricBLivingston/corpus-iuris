@@ -1,6 +1,6 @@
 ---
 name: using-codex
-description: Load this skill before every Codex invocation — the canonical shapes, the sandbox privilege choice and the mandatory prompt clauses live here, and a command composed from memory gets them wrong. Delegates one hard, self-contained problem to the Codex CLI: a root cause that resists inspection, an architecture trade-off worth a second opinion, a security read on a targeted change. Use when the user asks for Codex, or when one focused question needs a rigorous answer rather than a survey.
+description: "Documents codex invocation, the CLI for Codex models — the canonical shapes, the sandbox privilege choice and the mandatory prompt clauses live here (⊢2). Engage Codex on one hard, self-contained problem: a root cause that resists inspection, an architecture trade-off worth a second opinion, a security read on a targeted change. Use when the user asks for Codex, or when one focused question needs a rigorous answer rather than a survey."
 ---
 
 # Using Codex Skill
@@ -10,11 +10,11 @@ The canonical invocation shapes, workflow, triage, and edge cases for non-intera
 ## Workflow
 
 1. Pick the least privilege the task needs, then the effort. Copy the shape from § Invocation Floor below — never compose one from memory (⊢2); the effort default and the one lever are gotcha 1 in [capabilities.md](capabilities.md).
-2. Everything downstream of the call — foreground execution, splitting, verification, relaying, advisory second opinions, chaining — is shared with every other delegate and lives in {reference-root}/delegation-workflow.md.
+2. Everything downstream of the call — foreground execution, splitting, verification, relaying, advisory second opinions, chaining — is shared with every peritus and lives in {reference-root}/periti-workflow.md.
 
 ## Invocation Floor
 
-These shapes cover every delegation. Both need absolute paths in the prompt text, `-m {codex}`, `-c model_reasoning_effort="high"`, `--skip-git-repo-check`, `--color never`, `</dev/null`, and — as the prompt's closing lines, verbatim — the scoped-shell-read clause, the mandate clause, and a scope line naming exactly the paths granted on the command line. An exit 0 is not success. `-s, --sandbox` is the privilege axis and real enforcement.
+These shapes cover every engagement. Both need absolute paths in the prompt text, `-m {codex}`, `-c model_reasoning_effort="high"`, `--skip-git-repo-check`, `--color never`, `</dev/null`, and — as the prompt's closing lines, verbatim — the scoped-shell-read clause, the mandate clause, and a scope line naming exactly the paths granted on the command line. An exit 0 is not success. `-s, --sandbox` is the privilege axis and real enforcement.
 
 | Placeholder | Model identifier |
 | ---- | ---- |
@@ -63,7 +63,7 @@ The two checks are independent — neither result implies the other. Always ask 
 
 ### Forbidden
 
-`--dangerously-bypass-approvals-and-sandbox`, and `--ephemeral` unconditionally — session files are required for forensics.
+`--dangerously-bypass-approvals-and-sandbox`, and `--ephemeral` unconditionally (`periti.md § The engagement`) — `--ephemeral` discards the run log, the only place a headless auto-deny announces itself.
 
 ## Shapes Beyond The Single-Root Call
 
@@ -98,4 +98,4 @@ Keep the capture file under `-C` so it needs no extra grant, and name it on the 
 ## References
 
 - **[capabilities.md](capabilities.md)** — the codex mechanics the floor leaves to a sidecar: shape semantics, opt-in flags, the `review` subcommand, sandbox mechanics, divergences from agy
-- **{reference-root}/delegation-workflow.md** — the protocol shared by every delegate
+- **{reference-root}/periti-workflow.md** — the protocol shared by every peritus

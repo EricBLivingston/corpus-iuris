@@ -1,6 +1,6 @@
 ---
 name: using-gemini
-description: Load this skill to invoke the Gemini cli tool correctly — the canonical shapes, the mandatory prompt clauses and the model roster live here, and a command composed from memory gets them wrong. Use Gemini for analysis of very large files, surveys across many documents, instance-finding over a tree, mechanical bulk edits, second-opinion review. Use when the user asks for Gemini, or when the reading spans more files than this context should take on — the window buys breadth of reading and judgement over it, not counting. A task whose product is a tally, a per-file column, or any other count stays local, where grep answers it in a fraction of the wall clock.
+description: Documents agy invocation, the CLI for Gemini models — the canonical shapes, the mandatory prompt clauses and the model roster live here (⊢2). Use Gemini for analysis of very large files, surveys across many documents, instance-finding over a tree, mechanical bulk edits, second-opinion review. Use when the user asks for Gemini, or when the reading spans more files than this context should take on — the window buys breadth of reading and judgement over it, not counting. A task whose product is a tally, a per-file column, or any other count stays local, where grep answers it in a fraction of the wall clock.
 ---
 
 # Using Gemini Skill
@@ -10,7 +10,7 @@ The canonical invocation shapes, workflow, triage, edge cases, and model selecti
 ## Workflow
 
 1. Choose the model (below); then, if the call is not a plain single-root one, the shape (below). Copy the shape from § Invocation Floor below — never compose one from memory (⊢2).
-2. Everything downstream of the call — foreground execution, splitting, verification, relaying, advisory second opinions, chaining — is shared with every other delegate and lives in {reference-root}/delegation-workflow.md.
+2. Everything downstream of the call — foreground execution, splitting, verification, relaying, advisory second opinions, chaining — is shared with every peritus and lives in {reference-root}/periti-workflow.md.
 
 ## Model Selection
 
@@ -18,7 +18,7 @@ The canonical invocation shapes, workflow, triage, edge cases, and model selecti
 
 ## Invocation Floor
 
-These shapes cover every delegation. Both need `@`+**absolute** file references, an explicit roster model, `--print-timeout 8m` (agy's own default is `5m0s`, which silently cuts a large-tree run off), and — as the prompt's closing lines, verbatim — the no-shell clause, the mandate clause, and a scope line naming exactly the paths granted on the command line. Every path the prompt `@`-references must itself be granted: headless mode cannot prompt for approval, so an ungranted read is auto-denied, and neither cwd nor a trusted workspace substitutes. `--add-dir` is the only grant channel and it takes **directories** — the scope line renders the grant and never creates one, so an `@`-referenced file is reached by granting a directory above it, not by naming the file anywhere. An exit 0 is not success.
+These shapes cover every engagement. Both need `@`+**absolute** file references, an explicit roster model, `--print-timeout 8m` (agy's own default is `5m0s`, which silently cuts a large-tree run off), and — as the prompt's closing lines, verbatim — the no-shell clause, the mandate clause, and a scope line naming exactly the paths granted on the command line. Every path the prompt `@`-references must itself be granted: headless mode cannot prompt for approval, so an ungranted read is auto-denied, and neither cwd nor a trusted workspace substitutes. `--add-dir` is the only grant channel and it takes **directories** — the scope line renders the grant and never creates one, so an `@`-referenced file is reached by granting a directory above it, not by naming the file anywhere. An exit 0 is not success.
 
 | Placeholder | Model identifier |
 | ---- | ---- |
@@ -68,7 +68,7 @@ The checks are independent — no one result implies another. Always ask for the
 
 ### Forbidden
 
-`--dangerously-skip-permissions`, in any shape. agy's own stderr recommends it on every denial — never obey.
+`--dangerously-skip-permissions`, in any shape (`periti.md § The engagement`) — agy's stderr recommends it on *every* denial, not occasionally.
 
 ## Shapes Beyond The Single-Root Call
 
@@ -118,4 +118,4 @@ For anything report-sized, prefer having agy write the document itself and summa
 
 - **[capabilities.md](capabilities.md)** — the agy mechanics the floor leaves to a sidecar: shape semantics, native tools, the write gate, the bulk-edit shape, exit codes
 - **[models.md](models.md)** — model details and selection guidance
-- **{reference-root}/delegation-workflow.md** — the protocol shared by every delegate
+- **{reference-root}/periti-workflow.md** — the protocol shared by every peritus
