@@ -13,7 +13,7 @@
 
 ## Non-Goals
 
-Explicitly excluded scope. See Principle §2 (YAGNI) — non-goals pre-empt speculative scope creep.
+Explicitly excluded scope. See Principle §2 (YAGNI).
 
 - <Excluded scope item 1>
 - <Excluded scope item 2>
@@ -58,7 +58,7 @@ Sub-numbering scheme is open (1a/1b, 1.1/1.2, 1-rust/1-rhai).
 
 ## Architecture Overview (OPTIONAL)
 
-<Delete if topology is unchanged from the prior plan or is not applicable. Keep to provide a shared mental model.>
+<Delete if topology is unchanged from the prior plan or is not applicable.>
 
 ```text
 <source>           <transform stage>         <consumer>
@@ -89,7 +89,7 @@ Record any pre-authorized deviations from project principles here (e.g., threadi
 
 ### Numerical & Performance Invariants (OPTIONAL)
 
-<Delete if the plan has no numerical or performance requirements. When used, specify tolerance bounds, NaN/Inf handling policy, performance targets, and feature-flag matrices so every phase enforces them consistently. NaN/Inf handling is an application of Principle §6 (Fail Fast).>
+<Delete if the plan has no numerical or performance requirements. When used, specify tolerance bounds, NaN/Inf handling policy, performance targets, and feature-flag matrices so every phase enforces them consistently.>
 
 - Tolerance bounds: <e.g., loss delta < 1e-4 between equivalent runs>
 - NaN/Inf policy: <e.g., assert_finite in forward pass; training aborts on first NaN>
@@ -108,15 +108,17 @@ Record any pre-authorized deviations from project principles here (e.g., threadi
 
 <The limits the work must stay inside, where the limit spans more than one phase. A limit scoped to a single phase goes in that phase file's own Governance Bounds section instead — never in both. The two sections are read together as one list when a phase's produced work is tested against them, so a bound written once, in the right place, is checked everywhere it applies.>
 
+<Authority. These bounds are immutable for the whole orchestration: no phase overrides them, and they govern every phase's produced work whether or not that phase mentions them.>
+
 <Shape. An enumerated list, one limit per item, each stated so that a reader holding only this list and the produced work can decide whether it was crossed: a countable threshold, a named file or directory set, a construct that must not appear, an artifact that must exist. Quote the source's own words rather than paraphrasing them; a paraphrase drifts from what was actually agreed, and the drift is invisible by the time anyone checks. The constraint's substance sits in the bound itself, a citation being provenance only — so no bare ordinal into another document.>
 
 <A bound turning on "appropriately", "reasonable", "as needed", or "where it makes sense" is not checkable — restate it as the observable it stands for, or drop it. A bound stating an outcome to reach is a Goal, not a bound; this section holds only limits not to cross.>
 
 <Whence they come. Bounds are not invented at phasing time — they are already written, in the documents sitting in this plan folder. Work the **Plan-wide sources** table in `bounds-sources.md`, beside this template, row by row: it names each source section, the question to put to it, and the bound that answer yields, and it rules on sources the plan folder does not have. The list below is that table's output passed through the filters it states; do not fill this section without working it.>
 
-1. <Bound 1 — e.g. "No new dependency appears in any Cargo.toml." (PRD.md §3 Goals → Non-goals: "this work introduces no new crates")>
-2. <Bound 2 — e.g. "`LegacyStore` and its `LEGACY_` env prefix are absent from the tree at plan close." (Design.md §4 Reuse vs. replace: "Replace")>
-3. <Bound N>
+1. <Bound 1 — e.g. "No crate is added to a runtime dependency table of any `Cargo.toml`." Source: PRD.md §3 Non-goals ("this work introduces no new crates"). Verify: each manifest's runtime-dependency keys at plan close against `git show <baseline>:<manifest>`. Trap: `[target.*.dependencies]` counts, `[dev-dependencies]` does not. Warrant: a new runtime crate is a supply-chain and licensing commitment reserved to the user.>
+2. <Bound 2 — e.g. "`LegacyStore` and its `LEGACY_` env prefix are absent from the tree at plan close." Source: Design.md §4 Reuse vs. replace ("Replace"). Verify: `rg 'LegacyStore|LEGACY_' -g '!archive/'` returns nothing. Trap: no `-w` — `_` is a word character, so it hides every `LEGACY_` name. Warrant: a replacement leaving the old path callable is not a replacement (⊨3).>
+3. <Bound N — the same parts. Where nothing could false-positive, say so rather than dropping the Trap.>
 
 ---
 

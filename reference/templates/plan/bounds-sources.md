@@ -8,17 +8,31 @@ Work whichever table matches the section being written — the plan-wide table f
 
 ## Filters on every row's output
 
-A row's conversion produces a candidate, not a bound. Apply both filters before writing anything into the list; a faithful quotation of the source clears neither on its own.
+A row's conversion produces a candidate, not a bound. Apply every filter below before writing anything into the list; a faithful quotation of the source clears none of them on its own.
 
 **Authority.** A bound's source is a decision the user ratified, durable project canon, or a measurement — never the source document's own elaboration, however well it reasons. Quoting elaboration faithfully launders it into a bound with a verifier pointed at the build, and every fidelity check on the quotation passes clean. Give prohibitions the closer look: an invented value reads as a claim and invites challenge, an invented prohibition reads as discipline and gets praised for caution. Where a candidate traces no further than elaboration, leave it in the source file's body as a design note, or carry it explicitly marked unverified and put it to the user; do not write it into the list.
 
 Qualifications travel into the bound's own text — `(UNMEASURED)`, "in practice", a stated scope limit, an explicit exception. A hedge promoted to an assertion is how an unverified claim becomes an enforced rule.
 
-**Evaluability.** A governor evaluates each bound from the enumerated list alone. The constraint's substance sits in the bound's own text; a citation is provenance only. Three shapes fail that:
+**Evaluability.** A governor evaluates each bound from the enumerated list alone. The constraint's substance sits in the bound's own text; a citation is provenance only. These shapes fail that:
 
 - **An intent clause** — "no alternative is derived", "none removed as redundant" — asks after motive, which no evidence settles, so it returns undetermined every run. State the observable; move the reason into the citation.
 - **A bare ordinal** — "the columns listed in step 2". Restate the set by its defining property (§17).
 - **Two bounds worded identically over different objects** collide into a false blocker, the plan-wide and phase-scoped lists being read as one. Name the object each governs.
+
+**Verifiability.** A bound carries the command or inspection that decides it, and a false-positive trap wherever the check could match something the bound does not govern. Where nothing could, record that rather than omitting the trap: an absent trap and an unexamined one read alike. The subject must exist in this plan — a bound over an artifact no phase produces can never be crossed.
+
+**Satisfiability.** No bound may require what another forbids, across both lists and against the phase files' Acceptance Criteria. A pair that cannot both hold is a halt already scheduled for orchestration time.
+
+**Warrant.** A bound carries one line on why the constraint must hold — distinct from why it was chosen over the alternatives. The second stays in the source document; the first travels with the bound, or the next author tidies it away without ever seeing what it was holding.
+
+---
+
+## Two ranks, not two scopes
+
+The split is by rank, not breadth. The plan-wide table produces the bounds governing the whole orchestration: immutable once the plan starts, binding on every phase's produced work whether or not that phase names them. The phase-scoped table produces bounds subordinate to those, admissible only on the tests in `Phase-X-template.md` § Governance Bounds — several source sections appear in both tables, and a phase-scoped row yields nothing where a plan-wide row already covered it.
+
+**The gate.** A governor assays every bound set in the plan folder before orchestration begins, on the criteria `/orchestrate`'s Validate Boundaries step states. A bound set that has not been through that assay is not ready to orchestrate.
 
 ---
 

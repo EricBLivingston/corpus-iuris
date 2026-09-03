@@ -87,7 +87,16 @@ See Principle §2 (YAGNI) — name adjacent work only if excluding it removes re
 
 ## Governance Bounds
 
-<The limits scoped to THIS phase — not outcomes to reach (those are Goals and Acceptance Criteria above), but lines this phase's work must not cross. Do not restate the plan-wide bounds carried in `Overview.md`; the two sections are read together as one list when this phase's produced work is tested against them. If this phase adds no limit of its own, write "None beyond Overview.md.">
+<The limits scoped to THIS phase — not outcomes to reach (those are Goals and Acceptance Criteria above), but lines this phase's work must not cross. The plan-wide bounds carried in `Overview.md` are immutable and already govern this phase's produced work whether or not this file mentions them; the two sections are read together as one list when that work is tested against them. If this phase adds no limit of its own, write "None beyond Overview.md.">
+
+<Admissibility. A bound belongs in this list only if every test below holds. Fail one and it does not go in.>
+
+1. **It does not conflict with the Overview's bounds.** It may narrow one, or apply one more precisely to this phase's work. It may not widen one, add an exception to one, or soften a verifier.
+2. **It is not a restatement, subset, or tautology of an Overview bound.** Where an Overview bound already fully handles the thing, the phase bound is deleted — not reworded, not narrowed for form's sake.
+3. **It cites its authority**, and that authority is a source document or project canon. Never another phase file.
+4. **It carries its own verifier**, its false-positive trap where one exists, and its warrant — one line on why this constraint must hold.
+
+<Test 1's failure mode looks like diligence. A bound that widens an Overview bound, or carves an exception out of one, reads as careful scoping of this phase; nothing in its own wording gives it away. Test it against the Overview's text, never against how sensible it sounds standing alone.>
 
 <Shape. An enumerated list, one limit per item, each stated so that crossing it is checkable against what this phase actually produced rather than a matter of opinion: a countable threshold, a named file or symbol set, a construct that must not appear, an artifact that must exist. Quote the source's own words rather than paraphrasing them; a paraphrase drifts from what was actually agreed, and the drift is invisible by the time anyone checks. The constraint's substance sits in the bound itself, a citation being provenance only — so no bare ordinal into another document.>
 
@@ -95,9 +104,9 @@ See Principle §2 (YAGNI) — name adjacent work only if excluding it removes re
 
 <Whence they come. This phase's bounds are already written down, in the plan folder's source documents. Work the **Phase-scoped sources** table in `bounds-sources.md`, beside this template, row by row: it names each source section, the question to put to it, and the bound that answer yields, and it rules on sources the plan folder does not have. The list below is that table's output passed through the filters it states; do not fill this section without working it.>
 
-1. <Bound 1 — e.g. "Every file modified by this phase is either named in this phase's Affected Files table, or is a file this phase writes under `plans/<plan-folder>/`." (Implementation.md § Affected Files, Phase <N> rows)>
-2. <Bound 2 — e.g. "The public signature of `<TraitName>` is unchanged by this phase." (Design.md §5 Resolved Decisions / Open Questions: "Reject widening the trait")>
-3. <Bound N>
+1. <Bound 1 — e.g. "Every file modified by this phase is named in its Affected Files table, or written under `plans/<plan-folder>/`." Source: Implementation.md § Affected Files, Phase <N> rows. Verify: `git diff --name-only <baseline>` — bare, not `..HEAD`, which ignores the uncommitted tree — read against the table. Trap: none; the permitted set is enumerable from the table. Warrant: a file outside the table means the plan was incomplete or the coder left scope.>
+2. <Bound 2 — e.g. "No method is added to, removed from, or re-signed on the public trait `<TraitName>`." Source: Design.md §5 Resolved Decisions ("Reject widening the trait"). Verify: the trait's method list at baseline against phase close. Trap: a defaulted addition crosses this bound, though it compiles for existing implementors. Warrant: the trait surface is a ratified decision.>
+3. <Bound N — the same parts, Trap included or explicitly waived.>
 
 ---
 
@@ -124,7 +133,7 @@ See Principle §2 (YAGNI) — name adjacent work only if excluding it removes re
 
 ## Dependencies
 
-<One-line restatement of Depends On + what that prior phase produced that this phase consumes. Helps the resumption reader.>
+<One-line restatement of Depends On + what that prior phase produced that this phase consumes.>
 
 ---
 
