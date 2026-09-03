@@ -5,7 +5,7 @@ description: Routes codebase-scale investigation to the analyzer agent — how a
 
 # Analyzing Codebases Skill
 
-Delegates large-scale analysis tasks to the analyzer agent, which uses Gemini as a complementary analysis perspective for comprehensive codebase understanding.
+Delegates large-scale analysis tasks to the analyzer agent, which engages periti as a complementary analysis perspective for comprehensive codebase understanding.
 
 ---
 
@@ -13,19 +13,18 @@ Delegates large-scale analysis tasks to the analyzer agent, which uses Gemini as
 
 The analyzer agent is a specialized subagent that:
 
-- Has access to Gemini via the `agy` CLI (see the `using-gemini` skill) for second-opinion analysis and review
+- Engages periti for second-opinion analysis and review
 - Can ingest and analyze 10-100+ files simultaneously
 - Identifies patterns, architecture, and relationships at scale
 - Performs comprehensive audits (security, quality, performance)
 - Plans migrations and large-scale refactoring
 - Documents complex legacy systems
-- Runs on Sonnet model for orchestration, uses Gemini for heavy analysis
 
 ---
 
 ## Key Strength: Dual-Model Analysis
 
-Delegating to the analyzer subagent preserves main-conversation context, and Gemini adds a second analytical lens. The analyzer can:
+Delegating to the analyzer subagent preserves main-conversation context, and a peritus adds a second analytical lens. The analyzer can:
 
 - Read entire subsystems (50-100 files) at once
 - Find patterns across the whole codebase
