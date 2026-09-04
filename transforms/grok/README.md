@@ -18,22 +18,23 @@ This repository is designed to guide its own adoption. When a user points Grok a
 4. With approval, the first corpus-owned write is the instance file into `~/.grok/rules/instance.md` (create the directory if needed). Do not create or edit `AGENTS.md` to make the install look complete.
 5. Choose dual-home or Grok-only, below.
 6. Admit rules by copying selected files into `~/.grok/rules/` (Grok-only). Dual-home does not recopy rules already loaded from `~/.claude/rules/`.
-7. Install transposed agents, and on the Grok-only path skills and commands, reviewing each first.
+7. Install transposed agents and transposed commands, and on the Grok-only path skills, reviewing each first.
 
 The working clone, the installed corpus, and the user's live Grok configuration are separate surfaces. An agent must not treat repository presence as installation or admission, and pulling the clone must not change resident context.
 
 ## Dual-home
 
-Claude Code is already installed and the corpus already lives in `~/.claude`. Grok compat will load those rules, skills, and commands. Install only:
+Claude Code is already installed and the corpus already lives in `~/.claude`. Grok compat will load those rules and skills. Install only:
 
 - the refactored instance file into `~/.grok/rules/instance.md`, so Grok-particular rows do not land in the Claude instance file
 - transposed agents into `~/.grok/agents/`, so they shadow `~/.claude/agents/` (Grok user-level `.grok/agents` outranks `.claude/agents`)
+- transposed commands into `~/.grok/commands/`, so they shadow `~/.claude/commands/`
 
-Claude agent `model: opus|sonnet|fable` is a Grok model override and will fail spawn; that is why the transposition exists even for dual-home.
+Claude agent `model: opus|sonnet|fable` is a Grok model override and will fail spawn; that is why the transposition exists even for dual-home. Claude command `model:` slugs are a Grok skill-model field; the transposition exists even though slash invocation does not switch models today, the same posture as agents.
 
 ## Grok-only
 
-Copy selected `rules/` files into `~/.grok/rules/` (admission), skills into `~/.grok/skills/<name>/`, commands into `~/.grok/commands/` as flat markdown (Grok's native slash-command surface — do not convert commands into skill folders), transposed agents into `~/.grok/agents/`, and the instance file into `~/.grok/rules/instance.md`. Reference material goes to a path Grok does not auto-scan: `~/.grok/corpus/reference/`. Do not dump reference into `rules/` or it becomes always-loaded.
+Copy selected `rules/` files into `~/.grok/rules/` (admission), skills into `~/.grok/skills/<name>/`, transposed commands from `src/commands/` into `~/.grok/commands/` as flat markdown (Grok's native slash-command surface — do not convert commands into skill folders), transposed agents into `~/.grok/agents/`, and the instance file into `~/.grok/rules/instance.md`. Reference material goes to a path Grok does not auto-scan: `~/.grok/corpus/reference/`. Do not dump reference into `rules/` or it becomes always-loaded.
 
 ## Where the pieces go
 
@@ -42,7 +43,7 @@ Copy selected `rules/` files into `~/.grok/rules/` (admission), skills into `~/.
 | the instance file, refactored from `src/instance-example.md` | `~/.grok/rules/instance.md` |
 | each definition in `src/agents/` | `~/.grok/agents/` |
 | each skill directory in `skills/` | `~/.grok/skills/<name>/` on the Grok-only path; dual-home already loads `~/.claude/skills/` |
-| each `<name>.md` in `commands/` | `~/.grok/commands/<name>.md` on the Grok-only path, Claude `model` slug dropped; dual-home already loads `~/.claude/commands/` |
+| each definition in `src/commands/` | `~/.grok/commands/`, both dual-home and Grok-only |
 | a selected rule | `~/.grok/rules/` on the Grok-only path; dual-home already loads `~/.claude/rules/` |
 | reference material | `~/.grok/corpus/reference/`, which Grok does not auto-scan |
 | an admission | membership in a directory Grok's rules scanner loads |
@@ -53,7 +54,7 @@ Skill, agent, and command name collisions are discovery conflicts: inspect, repo
 
 The first cut covers the corpus files this repository publishes — the tree as it stands beside this transform is the set, and this file does not restate its membership.
 
-That set's doctrinal core carries rather than being corrected provision by provision. The upstream refactor moved the harness particulars out of those files and into the instance ambit, so what a Grok installation owes them is not a corrected copy but an instance file naming its own referents; this transform ships an example rather than a filled one. Custom-agent definitions are neither deferred nor authored here: they arrive already transposed, per AGENTS.md § What `src/` holds. Skills are native Grok discovery artifacts: an installation that selects one copies its directory unchanged to `~/.grok/skills/<name>/`. Commands stay commands: an installation that selects one copies the markdown file to `~/.grok/commands/`, dropping a Claude `model` slug if present. Every other artifact an admitted source merely names remains a deferred dependency.
+That set's doctrinal core carries rather than being corrected provision by provision. The upstream refactor moved the harness particulars out of those files and into the instance ambit, so what a Grok installation owes them is not a corrected copy but an instance file naming its own referents; this transform ships an example rather than a filled one. Custom-agent definitions are neither deferred nor authored here: they arrive already transposed, per AGENTS.md § What `src/` holds. Skills are native Grok discovery artifacts: an installation that selects one copies its directory unchanged to `~/.grok/skills/<name>/`. Commands stay commands: they arrive already transposed, per AGENTS.md § What `src/` holds. Every other artifact an admitted source merely names remains a deferred dependency.
 
 ## Why the bootstrap is safe
 
