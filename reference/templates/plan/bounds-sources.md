@@ -18,13 +18,20 @@ Qualifications travel into the bound's own text — `(UNMEASURED)`, "in practice
 
 - **An intent clause** — "no alternative is derived", "none removed as redundant" — asks after motive, which no evidence settles, so it returns undetermined every run. State the observable; move the reason into the citation.
 - **A bare ordinal** — "the columns listed in step 2". Restate the set by its defining property (§17).
+- **A by-number citation without its file** — `bound 7` written in a phase file resolves to that phase's own bound 7. Write `Overview.md bound 7`. Where a quoted source numbers its provisions on a different scheme, gloss that numbering inside the quotation.
 - **Two bounds worded identically over different objects** collide into a false blocker, the plan-wide and phase-scoped lists being read as one. Name the object each governs.
 
 **Verifiability.** A bound carries the command or inspection that decides it, and a false-positive trap wherever the check could match something the bound does not govern. Where nothing could, record that rather than omitting the trap: an absent trap and an unexamined one read alike. The subject must exist in this plan — a bound over an artifact no phase produces can never be crossed.
 
+**Coverage.** The verifier's domain is the subject set the headline names — name that set and iterate it. Each observable the bound enumerates maps to one named check; an observable with no check is given one, or struck with a sentence naming the bound that owns it. An adjective no check decides leaves the headline; where it is load-bearing it becomes an Acceptance Criterion or an Open Question instead.
+
 **Satisfiability.** No bound may require what another forbids, across both lists and against the phase files' Acceptance Criteria. A pair that cannot both hold is a halt already scheduled for orchestration time.
 
+**Self-execution.** Walk the phase's own Implementation Steps and Acceptance Criteria against the bound as if they had run. A bound the phase's own required work crosses is unsatisfiable however sound its intent; the remedy is a trap naming the sanctioned write, or a narrower bound — never a weakened step.
+
 **Warrant.** A bound carries one line on why the constraint must hold — distinct from why it was chosen over the alternatives. The second stays in the source document; the first travels with the bound, or the next author tidies it away without ever seeing what it was holding.
+
+An edit to a bound re-tests that bound against every filter, not only the one that failed: a repair that clears one routinely crosses another.
 
 ---
 
@@ -32,7 +39,13 @@ Qualifications travel into the bound's own text — `(UNMEASURED)`, "in practice
 
 The split is by rank, not breadth. The plan-wide table produces the bounds governing the whole orchestration: immutable once the plan starts, binding on every phase's produced work whether or not that phase names them. The phase-scoped table produces bounds subordinate to those, admissible only on the tests in `Phase-X-template.md` § Governance Bounds — several source sections appear in both tables, and a phase-scoped row yields nothing where a plan-wide row already covered it.
 
+A phase bound narrowing a plan-wide one earns its "and …" clause by adding a fact the Overview cannot state — which subset this phase touches. Where the Overview already protects the object under the same warrant, strike the clause.
+
 **The gate.** A governor assays every bound set in the plan folder before orchestration begins, on the criteria `/orchestrate`'s Validate Boundaries step states. A bound set that has not been through that assay is not ready to orchestrate.
+
+### The author's own assay
+
+Run the gate's criteria yourself, per bound, as a checklist before hand-off: **Evaluable, Verified, Warranted, Non-conflicting, Non-restating, Authorised, Mutually satisfiable, Reachable**.
 
 ---
 
