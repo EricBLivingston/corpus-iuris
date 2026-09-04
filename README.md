@@ -2,7 +2,11 @@
 
 ![Corpus Iuris: the three goals, the four instruments, and the spec-driven development layer](docs/diagrams/framework-overview.svg)
 
-[Presentation deck](https://ericblivingston.github.io/corpus-iuris/docs/deck/index.html)
+## Introductory Presentation
+
+Below is a link to a presentation deck that gives an overview of the corpus, its goals, and how it is structured. It is intended to provide a high-level understanding of the system and its components.
+
+Presentation Link Here -> [Presentation deck](https://ericblivingston.github.io/corpus-iuris/docs/deck/index.html)
 
 This repository contains my own "Body of Rules" for directing agentic work. The base is harness-neutral, Claude Code is the harness I run it on, and `adopting.md` and the `transforms/` packages carry it to others (e.g. Codex, Gemini, Grok). It is highly opinionated; it represents how I think of, design, and build code, and is expected to be more of a structural model and example of how you might implement a similar set of precepts.
 
@@ -35,17 +39,17 @@ So we seek terms and symbols that are:
 
 `※11` has one antecedent in a session: its provision. A word like "rule" or "scope" has dozens, each pulling somewhere else.
 
-That count is what has to survive scale. Attention is a fixed budget, and softmax spreads it thinner across everything present as a window fills; accuracy falls with context length on its own. Nor does irrelevant material sit inertly beside the signal — it competes with it. Retrieval that can lean on a literal token match holds up under that pressure, while retrieval working by resemblance degrades sharply as the haystack grows.
+That count is what has to survive scaling up. Attention is a fixed budget, and softmax spreads it thinner across everything present as a window fills; accuracy falls with context length on its own. Nor does irrelevant material sit inertly beside the signal; it competes for attention. Retrieval that can lean on a literal token match holds up under that pressure, while retrieval working by resemblance degrades sharply as the haystack grows.
 
-`※11` has one antecedent at 8k and one at 500k. The count does not grow with the window, so the path back to the ius stays as bright at the top of the range as at the bottom. "Scope" has thirty antecedents at 8k and thousands at 500k, and is lost in exactly the sea of context we are trying to stay out of.
+`※11` has one antecedent at 8k and one at 500k. The count does not grow with the window, so the path back to the ius stays as bright at the top of the range as at the bottom. "Scope" might have thirty antecedents at 8k and thousands at 500k, and is lost in exactly the sea of context we are trying to stay out of.
 
 ### Semantic alignment: no fight with the prior
 
 Where a term *does* occur in training data, its sense there should be close to ours.
 
-This is not an attempt to make a model reason like a lawyer. The goal is negative: a term whose trained default contradicts our stipulated use sets what the context says against what the weights expect, and that conflict resolves unreliably. Operating against a trained default is also expensive; the same task gets worse when familiar terms are given unfamiliar meanings.
+A term whose trained default contradicts our stipulated use sets what the context says against what the weights expect, and that conflict resolves unreliably. Operating against a trained default is also expensive; the same task gets worse when familiar terms are given unfamiliar meanings.
 
-The win is avoiding that fight rather than winning it. Where the prior already agrees, term fidelity comes free: `provision` means a discrete citable clause in ordinary legal use, so nothing has to be overridden.
+So, we avoid that fight rather than trying to win it. Where the prior already agrees, term fidelity comes free: `provision` means a discrete citable clause in ordinary legal use, so nothing has to be overridden.
 
 ### The band
 
@@ -63,22 +67,22 @@ Below is a table of our terms and symbols, and what each was chosen for.
 
 | Term / Symbol | Typical Definition | How we leverage that in our own usage |
 | ---- | ---- | ---- |
-| **Ius** | Roman law: law as a body of right (*ius civile*), as against *lex*, the single enacted statute. | Names the body itself, so no one rule can be mistaken for the whole. |
+| **Ius** | Roman law: law as a body of right (*ius civile*), as against *lex*, the single enacted statute. | Names our body of rules as a whole, so no one rule can be mistaken for the whole. |
 | **Corpus** | In scholarly publishing, the live collection, with withdrawn and archived material excluded by definition; in ML, a curated dataset, where membership follows from active inclusion rather than mere availability. | Membership by inclusion, not by presence on disk: what no loader, invoker, or live reference reaches is dead code, and dead code is not corpus. |
-| **Adventitia** | Latin: "externally added"; Descartes' *ideae adventitiae*, ideas arriving from outside the mind — neither innate nor self-made. | Marks content the harness supplies that no source edit can reach — a claim about provenance, not authority. |
+| **Adventitia** | Latin: "externally added"; Descartes' *ideae adventitiae*, ideas arriving from outside the mind — neither innate nor self-made. | Marks rubric the harness supplies. It is a provenance decorator, and does not affect authority. |
 | **Precept** | A rule of conduct laid down by an authority. | The umbrella for everything that binds, whichever instrument minted it. |
 | **Canon** | The closed, admitted set of texts constituting a body — always read, as against material that may be read but is not guaranteed. | Admission by guaranteed presence, so a citation always resolves in context; what lies outside is deuterocanonical, and binds once read. |
-| **Provision** | A clause of a statute or contract: a discrete, citable term. | Gives every rule an address, so it can be cited from anywhere instead of quoted. |
-| **Doctrine** | Legal doctrine: the systematized principles of a field, accreted through commentary and experience rather than enacted a priori. | Signals that nothing here was reasoned out in advance — each provision represents an a posteriori remediation. |
+| **Provision** | A clause of a statute or contract: a discrete, citable term. | A uniquely labeled precept, so it can be cited from anywhere instead of quoted as text. |
+| **Doctrine** | Legal doctrine: the systematized principles of a field, accreted through commentary and experience rather than enacted a priori. | Signals that nothing here was reasoned out in advance; each provision represents an a posteriori remediation. |
 | **Rubric** | Liturgical rubric: the red-letter directions governing how the rite is performed, as against the words of the rite. | Separates procedure from the precepts it carries out: rubric instructs without minting anything citable. |
 | **Caselaw** | Judge-made law: rules established in deciding cases, binding later ones through *stare decisis*. | A collision between provisions is decided once, and the holding binds every later reading. |
-| **Instrument** | Legal instrument: the vehicle creating or recording an obligation; a *statutory instrument* is a whole class of enactment. | Names which of the four vehicles minted a provision — the first position in every token. |
-| **Ambit** | The scope or reach of a rule — "within the ambit of the statute". | The reach position in a token: universal, one installation, one project, or one agent. |
+| **Instrument** | Legal instrument: the vehicle creating or recording an obligation; a *statutory instrument* is a whole class of enactment. | Names which of the four provision classes a specific provision falls within. |
+| **Ambit** | The scope or reach of a rule: "within the ambit of the statute". | The reach position in a provision token: universal, one installation, one project, or one agent. |
 | **Lingua** | Latin: tongue, a language as such. | Scopes a provision to a language by membership, so `cc` reaches `.cc`, `.cpp`, and `.h` alike. |
 | ***Lex specialis*** | *Lex specialis derogat legi generali* — the specific rule displaces the general one. | Adopted intact as the precedence rule; the ambit ladder supplies the ranking it needs. |
-| **Peritus** | Later civil and canon law: the expert a tribunal engages for an opinion it cannot reach itself. | *Culpa in eligendo* — engaged for peritia this session lacks. |
+| **Peritus** | Later civil and canon law: the expert a tribunal engages for an opinion it cannot reach itself. | An external AI model, engaged for peritia (skills, expertise, etc.) this session lacks. |
 | `§` | Section sign (silcrow): marks a numbered section or clause of a statute, contract, or treatise. | Statutory weight, plus an address: `§4` resolves corpus-wide, never to nearby prose. |
-| `※` | Kome / reference mark: in Japanese and Chinese typography, prefixes a note the reader must not miss. | Rare enough to arrest attention, and promoted from annotation to obligation — nothing it prefixes is optional. |
+| `※` | Kome / reference mark: in Japanese and Chinese typography, prefixes a note the reader must not miss. | Rare enough to arrest attention, and promoted from annotation to obligation: nothing it prefixes is optional. |
 | `⊢` `⊨` | Turnstiles: `Γ ⊢ φ`, "φ is derivable from Γ"; `M ⊨ φ`, "φ holds in model M". | The distinction carries over intact: `⊢` is derivable a priori from the provisions in hand, `⊨` needs a posteriori experience to show it. |
 
 Most of this vocabulary never leaves the ius. In ordinary use only the symbols surface, plus the occasional category name — "scan for doctrine violations" — while the rest works internally, resolving context rather than being recited.
