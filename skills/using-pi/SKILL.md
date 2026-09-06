@@ -65,14 +65,14 @@ Sweep output goes to a file, never into the context window; read or grep the res
 
 `pi self-update`, which would replace the patched local build with an upstream release that does not compile here, and the repo's `install.sh`, which does the same by another route.
 
-## Unmeasured Surface
+## Unexercised Surface
 
-Documented by pi and unmeasured. Probe each once before a batch depends on it, and record the outcome here.
+Documented by pi. Probe each once before a batch depends on it, and record the outcome here.
 
-- `@file` references in the prompt body (UNMEASURED) — would replace the `$(cat …)` substitution in Case 2.
-- `PI_PROVIDER` and `PI_MODEL` environment variables (UNMEASURED) — would allow the flags to be dropped; keep both explicit until that is proven.
-- `--mode rpc` (UNMEASURED) — structured request/response over stdio, for driving pi programmatically instead of one prompt per process.
-- `--smol provider/model` (UNMEASURED) — nominates a cheap model for pi's own internal fan-out, a separate axis from `--model`.
+- `@file` references in the prompt body — would replace the `$(cat …)` substitution in Case 2.
+- `PI_PROVIDER` and `PI_MODEL` environment variables — would allow the flags to be dropped.
+- `--mode rpc` — structured request/response over stdio, for driving pi programmatically instead of one prompt per process.
+- `--smol provider/model` — nominates a cheap model for pi's own internal fan-out, a separate axis from `--model`.
 
 ## Auth and Trusted Input
 

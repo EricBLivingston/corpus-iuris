@@ -44,7 +44,7 @@ Invoke the reviewer agent to compare the Overview and Phase files against the so
 
    - **Conclusion carried** — the decision is reconstructible from the canonical set.
    - **Warrant carried** — why-this-constraint-must-hold travels with the constraint, or an implementer tidies the rule away; why-it-was-chosen-over-the-alternatives stays behind with the source. Test each: needed to build correctly and resist undoing → travels; record of how it was decided → stays. Report a constraint carried without its warrant as a partial loss.
-   - **Qualification carried** — rank this highest. `(UNMEASURED)` markers, "provisional", "in practice", stated scope limits and explicit exceptions travel with what they qualify. Enumerate the sources' own qualifiers directly.
+   - **Qualification carried** — rank this highest. Qualifications travel with what they qualify; enumerate the sources' own directly.
 
 2. **Efficiency**: Phase files are not redundant and don't introduce content beyond the source specs
 
@@ -61,11 +61,18 @@ Edit the files as needed to satisfy these criteria.
 - Flag any AC that lacks a verifier hint (soft rule — flag, do not reject)
 - Confirm the Deviations section is present and filled (not left as a `<placeholder>`)
 - Reject any file that still contains literal `<placeholder>` markers
-- Reject any bound a governor could not evaluate from the enumerated list alone — an intent clause, a bare ordinal into another document, or a constraint whose substance lives only in its citation; flag any bound whose warrant traces no further than a source document's own elaboration
+- Reject any bound failing a filter in `bounds-sources.md § Filters on every row's output` — a repair made here costs no governor round trip at the Assay step below
+
+### Assay the Bounds
+
+Make the inverted-charter governor dispatch `{command-root}/orchestrate.md` § 2 Validate Boundaries specifies — its Content and its Criteria — over this plan folder, routed as below. It runs here, before the Sweep, because the source documents are still unarchived and the analyzer that wrote the bounds is still the party that can repair them.
+
+- `STOP` — hand the return to the analyzer, which repairs the bounds; re-run the assay. A second `STOP` routes through `governing-work` § Routing the return before the re-dispatch.
+- `CLEAR` — proceed to the Sweep, so that `/orchestrate` § 2 confirms rather than discovers.
 
 ### Sweep
 
-**Trigger:** runs immediately after Overview + Phase-N files pass the reviewer, as the last step of `/phase`.
+**Trigger:** runs immediately after the bounds assay returns `CLEAR`, as the last step of `/phase`.
 
 **Classification question (apply to every non-canonical file):**
 

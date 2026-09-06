@@ -17,7 +17,7 @@ Set `{Project Path}` = absolute path of `plans/{Plan Folder}` resolved against t
 
 ## Critical Directive: Context Preservation
 
-You orchestrate; you do not investigate. **NEVER** read source, or any file a sub-agent in this run wrote; **NEVER** write, edit, review, or test code yourself. Read only `Overview.md` and the `Phase-X.md` files — the whole specification this run executes against — plus `{command-root}/{implement,debrief}.md` once each; a skill this workflow directs you to invoke is not a read. The specs those phase files superseded are archived and closed to this run. **DO** pass file paths between sub-agents and instruct each to write detailed output to files and return only a one-line status. If something fails, dispatch a specialist — don't investigate yourself.
+You orchestrate; you do not investigate. **NEVER** read source, or any file a sub-agent in this run wrote; **NEVER** write, edit, review, or test code yourself. Read only `Overview.md` and the `Phase-X.md` files — the whole specification this run executes against — plus `{command-root}/{implement,debrief}.md` once each; a skill this workflow directs you to invoke is not a read. The specs those phase files superseded are archived and closed to you and to every implementing specialist; the Validate Boundaries gate alone is handed them, for provenance. **DO** pass file paths between sub-agents and instruct each to write detailed output to files and return only a one-line status. If something fails, dispatch a specialist — don't investigate yourself.
 
 ## Workflow
 
@@ -39,18 +39,12 @@ Any of these failing — no `Overview.md`, no phase file, a gap in the numbering
 
 Invoke the governor agent, inverting its usual charter: the **bound sets are the content**, tested against the criteria below.
 
-**Content** — the `## Governance Bounds` section of `{Project Path}/Overview.md` and of every `Phase-X.md`, plus each phase's Acceptance Criteria, which must be satisfiable alongside the bounds governing them.
+**Content** — the `## Governance Bounds` section of `{Project Path}/Overview.md` and of every `Phase-X.md`, plus each phase's Acceptance Criteria, which must be satisfiable alongside the bounds governing them. Hand over the plan's source documents as well — `PRD.md`, `Design.md`, `Implementation.md`, wherever the `/phase` sweep left them (`{Project Path}/archive/` once swept) — read-only, as the evidence channel Authority needs: a bound's provenance is undecidable from the bounds sections alone, and a governor holding no source passes that criterion rather than reporting it untested.
 
-**Criteria** — report per bound, and per pair where the criterion is relational:
+**Criteria** — every filter in `{reference-root}/templates/plan/bounds-sources.md § Filters on every row's output`, applied per bound, plus these two, which have no filter counterpart and report per Overview/phase pair:
 
-1. **Evaluable** — decidable by a reader holding only the bound and the produced work. No hedging adverb, no intent clause, no bare ordinal into another document, no constraint whose substance lives only in its citation.
-2. **Verified** — carries a verifier, plus a false-positive trap wherever the check could match something the bound does not govern.
-3. **Warranted** — carries why the constraint must hold; a bound whose reason did not travel is tidied away by the next author.
-4. **Non-conflicting** — no phase bound widens an Overview bound, adds an exception, or softens its verifier. Test against the Overview's text: on its own this failure reads as careful scoping.
-5. **Non-restating** — no phase bound restates, subsets, or is a tautology of an Overview bound.
-6. **Authorised** — each cites a source document or project canon, never another phase file.
-7. **Mutually satisfiable** — no two bounds, and no bound and acceptance criterion, that cannot both hold.
-8. **Reachable** — the bound's subject exists in this plan; a bound over an artifact no phase produces gives false assurance.
+- **Non-conflicting** — no phase bound widens an Overview bound, adds an exception, or softens its verifier. Test against the Overview's text: on its own this failure reads as careful scoping.
+- **Non-restating** — no phase bound restates, subsets, or is a tautology of an Overview bound.
 
 **Route the return:**
 

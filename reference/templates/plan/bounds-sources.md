@@ -12,7 +12,7 @@ A row's conversion produces a candidate, not a bound. Apply every filter below b
 
 **Authority.** A bound's source is a decision the user ratified, durable project canon, or a measurement — never the source document's own elaboration, however well it reasons. Quoting elaboration faithfully launders it into a bound with a verifier pointed at the build, and every fidelity check on the quotation passes clean. Give prohibitions the closer look: an invented value reads as a claim and invites challenge, an invented prohibition reads as discipline and gets praised for caution. Where a candidate traces no further than elaboration, leave it in the source file's body as a design note, or carry it explicitly marked unverified and put it to the user; do not write it into the list.
 
-Qualifications travel into the bound's own text — `(UNMEASURED)`, "in practice", a stated scope limit, an explicit exception. A hedge promoted to an assertion is how an unverified claim becomes an enforced rule.
+Qualifications travel into the bound's own text. A hedge promoted to an assertion is how an unverified claim becomes an enforced rule.
 
 **Evaluability.** A governor evaluates each bound from the enumerated list alone. The constraint's substance sits in the bound's own text; a citation is provenance only. These shapes fail that:
 
@@ -41,11 +41,11 @@ The split is by rank, not breadth. The plan-wide table produces the bounds gover
 
 A phase bound narrowing a plan-wide one earns its "and …" clause by adding a fact the Overview cannot state — which subset this phase touches. Where the Overview already protects the object under the same warrant, strike the clause.
 
-**The gate.** A governor assays every bound set in the plan folder before orchestration begins, on the criteria `/orchestrate`'s Validate Boundaries step states. A bound set that has not been through that assay is not ready to orchestrate.
+**The gate.** A governor assays every bound set in the plan folder before orchestration begins, on the criteria `/orchestrate`'s Validate Boundaries step assembles: the filters above, plus two relational criteria it states there. A bound set that has not been through that assay is not ready to orchestrate.
 
 ### The author's own assay
 
-Run the gate's criteria yourself, per bound, as a checklist before hand-off: **Evaluable, Verified, Warranted, Non-conflicting, Non-restating, Authorised, Mutually satisfiable, Reachable**.
+Run the gate yourself before hand-off, per bound: the filters above, plus Non-conflicting and Non-restating per Overview/phase pair.
 
 ---
 

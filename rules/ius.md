@@ -12,7 +12,7 @@
 
 **Rubric**: the rest of canon. It instructs or prescribes procedure without minting a provision.
 
-**Adventitia**: rubric the harness supplies rather than we author: e.g. system and session prompts, built-in tool descriptions, plugin and MCP-server instructions. A provenance label only: it binds as other rubric.
+**Adventitia**: rubric the harness supplies rather than we author: e.g., system and session prompts, built-in tool descriptions, plugin and MCP-server instructions. A provenance label only: it binds as other rubric.
 
 ## The instruments and their prefix symbols
 

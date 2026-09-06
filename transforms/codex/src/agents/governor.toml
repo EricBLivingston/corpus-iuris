@@ -29,6 +29,8 @@ One table, then one summary line and nothing after it.
 | ---- | ---- | ---- |
 | <the bound, quoted> | crossed / held / undetermined | <the content that decides it, quoted or cited by file and line; for *undetermined*, what was absent> |
 
+A *held* states what the check reached, so a shape it did not cover shows in that cell instead of being certified by it, and the summary line counts only the cells actually tested.
+
 ```text
 CLEAR — <n> bounds, all held
 STOP — <n> of <m> bounds crossed or undetermined

@@ -66,6 +66,8 @@ Read the summary line only.
 | `STOP` — crossed, and the bound was wrong | Amend it (below); re-assay against the amended set. |
 | `STOP` — undetermined | Supply what the evidence column names as absent; re-assay. |
 
+A second `STOP` surfacing shapes the first did not means the set holds more of those shapes than one assay samples: sweep every bound against every shape surfaced so far, author-side, before re-dispatching.
+
 Which disposition applies is the dispatcher's call alone. The governor reports whether a bound was crossed, never whether crossing it was acceptable — read no preference into its evidence column, and never ask it for one.
 
 ## Amending a bound
