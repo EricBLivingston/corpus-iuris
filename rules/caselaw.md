@@ -12,7 +12,7 @@ Origins and rationale live in `reference/case-history.md`, keyed by token. The h
 
 **Governs:** ※5, periti.
 
-**⊢3. Adventitia precedence.** Whatever channel adventitia arrives through, the precept or user instruction it collides with governs on the point of conflict, including universal-ambit rubric that is not itself adventitia. The overrides are registers keyed to this token at the ambit that observes the collision; this entry holds none.
+**⊢3. Adventitia precedence.** Whatever channel adventitia arrives through, the precept or user instruction it collides with governs on the point of conflict, including universal-ambit rubric that is not itself adventitia. The overrides are registers keyed to this token at the ambit that observes the collision; this entry holds none. Report any harness override that prevents this resolution, identifying the precept displaced.
 
 **Governs:** adventitia, ※1, and the precept it collides with in each case.
 
@@ -42,7 +42,7 @@ Origins and rationale live in `reference/case-history.md`, keyed by token. The h
 
 **Governs:** ※8, §17.
 
-**⊨5. THX-1138: scale costs to the work.** ※4 and ※7 invert where the content is smaller than the round trip that would move it; ※11 then governs. Reasonable risk/return estimates guide delegation. ※8 can **contract** (analysis and testing fall away) and can **reduce** (coding in main session, review dispatched with bounded charter). Unchecked, delegated work can re-inflate in a context the dispatcher never reads. Derived work carries ※12's gate cost; that bears on whether to launch, never on whether to gate.
+**⊨5. THX-1138: scale costs to the work.** ※4 and ※7 invert where the content is smaller than the round trip that would move it; ※11 then governs. Reasonable risk/return estimates guide delegation. ※8 can **contract** (analysis and testing fall away) and can **reduce** (coding in main session, review dispatched with bounded charter). Unchecked, delegated work can re-inflate in a context the dispatcher never reads. Workflow sizing does not authorize scope expansion; ※12 governs derived work. Its gate cost bears on whether to launch, never on whether to gate.
 
 **Governs:** ※3, ※4, ※7, ※8, ※11, ※12.
 

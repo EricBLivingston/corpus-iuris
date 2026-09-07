@@ -64,12 +64,7 @@ Deserialize into concrete structs at boundaries. Domain logic operates on typed 
 
 ## §5. Required means Required
 
-Never use `Option<T>` for parameters that are logically required. If every production caller must provide a value, make it required.
-
-- Applies to function parameters, struct fields, config values, and builder patterns
-- Do not introduce optionality to simplify testing; tests bear the cost of satisfying production interfaces
-- A required parameter with a `None` default is a lie the type system cannot catch
-- When refactoring surfaces a new dependency, add it as a required parameter -- do not paper over it with `Option`
+Universal §5 governs unchanged; the forbidden Rust shape is `Option<T>` on a logically required parameter, struct field, config value, or builder slot.
 
 ## §6. Fail Fast
 
@@ -82,19 +77,9 @@ Fail explicitly at startup. Do not mask errors with defensive fallbacks.
 
 ## §7. Composition Over Implicit Context (covers universal §14)
 
-This section elaborates two universal clusters: **§7** (no globals, thread-locals, or ambient state) and **§14** (the `AppConfig` + `AppContext` construction shape, single source of truth, leaf-node extraction). They are presented together because in Rust the mechanisms for both — `Arc<AppContext>`, constructor injection, no module-level singletons — are the same set of techniques.
+Universal §7 (no globals, thread-locals, or ambient state) and universal §14 (the `AppConfig` + `AppContext` shape, single source of truth, leaf-node extraction) govern unchanged. They are elaborated together because in Rust one set of mechanisms serves both.
 
-Use the `AppConfig` + `AppContext` construction pattern.
-
-- **`AppConfig`** holds all static external values: config files (TOML/YAML/JSON), environment variables, CLI parameters. Deserialized once at startup, validated, never mutated. Holds values, not resources.
-- **`AppContext`** holds `AppConfig` plus the app-wide resources constructed from it: database connection pools, API clients, HTTP clients, message queues, broadcast channels, file handles, singleton services. Expensive to construct, app-lifetime, shared across the codebase.
-- **Constructed once** at the entry point (`main.rs`) from a validated `AppConfig`.
-- **Passed as the single source of truth** for both configuration and derived resources throughout the application's lifetime.
-- Components receive `AppContext` via **constructor injection**, then extract specific values/resources at leaf nodes (`ctx.config.database.url`, `ctx.db_pool`).
-- **Never reconstruct** a resource that already exists in `AppContext` — use the instance from the context object.
-- **No global state**, no implicit thread-local context, no module-level singletons, no "get X" free functions that reach for hidden state.
-
-In Rust, heap-allocate `AppContext` via `Arc<AppContext>` (or `Box<AppContext>` for single-owner cases) so it can be cheaply cloned and passed as a pointer across threads, tasks, and modules.
+Heap-allocate `AppContext` via `Arc<AppContext>` (or `Box<AppContext>` for single-owner cases) so it can be cheaply cloned and passed as a pointer across threads, tasks, and modules. Components receive it by constructor injection; there are no module-level singletons and no "get X" free functions reaching for hidden state.
 
 ```rust
 // Do
@@ -115,15 +100,9 @@ async fn handle_request(config: AppConfig, db_pool: &PgPool) { ... }
 // ^ threading config values and resources individually through every call site
 ```
 
-This is the canonical application-wide shared-state pattern across all languages (Rust, Python, TypeScript, etc.), not a Rust-specific idiom.
-
 ## §8. EAFP Over LBYL
 
-Trust the type system and validated data. Do not re-check what deserialization already guarantees.
-
-- No redundant `if let Some(x)` on values guaranteed present by the type
-- No runtime checks on fields already validated during config loading
-- Defensive checks only at system boundaries (stdin parsing, HTTP requests, file I/O)
+Universal §8 governs unchanged; the redundant Rust shape is `if let Some(x)` on a value the type or config loader already guarantees.
 
 ## §9. Batch-First APIs
 
@@ -151,11 +130,7 @@ Use `tracing` with structured, leveled output.
 
 ## §11. Production Code Primacy
 
-Production code has right-of-way. Tests adapt to production, never the reverse.
-
-- Never weaken production types, interfaces, or invariants to satisfy tests
-- Exception: tests reveal genuine bugs -- fix the bug, not the architecture
-- Tests must conform to production interfaces; tests bear the cost
+Universal §11 governs unchanged; the one carve-out is that a test exposing a genuine bug is fixed in the code, not absorbed by the architecture.
 
 ## §12. Testing
 

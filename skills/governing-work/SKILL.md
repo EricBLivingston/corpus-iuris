@@ -1,6 +1,6 @@
 ---
 name: governing-work
-description: Use this skill when scoping work — a plan phase, a delegate's charter, any actions not explicitly requested by the user — and again when that work returns and must be held to its bounds. Carries the bound-authoring form, the test for when the assay earns a dispatch, the governor dispatch shape, and the routing on its return, including the door by which a bound is amended rather than broken.
+description: Use this skill when scoping work subject to ※12, applying ⊢4’s exemption, and again when that work returns and must be held to its bounds. Carries the bound-authoring form, the test for when the assay earns a dispatch, the governor dispatch shape, and the routing on its return, including the door by which a bound is amended rather than broken.
 ---
 
 # Governing Work

@@ -6,7 +6,7 @@
 
 **※2. No Recursive Self-Launch** — Invoke same-system subagents exclusively through the harness’s subagent workflow. Never launch the current agent system recursively through a shell or CLI stand-in: it creates an unmanaged second main session, floods context with stdout, and defeats delegation (※4).
 
-**※3. Async Agent Channels** — After invoking a background agent, stop processing and quiesce: the harness will notify on completion. Do not poll or start redundant agents thinking the first failed; ※11 and risk of conflicting work. However, notification is not proof of completion: confirm the deliverable is on disk. A notification can fire mid-write or land in another agent's context.
+**※3. Async Agent Channels** — After invoking a background agent, stop processing and quiesce: the harness will notify on completion. Silence does not establish failure: do not poll, take over the delegated work, or start a replacement agent merely because the original has not returned; ※11 and risk of conflicting work. However, notification is not proof of completion: confirm the deliverable is on disk. A notification can fire mid-write or land in another agent's context.
 
 **※4. 2-File Rule** — Any work involving 2+ files MUST be delegated to agents from the main session (mandatory, not advisory); a subagent already holding the work does it rather than re-delegating. Delegating preserves main context by keeping file content in the agent's context window, allowing the main conversation to stay focused on orchestration.
 
@@ -16,7 +16,7 @@
 
 **※7. Never Read Agent/Skill Definition Files in the Main Session** — Doing so pollutes main context with content that should be loaded using the proper harness mechanisms, which ensures context insertion occurs appropriately (*e.g.*, within a subagent context).
 
-**※8. Production Workflow Chain** — Non-trivial work runs the pipeline in this order: the analyzer agent, then the coder agent, then the reviewer agent, then the tester agent, whose verification must include the §16 cross-boundary end-to-end gate. **The reviewer is never skippable** — skipping it for "small" changes has been a consistent source of defects, and that holds for every non-code refactor. Analyze and Test may be skipped only when there are no artifacts on which to operate (*e.g.*, an empty directory), or when the work is non-code-only *and* an associated plan or phase file states no analysis or testing is needed. Meta-artifacts created by the workflow are not subject to the workflow (no recursion).
+**※8. Production Workflow Chain** — Non-trivial work runs analyzer → coder → reviewer → tester, sized under ⊨5. **Independent review is never skippable**, including for non-code refactors. Testing includes the §16 cross-boundary end-to-end gate wherever applicable. Meta-artifacts created by the workflow are exempt from this chain (no recursion).
 
 **※9. Version Control** — Read-only Git commands are encouraged. Do not run mutating Git commands unless the user explicitly requests it. The user reviews, refines, and commits manually.
 
