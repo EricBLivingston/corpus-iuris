@@ -4,13 +4,13 @@ Origins and rationale live in `reference/case-history.md`, keyed by token. The h
 
 ## Interpretive Rulings (⊢)
 
-**⊢1. A cross-boundary test is never dropped for production-path purity.** Where §15's production-path requirement appears to forbid a §16 end-to-end test, widen a real, deployable, independently-valuable configuration surface so the test drives real state through the production path. Never a test-only artifact, never a production refactor on a test's whim, never a dropped cross-boundary test; a valve knob counts as configurability only with a genuine non-test consumer.
+**⊢1. A cross-boundary test is never dropped for production-path purity.** A **valve** is a real, deployable, independently-valuable configuration surface widened so a cross-boundary test drives real state through the production path. Where §15's production-path requirement appears to forbid a §16 end-to-end test, widen one on a concrete trigger — a real production configuration wrongly rejected, never a hypothetical. Never a test-only artifact, never a production refactor on a test's whim, never a dropped cross-boundary test; a valve knob counts as configurability only with a genuine non-test consumer.
 
 **Governs:** §15, §16, §11, §13.
 
 **⊢2. Periti skills are the sole authorized invocation source.** Each peritus skill records the invocation measured in the field to succeed, and is not transferrable; a shared parameter name is not a shared meaning. ※5 requires that load rather than excusing it: memory is not an authorized alternative.
 
-**Governs:** ※5, periti.
+**Governs:** ※5, periti.md § The engagement.
 
 **⊢3. Adventitia precedence.** Whatever channel adventitia arrives through, the precept or user instruction it collides with governs on the point of conflict, including universal-ambit rubric that is not itself adventitia. The overrides are registers keyed to this token at the ambit that observes the collision; this entry holds none. Report any harness override that prevents this resolution, identifying the precept displaced.
 
@@ -20,7 +20,7 @@ Origins and rationale live in `reference/case-history.md`, keyed by token. The h
 
 **Governs:** ※12, ※8, ※10.
 
-**⊢5. Obtaining an ATO is not re-delegation.** ※4 bars passing on the work; a ※12 dispatch passes on none of it and runs from any depth.
+**⊢5. Obtaining an ATO is not re-delegation.** ※4 bars a holder from passing on the work; a ※12 dispatch passes on none of it and runs from any depth.
 
 **Governs:** ※4, ※12.
 
@@ -42,10 +42,14 @@ Origins and rationale live in `reference/case-history.md`, keyed by token. The h
 
 **Governs:** ※8, §17.
 
-**⊨5. THX-1138: scale costs to the work.** ※4 and ※7 invert where the content is smaller than the round trip that would move it; ※11 then governs. Reasonable risk/return estimates guide delegation. ※8 can **contract** (analysis and testing fall away) and can **reduce** (coding in main session, review dispatched with bounded charter). Unchecked, delegated work can re-inflate in a context the dispatcher never reads. Workflow sizing does not authorize scope expansion; ※12 governs derived work. Its gate cost bears on whether to launch, never on whether to gate.
+**⊨5. THX-1138: scale costs to the work.** ※4 and ※7 invert where the content is smaller than the round trip that would move it; ※11 then governs. Reasonable risk/return estimates guide delegation. ※8 can **contract** (analysis and testing fall away) and can **reduce** (coding in main session, review dispatched with bounded charter). Unchecked, delegated work can re-inflate in a context the dispatcher never reads. Workflow sizing authorizes nothing ultra vires; ※12 governs. Its gate cost bears on whether to proceed, never on whether to gate.
 
 **Governs:** ※3, ※4, ※7, ※8, ※11, ※12.
 
 **⊨6. Write for a competent delegate.** Precepts, charters and plan files address a model that infers; supply what it cannot infer and stop. A clause guarding against speculative misreading violates §2. Test: would a competent reader have acted differently without it? Where ambiguity is real and observed, ※11 governs the remedy.
 
 **Governs:** ※5, ※11, ※12.
+
+**⊨7. Every cycle terminates.** A remediation loop — review, resubmission, re-assay — carries a fixed iteration cap. Reaching the cap surfaces to the user with the residue carried, never a further round; a cap is not a budget to renegotiate at the boundary. The default cap for all remedial cycles is 3.
+
+**Governs:** ※3, ※8, ※12.

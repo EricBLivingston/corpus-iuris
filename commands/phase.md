@@ -67,6 +67,7 @@ Edit the files as needed to satisfy these criteria.
 
 Make the inverted-charter governor dispatch `{command-root}/orchestrate.md` § 2 Validate Boundaries specifies — its Content and its Criteria — over this plan folder, routed as below. It runs here, before the Sweep, because the source documents are still unarchived and the analyzer that wrote the bounds is still the party that can repair them.
 
+- `STOP` carrying no crossed row — hand the governor what its evidence column names as absent, and re-dispatch.
 - `STOP` — hand the return to the analyzer, which repairs the bounds; re-run the assay. A second `STOP` routes through `governing-work` § Routing the return before the re-dispatch.
 - `CLEAR` — proceed to the Sweep, so that `/orchestrate` § 2 confirms rather than discovers.
 

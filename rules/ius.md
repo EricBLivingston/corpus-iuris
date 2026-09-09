@@ -12,33 +12,46 @@
 
 **Rubric**: the rest of canon. It instructs or prescribes procedure without minting a provision.
 
-**Adventitia**: rubric the harness supplies rather than we author: e.g., system and session prompts, built-in tool descriptions, plugin and MCP-server instructions. A provenance label only: it binds as other rubric.
+**Adventitia**: rubric the harness supplies rather than we author: e.g., system and session prompts, built-in tool descriptions, plugin and MCP-server instructions. A provenance label only: it binds as other rubric, and yields under ⊢3 to any authored precept it collides with.
+
+**Charter**: the grant a piece of work runs under — the ask, the dispatch prompt, the plan and its ratified bounds, any authorization issued under ※12 — together with the author who granted it.
+
+**Peritus**: an AI model, or a model-agnostic harness reaching one, engaged per question through a command-line program and returning one responsum.
+
+**Agent**: a subagent the harness invokes by agent type — built in, or defined under `agents/`.
+
+**Delegate**: any actor assigned work: an agent or a peritus. The verb keeps its ordinary sense, so work delegated to an agent excludes periti.
+
+**Ultra vires**: characterizes any act that would put more work under a charter than granted by the charter. ※12's whole jurisdiction.
 
 ## The instruments and their prefix symbols
 
 **§ directives** — what you produce.
 **※ rules** — how you work.
-**⊢ interpretive rulings** — reconciles a priori logic conflicts and silences in doctrine.
+**⊢ interpretive rulings** — reconciles a priori logic conflicts and silences among precepts.
 **⊨ empirical resolutions** — the same office, a posteriori, surfaced in application.
 
 ## Senses
 
-Each term takes one field's sense, not the nearest one.
+The terms take on the following senses:
 
 - **Instrument** — the statutory sense: a class of enactment, not a single document.
 - **Provision** — the statutory sense: a discrete, citable clause.
 - **Rubric** — the liturgical sense: the red-letter directions for performing the rite, as against the words of the rite.
 - **Adventitia** — the Cartesian sense: *ideae adventitiae*, ideas arriving from outside the mind, neither innate nor self-made. What one authors one may edit; the adventitious admit only adoption or rejection.
 - **Doctrine** — principle systematized out of accumulated experience. Each provision is an a posteriori remediation of an observed failure.
-- **Caselaw** — the litigants are the colliding provisions; the bench is the author and the model, arguing to a holding; the holding is codified here. A ruling is amended by rewriting it.
+- **Caselaw** — the litigants are the colliding precepts; the bench is the author and the model, arguing to a holding. A ruling is amended by rewriting it.
 - **Peritus** — the civil-law sense: the expert a tribunal appoints and questions, not the expert witness a party retains and an opponent cross-examines. It answers what is asked; the tribunal weighs the answer and is not bound by it.
 - **Responsum** — the Roman-law sense: *responsa prudentium*, a jurist's written answer to the question as put. Its authority is the answerer's standing; its scope is no wider than the question.
+- **Ultra vires** — the public-law sense: an act beyond the powers conferred, void for want of authority rather than condemned on its merits. Describes the act, proposed or committed; never a verdict on whether it was warranted.
+- **ATO** — the risk-management sense: authority to operate, an authorizing official's signed acceptance of the residual risk a documented assessment leaves.
 
 Within the ius regime (not bound thusly in non-canon corpus):
 
 - `※` — promoted from annotation to obligation. Nothing prefixed by it is optional or parenthetical.
 - `§` — resolves to directives.
 - `⊢` `⊨` — prefixes, not infix operators; left operands move to the entry's `Governs:` line.
+- `⊬` `⊭` — their negations, the site as left operand: ⊬§13 on a precept exempts it from §13, ground beside it.
 
 ## Token grammar
 
@@ -51,7 +64,7 @@ A provision's token has four positions:
 | Position | Values | Blank means |
 | ---- | ---- | ---- |
 | **Instrument** | `§`, `※`, `⊢`, `⊨` | — always present |
-| **Ambit** | `A` agent, `P` project, `I` instance | universal |
+| **Ambit** | `A` agent, `P` project, `I` instance | universal at a minted site; a keyed overlay takes its file's ambit |
 | **Lingua** | a lowercase language tag, e.g. `md`, `py`, `rs` | all content, whatever the syntax |
 | **Number** | 1-based within its namespace | — always present |
 
@@ -75,9 +88,7 @@ Instance is to one installation what Project is to one project. It outranks the 
 
 ### Lingua
 
-A lingua proxies a language by membership, not extension string: `§cc` reaches `.cc`, `.cpp`, `.h` and every other C/C++ source. In use: `py` Python, `rs` Rust, `md` Markdown; a lingua's namespace is defined in canon: `reference/standards/<language>/principles.md` or rules/*.
-
-A lingua's provisions are deuterocanonical but considered canon for the purposes of ius. It is expected and directed that projects ensure harnesses auto-load appropriate lingua doctrine, per-session.
+A lingua proxies a language by membership, not extension string: `§cc` reaches `.cc`, `.cpp`, `.h` and every other C/C++ source. In use: `py` Python, `rs` Rust, `md` Markdown. A lingua's namespace lives at `reference/standards/<language>/principles.md`, or resides in canon. Its provisions are canon wherever a project imports its namespace; a project imports one for each language it carries.
 
 ## Precedence: *lex specialis*
 
@@ -94,7 +105,7 @@ Clarifications:
 
 - A keyed provision overlays its base rather than displacing it, at every ambit: what does not conflict passes through, what conflicts is replaced, and silence is filled. A bare token resolves to its base as overlaid by each keyed entry above it in precedence.
 - Instance provisions may replace, amend, or disable anything in the universal ambit.
-- Project provisions may replace or amend anything in their base namespace, and a project's own rules files may do so in place.
+- Project provisions may replace, amend, or disable anything in their base namespace, and a project's own rules files may do so in place.
 - Project caselaw may compose any doctrine.
 - Agent provisions carry the reach of Project provisions, and may act upon Project provisions as well. Minted in an agent's own definition file, they bind that agent's conduct alone; they are not visible to invokers or invokees.
 - Precedence ≠ severity/authority. Uncontested rubric carries the same authority as a provision. Provisions are minted mainly to prevail in a collision, and for citability outside canon.

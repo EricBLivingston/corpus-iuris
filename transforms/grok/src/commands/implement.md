@@ -18,7 +18,7 @@ Execute an implementation plan through the `writing-code` skill.
 
    Additional Notes:
 
-   - The coder must update the plan file's Deviations section before invoking the reviewer.
+   - The coder must update the plan file's Deviations section before invoking the reviewer. A departure that would cross a bound in `## Governance Bounds` is ultra vires (※12), not a Deviation: the ATO is obtained before the edit.
    - The reviewer also verifies Deviations was filled and that ACs have verifier hints.
    - The tester's verification includes the §16 cross-boundary end-to-end gate wherever the plan's work crosses a boundary.
    - Where the plan carries a `## Governance Bounds` section, `governing-work` carries the gate over it and the routing of its return.

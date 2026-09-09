@@ -108,7 +108,7 @@ Record any pre-authorized deviations from project principles here (e.g., threadi
 
 <The limits the work must stay inside, where the limit spans more than one phase. A limit scoped to a single phase goes in that phase file's own Governance Bounds section instead — never in both. The two sections are read together as one list when a phase's produced work is tested against them, so a bound written once, in the right place, is checked everywhere it applies.>
 
-<Authority. These bounds are immutable for the whole orchestration: no phase overrides them, and they govern every phase's produced work whether or not that phase mentions them.>
+<Authority. These bounds hold for the whole orchestration: no phase overrides them, and they govern every phase's produced work whether or not that phase mentions them. They are amended only through ※12.>
 
 <Shape. An enumerated list, one limit per item, each stated so that a reader holding only this list and the produced work can decide whether it was crossed: a countable threshold, a named file or directory set, a construct that must not appear, an artifact that must exist. Quote the source's own words rather than paraphrasing them; a paraphrase drifts from what was actually agreed, and the drift is invisible by the time anyone checks. The constraint's substance sits in the bound itself, a citation being provenance only — so no bare ordinal into another document.>
 
@@ -119,6 +119,10 @@ Record any pre-authorized deviations from project principles here (e.g., threadi
 1. <Bound 1 — e.g. "No crate is added to a runtime dependency table of any `Cargo.toml`." Source: PRD.md §3 Non-goals ("this work introduces no new crates"). Verify: each manifest's runtime-dependency keys at plan close against `git show <baseline>:<manifest>`. Trap: `[target.*.dependencies]` counts, `[dev-dependencies]` does not. Warrant: a new runtime crate is a supply-chain and licensing commitment reserved to the user.>
 2. <Bound 2 — e.g. "`LegacyStore` and its `LEGACY_` env prefix are absent from the tree at plan close." Source: Design.md §4 Reuse vs. replace ("Replace"). Verify: `rg 'LegacyStore|LEGACY_' -g '!archive/'` returns nothing. Trap: no `-w` — `_` is a word character, so it hides every `LEGACY_` name. Warrant: a replacement leaving the old path callable is not a replacement (⊨3).>
 3. <Bound N — the same parts. Where nothing could false-positive, say so rather than dropping the Trap.>
+
+### Amendments
+
+<Empty until a bound above is amended through ※12; leave the heading standing. One entry per grant: the bound, the statement, and the text it replaced.>
 
 ---
 

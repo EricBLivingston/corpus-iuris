@@ -14,7 +14,7 @@ The canonical invocation shapes, workflow, triage, and edge cases for non-intera
 
 ## Invocation Floor
 
-These shapes cover every engagement. Both need absolute paths in the prompt text, `-m {codex}`, `-c model_reasoning_effort="high"`, `--skip-git-repo-check`, `--color never`, `</dev/null`, and — as the prompt's closing lines, verbatim — the scoped-shell-read clause, the mandate clause, and a scope line naming exactly the paths granted on the command line. An exit 0 is not success. `-s, --sandbox` is the privilege axis and real enforcement.
+These shapes cover every engagement. Both need absolute paths in the prompt text, `-m {codex}`, `-c model_reasoning_effort="high"`, `--skip-git-repo-check`, `--color never`, `</dev/null`, and — as the prompt's closing lines, verbatim — the scoped-shell-read clause, the mandate clause, and a scope line naming exactly the paths granted on the command line. An exit 0 is not success. `-s, --sandbox` is the privilege axis and real enforcement. One blocking foreground call, with the harness's own wait set to its maximum — a default wait cuts a long engagement off mid-run.
 
 | Placeholder | Model identifier |
 | ---- | ---- |

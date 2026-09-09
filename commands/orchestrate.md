@@ -17,7 +17,7 @@ Set `{Project Path}` = absolute path of `plans/{Plan Folder}` resolved against t
 
 ## Critical Directive: Context Preservation
 
-You orchestrate; you do not investigate. **NEVER** read source, or any file a sub-agent in this run wrote; **NEVER** write, edit, review, or test code yourself. Read only `Overview.md` and the `Phase-X.md` files — the whole specification this run executes against — plus `{command-root}/{implement,debrief}.md` once each; a skill this workflow directs you to invoke is not a read. The specs those phase files superseded are archived and closed to you and to every implementing specialist; the Validate Boundaries gate alone is handed them, for provenance. **DO** pass file paths between sub-agents and instruct each to write detailed output to files and return only a one-line status. If something fails, dispatch a specialist — don't investigate yourself.
+You orchestrate; you do not investigate. **NEVER** read source, or any file a sub-agent in this run wrote; **NEVER** write, edit, review, or test code yourself — a granted replacement into this plan's bounds is yours to record. Read only `Overview.md` and the `Phase-X.md` files — the whole specification this run executes against — plus `{command-root}/{implement,debrief}.md` and the dispatch prompts under `{reference-root}/templates/orchestration/` once each; a skill this workflow directs you to invoke is not a read. The specs those phase files superseded are archived and closed to you and to every implementing specialist; the Validate Boundaries gate alone is handed them, for provenance. **DO** pass file paths between sub-agents and instruct each to write detailed output to files and return only a one-line status. If something fails, dispatch a specialist — don't investigate yourself.
 
 ## Workflow
 
@@ -39,7 +39,7 @@ Any of these failing — no `Overview.md`, no phase file, a gap in the numbering
 
 Invoke the governor agent, inverting its usual charter: the **bound sets are the content**, tested against the criteria below.
 
-**Content** — the `## Governance Bounds` section of `{Project Path}/Overview.md` and of every `Phase-X.md`, plus each phase's Acceptance Criteria, which must be satisfiable alongside the bounds governing them. Hand over the plan's source documents as well — `PRD.md`, `Design.md`, `Implementation.md`, wherever the `/phase` sweep left them (`{Project Path}/archive/` once swept) — read-only, as the evidence channel Authority needs: a bound's provenance is undecidable from the bounds sections alone, and a governor holding no source passes that criterion rather than reporting it untested.
+**Content** — the `## Governance Bounds` section of `{Project Path}/Overview.md` and of every `Phase-X.md`, plus each phase's Acceptance Criteria, which must be satisfiable alongside the bounds governing them. Hand over the plan's source documents as well — `PRD.md`, `Design.md`, `Implementation.md`, wherever the `/phase` sweep left them (`{Project Path}/archive/` once swept) — and every file the bounds themselves name, read-only, as the evidence channel Authority needs: a bound's provenance is undecidable from the bounds sections alone, and a governor holding no source passes that criterion rather than reporting it untested.
 
 **Criteria** — every filter in `{reference-root}/templates/plan/bounds-sources.md § Filters on every row's output`, applied per bound, plus these two, which have no filter counterpart and report per Overview/phase pair:
 
@@ -49,6 +49,7 @@ Invoke the governor agent, inverting its usual charter: the **bound sets are the
 **Route the return:**
 
 - `^CLEAR.*` — continue to the next step.
+- A `STOP` carrying no crossed row — hand the governor what its evidence column names as absent, and re-dispatch.
 - Anything else — write the governor's return verbatim to `{Project Path}/Boundary-Validation.md`, then enter the **Terminal**.
 
 **You do not remediate** — not a wording fix, not an obvious typo, not a bound whose intent you can see. A bound repaired by the party it constrains is no bound. The user corrects the plan folder and restarts the run.
@@ -59,103 +60,31 @@ Invoke the `writing-code` skill, then read `{command-root}/implement.md` to cont
 
 ### 4. Execute Each Phase Sequentially
 
-For each `Phase-X.md` (in order, starting from `{Starting Phase}`), read the phase file, then execute the implementation cycle by dispatching specialist sub-agents directly. Resolve every placeholder before passing a prompt — sub-agents receive concrete paths, none left standing except `{Subject}`, which the sub-agent determines during execution.
+For each `Phase-X.md` (in order, starting from `{Starting Phase}`), read the phase file, then execute the implementation cycle by dispatching specialist sub-agents directly. Each step below names its dispatch prompt's file under `{reference-root}/templates/orchestration/`; read that file and pass the prompt it carries. Resolve every placeholder before passing a prompt — sub-agents receive concrete paths, none left standing except `{Subject}`, which the sub-agent determines during execution.
+
+`{File Rules}` is defined in `{reference-root}/templates/orchestration/file-rules.md` and substituted verbatim into each specialist prompt beside it.
 
 ※3 — each specialist writes its file and returns one line; wait for that line.
 
+**Amending a bound**: a departure that would cross one is ultra vires (※12) — the specialist that finds it obtains the ATO through `performing-fmea` and reports the statement's path; on a grant you write that text over the bound it replaces, record the grant under `### Amendments`, and re-dispatch the governor against the set as replaced; on a denial the bound stands and the work is cut back inside it. Cycles cap under ⊨7.
+
 #### A. Analyze
 
-Invoke the analyzer agent with:
-
-```
-Analyze the codebase to understand the scope and impact of the following phase.
-
-Phase file: {Project Path}/Phase-X.md
-Project overview: {Project Path}/Overview.md
-
-File rules: ALL files MUST be within {Project Path} — reports at {Project Path}/Phase-X-{Subject}.md, test scripts and logs under {Project Path}/tests/. NO files in .analysis/, /tmp, or anywhere outside {Project Path}.
-
-Write your analysis to: {Project Path}/Phase-X-Analysis.md
-Include: affected files, dependencies, risks, and recommended implementation approach.
-
-Return only a one-line status summary. Do NOT return the full analysis content.
-```
+Dispatch the analyzer agent with the prompt at `{reference-root}/templates/orchestration/analyzer-prompt.md`. A collision the analyzer reports runs **Amending a bound**, before § B.
 
 #### B. Implement
 
-Invoke the coder agent with:
-
-```
-Implement the changes described in the following phase.
-
-Phase file: {Project Path}/Phase-X.md
-Project overview: {Project Path}/Overview.md
-Analysis: {Project Path}/Phase-X-Analysis.md
-Prior findings to address: {Prior Report Path}
-
-File rules: ALL files MUST be within {Project Path} — reports at {Project Path}/Phase-X-{Subject}.md, test scripts and logs under {Project Path}/tests/. NO files in .analysis/, /tmp, or anywhere outside {Project Path}.
-
-Write an implementation summary to: {Project Path}/Phase-X-Implementation.md
-Include: files modified/created, deviations from plan (with justification), and any issues encountered.
-
-After implementing, fill the Deviations section of the phase file before invoking the reviewer.
-
-Return only a one-line status summary.
-```
-
-Omit the `Prior findings` line on the first dispatch of a phase; on re-invocation set `{Prior Report Path}` to the review or test report that prompted it.
+Dispatch the coder agent with the prompt at `{reference-root}/templates/orchestration/coder-prompt.md`. Omit the `Prior findings` line on the first dispatch of a phase; on re-invocation set `{Prior Report Path}` to the review or test report that prompted it. A crossing the coder reports runs **Amending a bound**.
 
 #### C. Review
 
-Invoke the reviewer agent with:
-
-```
-Review the implementation for the following phase against the plan and analysis.
-
-Phase file: {Project Path}/Phase-X.md
-Project overview: {Project Path}/Overview.md
-Analysis: {Project Path}/Phase-X-Analysis.md
-Implementation summary: {Project Path}/Phase-X-Implementation.md
-Baseline commit (orchestrate run kickoff): {Baseline Commit}
-Prior findings to address: {Prior Report Path}
-
-File rules: ALL files MUST be within {Project Path} — reports at {Project Path}/Phase-X-{Subject}.md, test scripts and logs under {Project Path}/tests/. NO files in .analysis/, /tmp, or anywhere outside {Project Path}.
-
-Write your review to: {Project Path}/Phase-X-Review.md
-Include: issues found (critical/important/minor), whether implementation matches the plan, and suggested fixes.
-
-**Scope audit (mandatory before verdict).** Establish that every file touched since {Baseline Commit} is in the plan's scope or a filed Deviation. Anything else fails the phase — the plan was incomplete, or the coder departed scope. An accepted Deviation re-engages the analyzer for related collateral.
-
-Verify Deviations was filled. Verify ACs have verifier hints. Run a Reverse Dependency Audit if the phase changed any struct, enum, or public-API surface.
-
-Return only a one-line status summary indicating pass/fail and issue count.
-```
-
-Same omission rule as the coder's, `{Prior Report Path}` being the report that prompted the coder pass now under review.
+Dispatch the reviewer agent with the prompt at `{reference-root}/templates/orchestration/reviewer-prompt.md`. Same omission rule as the coder's, `{Prior Report Path}` being the report that prompted the coder pass now under review. A crossing the reviewer finds unrecorded runs **Amending a bound**.
 
 **If the review reports critical issues**: re-invoke the coder agent with the review file path, then re-invoke the reviewer. Repeat until the review passes. If the review has not passed after 3 iterations, enter the **Terminal**, supplying the review gate and the iteration count in place of a verdict line.
 
 #### D. Test
 
-Invoke the tester agent with:
-
-```
-Write and run tests to verify the implementation for the following phase.
-
-Phase file: {Project Path}/Phase-X.md
-Project overview: {Project Path}/Overview.md
-Implementation summary: {Project Path}/Phase-X-Implementation.md
-Review: {Project Path}/Phase-X-Review.md
-
-File rules: ALL files MUST be within {Project Path} — reports at {Project Path}/Phase-X-{Subject}.md, test scripts and logs under {Project Path}/tests/. NO files in .analysis/, /tmp, or anywhere outside {Project Path}.
-
-Write a test report to: {Project Path}/Phase-X-Test-Report.md
-Include: tests run, pass/fail counts, coverage if available, and any failures with details.
-
-Your verification includes the §16 cross-boundary end-to-end gate wherever the phase's work crosses a boundary.
-
-Return only a one-line status summary indicating pass/fail and test counts.
-```
+Dispatch the tester agent with the prompt at `{reference-root}/templates/orchestration/tester-prompt.md`.
 
 **If tests fail**: re-invoke the coder agent with the test report file path, then the reviewer with that same test report as its `{Prior Report Path}`, then the tester. Repeat until tests pass. If tests have not passed after 3 iterations, enter the **Terminal**, supplying the test gate and the iteration count in place of a verdict line.
 
@@ -177,12 +106,12 @@ Invoke `governing-work`, prompting the governor agent with the following paramet
 
 Before composing the dispatch, confirm every artifact listed under **Content** is on disk (※3 — a directory listing, not a read). A missing one is a failure of the specialist step that owed it: re-invoke that specialist — do not dispatch the governor with a gap.
 
-Route the governor's return per `governing-work`'s table, narrowed onto this run's own procedure:
+Route the governor's return per `governing-work`'s table, narrowed onto this run's own procedure. Anything but `^CLEAR.*` is documented first: create or append to `{Project Path}/Phase-X-Adjudication.md` with the governor's return verbatim, and the bounds it was dispatched against.
 
 - `^CLEAR.*` — continue to Between Phases.
-- Anything else — a `STOP` line, prose, several lines, no line at all:
-  - **Document the adjudication**: create or append to `{Project Path}/Phase-X-Adjudication.md` with the governor's return verbatim, and the bounds it was dispatched against.
-  - Enter the **Terminal**.
+- Crossed, the work overran — re-invoke the coder with the adjudication, then the reviewer, tester, and governor, subject to ⊨7.
+- Crossed, the bound was wrong — **Amending a bound**.
+- Undetermined — hand the governor what its evidence column names as absent; re-dispatch.
 
 #### Between Phases
 

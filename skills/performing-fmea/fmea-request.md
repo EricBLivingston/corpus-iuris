@@ -1,6 +1,6 @@
 # FMEA — The Requestor Protocol
 
-For the agent weighing a spend, and for the launch that follows if one is warranted.
+For the agent weighing a spend, and for the ultra vires act that follows if one is warranted.
 
 **Default is don't.** The cost is certain and immediate; the benefit is discounted three times independently — it must occur, escape detection, and resist cheap repair. Those three discounts are the only thing that overrides the default.
 
@@ -59,9 +59,13 @@ The table is the assay's record, not a launch order. Draft it, band it, and then
 
 **Verdict** is your band; **ATO** is the AO's decision. Different rows, different authors; never write one into the other.
 
+## Amending a bound
+
+The Cost row carries the complete replacement bound, ready to record verbatim — never a delta. Every site, count and line in it is measured from the tree by a command whose output the row quotes. It reaches no further than what the bound it replaces governs. Any constraint it adds is tested against every landed hunk first. A retrospective repair drafts best as a single-site carve-out: one baseline line and no other.
+
 ## Launch procedure
 
-1. Fill the template at `{reference-root}/templates/fmea-statement.md` into a file of its own, named `FMEA-YYYY-MM-DD-<slug>.md`, the slug naming the ask in three to five kebab-case words. Cost is a bound, never an estimate; the ATO row travels present and empty. One file per request, never one accumulating file per folder: delegates run concurrently, and two of them appending to one file collide.
+1. Fill the template at `{reference-root}/templates/fmea-statement.md` into a file of its own, named `FMEA-YYYY-MM-DD-<slug>.md`, the slug naming the ask in three to five kebab-case words. Cost is a bound, never an estimate; the ATO row travels present and empty. One file per ultra vires act, never one accumulating file per folder: delegates run concurrently, and two of them appending to one file collide.
 
    Where it lands — the first of these three that applies:
 
@@ -72,7 +76,9 @@ The table is the assay's record, not a launch order. Draft it, band it, and then
    The last two are not lesser records: a launch no plan called for is the kind this protocol exists to catch.
 
 2. Dispatch to the authorizer agent as Authorizing Official, giving it the statement file's absolute path — the file is what it assesses, never a copy of the table in the prompt — and pointing it at `{skill-root}/performing-fmea/fmea-assessment.md` for the standard it assesses against.
-3. **Wait on the decision.** The AO fills the ATO row in the file you handed it, grant or denial alike; read it back there. The launch does not start until that row carries a grant. A denial is binding: narrow and resubmit, or drop — disagreement escalates to the user, never past the AO. A missing, partial, or malformed response is a denial: restore the ATO row to empty, resubmit once, then escalate to the user.
+3. **Wait on the decision.** The AO fills the ATO row in the file you handed it, grant or denial alike; read it back there. The launch does not start until that row carries a grant. A denial is binding: narrow and resubmit, or drop — disagreement escalates to the user, never past the AO. A missing, partial, or malformed response is a denial too: restore the ATO row to empty before resubmitting.
+
+   Resubmission caps under ⊨7. A resubmission changes only what the denial names, and appends its table beneath the first in that same file.
 
 Where the framing deviates from what the borrowed term already carries:
 

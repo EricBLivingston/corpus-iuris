@@ -87,7 +87,7 @@ See Principle §2 (YAGNI) — name adjacent work only if excluding it removes re
 
 ## Governance Bounds
 
-<The limits scoped to THIS phase — not outcomes to reach (those are Goals and Acceptance Criteria above), but lines this phase's work must not cross. The plan-wide bounds carried in `Overview.md` are immutable and already govern this phase's produced work whether or not this file mentions them; the two sections are read together as one list when that work is tested against them. If this phase adds no limit of its own, write "None beyond Overview.md.">
+<The limits scoped to THIS phase — not outcomes to reach (those are Goals and Acceptance Criteria above), but lines this phase's work must not cross. The plan-wide bounds carried in `Overview.md` are amended only through ※12 and already govern this phase's produced work whether or not this file mentions them; the two sections are read together as one list when that work is tested against them. If this phase adds no limit of its own, write "None beyond Overview.md.">
 
 <Admissibility. A bound belongs in this list only if every test below holds. Fail one and it does not go in.>
 
@@ -107,6 +107,10 @@ See Principle §2 (YAGNI) — name adjacent work only if excluding it removes re
 1. <Bound 1 — e.g. "Every file modified by this phase is named in its Affected Files table, or written under `plans/<plan-folder>/`." Source: Implementation.md § Affected Files, Phase <N> rows. Verify: `git diff --name-only <baseline>` — bare, not `..HEAD`, which ignores the uncommitted tree — read against the table. Trap: none; the permitted set is enumerable from the table. Warrant: a file outside the table means the plan was incomplete or the coder left scope.>
 2. <Bound 2 — e.g. "No method is added to, removed from, or re-signed on the public trait `<TraitName>`." Source: Design.md §5 Resolved Decisions ("Reject widening the trait"). Verify: the trait's method list at baseline against phase close. Trap: a defaulted addition crosses this bound, though it compiles for existing implementors. Warrant: the trait surface is a ratified decision.>
 3. <Bound N — the same parts, Trap included or explicitly waived.>
+
+### Amendments
+
+<Empty until a bound above is amended through ※12; leave the heading standing. One entry per grant: the bound, the statement, and the text it replaced.>
 
 ---
 

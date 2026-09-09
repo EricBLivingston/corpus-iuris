@@ -21,6 +21,7 @@ The base is generic wherever no concrete name would be true of every installatio
 ```md
 | ⊨1 | The symbolic toolserver here is <name>; prefer its symbolic tools over their built-in and shell equivalents. |
 | ※md1 | The Markdown linter is <name> — `<check invocation>`, `<fix invocation>`. |
+| ⊢2 | The installed periti are <name>, whose skill is `using-<name>`. |
 ```
 
 Everything below is about deciding one provision at a time. That file is the mechanism nearly all of those decisions use.

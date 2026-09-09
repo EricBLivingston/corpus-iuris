@@ -1,5 +1,9 @@
 # Case History
 
+## ※12
+
+**Origin:** every widening argues for itself from inside the work that wants it — a delegate reads four more files to rule something out, a phase that cannot fit a bound crosses it and files a deviation — and the party proposing it is never a fair judge of it. So the office is separate: the governor tests the bound, the authorizer grants the widening, and the requestor instructs neither. The Authorizing Official is the authorizer agent in every run: independence is the office's, not a human's.
+
 ## ⊢2
 
 **Why:** Periti CLIs change fast and the skill is where each change is codified. No training prior or recollection is as recent or as correct as the curated file.
@@ -31,3 +35,7 @@
 ## ⊨6
 
 **Origin:** Ongoing proposed instructions providing tautological or trivial guidance to periti, such as a guard against a model not knowing which model it is. ※5 and ※11 bound how much is said, not whether it needs saying, and a safeguard always argues its tokens are worth it.
+
+## ⊨7
+
+**Origin:** observed twice in one stretch of work. The amendment door's first field run let a requestor answer every denial with a new statement, and one bound consumed four. Then the session repairing that ran its own coder-reviewer loop six rounds deep, each round closing the prior criticals and finding one more of the same shape, with the counter visible in the report filenames and no rule to cite against it. Only user intervention stopped the cycle.

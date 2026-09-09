@@ -2,12 +2,13 @@
 
 ## Refinements
 
-| Token | Intent on this installation |
+| Governs | Intent on this installation |
 | ---- | ---- |
 | ※7 | The main session reads a skill file Grok has already listed when invoking that skill. Still do not open `agents/` to learn a role: spawn it. |
 | ※13 | On this harness, `explore` and `plan` do not inherit the parent system-prompt template or the parent skill listing. They do receive the same discovered instruction files as the primary session, in full. They are the context-free pair: anything turning on §, ※, delegate, or MCP-tool routing that is not already in those files still goes in the spawn prompt. |
 | ⊨1 | The language-server-backed symbolic toolserver is the serena MCP tool; prefer its symbolic tools over their built-in and shell equivalents. (Example; may be absent.) |
 | ※md1 | The Markdown linter is `rumdl` — `rumdl check <path>` and `rumdl fmt <path>`. |
+| ⊢2 | The installed periti are <name>, whose skill is `using-<name>`. |
 | ※6 | This harness does not auto-inject MEMORY.md. Grok's own memory store may be enabled separately. Every memory write still goes through the knowledge agent. |
 
 This harness's subagent nesting depth is one: only the top-level session spawns. ※4 already says a child holding the work does it; the ※8 chain is orchestrated from the main session. The main session is the only dispatcher.

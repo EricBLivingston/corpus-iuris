@@ -22,7 +22,7 @@ Every call names both halves: `--provider openrouter` and an explicit `--model`.
 
 ## Invocation Floor
 
-These shapes cover every engagement. Both need `--provider openrouter`, an explicit roster `--model`, `-p`, and absolute paths in the prompt text. pi in print mode has no approval gate and no sandbox axis of its own — the call is single-shot text in, text out, and the invoking session's own permission mode governs the Bash call that launches it, so there is no privilege flag to choose and none to invent. An exit 0 is not success.
+These shapes cover every engagement. Both need `--provider openrouter`, an explicit roster `--model`, `-p`, and absolute paths in the prompt text. pi in print mode has no approval gate and no sandbox axis of its own — the call is single-shot text in, text out, and the invoking session's own permission mode governs the Bash call that launches it, so there is no privilege flag to choose and none to invent. An exit 0 is not success. One blocking foreground call, with the harness's own wait set to its maximum — a default wait cuts a long engagement off mid-run.
 
 | Placeholder | Model identifier |
 | ---- | ---- |

@@ -19,7 +19,7 @@ Steps 2 and 3 are a loop: re-invoke the coder on the review's findings and re-re
 - The reviewer's verdict is an input the tester should have, so the two never run in parallel.
 - Each step's output forwards to the next: analysis to the coder, implementation summary to the reviewer, review to the tester.
 - A one-line fix in a single file needs no delegation and does not enter this chain.
-- Bounds over the work, and the assay for whether they earn a dispatch, are `governing-work`'s.
+- Bounds over the work are `governing-work`'s; an edit that cannot land inside one is ultra vires (※12).
 
 ### Transition Artifacts
 
