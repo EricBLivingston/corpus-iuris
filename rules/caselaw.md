@@ -12,9 +12,9 @@ Origins and rationale live in `reference/case-history.md`, keyed by token. The h
 
 **Governs:** ※5, periti.md § The engagement.
 
-**⊢3. Adventitia precedence.** Whatever channel adventitia arrives through, the precept or user instruction it collides with governs on the point of conflict, including universal-ambit rubric that is not itself adventitia. The overrides are registers keyed to this token at the ambit that observes the collision; this entry holds none. Report any harness override that prevents this resolution, identifying the precept displaced.
+**⊢3. Adventitia precedence.** Whatever channel adventitia arrives through, the precept or user instruction it collides with governs on the point of conflict, including universal-ambit rubric that is not itself adventitia. The overrides are registers keyed to this token at the ambit that observes the collision; this entry holds none. Report any harness override that prevents this resolution, identifying the precept displaced (§8).
 
-**Governs:** adventitia, ※1, and the precept it collides with in each case.
+**Governs:** adventitia, §8, ※1, and the precept it collides with in each case.
 
 **⊢4. Doctrine-prescribed actions are exempt from ※12, no wider than the provision claimed.** Where the cited provision carves itself out (*e.g.*, ※10), the exemption ends at that carve-out and ※12 governs the remainder.
 
