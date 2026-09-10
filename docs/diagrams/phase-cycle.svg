@@ -32,27 +32,22 @@
 <!-- ============ the chain ============ -->
 <rect class="node" x="92" y="300" width="192" height="88" rx="6"/>
 <text x="112" y="332" class="ink" font-size="17" font-weight="600">analyzer</text>
-<text x="266" y="332" class="mut" font-size="12" text-anchor="end">opus</text>
 <text x="112" y="364" class="mut" font-size="13.5">investigate, write up</text>
 
 <rect class="node" x="318" y="300" width="192" height="88" rx="6"/>
 <text x="338" y="332" class="ink" font-size="17" font-weight="600">coder</text>
-<text x="492" y="332" class="mut" font-size="12" text-anchor="end">opus</text>
 <text x="338" y="364" class="mut" font-size="13.5">write code only</text>
 
 <rect class="node" x="544" y="300" width="192" height="88" rx="6"/>
 <text x="564" y="332" class="ink" font-size="17" font-weight="600">reviewer</text>
-<text x="718" y="332" class="mut" font-size="12" text-anchor="end">opus</text>
 <text x="564" y="364" class="kome" font-size="13.5">never skippable</text>
 
 <rect class="node" x="770" y="300" width="192" height="88" rx="6"/>
 <text x="790" y="332" class="ink" font-size="17" font-weight="600">tester</text>
-<text x="944" y="332" class="mut" font-size="12" text-anchor="end">sonnet</text>
 <text x="790" y="364" class="mut" font-size="13.5"><tspan class="mono sec">§</tspan><tspan class="mono num">16</tspan> end-to-end gate</text>
 
 <rect class="gate" x="996" y="300" width="192" height="88" rx="6"/>
 <text x="1016" y="332" class="ink" font-size="17" font-weight="600">governor</text>
-<text x="1170" y="332" class="mut" font-size="12" text-anchor="end">sonnet</text>
 <text x="1016" y="364" class="mut" font-size="13.5">test the bounds</text>
 
 <path class="ln" d="M284 344 L314 344" marker-end="url(#a)"/>

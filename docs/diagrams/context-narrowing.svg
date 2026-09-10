@@ -21,7 +21,7 @@
 <!-- ============ header — title set in the deck's h2 face at the deck's h2 position ============ -->
 <text x="92" y="131" class="ink title" font-size="38">Orchestration Context Pruning: Supporting long workflows</text>
 <text x="92" y="170" class="mut" font-size="21">An orchestrator that reads everything will rapidly exhaust its context.</text>
-<text x="92" y="201" class="mut" font-size="21">Careful context management is essential.</text>
+<text x="92" y="201" class="mut" font-size="21">Just-in-time context delivery and careful context engineering mitigate it.</text>
 
 <!-- ============ LEFT PANEL ============ -->
 <rect class="panel" x="92" y="232" width="530" height="368" rx="7"/>
