@@ -88,7 +88,7 @@ Instance is to one installation what Project is to one project. It outranks the 
 
 ### Lingua
 
-A lingua proxies a language by membership, not extension string: `§cc` reaches `.cc`, `.cpp`, `.h` and every other C/C++ source. In use: `py` Python, `rs` Rust, `md` Markdown. A lingua's namespace lives at `reference/standards/<language>/principles.md`, or resides in canon. Its provisions are canon wherever a project imports its namespace; a project imports one for each language it carries.
+A lingua proxies a language by membership, not extension string: `§cc` reaches `.cc`, `.cpp`, `.h` and every other C/C++ source. In use: `py` Python, `rs` Rust, `md` Markdown, `en` English. A lingua's namespace lives at `reference/standards/<language>/principles.md`, or resides in canon. Its provisions are canon wherever a project imports its namespace; a project imports one for each language it carries.
 
 ## Precedence: *lex specialis*
 
