@@ -45,6 +45,7 @@ The terms take on the following senses:
 - **Responsum** — the Roman-law sense: *responsa prudentium*, a jurist's written answer to the question as put. Its authority is the answerer's standing; its scope is no wider than the question.
 - **Ultra vires** — the public-law sense: an act beyond the powers conferred, void for want of authority rather than condemned on its merits. Describes the act, proposed or committed; never a verdict on whether it was warranted.
 - **ATO** — the risk-management sense: authority to operate, an authorizing official's signed acceptance of the residual risk a documented assessment leaves.
+- **FMEA** — the reliability-engineering sense: failure mode and effects analysis, which grades a failure on severity, occurrence and detection before anything is built to guard against it.
 
 Within the ius regime (not bound thusly in non-canon corpus):
 

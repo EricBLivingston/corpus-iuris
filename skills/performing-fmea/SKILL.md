@@ -5,7 +5,7 @@ description: 'Run this BEFORE spending on anything nobody asked for — a dispat
 
 # Performing FMEA
 
-FMEA over one candidate spend, deviating from the industrial form where it matters: a line of prose per limb, no ordinal scales, no RPN, no worksheet. It governs the decision to spend, not the shape of the output. It fires the moment you notice yourself deciding to spend — four more files to rule something out, a forensic dispatch after a surprise, breadth against an input shape no caller produces — or to move a limit rather than stop inside it. It is how a charter is expanded; whether the work abided by the charter is `governing-work`’s question.
+Failure mode and effects analysis over one candidate spend, deviating from the industrial form where it matters: a line of prose per limb, no ordinal scales, no RPN, no worksheet. It governs the decision to spend, not the shape of the output. It fires the moment you notice yourself deciding to spend — four more files to rule something out, a forensic dispatch after a surprise, breadth against an input shape no caller produces — or to move a limit rather than stop inside it. It is how a charter is expanded; whether the work abided by the charter is `governing-work`’s question.
 
 A dispatch this protocol itself directs — the statement sent to the Authorizing Official, and whatever the assessment protocol requires of the AO — is exempt (⊢4, ⊢5).
 
