@@ -6,11 +6,11 @@ The files that govern it are `skills/governing-work/SKILL.md`, `skills/performin
 
 `※12` is the rule routing every act into it, on one principle: no party authorizes its own ultra vires work.
 
-Note: This may seem overly complex or heavy-weight. It has been evolved through empirical testing and a posteriori analysis of many instances of extreme agent overruns; many hours and billions of tokens spent on unauthorized work that grossly exceeded any charter or initial remit. This is among the most dangerous and impactful failure modes in autonomous agent systems. Thus, we spend a significant amount of effort on governance to prevent such occurrences.
+Governance is the heaviest layer here, and the reason is empirical: unauthorized work has been the costliest failure mode in practice, overruns running far past any charter before anything registered them.
 
 ## What counts as ultra vires
 
-*Ultra vires* (*lit.* *beyond the powers*) is the public-law sense, and it turns on *charter*, the grant a piece of work runs under; [the lexicon](lexicon.md) carries both terms and `rules/ius.md` defines them. An act is ultra vires when it would put more work under that charter than the charter granted. The term describes the act rather than its merit, so a perfectly sensible act can be ultra vires; it's one reason we use this precise term.
+*Ultra vires* (*lit.* *beyond the powers*) is the public-law sense, and it turns on *charter*, the grant a piece of work runs under; [the lexicon](lexicon.md) carries both terms and `rules/ius.md` defines them. An act is ultra vires when it would put more work under that charter than the charter granted. The term describes the act rather than its merit, so a perfectly sensible act can be ultra vires.
 
 It takes one of two shapes:
 
@@ -142,7 +142,7 @@ The authorizer assesses the file at the path it is handed, and nothing else: not
 
 That standard is refutation, row by row, briefed to break the table rather than to concur with it: whether the question terminates the act when answered, whether an observed grade rests on a citation someone else could check or on prose and code comments, whether being wrong would really stay silent in an environment holding tests, type checkers, linters and a reader on the diff, and whether a cheaper probe answers the same question. Naming that cheaper disconfirmation, where one exists, is usually worth more than the decision itself.
 
-The gate has two stages. What is final is the Official rather than the matter: a denial names the failing row and binds, no appeal reaches a second Official, and the requestor either narrows and resubmits or drops the act. Disagreement escalates to the user, never past the Official. A grant resting on anything the Official could not verify from the tree issues as interim and escalates: the statement and its justifying package go to a peritus for independent review, and its judgement is adopted. Concurrence returns the grant; dissent returns a denial carrying the reviewer's reasoning. A grant verified in full stands on the Official's own assessment, and the record says which.
+What is final is the Official rather than the matter: a denial names the failing row and binds, no appeal reaches a second Official, and the requesting agent either narrows and resubmits or drops the act. Disagreement escalates to the user, never past the Official. A grant resting on anything the Official could not verify from the tree issues as interim and goes to a peritus for independent review, and that peritus's judgment is adopted.
 
 The response is the authorization row filled in place, and nothing else: no second document, no report file, no restated table. A grant authorizes the act at the Cost bound restated in that row and nothing wider, so crossing that bound is not overrun but operating unauthorized, and it takes a fresh statement. A denial is recorded exactly as a grant is, because the denials are what the record exists to measure.
 
@@ -194,29 +194,8 @@ flowchart TD
   INTERIM --> PERITUS
   PERITUS -->|"concurrence"| ACT
   PERITUS -->|"dissent"| DENY
-  DENY -->|"resubmit, changing only what the denial names, capped at three"| DRAFT
+  DENY -->|"resubmit, changing only what the denial names"| DRAFT
 ```
-
-## Who does what
-
-| Actor | Does | Never does |
-| ---- | ---- | ---- |
-| The scoping party, whoever writes the plan or the dispatch prompt | Authors the bound set, before the work | Tests its own work against it in place of the assay, where the assay is earned |
-| governor | Tests handed content against handed bounds, and reports crossed, held or undetermined per bound | Derives a bound, judges its merit, says whether a crossing was acceptable, or grants anything |
-| The dispatcher, the session holding the work | Routes each governor row: overran, wrong, or absent evidence | Ask the governor which it is, or remediate a bound it is itself constrained by |
-| The requestor, any agent at any depth | Runs the assay, bands the verdict, drafts the statement, dispatches the Official, and waits | Authorize itself, start before the row carries a grant, or appeal a denial to a second Official |
-| authorizer, as Authorizing Official | Fills the ATO row in place, granted or denied, with reasoning either way | Perform the act, redesign it, test bounds, or write a second document |
-| peritus | Independent review, in the interim-grant escalation only | Decide anything the Official verified in full |
-| The user | Holds a standing veto above the whole framework, and corrects a plan folder that fails its boundary gate | Serve as the Authorizing Official; the veto strikes a grant down and never issues one |
-
-## What is easy to get wrong
-
-1. A deviation is not a bound crossing. A departure the plan did not anticipate is recorded in the plan file; a departure that would cross a bound is ultra vires, and the authorization comes before the edit.
-2. Amending a bound is not crossing it, and crossing a Cost bound is not overrun. It is operating unauthorized.
-3. The governor grants nothing and refuses nothing. It is a test whose result the dispatcher routes, rather than a gate in the approval sense.
-4. The authorizer tests no bounds. The two roles are disjoint, and both are barred from dispatching so that neither can dispatch the work it referees.
-5. Narrowing needs no authorization, and neither does cutting an overrun back. Both are intra vires.
-6. A micro-scale defense produces no statement, ever.
 
 ## Related pages
 

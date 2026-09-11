@@ -35,15 +35,13 @@ The governor, the authorizer and the knowledge agent are not chain stages. The g
 
 ## Periti, and which specialists engage them
 
-A peritus is an external model engaged through a command-line program for reach or a second judgement, one question at a time. It inherits no session and remembers no prior call, so the prompt is the whole of the engagement, and the responsum is weighed against the artifact it claims rather than against its exit status.
+A peritus is an external model engaged through a command-line program for reach or a second judgment, one question at a time. It inherits no session and remembers no prior call, so the prompt is the whole of the engagement, and the responsum is weighed against the artifact it claims rather than against its exit status.
 
-Delegation to a peritus is not the re-delegation the two-file rule bars, so the analyzer, coder and reviewer all engage them directly. The coder's use is the narrowest, and narrow by rule: mechanical transformation across two or more files, reaching no architecture decision and no judgement call. Confirming that the peritus changed the files it was asked to, and that the suite still passes, is not the coder reviewing its own work.
+Delegation to a peritus is not the re-delegation the two-file rule bars, so the analyzer, coder and reviewer all engage them directly. The coder's use is the narrowest, and narrow by rule: mechanical transformation across two or more files, reaching no architecture decision and no judgment call. Confirming that the peritus changed the files it was asked to, and that the suite still passes, is not the coder reviewing its own work.
 
 ## Where the loops re-enter
 
 Implement and review are a loop: the coder is re-invoked on the review's findings, and the change is re-reviewed, until review passes. A test failure re-enters at the coder, and the review loop runs again before the tester does.
-
-Under `orchestrate` each re-invocation carries the report that prompted it as an explicit parameter, so the coder is never left to infer why it was called back.
 
 ## The fifth stage: adjudicate
 
@@ -55,8 +53,6 @@ The return routes four ways, and which one applies is the dispatcher's call alon
 - A crossed row where the work overran sends the coder back to cut it inside the bound, and the chain re-runs.
 - A crossed row where the bound itself was wrong takes authorization before anything is amended, since amending it is ultra vires; [the governance page](governance.md) covers what that costs.
 - An undetermined row means supplying what the governor's evidence column named as absent, and re-assaying.
-
-Between phases the orchestrator reports one line per specialist, continues immediately, and preserves every Markdown file the phase produced.
 
 ## Related pages
 

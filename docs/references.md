@@ -1,6 +1,6 @@
 # The work behind the claims
 
-Every empirical claim the corpus makes about model behaviour sits in this table beside the work it rests on. The claims are load-bearing rather than decorative: the argument for [rare tokens](lexicon.md), for [terms whose trained sense already agrees with ours](lexicon.md), and for [handing an executing agent one phase and withholding the rest](pipeline.md) is an argument about attention and retrieval, and it is only as good as the results below.
+Every empirical claim the corpus makes about model behavior sits in this table beside the work it rests on. The claims are load-bearing rather than decorative: the argument for [rare tokens](lexicon.md), for [terms whose trained sense already agrees with ours](lexicon.md), and for [handing an executing agent one phase and withholding the rest](pipeline.md) is an argument about attention and retrieval, and it is only as good as the results below.
 
 A row that misreads the work it cites is a defect in this repository, and `CONTRIBUTING.md` names it as one of the few worth opening an issue over.
 
@@ -14,6 +14,7 @@ A row that misreads the work it cites is a defect in this repository, and `CONTR
 | Long-context retrieval leans heavily on literal token overlap, and degrades sharply without it. | [NoLiMa: Long-Context Evaluation Beyond Literal Matching](https://arxiv.org/abs/2502.05167) |
 | Context and the parametric prior conflict, and which one wins is not reliably predictable. | [Knowledge Conflicts for LLMs: A Survey](https://arxiv.org/abs/2403.08319) |
 | Operating a term against its trained default carries a measured performance cost. | [Reasoning or Reciting?](https://arxiv.org/abs/2307.02477) |
-| Tokens too rare in training are undertrained, with degenerate embeddings and erratic behaviour. | [Fishing for Magikarp](https://arxiv.org/abs/2405.05417) |
+| A local definition does not displace a familiar word's trained associations. They go on interfering while it is in force, and in most kinds of remapping the strength of the familiar preference predicts how much interference follows. | [Persistent Priors, Preserved Targets](https://arxiv.org/abs/2606.07555) |
+| Tokens too rare in training are undertrained, with degenerate embeddings and erratic behavior. | [Fishing for Magikarp](https://arxiv.org/abs/2405.05417) |
 
 The presentation deck keeps the same material in a closing appendix, so a reader who met a claim on a slide can reach the paper from either surface.

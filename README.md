@@ -4,19 +4,19 @@
 
 This repository contains my own "Body of Rules" for directing agentic work, in three parts: a lexicon and a structure that let a rule be cited rather than restated, a Spec-Driven Development pipeline that turns a request into phased work, and a production chain that executes one phase under a governance apparatus holding every act to limits written before the work began. The base is harness-neutral, Claude Code is the harness I run it on, and [`adopting.md`](adopting.md) and the `transforms/` packages carry it to others: a package ships for Codex and one for Grok. It is highly opinionated; it represents how I think of, design, and build code, and is expected to be more of a structural model and example of how you might implement a similar set of precepts.
 
-## What it actually is
+## What the corpus is
 
 A set of provisions, rules and caselaw directing how a model proceeds with creating content, whether that content is Markdown or source code, plus the commands, agents and templates that put them to work. Spec-Driven Development is one aspect of that: the directives, rules and caselaw bind every session whatever it is doing, and the pipeline, the chain and its governance decide how one piece of work is shaped, executed and bounded.
 
 The main goals of the system are:
 
-1. **Clarity and attentive power** - We want our rules to "pop out" from the background context and arrest a model's attention, helping to increase the likelihood of them being abided by.
-2. **Context cohesion and logical integrity** - We want our rules to not conflict or create ambiguity, especially when read along with other rules of our own making or those injected automatically by a harness's system prompt or other sources of direction.
-3. **Token efficiency** - We need to balance long-winded exposition and use cases with brevity, acknowledging that we pay for every token here in both real cost and in attention span. Less is More when doing context engineering.
-4. **Governance and accountability** - Every action taken within the system is subject to pre-established rules and oversight, ensuring that work is conducted within defined limits and responsibilities are clear.
-5. **Specification-driven and traceable** - Every piece of work is guided by a clear specification, and its execution is traceable back to the governing rules and directives, ensuring accountability and reproducibility.
+1. **Clarity and attentive power** — We want our rules to "pop out" from the background context and arrest a model's attention, helping to increase the likelihood of them being abided by.
+2. **Context cohesion and logical integrity** — We want our rules to not conflict or create ambiguity, especially when read along with other rules of our own making or those injected automatically by a harness's system prompt or other sources of direction.
+3. **Token efficiency** — We need to balance long-winded exposition and use cases with brevity, acknowledging that we pay for every token here in both real cost and in attention span. Less is more in context engineering.
+4. **Governance and accountability** — Every action taken within the system is subject to pre-established rules and oversight, ensuring that work is conducted within defined limits and responsibilities are clear.
+5. **Specification-driven and traceable** — Every piece of work is guided by a clear specification, and its execution is traceable back to the governing rules and directives, ensuring accountability and reproducibility.
 
-## Start here
+## Entry points
 
 [The presentation deck](https://ericblivingston.github.io/corpus-iuris/docs/deck/index.html) walks the whole system for a general developer audience.
 
@@ -26,7 +26,7 @@ The main goals of the system are:
 
 ## Why all the Latin and the odd symbols
 
-We're not trying to be pretentious or pedantic. We select for two properties, both minimizing competition for the referent:
+We select for two properties, both minimizing competition for the referent:
 
 1. **Rarity**. A token like `※11` is not reaching into training data for its meaning; its definition is already in context, and the token's whole job is to be a bright path back to that defining site. Resolution is mechanical, matching the exact token and attending to what followed its earlier occurrences, so precision degrades as a token accumulates occurrences pulling toward different continuations. `※11` has one antecedent in a session, at 500k as surely as at 8k; "scope" has dozens, and hundreds once the window is full.
 
@@ -56,7 +56,7 @@ A *token* (a special kind of label or prefix) comprises four elements, and two o
 
 ## Inside one phase
 
-Four specialists run in a fixed order: the analyzer establishes scope, the coder makes the change, the reviewer passes or fails the work against the specification, and the tester runs only once review has passed. Steps two and three are a loop; a test failure re-enters at step two, and both loops cap at three iterations by default before the residue surfaces to the user for manual intervention.
+Four specialists run in a fixed order: the analyzer establishes scope, the coder makes the change, the reviewer passes or fails the work against the specification, and the tester runs only once review has passed. Steps two and three are a loop; a test failure re-enters at step two, and both loops cap at three iterations by default, after which the residue surfaces to the user for manual intervention.
 
 [![The production chain inside one phase, its loops, and the governor gate](docs/diagrams/phase-cycle.svg)](docs/execution.md)
 
@@ -93,7 +93,7 @@ flowchart LR
 
 [The governance page](docs/governance.md) goes into more detail: where a bound comes from, the seven filters a candidate clears before it becomes one, the governor's inverted charter served twice on the same dispatch shape, the statement of assumed risk row by row, and the refutation standard the Official assesses it against.
 
-## What is in here
+## The repository layout
 
 | Path | Holds |
 | ---- | ---- |
@@ -144,7 +144,7 @@ Gemini, Codex and pi are periti in the default installation, engaged one questio
 
 ## License
 
-One licence, **CC BY-SA 4.0** (`LICENSE`), covers the provisions, rules, caselaw, commands, agents and templates, the Python under `transforms/`, and every other file here.
+One license, **CC BY-SA 4.0** (`LICENSE`), covers the provisions, rules, caselaw, commands, agents and templates, the Python under `transforms/`, and every other file here.
 
 Proper attribution of the work here is:
 
@@ -152,6 +152,6 @@ Proper attribution of the work here is:
 
 ShareAlike is not a restriction on commercial use, but it does prohibit taking the corpus, passing it off as someone else's, and selling it closed.
 
-The obligation attaches to Sharing a derivative, not to using one, and Sharing means putting it in front of the public: publishing it, distributing it, displaying it, making it available for anyone to fetch. Adopt the corpus inside your organisation (key over the provisions that do not fit, mint what is missing, run it against your own code) and ShareAlike is never reached. Work kept within the one entity generally does not get there; handing a derivative to contractors, affiliates or clients may; pointing them to the repo is the better method.
+The obligation attaches to Sharing a derivative, not to using one, and Sharing means putting it in front of the public: publishing it, distributing it, displaying it, making it available for anyone to fetch. Adopt the corpus inside your organization (key over the provisions that do not fit, mint what is missing, run it against your own code) and ShareAlike is never reached. Work kept within the one entity generally does not get there; handing a derivative to contractors, affiliates or clients may; pointing them to the repo is the better method.
 
 Two adopted texts keep their own terms: the Creative Commons legal code in `LICENSE`, which Creative Commons dedicates under CC0 and asks that it not be modified, and `CODE_OF_CONDUCT.md`, the Contributor Covenant 2.1 under CC BY 4.0, whose attribution footer travels with it.

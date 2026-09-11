@@ -2,7 +2,7 @@
 
 This page is the long form of [the lexicon section of the README](../README.md). It covers the two properties every term and symbol here was selected for, the failure at each end of that selection, and the table of what each one was chosen to carry.
 
-We are not trying to be pretentious or pedantic. We select for two properties, and both do the same job: minimizing competition for the referent.
+We select for two properties, and both do the same job: minimizing competition for the referent.
 
 ## Rarity: one antecedent in context
 
@@ -29,17 +29,17 @@ Rarity has a floor as well as a ceiling. A term too common competes for its own 
 
 Where a term *does* occur in training data, its sense there should be close to ours.
 
-A term whose trained default contradicts our stipulated use sets what the context says against what the weights expect, and that conflict resolves unreliably. Operating against a trained default is also expensive; the same task gets worse when familiar terms are given unfamiliar meanings.
+A term whose trained default contradicts our stipulated use sets what the context says against what the weights expect, and that conflict resolves unreliably. Operating against a trained default is also expensive; the same task gets worse when familiar terms are given unfamiliar meanings. The stipulation itself leaves the trained associations in place, competing while the local definition is in force, and across most kinds of remapping the strength of that familiar preference predicts how much interference follows.
 
 So we avoid that fight rather than trying to win it. Where the prior already agrees, term fidelity comes free: `provision` means a discrete citable clause in ordinary legal use, so nothing has to be overridden.
 
 Alignment also buys compression. A trained name arrives carrying its own frame, and *peritus*, *ultra vires* and *rubric* each retrieve in one word what would otherwise cost a paragraph of stipulation.
 
-## The ladder we are climbing
+## The rungs of referential precision
 
 Precision of reference has rungs:
 
-1. **No rules at all: ad hoc** — "When writing this, make sure not to introduce functions and things we don't need right now. Keep it to just what we discussed and no more" (and variations repeated time and time again)
+1. **No rules at all: ad hoc** — "When writing this, make sure not to introduce functions and things we don't need right now. Keep it to just what we discussed and no more"
 2. **Rule defined in general terms** — "When writing this, remember our Rule about going out of scope"
 3. **Precept defined rigorously** — "Abide by §2" (often not needed, but sometimes worth reinforcement)
 
@@ -66,7 +66,7 @@ The terms below are also a taxonomy: they sort what binds from what does not, an
 | **Ambit** | The scope or reach of a rule: "within the ambit of the statute". | The reach position in a provision token: universal, one installation, one project, or one agent. |
 | **Lingua** | Latin: tongue, a language as such. | Scopes a provision to a language by membership, so `cc` reaches `.cc`, `.cpp`, and `.h` alike. |
 | ***Lex specialis*** | *Lex specialis derogat legi generali* — the specific rule displaces the general one. | Adopted intact as the precedence rule; the ambit ladder supplies the ranking it needs. |
-| **Peritus** | Later civil and canon law: the expert a tribunal engages for an opinion it cannot reach itself. | An external AI model, engaged for peritia (skills, expertise, etc.) this session lacks. |
+| **Peritus** | Later civil and canon law: the expert a tribunal engages for an opinion it cannot reach itself. | An external AI model, engaged for peritia this session lacks. |
 | **Responsum** | Roman law: *responsa prudentium*, a jurist's written answer to the question as put, carrying the answerer's standing rather than an office's. | What a peritus returns, one per engagement, weighed against the artifact it claims and reaching no wider than the question asked. |
 | **Charter** | A founding instrument conferring powers on a body, and the measure of what that body may do. | The grant a piece of work runs under: the ask, the dispatch prompt, the plan and its ratified bounds, and any authorization issued under `※12`, together with the author who granted it. |
 | **Ultra vires** | Public law: an act beyond the powers conferred, void for want of authority rather than condemned on its merits. | Names an act that would put more work under a charter than the charter granted, and says nothing about whether the act was warranted. |

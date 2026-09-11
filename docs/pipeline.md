@@ -61,9 +61,7 @@ flowchart TD
   CLASSIFY{"4a. The sweep, file by file: is this directly related to, and necessary for, implementing this phase's requirements?"}
   KEEP["4b. Keep, which each file must earn: sample data, code and ID mappings, shared diagrams, fixture inputs and golden outputs, files edited in place"]
   DROP["4c. Sweep, the default: source specs unconditionally, and background, rationale, history and the phasing run's own artifacts with them"]
-  RECON["4d. Two reconciliation passes over every kept file: strip cosmetic references, and carry the referenced identifier rows forward"]
-  ARCHIVE["4e. The plan's archive/, and a manifest of the classifications, the stripped references, and where each identifier subset landed"]
-  CONVERGE["4f. Convergence: two greps over every kept file, each identifier run on its own, both required to return nothing"]
+  CLOSE["4d. Convergence: a check that finds no kept file still pointing at what was swept, which now sits in the plan's archive/"]
 
   SPECS --> WRITE --> BOUNDS --> REVIEW
   REVIEW -->|"a literal placeholder, or a bound that fails an authoring filter"| BACK
@@ -73,10 +71,8 @@ flowchart TD
   ASSAY -->|"clear return"| CLASSIFY
   CLASSIFY -->|"earns a keep"| KEEP
   CLASSIFY -->|"default"| DROP
-  KEEP --> RECON
-  DROP --> ARCHIVE
-  RECON --> ARCHIVE
-  ARCHIVE --> CONVERGE
+  KEEP --> CLOSE
+  DROP --> CLOSE
 ```
 
 The analyzer writes `Overview.md` and one `Phase-N.md` per unit of work (1a). The Overview carries the orchestration and everything more than one phase needs; each phase file carries that phase's own actionable tasks and nothing redundant with the Overview, since both are handed to every phase.
@@ -89,9 +85,7 @@ The bound set is then assayed by the governor before anything is archived (3). T
 
 The sweep runs last, on that clear return. Every file in the folder that is not `Overview.md` or `Phase-N.md` is classified against one question (4a): is this content directly related to, and necessary for, implementing this phase's requirements? The default is to sweep (4c), and each file must earn a keep (4b). Source specs sweep unconditionally, however substantial they are, because keeping one pulls the plan into context twice; background, rationale, history and the process artifacts of the phasing run itself go with them. A keep is reserved for secondary reference material: sample data, code and ID mappings, diagrams shared across phases, fixture inputs and golden outputs, files being edited in place.
 
-Two reconciliation passes run over every kept file before anything moves (4d). The first strips cosmetic references to swept files and flags any surviving substantive one, because a reference reaching past the seam is rationale leaking back in. The second extracts every identifier a swept file defines (e.g. table-row IDs, finding codes, glossary terms) and carries the referenced rows forward: rows two or more phases reference land in the Overview, rows exactly one phase references land in that phase file, and only the rows actually referenced carry. A bare code whose defining table did not come with it is a defect.
-
-The swept files then move to the plan's `archive/`, and a manifest records the per-file classification, the stripped references, and the identifier set with where each subset landed (4e). Convergence is two greps over every kept file, both required to return nothing (4f): any path under `archive/`, and each manifest identifier run on its own rather than as one union, so a missed inlining is attributable to a single identifier.
+The swept files then move to the plan's `archive/`, and a convergence check over every kept file finds nothing still pointing at them (4d).
 
 ## `orchestrate`: driving the folder end to end
 
@@ -126,8 +120,6 @@ A deviation is a departure the plan did not anticipate, and the plan file record
 `finalize` converts that into a plan, under two rules. The first rule is the binary decision: every carried item takes a Yes or a No, with no third option, and a No is a closure carrying its rationale, on the reasoning that if the item still matters a future analyzer rediscovers it from the live codebase, and if it is never rediscovered it was not material. The Yes list becomes an implementation plan grouped by work class, each item carrying its original finding ID, its file path and a verifier hint.
 
 The second rule is immutability, and it binds the produced plan's contents as much as its file operations. Everything in the plan folder outside `debrief/` is a historic record, errors and stale claims included, because forensic work later depends on those files reading exactly as the implementation left them. A defect spotted in an upstream artifact therefore goes on the No list with that rationale, rather than becoming a Yes-list item that would edit it: the same prohibited modification, deferred by one hop, is still prohibited.
-
-A grep over the produced plan then checks for the vocabulary of deferral, and the command discloses what that check is: a net that catches the recurring wordings and reaches no novel one, so a clean pass is evidence of a binary draft rather than proof of one.
 
 ## `optimize`: a pass over one document
 

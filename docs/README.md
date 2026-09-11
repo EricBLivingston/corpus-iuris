@@ -1,6 +1,6 @@
 # Docs
 
-Presentation and explanatory material about the corpus. Nothing here is corpus: no loader, invoker, or live reference reaches it, and nothing in it mints or binds. It exists to explain the body to someone who has not read it.
+Presentation and explanatory material about the corpus. It exists to explain the body to someone who has not read it.
 
 ## Pages
 
@@ -32,4 +32,4 @@ Open the file directly, or serve `docs/` and point a browser at `deck/`. Keys: `
 
 The deck leads with what the system does and keeps the supporting research to a closing appendix.
 
-The two `sheet`-class slides bookend the talk: the plain-language sheet up front as a map, the detailed one at the end as a callback, once the vocabulary has been earned. The class trades slide padding for figure area: under the default chrome a whole-sheet figure renders at about 61%, which puts its body type below 7px.
+The two `sheet`-class slides bookend the talk: the plain-language sheet up front as a map, the detailed one at the end as a callback, once the vocabulary has been earned.
