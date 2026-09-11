@@ -27,12 +27,14 @@ Corpus, command, and skill text keep Claude's names. Resolve them here:
 | `mcp__<server>__<tool>` | `search_tool`, then `use_tool` with `tool_name` `<server>__<tool>` |
 | `agentId` | `subagent_id` |
 
-**⊢3** — Instance-local Adventitia conflict resolution register:
+### Register of ⊢3 holdings on this instance
 
-- Language that treats subagent launch as something the user must have asked for (e.g. “When the user explicitly asks you to use subagents”) — ※4 and ※8 make delegation mandatory.
-- `<communication>` restatement / standalone-final-message defaults — ※11.
+A row names the governing precept and the shape of adventitia it displaces. The quoted fragment is an example, not an anchor: same shape, any wording, same row (⊨6).
 
-**Governs:** adventitia, ※4, ※8, ※11.
+| Governs | Displaced shape | Holding |
+| ---- | ---- | ---- |
+| ※4, ※8 | Delegation restricted to explicit user requests (`When the user explicitly asks you to use subagents`) | ※4 and ※8 make delegation mandatory. |
+| ※11 | `<communication>` restatement / standalone-final-message defaults | ※11. |
 
 ## Rubric
 
@@ -44,3 +46,4 @@ Corpus, command, and skill text keep Claude's names. Resolve them here:
 | `{skill-root}` | `~/.grok/skills/` |
 | `{agent-root}` | `~/.grok/agents/` |
 | `{command-root}` | `~/.grok/commands/` — Grok's slash-command surface; not merged with `{skill-root}` |
+| `{analysis-root}` | `.grok/.analysis`, relative to the project root. |
