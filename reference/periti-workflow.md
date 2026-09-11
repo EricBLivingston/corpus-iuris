@@ -6,9 +6,9 @@ The orchestration protocol shared by every peritus. CLI-agnostic on purpose: not
 
 Never background an engagement. Where a harness wakes only its main session when a backgrounded job finishes, a subagent that backgrounds a task **exits** and never sees the result — while the orphaned run completes anyway, writing its document after the agent has already reported back as though nothing happened. The failure mode is a silently incomplete report, not lost work.
 
-The asymmetry is the whole rule, and it is why the prohibition reads as absolute but is really subagent-scoped: **the main session is re-invoked** when a backgrounded job finishes, so it alone can background one safely. Two neighbouring rules follow from the same fact rather than contradicting it.
+The asymmetry is the whole rule, and it is why the prohibition reads as absolute but is really subagent-scoped: where a harness re-invokes the main session on completion, that session alone can background an engagement safely. Where a harness re-invokes nothing, the backgrounding prohibition binds everyone. Two neighboring rules follow from that wakeup asymmetry rather than contradicting it.
 
-Push notification is for the *user*, who is waiting on a long foreground run and would otherwise poll; it is not a mechanism for an agent to learn its own engagement finished. And ※3's "do not poll" is about **not** re-checking or re-spawning after an async agent invocation — a foreground engagement never reaches that state, because the tool call does not return until the run is over.
+Push notification is for the *user*, who is waiting on a long foreground run and would otherwise poll; it is not a mechanism for an agent to learn its own engagement finished. And ※3 governs what follows an *async* dispatch: re-spawning the delegate, or trusting a completion signal unverified. A foreground engagement never reaches that state, because the tool call does not return until the run is over.
 
 ## Split at the ceiling
 

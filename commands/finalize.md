@@ -38,7 +38,7 @@ mkdir -p {Project Path}/debrief && mv {Project Path}/Implementation-Debrief.md {
 
 ### 3. Generate the Close-Out Implementation Plan
 
-Invoke the analyzer agent with the prompt below, passing the absolute `{Project Path}` verbatim. It writes the file and returns one line; per ※3 wait for that line rather than polling, and do not read `debrief/Debrief.md`, `debrief/Implementation.md` or any phase artifact yourself.
+Invoke the analyzer agent with the prompt below, passing the absolute `{Project Path}` verbatim. It writes the file and returns one line; per ※3 wait for that line, and do not read `debrief/Debrief.md`, `debrief/Implementation.md` or any phase artifact yourself.
 
 ```
 Produce a close-out Implementation.md from the debrief at:
@@ -90,7 +90,7 @@ Group by work-class (production defects first, then tech-debt closure that unloc
 
 ### 3. No-List — Drops with One-Line Rationale
 
-Grouped by debrief category. Each entry is a single bullet with the finding ID, a one-sentence summary, and a one-clause rationale beginning with "No:". Acceptable shapes: "No: coverage-only, behaviour verified empirically", "No: style preference; current form is mypy-clean", "No: by-design environment guard", "No: upstream plan artifact, immutable historic record". Any rationale drawing on the forbidden tri-state vocabulary is itself forbidden.
+Grouped by debrief category. Each entry is a single bullet with the finding ID, a one-sentence summary, and a one-clause rationale beginning with "No:". Acceptable shapes: "No: coverage-only, behavior verified empirically", "No: style preference; current form is mypy-clean", "No: by-design environment guard", "No: upstream plan artifact, immutable historic record". Any rationale drawing on the forbidden tri-state vocabulary is itself forbidden.
 
 ### 4. Acceptance Criteria
 

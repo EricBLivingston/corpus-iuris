@@ -6,7 +6,7 @@
 
 **※2. No Recursive Self-Launch** — Invoke same-system subagents exclusively through the harness’s subagent workflow. Never launch the current agent system recursively through a shell or CLI stand-in: it creates an unmanaged second main session, floods context with stdout, and defeats delegation (※4).
 
-**※3. Async Delegate Channels** — After invoking a background delegate, stop processing and quiesce: the harness will notify on completion. Silence does not establish failure: do not poll, take over the delegated work, or start a replacement delegate merely because the original has not returned; ※11 and risk of conflicting work. However, notification is not proof of completion: confirm the deliverable is on disk. A notification can fire mid-write or land in another agent's context.
+**※3. Async Delegate Channels** — After dispatching an async delegate, silence does not establish failure: do not take over the delegated work or start a replacement delegate merely because the original has not returned; ※11 and risk of conflicting work. Nor does a completion signal establish success: confirm the deliverable is on disk, as the signal can fire before the write lands.
 
 **※4. 2-File Rule** — Any work involving 2+ files MUST be delegated from the main session (mandatory, not advisory); a subagent already holding the work does it rather than re-delegating. Delegating preserves main context by keeping file content in the delegate's context window, allowing the main conversation to stay focused on orchestration.
 
