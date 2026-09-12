@@ -2,13 +2,15 @@
 
 This package is a thin install delta: it sits the shared Corpus Iuris sources next to an existing Grok installation. It ships no replacement for a user's live Grok configuration. `AGENTS.md` beside this file governs work performed inside the transform and is not installed.
 
-Grok already ingests the Claude filesystem dialect when `compat.claude.*` is on (the default): named `CLAUDE.md` files, `~/.claude/rules/`, skills, commands, agents, hooks, MCP. This is not a Codex-style port. There is no `canon.md` and no loader. Admission is directory membership: a file Grok's rules scanner will load is admitted; a file left in the clone is not.
+Grok already ingests the Claude filesystem dialect when `compat.claude.*` is on (the default): named `CLAUDE.md` files, `~/.claude/rules/`, skills, commands, agents, hooks, MCP. This is not a Codex-style port. There is no `canon.md` and no loader; the root `installing.md` § On Grok states what makes a file resident here.
 
 The corpus sits next to existing content. Do not require edits to files that already exist and have prior content. The adopter's `AGENTS.md` — user or project — is not an install target, not a merge target, and not a prerequisite. The default path does not require an edit to `config.toml`. Setting a `compat.claude.*` cell to `false` is an authorized overlay when a Grok-only copy of that surface is wanted; it is not an install prerequisite. Inspect the cells with `grok inspect` before proposing any such edit, and still obtain authorization.
 
 The only prerequisite is Grok Build. Unlike the Codex transform, this package ships no loader and no Python the adopter runs.
 
 ## For an adopting Grok
+
+The root `installing.md` § Three surfaces governs the separation between the working clone, the installed corpus, and the user's live Grok configuration, and the copy steps below run the model it carries.
 
 This repository is designed to guide its own adoption. When a user points Grok at the repository URL, the expected journey is:
 
@@ -19,8 +21,6 @@ This repository is designed to guide its own adoption. When a user points Grok a
 5. Identify which of the three scenarios applies: inspect the `compat.claude.*` cells and what already lives under the Grok home.
 6. Install per that scenario, below.
 7. Review each selected artifact before copying it.
-
-The working clone, the installed corpus, and the user's live Grok configuration are separate surfaces. An agent must not treat repository presence as installation or admission, and pulling the clone must not change resident context.
 
 ## Three scenarios
 
@@ -62,6 +62,8 @@ Claude agent `model: opus|sonnet|fable` is a Grok model id and will fail spawn: 
 
 ## Where the pieces go
 
+The copy that fills these runs the model in the root `installing.md`.
+
 | Piece | Destination |
 | ---- | ---- |
 | the instance file, refactored from `src/instance-example.md` | `~/.grok/rules/instance.md` |
@@ -70,7 +72,6 @@ Claude agent `model: opus|sonnet|fable` is a Grok model id and will fail spawn: 
 | each definition in `src/commands/` | `~/.grok/commands/` on any Claude-present install and on scenario 1 |
 | a selected rule | `~/.grok/rules/` when the rules cell is off or there is no Claude (scenario 1) |
 | reference material | `~/.grok/corpus/reference/` when `{reference-root}` is that path (scenario 1); Grok does not auto-scan it |
-| an admission | membership in a directory Grok's rules scanner loads |
 
 A same-named Grok agent, command, or skill is the intended shadow, not a discovery conflict to skip. A same-named rule file double-loads unless the Claude rules cell is off.
 

@@ -22,7 +22,7 @@ The main goals of the system are:
 
 [![The whole system as two fundamental ideas](docs/diagrams/framework-in-brief.svg)](https://ericblivingston.github.io/corpus-iuris/docs/deck/index.html)
 
-[`adopting.md`](adopting.md), for taking any of this into an installation of your own: write your instance file first, key over what does not fit, and never renumber to close a gap. [`docs/`](docs/README.md) holds the detail pages and the diagrams.
+[`adopting.md`](adopting.md), for taking any of this into an installation of your own: write your instance file first, key over what does not fit, and never renumber to close a gap. [`installing.md`](installing.md), for where the files then go: the clone, the staging copy and production as three separate surfaces, and the destination for each published piece. [`docs/`](docs/README.md) holds the detail pages and the diagrams.
 
 ## Why all the Latin and the odd symbols
 
@@ -105,6 +105,8 @@ flowchart LR
 | `transforms/` | Instructions and guidance on implementing the corpus ius under different Agents (e.g. Codex) |
 | `docs/` | The deck, the diagrams, and the detail pages linked above |
 | `adopting.md` | General instructions on implementing the corpus locally, one provision at a time |
+| `installing.md` | Where each published piece goes and how it gets there: the three surfaces, the staging loop, and what makes an artifact resident on each harness |
+| `instance-example.md` | The base instance file to copy and refactor: the refinements table, the ⊢3 register, and the placeholders every installation resolves |
 
 ## References
 

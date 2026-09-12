@@ -4,18 +4,18 @@ This package turns the shared Corpus Iuris sources into a coherent Codex install
 
 ## For an adopting Codex
 
+The root `installing.md` § Three surfaces governs the separation between the working clone, the installed corpus, and the user's live Codex configuration, and its § On Codex states what makes an artifact resident here. What this package adds is where each piece lands and the admission order, below.
+
 This repository is designed to guide its own adoption. When a user points Codex at the repository URL, the expected journey is:
 
 1. Obtain a local working copy and read the root `README.md`, `adopting.md`, this file, and `AGENTS.md`.
 2. Inspect the active Codex home and current official Codex documentation read-only. Identify active configuration layers, existing hooks, collisions, and required destinations.
 3. Report the proposed bootstrap and ask the user explicitly before writing to user-level Codex configuration.
 4. With approval, install and register only the inert SessionStart loader, `src/hooks/corpus_iuris_session_start.py`. Do not create or populate `canon.md` merely to make the hook appear complete.
-5. Copy the corpus into the production corpus root, preserving source-relative paths. The corpus is this repository's artifact tree — every directory whose contents an admission could name — as against the documents at the repository root, which are read rather than installed. Copying admits nothing: nothing loads until it is imported.
-6. Write the installation's instance file: copy `src/instance-example.md` to `rules/instance.md` inside the production corpus root and refactor it for this installation — after the copy above rather than before it, or the copy lands on top of it. It resolves the `{placeholders}` and the generic slots every other file leaves open; the doctrinal core carries unchanged behind it.
-7. Admit rules one at a time, each by an `@import` line in `canon.md` written after its file is in place. `AGENTS.md § Rule admission` gives the order and why it is not negotiable.
+5. Copy the corpus into the production corpus root, preserving source-relative paths and running the copy model the root `installing.md` carries. The corpus is this repository's artifact tree — every directory whose contents an admission could name — as against the documents at the repository root, which are read rather than installed.
+6. Write the installation's instance file: copy `src/instance-example.md` to `rules/instance.md` inside the production corpus root and refactor it for this installation, after the copy above rather than before it: written after, it is independent of whether the copy landing on that root overlays or mirrors. It resolves the `{placeholders}` and the generic slots every other file leaves open; the doctrinal core carries unchanged behind it.
+7. Admit rules one at a time, each given its `@import` line in `canon.md` only after its file is in place. `AGENTS.md § Rule admission` gives the order and why it is not negotiable.
 8. Install the custom-agent definitions from `src/agents/` where Codex discovers them, reviewing each one first.
-
-The working clone, the installed corpus, and the user's live Codex configuration are separate surfaces. An agent must not treat repository presence as installation or admission, and pulling the clone must not change resident context.
 
 ## Where the pieces go
 
@@ -27,9 +27,8 @@ The working clone, the installed corpus, and the user's live Codex configuration
 | each definition in `src/agents/` | where Codex discovers custom agents |
 | each skill directory in `skills/` | `<codex-home>/skills/<name>/` |
 | each `<name>.md` in `commands/` | `<codex-home>/skills/<name>/SKILL.md` (needs conversion from stand-alone file to skill folder) |
-| an admission | an `@import` line in `canon.md` naming the artifact's path |
 
-The loader takes the Codex home from `CODEX_HOME`, falling back to the parent of the directory it sits in — so leaving `CODEX_HOME` unset is correct only where the loader lives one level below the Codex home, as `<codex-home>/hooks/`. Set it explicitly for any other placement: a Codex home resolved one level too high finds no `canon.md` and exits successfully with no output, which is indistinguishable from the empty-canon state below. It takes the corpus root from `CORPUS_IURIS_ROOT`, falling back to `<codex-home>/corpus`. The production root may live wherever the installation chooses; set `CORPUS_IURIS_ROOT` rather than deriving a path from the checkout, and do not place local artifacts inside an update-managed checkout.
+The loader takes the Codex home from `CODEX_HOME`, falling back to the parent of the directory it sits in — so leaving `CODEX_HOME` unset is correct only where the loader lives one level below the Codex home, as `<codex-home>/hooks/`. Set it explicitly for any other placement: a Codex home resolved one level too high finds no `canon.md` and exits successfully with no output, which is indistinguishable from the empty-canon state below. It takes the corpus root from `CORPUS_IURIS_ROOT`, falling back to `<codex-home>/corpus`. The production root may live wherever the installation chooses; set `CORPUS_IURIS_ROOT` rather than deriving a path from the checkout.
 
 The loader expands two entrypoints. `<codex-home>/canon.md` is read in every session. `<project-root>/.codex/canon.md` — the project root being the nearest ancestor of the session's working directory that holds a `.git` — is read only in sessions under that project, and is the surface a `P`-ambit file reaches. A project entrypoint's imports resolve inside its own `.codex/` directory and may not escape it, so a project's corpus files live there beside it.
 

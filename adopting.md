@@ -4,23 +4,17 @@ The corpus binds once you adopt it. This file is different: it is guidance on a 
 
 ## If you are on Claude Code
 
-Take it as it stands. The content here was written for the Claude Code harness, and most should work out of the box, with tweaks made in the local `instance.md` file.
+Take it as it stands. The content here was written for the Claude Code harness, and most should work out of the box, with tweaks made in the local `instance.md` file. `installing.md` carries the mechanics: the three surfaces a copy moves between, the staging loop, and where each published piece lands under `~/.claude`.
 
 ## If you are on another harness
 
-Look for a `transforms/<harness>/` package that matches your harness. One means there is no translating left to do: the base is already generic wherever a harness particular would go, and the package carries that harness's own artifacts and the sequence for installing them, so what remains is § Write your instance file first and the decisions below. With no matching package you can still adopt the corpus, but the harness-specific provisions are yours to translate.
+Look for a `transforms/<harness>/` package that matches your harness. One means there is no translating left to do: the base is already generic wherever a harness particular would go, and the package carries that harness's own artifacts and the sequence for installing them, so what remains is § Write your instance file first and the decisions below. With no matching package you can still adopt the corpus, but the harness-specific provisions are yours to translate. `installing.md` carries the install model every harness shares, so a package holds only its own delta.
 
 ## Write your instance file first
 
 The base is generic wherever no concrete name would be true of every installation. Wherever a provision turns on a name only your installation can supply, it names the *kind* of referent and stops there. Those are the slots the instance ambit exists to fill, and until you fill them the provisions that turn on them have no referent on your installation.
 
-`instance-example.md` is a platform-specific base example. Copy it and refactor as necessary:
-
-```md
-| ⊨1 | The symbolic toolserver here is <name>; prefer its symbolic tools over their built-in and shell equivalents. |
-| ※md1 | The Markdown linter is <name> — `<check invocation>`, `<fix invocation>`. |
-| ⊢2 | The installed periti are <name>, whose skill is `using-<name>`. |
-```
+`instance-example.md` is a platform-specific base example: copy it and refactor as necessary. Its content is the first thing to decide; where in the sequence the file is written is the harness's own call, and on Claude Code `installing.md` § What you supply places it in the installed tree after the corpus is copied rather than before it.
 
 The decisions below come one provision at a time, and that file is the mechanism nearly all of them use.
 
