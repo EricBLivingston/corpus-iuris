@@ -7,7 +7,7 @@ This guide is working discipline for the Grok transform: what may change on the 
 This is a maintained downstream realization of a live upstream corpus, not a one-time port. Resynchronization after upstream changes is normal operating procedure, so **minimum-necessary change** is the governing criterion: every edit to a copied file is a divergence that must be reconciled at every later refresh, and must earn that permanent cost. An installation's own facts belong in its instance file, where a keyed entry merges with a later upstream revision instead of colliding with it.
 
 - Work only from sources present in this clone. A missing source is deferred, not reconstructed from memory or another installation.
-- Staging, `~/.grok/corpus/staging/`, is a fourth surface beside the three `../../installing.md § Three surfaces` separates. Rebuild it from the checkout for every refresh; it is disposable processing material, never scanned, never canon.
+- Staging, `~/.grok/corpus/staging/`, is this installation's staging surface in the sequence `../../installing.md § The installation sequence` sets out. Rebuild it from the checkout for every refresh; it is disposable processing material, never scanned, never canon.
 - Writing outside the clone, or changing user-level Grok configuration, requires explicit user authorization. Filesystem approval from the harness does not replace that conversation.
 - Style, wording preference, exposition, clarification, and cosmetic consistency never justify a delta. Preserve formatting; do not reflow carried text.
 - Prefer deleting or narrowly substituting a false clause over rewriting its sentence, paragraph, or section.

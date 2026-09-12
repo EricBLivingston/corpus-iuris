@@ -13,15 +13,16 @@ Invoke the analyzer agent to optimize the indicated document.
 
 A. Apply these optimizations (this is a superset of ※11, restated and enhanced for focus and to underscore the imperative):
 
-1. **Redundancy**: Apply DRY principles jointly across all reviewed artifacts and always-loaded context. Two duplicates are legitimate and stay: an enumeration that **names the provision it enforces** (A's own parenthetical above is the model — an enumeration naming nothing gets no exception), and a passage carrying a reason or operational detail the source lacks.
-2. **Verbosity**: Reduce wordiness; every token counts
-3. **Tutelage**: Remove tutorial-style explanations from non-tutorial artifacts unless explicitly requested
-4. **Tautology**: Eliminate redundant phrasing and tighten language
-5. **Superfluity**: Remove content that is obvious or well-understood
-6. **Obsolescence**: Remove or update outdated or incorrect information based on current state of the project or domain.
-7. **Vacuity**: Remove prose that reads as guidance but commits to nothing actionable (i.e. removing it changes nothing substantive)
-8. **Scaffolding**: Remove unnecessary navigation apparatus, (always true for artifacts constrained by ※5)
-9. **Tamaranian**: Refactor, if possible, to evoke maximum model understanding with minimum tokens.
+1. **Lingua**: Apply each lingua the document carries, `§en` to its prose.
+2. **Redundancy**: Apply DRY principles jointly across all reviewed artifacts and always-loaded context. Two duplicates are legitimate and stay: an enumeration that **names the provision it enforces** (A's own parenthetical above is the model — an enumeration naming nothing gets no exception), and a passage carrying a reason or operational detail the source lacks.
+3. **Verbosity**: Reduce wordiness; every token counts
+4. **Tutelage**: Remove tutorial-style explanations from non-tutorial artifacts unless explicitly requested
+5. **Tautology**: Eliminate redundant phrasing and tighten language
+6. **Superfluity**: Remove content that is obvious or well-understood
+7. **Obsolescence**: Remove or update outdated or incorrect information based on current state of the project or domain.
+8. **Vacuity**: Remove prose that reads as guidance but commits to nothing actionable (i.e. removing it changes nothing substantive)
+9. **Scaffolding**: Remove unnecessary navigation apparatus, (always true for artifacts constrained by ※5)
+10. **Tamarian**: Refactor, if possible, to evoke maximum model understanding with minimum tokens.
 
 B. Write the optimized content to the Output path.
 
