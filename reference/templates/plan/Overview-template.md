@@ -1,7 +1,6 @@
 # <Plan Title>
 
-<One-paragraph purpose statement. Why this plan exists and what the reader needs in 30 seconds.>
-<Note: examples are Rust-oriented, but the template is language-agnostic: use Python or other language equivalents where appropriate.>
+<One-paragraph purpose statement: why this plan exists and what the reader needs in 30 seconds.>
 
 ---
 
@@ -21,14 +20,14 @@ Explicitly excluded scope. See Principle §2 (YAGNI).
 
 ## Prerequisites
 
-- <Link to calibration/research/hardware audit doc 1 — delete section if none>
+- <Link to calibration / research / hardware-audit doc — delete section if none>
 
 ## Plan-Wide Inventory (OPTIONAL)
 
 <Delete if no fixed item list spans phases. When used, assign IDs (C1..Cn) and reference them in phase files.>
 
 | ID | Item | Phase | Status |
-| -- | ---- | ----- | ------ |
+| ---- | ---- | ---- | ---- |
 
 ---
 
@@ -36,19 +35,19 @@ Explicitly excluded scope. See Principle §2 (YAGNI).
 
 **Layout A — Linear sequential:**
 
-| Phase | Name                   | Status      | Blocked By |
-| ----- | ---------------------- | ----------- | ---------- |
-| 1     | <Phase 1 short name>   | Not Started | -          |
-| 2     | <Phase 2 short name>   | Not Started | Phase 1    |
-| N     | <Phase N short name>   | Not Started | Phase N-1  |
+| Phase | Name | Status | Blocked By |
+| ---- | ---- | ---- | ---- |
+| 1 | <Phase 1 short name> | Not Started | - |
+| 2 | <Phase 2 short name> | Not Started | Phase 1 |
+| N | <Phase N short name> | Not Started | Phase N-1 |
 
 **Layout B — Parallel sub-phase (use when phases have parallel tracks):**
 
-| Phase | Track | Name                     | Status      | Blocked By |
-| ----- | ----- | ------------------------ | ----------- | ---------- |
-| 1a    | Rust  | <Phase 1 Rust task>      | Not Started | -          |
-| 1b    | Rhai  | <Phase 1 Rhai task>      | Not Started | -          |
-| 2     | —     | <Phase 2 short name>     | Not Started | 1a, 1b     |
+| Phase | Track | Name | Status | Blocked By |
+| ---- | ---- | ---- | ---- | ---- |
+| 1a | <Track A> | <Phase 1 track-A task> | Not Started | - |
+| 1b | <Track B> | <Phase 1 track-B task> | Not Started | - |
+| 2 | — | <Phase 2 short name> | Not Started | 1a, 1b |
 
 Sub-numbering scheme is open (1a/1b, 1.1/1.2, 1-rust/1-rhai).
 
@@ -58,7 +57,7 @@ Sub-numbering scheme is open (1a/1b, 1.1/1.2, 1-rust/1-rhai).
 
 ## Architecture Overview (OPTIONAL)
 
-<Delete if topology is unchanged from the prior plan or is not applicable.>
+<Delete if topology is unchanged from the prior plan or does not apply.>
 
 ```text
 <source>           <transform stage>         <consumer>
@@ -72,53 +71,49 @@ Sub-numbering scheme is open (1a/1b, 1.1/1.2, 1-rust/1-rhai).
 
 ### Component Ownership
 
-| Component                   | Location                                | Phase |
-| --------------------------- | --------------------------------------- | ----- |
-| <Component A>               | <crate/path/to/file.rs>                 | 1     |
-| <Component B>               | <crate/path/to/file.rs>                 | 2     |
+| Component | Location | Phase |
+| ---- | ---- | ---- |
+| <Component A> | <path/to/file> | 1 |
+| <Component B> | <path/to/file> | 2 |
 
 ---
 
 ## Cross-Cutting Concerns
 
-<Content relevant to more than one phase. Anything here does NOT need to be repeated in phase files.>
+<Content relevant to more than one phase. Anything here is not repeated in phase files.>
 
 ### Principle Deviations
 
-Record any pre-authorized deviations from project principles here (e.g., threading a parameter through a framework-constructed struct that cannot accept a context object). Non-deviating principles are assumed and not enumerated. If no deviations apply, write "None anticipated."
+Pre-authorized deviations from project principles (e.g. threading a parameter through a framework-constructed struct that cannot accept a context object). Non-deviating principles are assumed and not enumerated. If none apply, write "None anticipated."
 
 ### Numerical & Performance Invariants (OPTIONAL)
 
-<Delete if the plan has no numerical or performance requirements. When used, specify tolerance bounds, NaN/Inf handling policy, performance targets, and feature-flag matrices so every phase enforces them consistently.>
+<Delete if the plan carries no numerical or performance requirement. When used, state tolerance bounds, NaN/Inf policy, performance targets, and feature-flag matrices, so every phase enforces them consistently.>
 
-- Tolerance bounds: <e.g., loss delta < 1e-4 between equivalent runs>
-- NaN/Inf policy: <e.g., assert_finite in forward pass; training aborts on first NaN>
-- Performance targets: <e.g., inference latency < 50 ms p99>
-- Feature-flag matrix: <e.g., flags A+B must be tested together>
+- Tolerance bounds: <e.g. loss delta < 1e-4 between equivalent runs>
+- NaN/Inf policy: <e.g. assert_finite in forward pass; training aborts on first NaN>
+- Performance targets: <e.g. inference latency < 50 ms p99>
+- Feature-flag matrix: <e.g. flags A+B must be tested together>
 
 ### Config Literal Audit (OPTIONAL, plan-level)
-<List magic numbers, hardcoded strings, and untyped values the plan must eliminate or surface as config. See Principles §3 (Explicit Configuration) and §4 (Strict Typing — enums over magic strings). If this applies to just one phase, put the audit items in that phase file and delete this section.>
+
+<Magic numbers, hardcoded strings, and untyped values the plan must eliminate or surface as config. See Principles §3 (Explicit Configuration) and §4 (Strict Typing — enums over magic strings). Where this applies to one phase only, put the audit items in that phase file and delete this section.>
 
 ### Serde Defaults Audit (OPTIONAL, plan-level)
-<List serde-defaulted fields that are unwarranted. See Principle §3 (Explicit Configuration). If this applies to just one phase, put the audit items in that phase file and delete this section.>
+
+<Serde-defaulted fields that are unwarranted. See Principle §3 (Explicit Configuration). Where this applies to one phase only, put the audit items in that phase file and delete this section.>
 
 ---
 
 ## Governance Bounds
 
-<The limits the work must stay inside, where the limit spans more than one phase. A limit scoped to a single phase goes in that phase file's own Governance Bounds section instead — never in both. The two sections are read together as one list when a phase's produced work is tested against them, so a bound written once, in the right place, is checked everywhere it applies.>
+The limits below hold for the whole orchestration: no phase overrides them, and they govern every phase's produced work whether or not that phase mentions them. A limit scoped to a single phase goes in that phase file's own Governance Bounds section instead, never in both; the two sections are read together as one list. They are amended only through ※12.
 
-<Authority. These bounds hold for the whole orchestration: no phase overrides them, and they govern every phase's produced work whether or not that phase mentions them. They are amended only through ※12.>
+<Fill from the Plan-wide sources table in `bounds-sources.md`, beside this template, row by row, through the filters it states. Do not fill this section without working it.>
 
-<Shape. An enumerated list, one limit per item, each stated so that a reader holding only this list and the produced work can decide whether it was crossed: a countable threshold, a named file or directory set, a construct that must not appear, an artifact that must exist. Quote the source's own words rather than paraphrasing them; a paraphrase drifts from what was actually agreed, and the drift is invisible by the time anyone checks. The constraint's substance sits in the bound itself, a citation being provenance only — so no bare ordinal into another document.>
-
-<A bound turning on "appropriately", "reasonable", "as needed", or "where it makes sense" is not checkable — restate it as the observable it stands for, or drop it. A bound stating an outcome to reach is a Goal, not a bound; this section holds only limits not to cross.>
-
-<Whence they come. Bounds are not invented at phasing time — they are already written, in the documents sitting in this plan folder. Work the **Plan-wide sources** table in `bounds-sources.md`, beside this template, row by row: it names each source section, the question to put to it, and the bound that answer yields, and it rules on sources the plan folder does not have. The list below is that table's output passed through the filters it states; do not fill this section without working it.>
-
-1. <Bound 1 — e.g. "No crate is added to a runtime dependency table of any `Cargo.toml`." Source: PRD.md §3 Non-goals ("this work introduces no new crates"). Verify: each manifest's runtime-dependency keys at plan close against `git show <baseline>:<manifest>`. Trap: `[target.*.dependencies]` counts, `[dev-dependencies]` does not. Warrant: a new runtime crate is a supply-chain and licensing commitment reserved to the user.>
-2. <Bound 2 — e.g. "`LegacyStore` and its `LEGACY_` env prefix are absent from the tree at plan close." Source: Design.md §4 Reuse vs. replace ("Replace"). Verify: `rg 'LegacyStore|LEGACY_' -g '!archive/'` returns nothing. Trap: no `-w` — `_` is a word character, so it hides every `LEGACY_` name. Warrant: a replacement leaving the old path callable is not a replacement (⊨3).>
-3. <Bound N — the same parts. Where nothing could false-positive, say so rather than dropping the Trap.>
+1. <Bound 1 — e.g. `PRD.md §3 Non-goals` directs that this work introduces no new crates, so no crate is added to a runtime dependency table of any `Cargo.toml`.>
+2. <Bound 2 — e.g. `Design.md §4 Reuse vs. replace` directs Replace for `LegacyStore`, so `LegacyStore` and its `LEGACY_` env prefix are absent from the tree at plan close. Its warrant: a replacement leaving the old path callable is not a replacement (⊨3).>
+3. <Bound N — the same parts: the citation, what it directs with the observable inline, and the cited element's own warrant where it states one.>
 
 ### Amendments
 
@@ -128,11 +123,10 @@ Record any pre-authorized deviations from project principles here (e.g., threadi
 
 ## Risk Mitigations
 
-| Risk                                          | Mitigation                                                                                          |
-| --------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| <Specific failure mode>                       | <Specific concrete mitigation — not "review carefully">                                             |
-| <Specific failure mode>                       | <Specific concrete mitigation>                                                                      |
-| <Cross-phase invariant that could be broken>  | <How it is preserved, and which phase owns the check>                                               |
+| Risk | Mitigation |
+| ---- | ---- |
+| <Specific failure mode> | <Specific concrete mitigation — not "review carefully"> |
+| <Cross-phase invariant that could be broken> | <How it is preserved, and which phase owns the check> |
 
 ---
 
@@ -140,13 +134,13 @@ Record any pre-authorized deviations from project principles here (e.g., threadi
 
 <Cross-cutting testing policy. Per-phase commands go in phase files.>
 
-- Baseline Capture: Record any pre-existing test failures BEFORE Phase 1 starts.
-- <e.g., "Unit tests only — no full training pipelines per MEMORY.md">
-- <e.g., "GPU-dependent tests marked `#[ignore]`; CI runs them separately">
+- Baseline Capture: record any pre-existing test failures before Phase 1 starts.
+- <e.g. "Unit tests only: no full training pipelines per MEMORY.md">
+- <e.g. "GPU-dependent tests marked `#[ignore]`; CI runs them separately">
 
 ---
 
 ## Related Documents
 
 - <One bullet per phase file, shaped `[Phase-N.md](./Phase-N.md) - short name`.>
-- <Any sibling doc still live after the Sweep. Not the source specs this Overview was built from — those are archived, and the Sweep strips links to them.>
+- <Any sibling doc still live after the Sweep. Not the source specs this Overview was built from: those are archived, and the Sweep strips links to them.>

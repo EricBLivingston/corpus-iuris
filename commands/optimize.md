@@ -1,7 +1,7 @@
 ---
 description: Rewrites a document to strip redundancy, wordiness, tutorial explanation, tautology, and stale claims, landing a reviewed -OPT copy under `.analysis/`. Takes the document path; use to tighten a plan or spec where the meaning must survive the cut.
 argument-hint: "[document-path]"
-model: sonnet
+model: opus
 ---
 
 # Optimize Command

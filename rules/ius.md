@@ -1,10 +1,10 @@
 # Ius
 
-**Corpus**: all live content — code, tests, docs, or adventitia. The live collection, not the repository: content is live where something reaches it — a loader (residency, import, path rule, or harness injection), an invoker (a command, skill, agent, or script naming it), or a reference from something itself live. Archived, superseded, and unreached content is dead code, and dead code is not corpus.
+**Corpus**: all live content (code, tests, docs, or adventitia). The live collection, not the repository: content is live where something reaches it, whether a loader (residency, import, path rule, or harness injection), an invoker (a command, skill, agent, or script naming it), or a reference from something itself live. Archived, superseded, and unreached content is dead code, and dead code is not corpus.
 
 **Precepts**: all corpus that binds.
 
-**Canon**: precepts whose presence is guaranteed for the readers they bind — by residency, import, path rule, or harness insertion. Presence admits, not merit; a citation to canon always resolves in context. What lies outside is deuterocanonical rather than apocryphal — it binds once read.
+**Canon**: precepts whose presence is guaranteed for the readers they bind (by residency, import, path rule, or harness insertion). Presence admits, not merit; a citation to canon always resolves in context. What lies outside is deuterocanonical rather than apocryphal: it binds once read.
 
 **Provisions**: canon's instrument-labelled precepts (`§`, `※`, `⊢`, `⊨`), each at its defining site.
 
@@ -14,11 +14,11 @@
 
 **Adventitia**: rubric the harness supplies rather than we author: e.g., system and session prompts, built-in tool descriptions, plugin and MCP-server instructions. A provenance label only: it binds as other rubric, and yields under ⊢3 to any authored precept it collides with.
 
-**Charter**: the grant a piece of work runs under — the ask, the dispatch prompt, the plan and its ratified bounds, any authorization issued under ※12 — together with the author who granted it.
+**Charter**: the grant a piece of work runs under (the ask, the dispatch prompt, the plan and its ratified bounds, any authorization issued under ※12), together with the author who granted it.
 
 **Peritus**: an AI model, or a model-agnostic harness reaching one, engaged per question through a command-line program and returning one responsum.
 
-**Agent**: a subagent the harness invokes by agent type — built in, or defined under `agents/`.
+**Agent**: a subagent the harness invokes by agent type, built in or defined under `agents/`.
 
 **Delegate**: any actor assigned work: an agent or a peritus. The verb keeps its ordinary sense, so work delegated to an agent excludes periti.
 
@@ -69,14 +69,16 @@ A provision's token has four positions:
 | **Lingua** | a lowercase language tag, e.g. `md`, `py`, `rs` | all content, whatever the syntax |
 | **Number** | 1-based within its namespace | — always present |
 
-`§5` is a universal directive over all content. `§md2` is universal, in the Markdown lingua. `§I7` binds one installation across all linguae; `§Ipy4` binds one installation's Python. `※A3` is one agent's own rule.
+§5 is a universal directive over all content. §md2 is universal, in the Markdown lingua. §I7 binds one installation across all linguae; §Ipy4 binds one installation's Python. ※A3 is one agent's own rule.
+
+**Format.** Provision tokens are undelimited (*e.g.*, ※11); a section name is enclosed, which delimits the field (*e.g.*, `document.md § Section Name`).
 
 ### Ambit
 
 | Ambit | Reach |
 | ---- | ---- |
 | Universal | every installation of the corpus |
-| Instance | one installation — a machine, a deployment, one peritus's whole environment |
+| Instance | one installation: a machine, a deployment, one peritus's whole environment |
 | Project | one project |
 | Agent | one agent |
 
@@ -100,7 +102,7 @@ A lingua proxies a language by membership, not extension string: `§cc` reaches 
 
 User Instructions are the live instruction of the session. Not corpus: standing instruction, once written down, is precept and takes its precept rank.
 
-Within [2, 3, 4], the more specific governs: by ambit first — Agent, then Project, then Instance, then Universal — and within one ambit, a named lingua beats a blank one. Location decides ambit where there is no instrument.
+Within [2, 3, 4], the more specific governs: by ambit first (Agent, then Project, then Instance, then Universal), and within one ambit, a named lingua beats a blank one. Location decides ambit where there is no instrument.
 
 Clarifications:
 

@@ -22,9 +22,7 @@ You orchestrate; you do not investigate. **NEVER** read source, or any file a su
 
 ### 0. Pre-Flight
 
-A. Verify clean working tree: `git status --porcelain` must be empty. If dirty, enter the **Terminal** with: "Commit or stash before running orchestrate — diff baseline requires clean tree."
-B. Capture `git rev-parse HEAD` as `{Baseline Commit}`. Every reviewer pass in this run diffs against it.
-C. Report `{Baseline Commit}` to the user before continuing.
+Verify clean working tree: `git status --porcelain` must be empty. If dirty, enter the **Terminal** with: "Commit or stash before running orchestrate — the run requires a clean tree."
 
 ### 1. Validate Plan Folder
 
