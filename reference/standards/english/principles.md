@@ -48,20 +48,28 @@ Rooth's **alternative semantics** makes a focused constituent evoke a set of alt
 
 Licensed where the text already put Y in play: a table column holding it, a preceding sentence naming it, a citation stating the rejected reading. The assay turns on the reader's state: would they have taken Y without the correction?
 
+## §en11
+
+Quirk's **style disjunct** comments on the act of uttering (*honestly*, *frankly*, *plainly*, *briefly*); his **content disjunct** comments on the proposition, as *plainly* does in "or plainly will". The assay is the scope of the comment: the saying, or the said. Brevity and plainness run against **Manner** as candour runs against Quality.
+
+Licensed where the contrast is real: the text hedged, and this clause does not, so the reader already holds the alternative. The assay is the reader's state, as in §en10: reading the unmarked version, would they have doubted? An instruction to be plain is discharged the same way, by plainness, never by the word.
+
 ## Sources
 
 - Dik, Simon C. *The Theory of Functional Grammar*. 1997, edited by Kees Hengeveld. Part 2, *Complex and Derived Constructions*, carries the extra-clausal constituents.
+- Grice, H. P. "Logic and Conversation." *Syntax and Semantics 3: Speech Acts*, 1975; reprinted in *Studies in the Way of Words*, 1989. Carries the maxims §en11 turns on.
 - Halliday, M. A. K., and Christian Matthiessen. *Halliday's Introduction to Functional Grammar*. 4th edition, 2014, the edition consulted: chapter 3 Theme and information structure, chapter 5 process types, chapter 7 logico-semantic relations, chapter 10 grammatical metaphor.
 - Halliday, M. A. K., and Ruqaiya Hasan. *Cohesion in English*. 1976.
 - Horn, Laurence. "Metalinguistic Negation and Pragmatic Ambiguity." *Language*, 1985.
 - Horn, Laurence. "Toward a New Taxonomy for Pragmatic Inference: Q-Based and R-Based Implicature." GURT, 1984.
 - Horn, Laurence. *A Natural History of Negation*. 1989. Carries the descriptive/metalinguistic split §en6 and §en10 divide on.
-- Labov, William, and Joshua Waletzky. "Narrative Analysis: Oral Versions of Personal Experience." 1967, and Labov, *Language in the Inner City*, 1972.
+- Labov, William, and Joshua Waletzky. "Narrative Analysis: Oral Versions of Personal Experience." *Essays on the Verbal and Visual Arts*, 1967. Introduces the narrative structure, coda and evaluation among its parts.
+- Labov, William. *Language in the Inner City*. 1972. Chapter 9 carries the developed account of evaluation.
 - Lanham, Richard. *A Handlist of Rhetorical Terms*. 1991. Carries procatalepsis and concessio.
 - Levinson, Stephen C. *Presumptive Meanings: The Theory of Generalized Conversational Implicature*. 2000.
 - Lewis, David. "Scorekeeping in a Language Game." *Journal of Philosophical Logic*, 1979.
 - Mann, William, and Sandra Thompson. *Rhetorical Structure Theory: A Theory of Text Organization*. ISI/RS-87-190, 1987, the report consulted; revised as "Rhetorical Structure Theory: Toward a Functional Theory of Text Organization." *Text*, 1988.
-- Quirk, Randolph, Sidney Greenbaum, Geoffrey Leech and Jan Svartvik. *A Comprehensive Grammar of the English Language*. 1985.
-- Roberts, Craige. "Information Structure in Discourse: Towards an Integrated Formal Theory of Pragmatics." 1996; reprinted *Semantics and Pragmatics*, 2012.
+- Quirk, Randolph, Sidney Greenbaum, Geoffrey Leech and Jan Svartvik. *A Comprehensive Grammar of the English Language*. 1985. Chapter 8 carries the adjunct, subjunct, disjunct and conjunct division, and within it the style/content split §en11 turns on.
+- Roberts, Craige. "Information Structure in Discourse: Towards an Integrated Formal Theory of Pragmatics." *OSU Working Papers in Linguistics* 49, 1996; reprinted *Semantics and Pragmatics* 5(6), 2012.
 - Rooth, Mats. "A Theory of Focus Interpretation." *Natural Language Semantics*, 1992.
 - Silvennoinen, Olli O. *Contrastive Negation: Constructional Variation within and across Languages*. PhD thesis, University of Helsinki, 2019.

@@ -2,7 +2,7 @@
 
 These bind prose you generate on every surface, a reply in session no less than a file on disk. Delegate output binds the same way.
 
-Sources and grounding live in `reference/standards/english/principles.md`. Open only when the application of a provision is genuinely in question.
+Cited sources delimit the linguistic target to which the provision applies. Grounding lives in `reference/standards/english/principles.md`. Open only when the application of a provision is genuinely in question.
 
 **§en1. Underspecified Connectives** — Realize the logico-semantic relation explicitly: colon for elaboration, semicolon for extension, parentheses for aside, `i.e.` for exposition, `e.g.` for exemplification. A dash encodes no relation, so it is right only where interruption itself is the relation. Presentational dashes are unaffected: list bullets, label-to-text delimiters, table rules. (Halliday)
 
@@ -23,3 +23,5 @@ Sources and grounding live in `reference/standards/english/principles.md`. Open 
 **§en9. Coda and Evaluation** — Labov's coda closes a telling and returns the reader to the present; his evaluation states why it was worth telling. Prose yields no floor and its page already marks the end, so a paragraph doing either replays what the text has delivered. (Labov)
 
 **§en10. Contrastive Negation** — `X, not Y` appends a rejected alternative to a clause that has already discharged its meaning. Focus needs an alternative the reader already holds; one salient enough to be worth saying earns an assertion of its own. Drop Y, or raise it to one. §en6 takes the preposed order. (Rooth, Silvennoinen)
+
+**§en11. Style Disjuncts** — Quality is a standing commitment of every assertion; an adverbial attesting a virtue of your own utterance (honest, frank, plain, brief) creates only a contrast, putting unmarked assertions under suspicion. Delete it; the claim is unchanged. (Grice, Quirk)
