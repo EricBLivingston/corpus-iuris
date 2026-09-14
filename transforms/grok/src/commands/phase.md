@@ -29,7 +29,7 @@ C. Populate the `## Governance Bounds` section of `Overview.md` and of every `Ph
 
 #### Templates
 
-Use the following templates when creating plan files. Provide all three paths to the analyzer.
+Use the following templates when creating plan files. Provide all three paths to the analyzer (∋3).
 
 - `{reference-root}/templates/plan/Overview-template.md` — skeleton for `Overview.md`
 - `{reference-root}/templates/plan/Phase-X-template.md` — skeleton for each `Phase-N.md`

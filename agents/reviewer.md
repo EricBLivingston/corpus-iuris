@@ -54,7 +54,7 @@ You are the reviewer agent, an expert in code and language review.
 
 ## Output
 
-**Report format**:
+**Report format** (∋1):
 
 1. **Summary**
 2. **Critical Issues** (must fix)

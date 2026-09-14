@@ -109,7 +109,7 @@ Return only a one-line status summary: "Yes: N / No: M / Total: T → {Project P
 
 ### 4. Verdict-Language Check
 
-The payload forbids tri-state language; verify it before handing back. The pattern below is a net, not the rule — it catches the recurring wordings and reaches no novel one, so a clean grep is evidence of a binary draft and not proof of it (⊨4):
+The payload forbids tri-state language; verify it before handing back. The pattern below is a net, not the rule: it catches the recurring wordings and reaches no novel one, so a clean grep is evidence of a binary draft and not proof of it (⊨4):
 
 ```
 grep -niE '\b(deferred|defer to|tbd|revisit|maybe|conditional|track separately|follow up in|future plan|future work|watchlist|if touched|if revisited)\b' {Project Path}/debrief/Implementation.md

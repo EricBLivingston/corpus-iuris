@@ -42,7 +42,7 @@ Gather first (symbolic toolserver/search), analyze second (periti). Include file
 
 ## Output
 
-**Report format** (unless otherwise specified):
+**Report format** (∋1, unless otherwise specified):
 
 1. **Executive Summary**
 2. **Architecture Overview** (structure, components, relationships)

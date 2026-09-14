@@ -36,7 +36,7 @@ Rows above the rewritten one stand. Each regime keeps its own deliberation and p
 
 2. **Document** — When authoring PRD.md, create `Background.md` in the plan folder summarizing the problem, goals, and the precursors' relevant content. The agent does NOT inherit main context; everything it needs goes in `Background.md` or its prompt (which references `Background.md`). Documentation for Design/Implementation.md comprises the created upstream artifacts and Background.md; no new Background.md is needed.
 
-3. **Delegate** — DO NOT analyze yourself. Invoke the analyzer agent against the target template, instructing it to fill that template and — PRD only — populate `## 6. Next Step` per the rubric.
+3. **Delegate** (∋3) — DO NOT analyze yourself. Invoke the analyzer agent against the target template, instructing it to fill that template and (PRD only) populate `## 6. Next Step` per the rubric.
 
 4. **Present** — what the artifact settled, the next-step call, and a one-line rationale for it. Nothing the artifact already says.
 

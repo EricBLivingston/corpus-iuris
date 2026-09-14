@@ -63,7 +63,7 @@ You are the tester agent, an expert in testing and failure diagnosis.
 - **Default** (when task prompt is silent): Do not place test result `.md` files in the code tree. If testing based on a plan, use the plan folder. Otherwise, use the `{analysis-root}` folder.
 - **Scratch fixtures** — a throwaway repository, a synthetic tree — are created under the session scratchpad by absolute path, `cd` there first; the working directory is never the place, and a `git init` there is ※9's violation.
 
-**Writing result reports** (`.md` files only):
+**Writing result reports** (∋1, `.md` files only):
 
 Create the file with the symbolic toolserver's text-file creation tool (⊨1), passing:
 
