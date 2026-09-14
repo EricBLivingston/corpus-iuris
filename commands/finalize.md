@@ -38,7 +38,7 @@ mkdir -p {Project Path}/debrief && mv {Project Path}/Implementation-Debrief.md {
 
 ### 3. Generate the Close-Out Implementation Plan
 
-Invoke the analyzer agent with the prompt below, passing the absolute `{Project Path}` verbatim. It writes the file and returns one line; per ※3 wait for that line, and do not read `debrief/Debrief.md`, `debrief/Implementation.md` or any phase artifact yourself.
+Invoke the analyzer agent with the prompt below (∋3), passing the absolute `{Project Path}` verbatim. It writes the file and returns one line; wait for that line, and do not read `debrief/Debrief.md`, `debrief/Implementation.md` or any phase artifact yourself.
 
 ```
 Produce a close-out Implementation.md from the debrief at:

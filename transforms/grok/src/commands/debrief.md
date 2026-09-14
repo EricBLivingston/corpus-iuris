@@ -9,7 +9,7 @@ Invoke the analyzer agent to consolidate unaddressed items from a completed impl
 
 ## Scope
 
-**Every phase in the plan folder is in scope, always.** Nothing marks a phase as already-assessed — including, but not limited to, a git commit, a green test report, a passing review, or an audit in an earlier session. `Implementation-Debrief.md` is the only artifact that records an assessment; until it exists no phase has been debriefed.
+**Every phase in the plan folder is in scope, always.** `Implementation-Debrief.md` is the only artifact that records an assessment; until it exists no phase has been debriefed, whatever other evidence of work the folder holds.
 
 State the full phase range explicitly in the dispatch so the analyzer cannot infer a narrower one.
 

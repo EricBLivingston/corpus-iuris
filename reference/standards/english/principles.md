@@ -42,6 +42,12 @@ What the reader infers is the stereotypical enrichment of what is said, Levinson
 
 Labov's **coda** returns the hearer to the present to mark the telling over; **evaluation** answers "so what?", and reaches prose as the drawn moral. Bulk licenses nothing: RST's **Summary**, a satellite shorter than its nucleus, is still a coda once the nucleus is read. An abstract, a description or an Overview file escapes by function: its text is still unread, so it closes no telling and evaluates none. A closing paragraph escapes the same way where it delivers what the text has not.
 
+## §en10
+
+Rooth's **alternative semantics** makes a focused constituent evoke a set of alternatives that context must supply; Roberts' **Question Under Discussion** is the same requirement one level up. Horn's **descriptive** negation operates here, against §en6's metalinguistic kind, which is what divides the two provisions; word order only tracks it. Silvennoinen takes both orderings as one construction family.
+
+Licensed where the text already put Y in play: a table column holding it, a preceding sentence naming it, a citation stating the rejected reading. The assay turns on the reader's state: would they have taken Y without the correction?
+
 ## Sources
 
 - Dik, Simon C. *The Theory of Functional Grammar*. 1997, edited by Kees Hengeveld. Part 2, *Complex and Derived Constructions*, carries the extra-clausal constituents.
@@ -49,9 +55,13 @@ Labov's **coda** returns the hearer to the present to mark the telling over; **e
 - Halliday, M. A. K., and Ruqaiya Hasan. *Cohesion in English*. 1976.
 - Horn, Laurence. "Metalinguistic Negation and Pragmatic Ambiguity." *Language*, 1985.
 - Horn, Laurence. "Toward a New Taxonomy for Pragmatic Inference: Q-Based and R-Based Implicature." GURT, 1984.
+- Horn, Laurence. *A Natural History of Negation*. 1989. Carries the descriptive/metalinguistic split §en6 and §en10 divide on.
 - Labov, William, and Joshua Waletzky. "Narrative Analysis: Oral Versions of Personal Experience." 1967, and Labov, *Language in the Inner City*, 1972.
 - Lanham, Richard. *A Handlist of Rhetorical Terms*. 1991. Carries procatalepsis and concessio.
 - Levinson, Stephen C. *Presumptive Meanings: The Theory of Generalized Conversational Implicature*. 2000.
 - Lewis, David. "Scorekeeping in a Language Game." *Journal of Philosophical Logic*, 1979.
 - Mann, William, and Sandra Thompson. *Rhetorical Structure Theory: A Theory of Text Organization*. ISI/RS-87-190, 1987, the report consulted; revised as "Rhetorical Structure Theory: Toward a Functional Theory of Text Organization." *Text*, 1988.
 - Quirk, Randolph, Sidney Greenbaum, Geoffrey Leech and Jan Svartvik. *A Comprehensive Grammar of the English Language*. 1985.
+- Roberts, Craige. "Information Structure in Discourse: Towards an Integrated Formal Theory of Pragmatics." 1996; reprinted *Semantics and Pragmatics*, 2012.
+- Rooth, Mats. "A Theory of Focus Interpretation." *Natural Language Semantics*, 1992.
+- Silvennoinen, Olli O. *Contrastive Negation: Constructional Variation within and across Languages*. PhD thesis, University of Helsinki, 2019.

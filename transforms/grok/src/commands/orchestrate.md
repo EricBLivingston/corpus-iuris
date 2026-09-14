@@ -61,7 +61,7 @@ For each `Phase-X.md` (in order, starting from `{Starting Phase}`), read the pha
 
 `{File Rules}` is defined in `{reference-root}/templates/orchestration/file-rules.md` and substituted verbatim into each specialist prompt beside it.
 
-※3 — each specialist writes its file and returns one line; wait for that line.
+∋3 — each specialist writes its file and returns one line; wait for that line.
 
 **Amending a bound**: a departure that would cross one is ultra vires (※12) — the specialist that finds it obtains the ATO through `performing-fmea` and reports the statement's path; on a grant you write that text over the bound it replaces, record the grant under `### Amendments`, and re-dispatch the governor against the set as replaced; on a denial the bound stands and the work is cut back inside it. Cycles cap under ⊨7.
 

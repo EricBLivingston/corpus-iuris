@@ -4,7 +4,7 @@ Origins and rationale live in `reference/case-history.md`, keyed by token. The h
 
 ## Interpretive Rulings (⊢)
 
-**⊢1. A cross-boundary test is never dropped for production-path purity.** A **valve** is a real, deployable, independently-valuable configuration surface widened so a cross-boundary test drives real state through the production path. Where §15's production-path requirement appears to forbid a §16 end-to-end test, widen one on a concrete trigger: a real production configuration wrongly rejected, never a hypothetical. Never a test-only artifact, never a production refactor on a test's whim, never a dropped cross-boundary test; a valve knob counts as configurability only with a genuine non-test consumer.
+**⊢1. A cross-boundary test is never dropped for production-path purity.** A **valve** is a real, deployable, independently-valuable configuration surface widened so a cross-boundary test drives real state through the production path. Where §15's production-path requirement appears to forbid a §16 end-to-end test, widen one on a concrete trigger: a real production configuration wrongly rejected. Never a test-only artifact, never a production refactor on a test's whim, never a dropped cross-boundary test; a valve knob counts as configurability only with a genuine non-test consumer.
 
 **Governs:** §15, §16, §11, §13.
 
@@ -30,11 +30,11 @@ Origins and rationale live in `reference/case-history.md`, keyed by token. The h
 
 **Governs:** ※1, built-in-tool-description adventitia.
 
-**⊨2. Damage a change does to content others cite is the change's.** When a change inserts into a numbered list, an ordered table, or any sequence cited by position, the renumbering and every citation it invalidates are its collateral damage. When a change deletes or renames a cited target, every citation left dangling is the same. Find them, report them, repair them in the same change; never classify them as pre-existing defects lying outside the diff.
+**⊨2. Damage a change does to content others cite is the change's.** When a change inserts into a numbered list, an ordered table, or any sequence cited by position, the renumbering and every citation it invalidates are its collateral damage. When a change deletes or renames a cited target, every citation left dangling is the same. Find them, report them, repair them in the same change.
 
 **Governs:** ※10, ※8.
 
-**⊨3. Replacement is not addition: purge the replaced thing's whole footprint.** When one tool, convention, or artifact replaces another, the same change deletes everything the old one owned (permission rules, environment-variable prefixes, config stanzas, aliases, inbound pointers), never left standing beside the new. A migration instruction phrased additively ("add a mirroring X") is itself the defect.
+**⊨3. Replacement is not addition: purge the replaced thing's whole footprint.** When one tool, convention, or artifact replaces another, the same change deletes everything the old one owned (permission rules, environment-variable prefixes, config stanzas, aliases, inbound pointers). A migration instruction phrased additively ("add a mirroring X") is itself the defect.
 
 **Governs:** §1, §2.
 
@@ -50,6 +50,6 @@ Origins and rationale live in `reference/case-history.md`, keyed by token. The h
 
 **Governs:** ※5, ※11, ※12.
 
-**⊨7. Every cycle terminates.** A remediation loop (review, resubmission, re-assay) carries a fixed iteration cap. Reaching the cap surfaces to the user with the residue carried, never a further round; a cap is not a budget to renegotiate at the boundary. The default cap for all remedial cycles is 3.
+**⊨7. Every cycle terminates.** A remediation loop (review, resubmission, re-assay) carries a fixed iteration cap. Reaching the cap surfaces to the user with the residue carried; a cap is not a budget to renegotiate at the boundary. The default cap for all remedial cycles is 3.
 
 **Governs:** ※3, ※8, ※12.

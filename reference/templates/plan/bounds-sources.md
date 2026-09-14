@@ -1,14 +1,14 @@
 # Governance Bounds — Source Map
 
-Bounds are not invented at phasing time. They are already written, in the plan folder's documents, as statements of what must not regress, what is out of scope, what was rejected, and what must hold at the end. Each table below converts those statements: a source section, the question to put to it, and the bound that answer yields. Work the table matching the section being written (plan-wide for `Overview.md`, phase-scoped for a `Phase-X.md`), row by row, skipping nothing.
+Bounds are not invented at phasing time. They are already written, in the plan folder's documents, as statements of what must not regress, what is out of scope, what was rejected, and what must hold at the end. Each table below converts those statements into bounds. Work the table matching the section being written (plan-wide for `Overview.md`, phase-scoped for a `Phase-X.md`), row by row, skipping nothing.
 
 ---
 
 ## Filters on every row's output
 
-A row's conversion produces a candidate, not a bound. Every bound traces to a specific, named element of the plan folder's documents, and since nothing in those documents names a command, a tree state or a search, no bound names one either. A limit tracing to no such element is invalid whatever its merits. Apply every filter below before writing anything into the list; a faithful quotation of the source clears none of them on its own.
+A row's conversion produces a candidate. Every bound traces to a specific, named element of the plan folder's documents; a limit tracing to no such element is invalid whatever its merits. Since nothing in those documents names a command, a tree state or a search, no bound names one either. Apply every filter below before writing anything into the list; a faithful quotation of the source clears none of them on its own.
 
-**Shape.** An enumerated list, one limit per item, each stated so that a reader holding only that item and the produced work can decide whether it was crossed: a countable threshold, a named file, directory or symbol set, a construct that must not appear, an artifact that must exist. The form is one citation plus one question: `plan file X directs A. Bound: Was A and no more than A implemented?` A bound stating an outcome to reach is a Goal; these lists hold only limits not to cross. A bound turning on "appropriately", "reasonable", "as needed", or "where it makes sense" can be argued either way and is therefore no limit: restate it as the observable it stands for, or drop it. Quote the source's own words rather than paraphrasing them; a paraphrase drifts from what was actually agreed, and the drift is invisible by the time anyone checks.
+**Shape.** An enumerated list, one limit per item, each stated so that a reader holding only that item and the produced work can decide whether it was crossed: a countable threshold, a named file, directory or symbol set, a construct that must not appear, an artifact that must exist. The form is one citation plus one question: `plan file X directs A. Bound: Was A and no more than A implemented?` A bound stating an outcome to reach is a Goal; these lists hold only limits not to cross. A bound turning on a qualifier that can be argued either way ("appropriately", "reasonable", "as needed", "where it makes sense") is no limit: restate it as the observable it stands for, or drop it. Quote the source's own words rather than paraphrasing them; a paraphrase drifts from what was actually agreed, and the drift is invisible by the time anyone checks.
 
 **Authority.** The element cited is a decision the user ratified, durable project canon, or a measurement, never the source document's own elaboration however well it reasons, and never another phase file. Quoting elaboration faithfully launders it into a bound, and every fidelity check on the quotation passes clean. Give prohibitions the closer look: an invented value reads as a claim and invites challenge, an invented prohibition reads as discipline and gets praised for caution. Where a candidate traces no further than elaboration, it stays in the source file's body as a design note.
 
@@ -17,13 +17,13 @@ Qualifications travel into the bound's own text. A hedge promoted to an assertio
 **Evaluability.** A governor evaluates each bound from the enumerated list alone, so the constraint's substance sits in the bound's own text and the citation carries its provenance. The subject must exist in this plan: a bound over an artifact no phase produces can never be crossed. An adjective no evidence decides leaves the bound; where it is load-bearing it becomes an Acceptance Criterion or an Open Question instead. These shapes fail as well:
 
 - **An intent clause** ("no alternative is derived", "none removed as redundant") asks after motive, which no evidence settles, so it returns undetermined every run. State the observable; move the reason into the citation.
-- **A bare ordinal** — "the columns listed in step 2". Restate the set by its defining property (§17).
+- **A bare ordinal** — "the columns listed in step 2". Restate the set by its defining property (∋4).
 - **A by-number citation without its file** — `bound 7` written in a phase file resolves to that phase's own bound 7. Write `Overview.md bound 7`. Where a quoted source numbers its provisions on a different scheme, gloss that numbering inside the quotation.
 - **Two bounds worded identically over different objects** collide into a false blocker, the plan-wide and phase-scoped lists being read as one. Name the object each governs.
 
 **Satisfiability.** No bound may require what another forbids, across both lists and against the phase files' Acceptance Criteria. A pair that cannot both hold is a halt already scheduled for orchestration time.
 
-**Self-execution.** Walk the phase's own Implementation Steps and Acceptance Criteria against the bound as if they had run. A bound the phase's own required work crosses is unsatisfiable however sound its intent; the remedy is a narrower bound naming the sanctioned write, never a weakened step.
+**Self-execution.** Walk the phase's own Implementation Steps and Acceptance Criteria against the bound as if they had run. Required work includes what doctrine obliges and no step states, a ※10 sweep or a ※8 chain step among them (⊢4). A bound the phase's own required work crosses is unsatisfiable however sound its intent; the remedy is a narrower bound naming the sanctioned write, never a weakened step.
 
 **Warrant.** Where the cited element says why the constraint must hold, that line travels with the bound, or the next author tidies the constraint away without ever seeing what it was holding. Where it says nothing, the bound carries nothing: a reason composed at phasing time traces to no element and is the defect this rule names.
 
@@ -33,11 +33,11 @@ An edit to a bound re-tests that bound against every filter, not only the one th
 
 ## Two ranks, not two scopes
 
-The split is by rank, not breadth. The plan-wide table produces the bounds governing the whole orchestration, immutable once the plan starts; the phase-scoped table produces bounds subordinate to those, admissible only on the tests in `Phase-X-template.md` § Governance Bounds. Several source sections appear in both tables, and a phase-scoped row yields nothing where a plan-wide row already covered it.
+The plan-wide table produces the bounds governing the whole orchestration, immutable once the plan starts; the phase-scoped table produces bounds subordinate to those, admissible only on the tests in `Phase-X-template.md` § Governance Bounds. Several source sections appear in both tables, and a phase-scoped row yields nothing where a plan-wide row already covered it.
 
 A phase bound narrowing a plan-wide one earns its "and …" clause by adding a fact the Overview cannot state: which subset this phase touches. Where the Overview already protects the object under the same warrant, strike the clause.
 
-**The gate.** A governor assays every bound set in the plan folder before orchestration begins, on the criteria `/orchestrate`'s Validate Boundaries step assembles: the filters above, plus two relational criteria it states there. A set that has not been through it is not ready to orchestrate.
+**The gate.** A governor assays every bound set in the plan folder before orchestration begins, on the criteria `/orchestrate`'s Validate Boundaries step assembles: the filters above, plus two relational criteria it states there. A bound set that has not been through that assay is not ready to orchestrate.
 
 ### The author's own assay
 

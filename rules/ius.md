@@ -1,6 +1,6 @@
 # Ius
 
-**Corpus**: all live content (code, tests, docs, or adventitia). The live collection, not the repository: content is live where something reaches it, whether a loader (residency, import, path rule, or harness injection), an invoker (a command, skill, agent, or script naming it), or a reference from something itself live. Archived, superseded, and unreached content is dead code, and dead code is not corpus.
+**Corpus**: all live content, adventitia included. Content is live where something reaches it: a loader (residency, import, path rule, harness injection), an invoker naming it, or a reference from something itself live. Archived, superseded, and unreached content is dead code, and dead code is not corpus.
 
 **Precepts**: all corpus that binds.
 
@@ -32,8 +32,6 @@
 **⊨ empirical resolutions** — the same office, a posteriori, surfaced in application.
 
 ## Senses
-
-The terms take on the following senses:
 
 - **Instrument** — the statutory sense: a class of enactment, not a single document.
 - **Provision** — the statutory sense: a discrete, citable clause.
@@ -84,7 +82,7 @@ A provision's token has four positions:
 
 Ambit files carry rubric as well as provisions.
 
-Instance is to one installation what Project is to one project. It outranks the universal ambit because it exists to override it, and yields to Project and Agent so a single project or agent can still deviate from an installation-wide decision. An Instance provision takes one of two forms:
+Instance outranks the universal ambit, which holds on every installation and so names no tool, path or peritus of one. It yields to Project and Agent so a single project or agent can still deviate from an installation-wide decision. An Instance provision takes one of two forms:
 
 - **Keyed** — headed by an existing universal token, which it overlays for this installation. The token keeps its number; location decides the ambit.
 - **Minted** — a fresh token in the `I` ambit, numbered from 1, for a provision the universal ambit does not supply at all.

@@ -14,10 +14,12 @@ Sources and grounding live in `reference/standards/english/principles.md`. Open 
 
 **§en5. Incongruent Relationals** — A relational process is realized congruently by the copula: `is`, `are`, `has`. A verb of action in that slot is grammatical metaphor, importing agency into a clause where nothing acts, and it names no relation the copula does not. (Halliday)
 
-**§en6. Metalinguistic Negation** — Negating a formulation before asserting the claim presupposes an interlocutor who offered that formulation. Where none did, the reader accommodates a false presupposition to reach a point that could have been asserted outright. (Horn, Lewis)
+**§en6. Metalinguistic Negation** — `Not X, but Y` negates a formulation before asserting the claim, presupposing an interlocutor who offered that formulation. Where none did, the reader accommodates a false presupposition to reach a point that could have been asserted outright. §en10 takes the postposed order. (Horn, Lewis)
 
 **§en7. Afterthought Tails** — An element appended after a clause has discharged its meaning is an extra-clausal Tail. A Tail naming a second thing the text leaves undeveloped spends the reader's attention on a payoff never delivered; real content there takes its own sentence. A heading or caption discharges its meaning the same way. (Dik)
 
 **§en8. Spelled Implicature** — A clause spelling out what the reader infers from what precedes it charges them for an effect already derived. ⊨6 supplies the reader. (Horn, Levinson)
 
 **§en9. Coda and Evaluation** — Labov's coda closes a telling and returns the reader to the present; his evaluation states why it was worth telling. Prose yields no floor and its page already marks the end, so a paragraph doing either replays what the text has delivered. (Labov)
+
+**§en10. Contrastive Negation** — `X, not Y` appends a rejected alternative to a clause that has already discharged its meaning. Focus needs an alternative the reader already holds; one salient enough to be worth saying earns an assertion of its own. Drop Y, or raise it to one. §en6 takes the preposed order. (Rooth, Silvennoinen)

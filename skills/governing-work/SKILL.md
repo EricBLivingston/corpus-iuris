@@ -19,7 +19,7 @@ Where the set lives — the first that applies:
 
 Fixed *before* is critical: a bound written afterward certifies whatever happened.
 
-Write each by defining shape, never by enumerated vocabulary; where no shape-wise assay exists, the bound names what it excludes (⊨4, §17).
+Write each per ∋4: a bound is both the gate's pattern and the verdict on it. Test each against ∋2.
 
 | Bound | Not a bound |
 | ---- | ---- |

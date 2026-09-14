@@ -11,7 +11,7 @@ Invoke the analyzer agent to optimize the indicated document.
 
 ### Optimize Document
 
-A. Apply these optimizations (this is a superset of ※11, restated and enhanced for focus and to underscore the imperative):
+A. Apply these optimizations (this is a superset of ∋1, restated and enhanced for focus and to underscore the imperative):
 
 1. **Lingua**: Apply each lingua the document carries, `§en` to its prose.
 2. **Redundancy**: Apply DRY principles jointly across all reviewed artifacts and always-loaded context. Two duplicates are legitimate and stay: an enumeration that **names the provision it enforces** (A's own parenthetical above is the model — an enumeration naming nothing gets no exception), and a passage carrying a reason or operational detail the source lacks.

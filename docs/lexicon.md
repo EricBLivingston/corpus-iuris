@@ -66,6 +66,7 @@ The terms below are also a taxonomy: they sort what binds from what does not, an
 | **Ambit** | The scope or reach of a rule: "within the ambit of the statute". | The reach position in a provision token: universal, one installation, one project, or one agent. |
 | **Lingua** | Latin: tongue, a language as such. | Scopes a provision to a language by membership, so `cc` reaches `.cc`, `.cpp`, and `.h` alike. |
 | ***Lex specialis*** | *Lex specialis derogat legi generali* — the specific rule displaces the general one. | Adopted intact as the precedence rule; the ambit ladder supplies the ranking it needs. |
+| **Titulus** | Roman law: a title of the Digest, gathering the jurists' opinions on one subject whatever work each came from. | A named pack of precepts, cited by one handle in place of re-enumerating its members. |
 | **Peritus** | Later civil and canon law: the expert a tribunal engages for an opinion it cannot reach itself. | An external AI model, engaged for peritia this session lacks. |
 | **Responsum** | Roman law: *responsa prudentium*, a jurist's written answer to the question as put, carrying the answerer's standing rather than an office's. | What a peritus returns, one per engagement, weighed against the artifact it claims and reaching no wider than the question asked. |
 | **Charter** | A founding instrument conferring powers on a body, and the measure of what that body may do. | The grant a piece of work runs under: the ask, the dispatch prompt, the plan and its ratified bounds, and any authorization issued under `※12`, together with the author who granted it. |
@@ -76,10 +77,11 @@ The terms below are also a taxonomy: they sort what binds from what does not, an
 | `※` | Kome / reference mark: in Japanese and Chinese typography, prefixes a note the reader must not miss. | Rare enough to arrest attention, and promoted from annotation to obligation: nothing it prefixes is optional. |
 | `⊢` `⊨` | Turnstiles: `Γ ⊢ φ`, "φ is derivable from Γ"; `M ⊨ φ`, "φ holds in model M". | The distinction carries over intact: `⊢` is derivable a priori from the provisions in hand, `⊨` needs a posteriori experience to show it. |
 | `⊬` `⊭` | The negated turnstiles: `Γ ⊬ φ`, "φ is not derivable from Γ"; `M ⊭ φ`, "φ does not hold in M". | Negation prefixes taking the site they sit on as the left operand, so `⊬§13` on a precept exempts that precept from `§13`. |
+| `∋` | Set membership, written from the set: `A ∋ x`, "A has x among its elements". | A titulus is a named set (§17). Its mark asserts membership and claims no additional authority, in aggregate or for its members. |
 
 Most of this vocabulary never leaves the ius. In ordinary use only the symbols surface, plus the occasional category name ("scan for doctrine violations"), while the rest works internally, resolving context rather than being recited.
 
-The definitions above are what the terms were selected for. What each one binds is set in `rules/ius.md`, which is where the corpus states them for itself.
+The definitions above are what the terms were selected for. What each one binds is set in `rules/ius.md` and `rules/tituli.md`, where the corpus states them for itself.
 
 ## Related pages
 

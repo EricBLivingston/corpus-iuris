@@ -22,7 +22,11 @@ Every call names both halves: `--provider openrouter` and an explicit `--model`.
 
 ## Invocation Floor
 
-These shapes cover every engagement. Both need `--provider openrouter`, an explicit roster `--model`, `-p`, and absolute paths in the prompt text. pi in print mode has no approval gate and no sandbox axis of its own — the call is single-shot text in, text out, and the invoking session's own permission mode governs the Bash call that launches it, so there is no privilege flag to choose and none to invent. An exit 0 is not success. One blocking foreground call, with the harness's own wait set to its maximum — a default wait cuts a long engagement off mid-run.
+These shapes cover every engagement. Both need `--provider openrouter`, an explicit roster `--model`, `-p`, and absolute paths in the prompt text. pi in print mode has no sandbox axis of its own: the call is single-shot text in, text out, and the invoking session's own permission mode governs the Bash call that launches it, so there is no privilege flag to choose and none to invent. Its approval mode is `always-ask`, which print mode cannot satisfy, so a tool call pi elects is denied. Inline everything the answer needs and name no path, since a named path invites the read that is about to be refused. An exit 0 is not success. One blocking foreground call, with the harness's own wait set to its maximum — a default wait cuts a long engagement off mid-run.
+
+**The prompt is the only control.** pi holds no canon of its caller's (`periti.md § The engagement`), and its default tools include `bash`, `find`, `grep` and `ls`, so a prompt that does not preclude a sweep permits one. Every call that could touch the filesystem closes, verbatim and last, with the no-shell clause, the mandate clause, and a scope line naming the paths the work is confined to. Whether pi honours them is unmeasured; the roots below are the backstop if it does not.
+
+**cwd is the workspace root**, extended by `--add-dir`; paths outside every root are fail-closed. Independently, pi discovers `AGENTS.md` / `CLAUDE.md` in the cwd and every ancestor directory, which only `--no-context-files` disables. Launch from the directory the work is in, and grant no root wider than the work: a root the scope line does not name is one the scope line cannot confine.
 
 | Placeholder | Model identifier |
 | ---- | ---- |
@@ -49,14 +53,28 @@ OUT=/absolute/path/to/scratchpad/assay.tsv
 : > "$OUT"
 
 for f in "$ROOT"/src/*.rs; do
-  ans=$(pi --provider openrouter --model {pi-micro} -p "Answer in one word, yes or no — does this file open a network connection?
+  ans=$(pi --provider openrouter --model {pi-micro} -p "Answer in one word, yes or no — does the file content below open a network connection?
 
-$(cat "$f")" 2>&1)
+$(cat "$f")
+
+Do NOT use shell commands, or your bash, find, grep or ls tools; everything you need is in this prompt.
+Never manipulate a database or a role, and never escalate to a superuser.
+Only search and operate within the following path(s): $ROOT" 2>&1)
   [ -z "$ans" ] && { echo "pi FAILED on $f" >&2; continue; }
   printf '%s\t%s\n' "$f" "$ans" >> "$OUT"
 done
 
 [ -s "$OUT" ] || echo "pi sweep produced nothing" >&2
+```
+
+The same sweep with a header naming the file, which is what the floor's no-path rule forbids:
+
+```bash
+  # NOT this — the header names a path, and pi opens what it already has
+  ans=$(pi --provider openrouter --model {pi-micro} -p "Answer in one word, yes or no — does this file open a network connection?
+
+--- FILE: $f ---
+$(cat "$f")" 2>&1)
 ```
 
 Sweep output goes to a file, never into the context window; read or grep the result afterwards.
@@ -85,6 +103,7 @@ A stored key may be a literal, `$ENV:VAR`, or `$CMD:command` resolved at request
 - **Empty stdout is a refusal or an auth failure**, not an empty finding. Run `pi doctor` first, then check the model identifier.
 - **A rejected model identifier** is checked against `pi --list-models | awk '$1=="openrouter"'`, not against memory — the roster is the provider's and it moves.
 - **`pi: command not found`, or a binary that vanished**, is an installation fault rather than a shape fault.
+- **A slow run whose answers carry the CLI's denial text**, others returning a bare `NONE`, is a prompt that invited a tool call. Measured against the same content: minutes per call with a path named above it, 1.4s with it inlined and no path. That pi retries the denial rather than surfacing it is inferred from the elapsed time, not observed.
 
 ## References
 
