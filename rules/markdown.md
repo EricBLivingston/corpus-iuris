@@ -10,4 +10,4 @@
 
 ## Rules
 
-**※md1** — After editing Markdown, lint every changed file with a Markdown linter providing check and auto-fix modes: run check to validate, auto-fix to format. Rely on its default user-level configuration discovery: author no per-repo config and pass no config flag.
+**※md1** — After editing Markdown, lint every changed file with a Markdown linter providing check and auto-fix modes: run check to validate, auto-fix to format.

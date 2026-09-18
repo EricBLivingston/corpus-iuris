@@ -14,4 +14,4 @@ Never disable a peritus's approval gate or sandbox, and never suppress its sessi
 
 ## Reference by class
 
-The periti installed on this instance are listed in its ⊢2 entry. That entry is the set's source of truth, so §17 governs every mention: name the class, or name the single peritus a sentence is actually about.
+The periti installed on this instance are listed in its ⊢2 entry. That entry comprises the §17 class.

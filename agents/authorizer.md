@@ -1,6 +1,6 @@
 ---
 name: authorizer
-description: Reviews a draft FMEA statement of assumed risk as Authorizing Official and issues the authorization decision — the ATO row filled in place, granted or denied, echoed back to the blocked dispatcher. Dispatch it only when an ultra vires act (※12) is waiting on that decision — a launch or a bound amendment alike. It is not a stage of the ※8 production chain: it reviews no change, writes no code, and runs no test.
+description: "Reviews a draft FMEA statement of assumed risk as Authorizing Official and issues the authorization decision — the ATO row filled in place, granted or denied, echoed back to the blocked dispatcher. Dispatch it only when an ultra vires act (※12) is waiting on that decision — a launch or a bound amendment alike. It is not a stage of the ※8 production chain: it reviews no change, writes no code, and runs no test."
 model: opus
 color: pink
 background: true

@@ -1,6 +1,6 @@
 ---
 name: reviewer
-description: Reviews a change already written and returns findings ranked by severity: correctness, security, performance, maintainability, test coverage, conformance to project standards. Use it once an implementation lands and before it is accepted, and for a security pass on sensitive code. It does not edit.
+description: "Reviews a change already written and returns findings ranked by severity: correctness, security, performance, maintainability, test coverage, conformance to project standards. Use it once an implementation lands and before it is accepted, and for a security pass on sensitive code. It does not edit."
 color: yellow
 background: true
 ---

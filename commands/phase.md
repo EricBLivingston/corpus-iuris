@@ -1,5 +1,5 @@
 ---
-description: Converts the Spec-Driven Development specs into the folder orchestrate consumes: an Overview carrying what more than one phase needs, one Phase-N file of work each, superseded specs archived. Takes the plan folder; use between authoring the specs and executing them.
+description: "Converts the Spec-Driven Development specs into the folder orchestrate consumes: an Overview carrying what more than one phase needs, one Phase-N file of work each, superseded specs archived. Takes the plan folder; use between authoring the specs and executing them."
 argument-hint: "[plan-folder]"
 model: sonnet
 ---

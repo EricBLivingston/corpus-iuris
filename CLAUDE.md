@@ -10,6 +10,6 @@ When the user asks to adopt or configure this corpus for Claude Code:
 2. Inspect the live Claude Code configuration read-only, report the proposed changes and conflicts, and obtain explicit user authorization before writing outside this clone.
 3. If authorized, copy per `installing.md`, then write the installation's instance file from `instance-example.md` into `~/.claude/rules/`. It goes in after the copy rather than before it, for the reason `installing.md` § What you supply gives. A file copied into `~/.claude/rules/` without `paths` frontmatter is resident at the next session start, so the copy is the admission and no later step will hold it.
 
-Work inside a `transforms/<harness>/` subtree is governed by the `AGENTS.md` sitting there, which Claude Code does not load on its own. Read it before editing that subtree.
+Work inside a `transforms/<harness>/` subtree is governed by the `AGENTS.md` sitting there. Read it before editing that subtree.
 
 For other work, follow the user's requested scope.
