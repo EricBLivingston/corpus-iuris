@@ -11,6 +11,7 @@ authors:
   - given-names: Eric
     family-names: Livingston
     alias: EricBLivingston
+    orcid: "https://orcid.org/0000-0002-4393-8096"
 repository-code: "https://github.com/EricBLivingston/corpus-iuris"
 license: CC-BY-SA-4.0
 keywords:

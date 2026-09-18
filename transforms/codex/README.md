@@ -4,7 +4,7 @@ This package turns the shared Corpus Iuris sources into a coherent Codex install
 
 ## For an adopting Codex
 
-The root `installing.md` § Three surfaces governs the separation between the working clone, the installed corpus, and the user's live Codex configuration, and its § On Codex states what makes an artifact resident here. What this package adds is where each piece lands and the admission order, below.
+The root `installing.md` § The installation sequence governs the separation between the working clone, the installed corpus, and the user's live Codex configuration, and its § On Codex states what makes an artifact resident here. What this package adds is where each piece lands and the admission order, below.
 
 This repository is designed to guide its own adoption. When a user points Codex at the repository URL, the expected journey is:
 

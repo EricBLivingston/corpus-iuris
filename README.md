@@ -2,7 +2,7 @@
 
 ![Corpus Iuris: the three goals, the four instruments, and the spec-driven development layer](docs/diagrams/framework-overview.svg)
 
-This repository contains my own "Body of Rules" for directing agentic work, in three parts: a lexicon and a structure that let a rule be cited rather than restated, a Spec-Driven Development pipeline that turns a request into phased work, and a production chain that executes one phase under a governance apparatus holding every act to limits written before the work began. The base is harness-neutral, Claude Code is the harness I run it on, and [`adopting.md`](adopting.md) and the `transforms/` packages carry it to others: a package ships for Codex and one for Grok. It is highly opinionated; it represents how I think of, design, and build code, and is expected to be more of a structural model and example of how you might implement a similar set of precepts.
+This repository contains my own "Body of Rules" for directing agentic work, in three parts: a lexicon and a structure that make a rule stand out from the background and resolve to a single defining site, a Spec-Driven Development pipeline that turns a request into phased work, and a production chain that executes one phase under a governance apparatus holding every act to limits written before the work began. The base is harness-neutral, Claude Code is the harness I run it on, and [`adopting.md`](adopting.md) and the `transforms/` packages carry it to others: a package ships for Codex and one for Grok. It is highly opinionated; it represents how I think of, design, and build code, and is expected to be more of a structural model and example of how you might implement a similar set of precepts.
 
 ## What the corpus is
 

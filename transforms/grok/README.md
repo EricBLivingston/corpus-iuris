@@ -10,7 +10,7 @@ The only prerequisite is Grok Build. Unlike the Codex transform, this package sh
 
 ## For an adopting Grok
 
-The root `installing.md` § Three surfaces governs the separation between the working clone, the installed corpus, and the user's live Grok configuration, and the copy steps below run the model it carries.
+The root `installing.md` § The installation sequence governs the separation between the working clone, the installed corpus, and the user's live Grok configuration, and the copy steps below run the model it carries.
 
 This repository is designed to guide its own adoption. When a user points Grok at the repository URL, the expected journey is:
 
