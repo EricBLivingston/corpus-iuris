@@ -2,7 +2,7 @@
 
 Directives for all Rust development. Rust 2021 edition+.
 
-> **Bare-integer `§N` sections here restate, in Rust-specific form, the canonically defined universal principles** — the sections below elaborate each with Rust-specific mechanisms (type system, lifetimes, tracing, etc.). Genuine lingua extensions **owned by this file** use the `§rs` prefix. This file acts as the lingua proxy for the `rs` namespace — a finding citing "§rs2" means "Memory Efficiency" everywhere this file is in scope. §14's `AppConfig` + `AppContext` mechanics are elaborated jointly under §7.
+> Bare-integer `§N` sections here restate, in Rust-specific form, the canonically defined universal principles — the sections below elaborate each with Rust-specific mechanisms (type system, lifetimes, tracing, etc.). Genuine lingua extensions owned by this file use the `§rs` prefix. This file acts as the lingua proxy for the `rs` namespace — a finding citing "§rs2" means "Memory Efficiency" everywhere this file is in scope. §14's `AppConfig` + `AppContext` mechanics are elaborated jointly under §7.
 
 ---
 
@@ -10,10 +10,10 @@ Directives for all Rust development. Rust 2021 edition+.
 
 | § | Principle | Summary |
 | --- | --- | --- |
-| **§rs1** | **Workspace Boundaries** | Clear crate separation; shared types in common crates |
-| **§rs2** | **Memory Efficiency** | Right string type, shared alias module, fixed-size collections |
-| **§rs3** | **Safety and Linting** | `forbid(unsafe_code)`, `warn(clippy::all)` in every crate |
-| **§rs4** | **Code Quality** | Conventions checklist for idiomatic Rust |
+| §rs1 | **Workspace Boundaries** | Clear crate separation; shared types in common crates |
+| §rs2 | **Memory Efficiency** | Right string type, shared alias module, fixed-size collections |
+| §rs3 | **Safety and Linting** | `forbid(unsafe_code)`, `warn(clippy::all)` in every crate |
+| §rs4 | **Code Quality** | Conventions checklist for idiomatic Rust |
 
 ---
 
@@ -125,7 +125,7 @@ Use `tracing` with structured, leveled output.
 | `trace` | Fine-grained execution flow |
 
 - Named targets for cross-cutting concerns (e.g., `target: "audit"`)
-- `fmt::init()` with no `RUST_LOG` set logs **only** `error` — `EnvFilter::from_default_env()` falls back to `LevelFilter::ERROR`. Override with `.with_default_directive(LevelFilter::INFO.into())` (§3)
+- `fmt::init()` with no `RUST_LOG` set logs only `error` — `EnvFilter::from_default_env()` falls back to `LevelFilter::ERROR`. Override with `.with_default_directive(LevelFilter::INFO.into())` (§3)
 - `Level` orders by verbosity, not severity: `trace > debug > info > warn > error`. `LevelFilter::WARN` is a *maximum* — it permits `warn` and `error`
 
 ## §11. Production Code Primacy

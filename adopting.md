@@ -20,15 +20,15 @@ The decisions below come one provision at a time, and that file is the mechanism
 
 ## Taking a provision you do not want as written
 
-These routes differ in cost and in what they leave behind rather than in legitimacy. What separates them is the fate of the token: whether it still resolves to the same provision on both sides, and what a reader finds where it does not.
+These routes differ in cost and in what they leave behind rather than in legitimacy. What separates them is the fate of the token: whether it still resolves to the same provision on both sides, and what a reader finds where it does not. A removal is complete when the citations to it are gone from your live corpus. One provision is a text search and a few edits; an instrument costs what cites it, caselaw included. Stubbing and keying over leave every citation in place and resolving.
 
 | Strategy | Root corpus | Instance ambit | Best for |
 | ---- | ---- | ---- | ---- |
 | **Key over** | provision stays as published | one keyed entry replacing what conflicts | anything from a narrowing to a wholesale rewrite, as long as it still answers the question the original asked |
 | **Key over to disable** | provision stays as published | one keyed entry disabling it | a provision your environment contradicts outright, where the number should stay resolvable |
-| **Omit** | provision removed, number left vacant | nothing | a provision with no subject here at all, and no replacement |
+| **Omit** | provision removed, every citation to it swept | nothing | a provision with no subject here at all, and no replacement |
 | **Omit and replace** | provision removed | the replacement, minted whole | a replacement with nothing left of the original to reconcile |
-| **Transpose at staging** | provision stripped or stubbed on its way to production | nothing | more provisions than you want resident rows for, taken out an instrument at a time |
+| **Transpose at staging** | provision stubbed, or stripped with its citations, on its way to production | nothing | more provisions than you want resident rows for |
 
 Key over is the mechanism the ius is built around: a keyed entry *overlays* its base rather than displacing it, so it scales from the smallest tweak to a wholesale rewrite without changing form, and with no root omission. Whatever you do not restate stays live and keeps merging with our revisions, and the token resolves to the same provision on both sides, which is what the citation-resolution argument below asks for. It costs one row of resident context.
 
@@ -38,9 +38,9 @@ Omit is for a provision with no subject on your installation at all, rather than
 
 Omit and replace gives you a full replacement at zero residual cost in root, but the number then denotes your provision in your corpus and ours in ours. If we later revise ours in a way you would have wanted, taking that revision is manual work and nothing will tell you it happened. How much that matters depends on how closely you expect to track us. Prefer keying over wherever your replacement still answers the question the original was asking.
 
-Transpose at staging is the bulk instrument, and it is the strongest reason for the staging surface `installing.md` puts between the clone and production. Reconciliation is what staging is described there for; mutability is what it gives you. Everything in staging is yours to rewrite before any of it becomes resident, so a script in the clone-to-staging path can rewrite the canon files themselves and hand production a corpus already shaped to your installation. That is how a whole instrument comes out in one pass, where keying each provision over would cost a resident row apiece. Keep the rewrite in the script rather than editing staging by hand: every pull re-mirrors the clone into staging, so a hand edit is recovered by hand every cycle, where a script reapplies itself.
+Transpose at staging is the bulk instrument, and it is the strongest reason for the staging surface `installing.md` puts between the clone and production. Reconciliation is what staging is described there for; mutability is what it gives you. Everything in staging is yours to rewrite before any of it becomes resident, so a script in the clone-to-staging path can rewrite the canon files themselves and hand production a corpus already shaped to your installation. A run of provisions is stubbed in one pass, where keying each one over would cost a resident row apiece. Keep the rewrite in the script rather than editing staging by hand: every pull re-mirrors the clone into staging, so a hand edit is recovered by hand every cycle, where a script reapplies itself.
 
-The script either strips a provision or stubs it, and choosing turns on that same citation-resolution argument. Stripping outright is Omit performed in bulk: the number vacates, and every citation to it from a file you kept dangles. Stubbing (its token, its heading, and a body stating that it does not apply on this installation) leaves those citations resolving, and resolving to the decision. Strip a provision nothing else cites; stub one that anything you kept still cites.
+The script strips a provision or stubs it, and the citation-resolution argument decides which. Stripping vacates the number, so the script's second job is every citation to it in the files you kept, a sweep growing with each provision taken. Stubbing (its token, its heading, and a body stating that it does not apply on this installation) leaves those citations resolving to the decision, with no sweep behind it.
 
 ## What we recommend, and why
 
@@ -49,6 +49,8 @@ Key over in your instance file wherever the provision still has a subject here. 
 The reason is citation resolution. A global token is worth having only if it means the same provision in your corpus and in ours; that is what lets a provision be cited in a document that travels between them. Renumber root to close a gap and your `※5` stops being our `※5`. The failure is silent: a citation to a removed provision fails loudly and gets noticed, while a citation that resolves to a *different* provision because the numbers shifted underneath it does not.
 
 Root moving underneath you is the one case where that failure is not silent. Our numbers are not frozen, but a release that disturbs one is tagged accordingly: `README.md` § Versioning states what each version tag means and what a MAJOR one obliges you to go re-read.
+
+Distance from the published corpus correlates to greater caselaw disruption. A ruling whose `Governs:` line names a provision you stripped comes out with it, and its holding over the provisions you kept goes too. A stubbed provision leaves its rulings resolvable and inert, and one that composed the stub with provisions you kept still recounts the collision it settled, carrying the removed force back by paraphrase. Read whatever names what you stubbed. The corpus is tuned as a whole; a heavy rewrite reaches further than we can predict or support.
 
 A gap also keeps the decision reversible. Skipping a provision reads your environment as it stands, and environments gain mechanisms; the vacant number is the home it returns to if yours does. A keyed entry is more reversible still (deleting the row restores the base), which is another reason to prefer it wherever the provision has a subject to key over at all.
 

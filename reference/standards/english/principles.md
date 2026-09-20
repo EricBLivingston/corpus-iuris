@@ -4,55 +4,59 @@ What each `§en` provision reaches, what it leaves alone, and the assay that dec
 
 ## §en1
 
-The relations are Halliday's **logico-semantic relations** of expansion: elaboration, extension, enhancement. The colon takes elaboration as a genus; `i.e.` and `e.g.` take two of its species, exposition and exemplification. Enhancement (temporal, causal, conditional) has no reserved stop: a conjunction states it, or the reader infers it. The aside belongs to no category in the system; the mapping is working guidance, not a reproduction of the taxonomy.
+The relations are Halliday's logico-semantic relations of expansion: elaboration, extension, enhancement. The colon takes elaboration as a genus; `i.e.` and `e.g.` take two of its species, exposition and exemplification. Enhancement (temporal, causal, conditional) has no reserved stop: a conjunction states it, or the reader infers it. The aside belongs to no category in the system; the mapping is working guidance, not a reproduction of the taxonomy.
 
 ## §en2
 
-**Information focus** is Halliday's: unmarked on the final element, marked anywhere else, and speech marks it by placing the tonic. Prose has no tonic, so it realizes marked focus by syntax: a thematic equative carrying the element to final position, or an it-cleft rendering the remainder Given. Bold on the final element duplicates a signal the structure already supplies.
+Information focus is Halliday's: unmarked on the final element, marked anywhere else, and speech marks it by placing the tonic. Prose has no tonic, so it realizes marked focus by syntax: a thematic equative carrying the element to final position, or an it-cleft rendering the remainder Given. Bold on the final element duplicates a signal the structure already supplies.
 
 ## §en3
 
-Mann and Thompson's **multinuclear** relations hold spans of equal status; Joint asserts nothing beyond adjacency, and the provision's reorder test finds it. Sequence, being ordered, never presents. Contrast survives reordering while carrying a relation: a paragraph pair that signals it has met the second remedy and was never the defect.
+Mann and Thompson's multinuclear relations hold spans of equal status; Joint asserts nothing beyond adjacency, and the provision's reorder test finds it. Sequence, being ordered, never presents. Contrast survives reordering while carrying a relation: a paragraph pair that signals it has met the second remedy and was never the defect.
 
 The relation the second remedy asks for is one of Halliday and Hasan's cohesive ties (reference, substitution, ellipsis, conjunction, lexical cohesion): a paragraph depends on what the one before it established.
 
 ## §en4
 
-**Procatalepsis** raises an objection in order to answer it; **concessio** grants a point before turning it. Both presuppose an interlocutor whose position is in play; prose with none manufactures one, and the manufacture is the defect. Where the opposing position is really held, the figures carry no fault.
+Procatalepsis raises an objection in order to answer it; concessio grants a point before turning it. Both presuppose an interlocutor whose position is in play; prose with none manufactures one, and the manufacture is the defect. Where the opposing position is really held, the figures carry no fault.
 
 The figure is outside ⊨6 and §en6. ⊨6's defect is a clause guarding against a misreading, where an objection raised in order to be answered guards nothing. §en6 requires a negated formulation, which the figure need not carry: "One might object that the cache grows unbounded; it is capped at 4 MB" has none. An objection raised as a rejected formulation is reached by both, and their verdicts agree.
 
 ## §en5
 
-Halliday's relational process has verbs of its own (`be` and `have` unmarked; `represent`, `mean` and `play` among the identifying ones), and **grammatical metaphor** is a meaning realized through a form typically used for another. The assay is positional, so there is no list of offending verbs: a verb whose lexical content implies action, in a slot where nothing acts. A relational verb with content of its own (`represent`, `remain`) names a relation the copula does not and is outside the provision.
+Halliday's relational process has verbs of its own (`be` and `have` unmarked; `represent`, `mean` and `play` among the identifying ones), and grammatical metaphor is a meaning realized through a form typically used for another. The assay is positional, so there is no list of offending verbs: a verb whose lexical content implies action, in a slot where nothing acts. A relational verb with content of its own (`represent`, `remain`) names a relation the copula does not and is outside the provision.
 
 ## §en6
 
-Horn's **metalinguistic negation** targets the aptness of a formulation rather than the truth of a proposition: "it is not X, it is Y" with X rejected as a wording. "Not only X but Y" downgrades a formulation the reader did not offer and is inside the provision, though it carries no negation in Horn's sense.
+Horn's metalinguistic negation targets the aptness of a formulation rather than the truth of a proposition: "it is not X, it is Y" with X rejected as a wording. "Not only X but Y" downgrades a formulation the reader did not offer and is inside the provision, though it carries no negation in Horn's sense.
 
 ## §en7
 
-Dik's **Tail** is the extra-clausal constituent after the clause, added to clarify or modify what the clause has said. Function defines it, and prose sets one off by punctuation.
+Dik's Tail is the extra-clausal constituent after the clause, added to clarify or modify what the clause has said. Function defines it, and prose sets one off by punctuation.
 
 ## §en8
 
-What the reader infers is the stereotypical enrichment of what is said, Levinson's **I-heuristic**. An imperative is not an inference, a diagnosis being compatible with several responses, so a remedy stated after a fault is not spelled implicature and §en3, §en4 and §en7 keep their closing instructions. A consequence clause is not §en7's Tail, which names a second thing left undeveloped where a consequence names nothing. Analyticity passes the construction: a consequence follows from how the world works rather than from what the words mean, and is spelled implicature all the same.
+What the reader infers is the stereotypical enrichment of what is said, Levinson's I-heuristic. An imperative is not an inference, a diagnosis being compatible with several responses, so a remedy stated after a fault is not spelled implicature and §en3, §en4 and §en7 keep their closing instructions. A consequence clause is not §en7's Tail, which names a second thing left undeveloped where a consequence names nothing. Analyticity passes the construction: a consequence follows from how the world works rather than from what the words mean, and is spelled implicature all the same.
 
 ## §en9
 
-Labov's **coda** returns the hearer to the present to mark the telling over; **evaluation** answers "so what?", and reaches prose as the drawn moral. Bulk licenses nothing: RST's **Summary**, a satellite shorter than its nucleus, is still a coda once the nucleus is read. An abstract, a description or an Overview file escapes by function: its text is still unread, so it closes no telling and evaluates none. A closing paragraph escapes the same way where it delivers what the text has not.
+Labov's coda returns the hearer to the present to mark the telling over; evaluation answers "so what?", and reaches prose as the drawn moral. Bulk licenses nothing: RST's Summary, a satellite shorter than its nucleus, is still a coda once the nucleus is read. An abstract, a description or an Overview file escapes by function: its text is still unread, so it closes no telling and evaluates none. A closing paragraph escapes the same way where it delivers what the text has not.
 
 ## §en10
 
-Rooth's **alternative semantics** makes a focused constituent evoke a set of alternatives that context must supply; Roberts' **Question Under Discussion** is the same requirement one level up. Horn's **descriptive** negation operates here, against §en6's metalinguistic kind, which is what divides the two provisions; word order only tracks it. Silvennoinen takes both orderings as one construction family.
+Rooth's alternative semantics makes a focused constituent evoke a set of alternatives that context must supply; Roberts' Question Under Discussion is the same requirement one level up. Horn's descriptive negation operates here, against §en6's metalinguistic kind, which is what divides the two provisions; word order only tracks it. Silvennoinen takes both orderings as one construction family.
 
 Licensed where the text already put Y in play: a table column holding it, a preceding sentence naming it, a citation stating the rejected reading. The assay turns on the reader's state: would they have taken Y without the correction?
 
 ## §en11
 
-Quirk's **style disjunct** comments on the act of uttering (*honestly*, *frankly*, *plainly*, *briefly*); his **content disjunct** comments on the proposition, as *plainly* does in "or plainly will". The assay is the scope of the comment: the saying, or the said. Brevity and plainness run against **Manner** as candour runs against Quality.
+Quirk's style disjunct comments on the act of uttering (*honestly*, *frankly*, *plainly*, *briefly*); his content disjunct comments on the proposition, as *plainly* does in "or plainly will". The assay is the scope of the comment: the saying, or the said. Brevity and plainness run against Manner as candour runs against Quality.
 
 Licensed where the contrast is real: the text hedged, and this clause does not, so the reader already holds the alternative. The assay is the reader's state, as in §en10: reading the unmarked version, would they have doubted? An instruction to be plain is discharged the same way, by plainness, never by the word.
+
+## §en12
+
+Mann and Thompson's Preparation satellite increases the reader's readiness for the nucleus. A forward orientation supplying what the reader needs to interpret the nucleus is Background, outside the provision. The assay is entailment: a candidate the nucleus entails goes. Metatext goes regardless, being about the text rather than its subject. Not reached: a topic sentence its span supports, support not entailing its claim; a span whose nucleus is still unread, which §en9 licenses for an abstract or an Overview file. §en8 reaches this redundancy after the claim rather than before it.
 
 ## Sources
 

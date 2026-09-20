@@ -20,7 +20,7 @@ The main goals of the system are:
 
 ## Who this is for
 
-This corpus targets production software engineering: a persistent codebase developed using a Spec-Driven Development pipeline. It is highly opinionated; it represents how I think of, design, and build code. Much of it may be wrong for you, and you may wish to skip or change individual provisions or entire sections; adopting.md documents the methods for doing so: overlay a provision, negate it at whatever ambit fits, or transpose it out of your copy before it reaches production. Other practices are welcome to take the corpus as a source of inspiration; they are not actively supported.
+This corpus targets production software engineering: a persistent codebase developed using a Spec-Driven Development pipeline. It is highly opinionated; it represents how I think of, design, and build code. Much of it may be wrong for you, and [`adopting.md`](adopting.md) documents the routes: overlay a provision, negate it at whatever ambit fits, stub it out in staging, or remove it and sweep the citations to it. A removal is complete when its sweep is, and the sweep grows with what you take; the corpus is tuned as a whole, so the further you move off what we publish, the less of its behavior we can predict. Other practices are welcome to take the corpus as a source of inspiration; they are not actively supported.
 
 ## Entry points
 
@@ -120,7 +120,7 @@ Every empirical claim above rests on published work, listed on [the references p
 
 ## Versioning
 
-Releases are tagged `MAJOR.MINOR.PATCH`, and relate to whether a keyed overlay you wrote against a provision still means what you meant by it. **MAJOR** says a token was renumbered, retired, or had its holding changed. **MINOR** says a token was added and nothing existing moved; **PATCH** is prose, examples and corrections, changing no holding.
+Releases are tagged `MAJOR.MINOR.PATCH`, and relate to whether a keyed overlay you wrote against a provision still means what you meant by it. **MAJOR** is a breaking change: a token renumbered or retired, a holding altered, an instrument added, the token grammar changed. **MINOR** says a token was added and nothing existing moved; **PATCH** is prose, examples and corrections, changing no holding. While the leading digit is 0, a MAJOR change bumps the middle digit; 1.0.0 arrives with a release that installs cleanly across scenarios.
 
 ## Prerequisites
 

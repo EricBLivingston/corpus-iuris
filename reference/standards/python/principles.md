@@ -2,7 +2,7 @@
 
 Directives for all Python development. Python 3.12+.
 
-> **Bare-integer `§N` sections here restate, in Python-specific form, the canonically defined universal principles** — the sections below elaborate each with Python-specific mechanisms (Pydantic, typing, imports, etc.). Genuine lingua extensions **owned by this file** use the `§py` prefix. This file acts as the lingua proxy for the `py` namespace — a finding citing "§py3" means "Pydantic Patterns" everywhere this file is in scope. §14's `AppConfig` + `AppContext` mechanics are elaborated jointly under §7.
+> Bare-integer `§N` sections here restate, in Python-specific form, the canonically defined universal principles — the sections below elaborate each with Python-specific mechanisms (Pydantic, typing, imports, etc.). Genuine lingua extensions owned by this file use the `§py` prefix. This file acts as the lingua proxy for the `py` namespace — a finding citing "§py3" means "Pydantic Patterns" everywhere this file is in scope. §14's `AppConfig` + `AppContext` mechanics are elaborated jointly under §7.
 
 ---
 
@@ -10,13 +10,13 @@ Directives for all Python development. Python 3.12+.
 
 | § | Principle | Summary |
 | --- | --- | --- |
-| **§py1** | **Code Standards** | File layout, imports, docstrings, PEP 8 |
-| **§py2** | **Method Signatures** | Keyword-only optional args, explicit return types |
-| **§py3** | **Pydantic Patterns** | No single-field subclasses, no structural duplicates, no field duplication |
-| **§py4** | **Immutable Value Objects** | Dataclasses: frozen, slots, kw\_only; named fields over tuple unpacking |
-| **§py5** | **Modern Type Syntax** | PEP 695 type params, `Self`, `@override`, `StrEnum`, `Protocol` |
-| **§py6** | **Attribute Provenance** | Bare names for borrowed refs; underscore prefix for owned state |
-| **§py7** | **Top-Level Imports** | All imports at module top; scoped imports require documented precondition |
+| §py1 | **Code Standards** | File layout, imports, docstrings, PEP 8 |
+| §py2 | **Method Signatures** | Keyword-only optional args, explicit return types |
+| §py3 | **Pydantic Patterns** | No single-field subclasses, no structural duplicates, no field duplication |
+| §py4 | **Immutable Value Objects** | Dataclasses: frozen, slots, kw\_only; named fields over tuple unpacking |
+| §py5 | **Modern Type Syntax** | PEP 695 type params, `Self`, `@override`, `StrEnum`, `Protocol` |
+| §py6 | **Attribute Provenance** | Bare names for borrowed refs; underscore prefix for owned state |
+| §py7 | **Top-Level Imports** | All imports at module top; scoped imports require documented precondition |
 
 ---
 
@@ -49,7 +49,7 @@ Config stores values via Pydantic models only. Create once at entry point, pass 
 - All defaults belong in Pydantic model `Field()` definitions, not scattered through code
 - Values subject to change (model names, thresholds, paths) come from config, never hardcoded
 - Use `None` default + assign from config in body -- never use function defaults for configurable values
-- **Never** instantiate global config for import elsewhere
+- Never instantiate global config for import elsewhere
 
 ## §4. Strict Typing
 
@@ -60,9 +60,9 @@ All code typed. Use `from __future__ import annotations`.
 - Keep Pydantic models intact through domain logic; only `model_dump()` at serialization boundaries (JSON output, prompt construction, API responses, CSV export)
 - Gradual migration: new code fully typed, modified code adds types opportunistically
 
-**Serialization boundaries** (where `model_dump()` is appropriate): JSON files, LLM prompts, spreadsheets, external APIs, logging.
+Serialization boundaries (where `model_dump()` is appropriate): JSON files, LLM prompts, spreadsheets, external APIs, logging.
 
-**Never `model_dump()` for**: passing between internal functions, temporary variables, method parameters within the codebase.
+Never `model_dump()` for: passing between internal functions, temporary variables, method parameters within the codebase.
 
 ## §5. Required means Required
 
@@ -83,17 +83,17 @@ Let exceptions bubble. Use specific exception types with actionable context.
 
 ## §7. Composition Over Implicit Context (covers universal §14)
 
-This section elaborates two universal clusters: **§7** (no globals, thread-locals, or ambient state) and **§14** (the `AppConfig` + `AppContext` construction shape, single source of truth, leaf-node extraction). They are presented together because in Python the mechanisms for both — Pydantic-frozen `AppConfig`, constructor injection, no module-level singletons — are the same set of techniques.
+This section elaborates two universal clusters: §7 (no globals, thread-locals, or ambient state) and §14 (the `AppConfig` + `AppContext` construction shape, single source of truth, leaf-node extraction). They are presented together because in Python the mechanisms for both — Pydantic-frozen `AppConfig`, constructor injection, no module-level singletons — are the same set of techniques.
 
 Use the `AppConfig` + `AppContext` construction pattern.
 
-- **`AppConfig`** holds all static external values: config files (TOML/YAML/JSON), environment variables, CLI parameters. Deserialized once at startup, validated, never mutated. Holds values, not resources.
-- **`AppContext`** holds `AppConfig` plus the app-wide resources constructed from it: database connection pools, API clients, HTTP clients, message queues, file handles, singleton services. Expensive to construct, app-lifetime, shared across the codebase.
-- **Constructed once** at the entry point (app factory or `main()`) from a validated `AppConfig`.
-- **Passed as the single source of truth** for both configuration and derived resources throughout the application's lifetime.
-- Components receive `AppContext` via **constructor injection**, then extract specific values/resources at leaf nodes (`ctx.config.database.url`, `ctx.db_pool`).
-- **Never reconstruct** a resource that already exists in `AppContext` — use the instance from the context object.
-- **No global state**: never `from mypackage.config import config`, no module-level singletons, no "get X" free functions that reach for hidden state.
+- `AppConfig` holds all static external values: config files (TOML/YAML/JSON), environment variables, CLI parameters. Deserialized once at startup, validated, never mutated. Holds values, not resources.
+- `AppContext` holds `AppConfig` plus the app-wide resources constructed from it: database connection pools, API clients, HTTP clients, message queues, file handles, singleton services. Expensive to construct, app-lifetime, shared across the codebase.
+- Constructed once at the entry point (app factory or `main()`) from a validated `AppConfig`.
+- Passed as the single source of truth for both configuration and derived resources throughout the application's lifetime.
+- Components receive `AppContext` via constructor injection, then extract specific values/resources at leaf nodes (`ctx.config.database.url`, `ctx.db_pool`).
+- Never reconstruct a resource that already exists in `AppContext` — use the instance from the context object.
+- No global state: never `from mypackage.config import config`, no module-level singletons, no "get X" free functions that reach for hidden state.
 
 Use Pydantic for `AppConfig` with `model_config = ConfigDict(frozen=True)` to enforce immutable semantics. Construct `AppContext` at the entry point and pass via constructor injection everywhere.
 
