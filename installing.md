@@ -12,13 +12,15 @@ The installation (or update) involves three file trees:
 
 These locations are used in the following sequence:
 
-1. Pull the clone.
-2. Mirror the clone to staging.
+1. Pull the clone. On Windows, clone to a short root or set `git config --global core.longpaths true`; otherwise the clone fails partway with `Filename too long`.
+2. Mirror the clone to staging, and run any transposition script there.
 3. Diff staging against production.
 4. Fold into staging what that diff turned up on the production side: the drift worth keeping, and your own local modifications.
 5. Once staging is correct, copy it into production in one pass.
 
 The clone isn't modified locally so the next pull is non-destructive. Staging is the area where changes are made that affect neither the repo, nor production, and thus is the safe place to reconcile differences before they reach the live environment. Production comprises the folders and files the harness auto-loads with each session; thus, changes there are immediate and persistent.
+
+A first install is where staging earns its place most: it is the last surface on which the corpus is mutable before any of it becomes resident, which is what `adopting.md` § Taking a provision you do not want as written needs of it. Production holds nothing to diff against yet, so the diff and the fold turn up nothing and the copy is the whole of the install.
 
 ## Why not a symlink
 

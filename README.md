@@ -2,9 +2,9 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22832260.svg)](https://doi.org/10.5281/zenodo.22832260)
 
-![Corpus Iuris: the three goals, the four instruments, and the spec-driven development layer](docs/diagrams/framework-overview.svg)
+![Corpus Iuris: the three goals, the four instruments, and the Spec-Driven Development layer](docs/diagrams/framework-overview.svg)
 
-This repository contains my own "Body of Rules" for directing agentic work, in three parts: a lexicon and a structure that make a rule stand out from the background and resolve to a single defining site, a Spec-Driven Development pipeline that turns a request into phased work, and a production chain that executes one phase under a governance apparatus holding every act to limits written before the work began. The base is harness-neutral, Claude Code is the harness I run it on, and [`adopting.md`](adopting.md) and the `transforms/` packages carry it to others: a package ships for Codex and one for Grok. It is highly opinionated; it represents how I think of, design, and build code, and is expected to be more of a structural model and example of how you might implement a similar set of precepts.
+This repository contains my own "Body of Rules" for directing agentic work, in three parts: a lexicon and a structure that make a rule stand out from the background and resolve to a single defining site, a Spec-Driven Development pipeline that turns a request into phased work, and a production chain that executes one phase under a governance apparatus holding every act to limits written before the work began. The base is harness-neutral, Claude Code is the harness I run it on, and [`adopting.md`](adopting.md) and the `transforms/` packages carry it to others: a package ships for Codex and one for Grok.
 
 ## What the corpus is
 
@@ -16,7 +16,11 @@ The main goals of the system are:
 2. **Context cohesion and logical integrity** — We want our rules to not conflict or create ambiguity, especially when read along with other rules of our own making or those injected automatically by a harness's system prompt or other sources of direction.
 3. **Token efficiency** — We need to balance long-winded exposition and use cases with brevity, acknowledging that we pay for every token here in both real cost and in attention span. Less is more in context engineering.
 4. **Governance and accountability** — Every action taken within the system is subject to pre-established rules and oversight, ensuring that work is conducted within defined limits and responsibilities are clear.
-5. **Specification-driven and traceable** — Every piece of work is guided by a clear specification, and its execution is traceable back to the governing rules and directives, ensuring accountability and reproducibility.
+5. **Spec-driven and traceable** — Every piece of work is guided by a clear specification, and its execution is traceable back to the governing rules and directives, ensuring accountability and reproducibility.
+
+## Who this is for
+
+This corpus targets production software engineering: a persistent codebase developed using a Spec-Driven Development pipeline. It is highly opinionated; it represents how I think of, design, and build code. Much of it may be wrong for you, and you may wish to skip or change individual provisions or entire sections; adopting.md documents the methods for doing so: overlay a provision, negate it at whatever ambit fits, or transpose it out of your copy before it reaches production. Other practices are welcome to take the corpus as a source of inspiration; they are not actively supported.
 
 ## Entry points
 

@@ -50,7 +50,7 @@ Within the ius regime (not bound thusly in non-canon corpus):
 - `※` — promoted from annotation to obligation. Nothing prefixed by it is optional or parenthetical.
 - `§` — resolves to directives.
 - `⊢` `⊨` — prefixes, not infix operators; left operands move to the entry's `Governs:` line.
-- `⊬` `⊭` — their negations, the site as left operand: ⊬§13 on a precept exempts it from §13, ground beside it.
+- `⊬` `⊭` — their negations, the site as left operand: ⊬§13 on a precept exempts it from §13, ground beside it. They may operate at the ambit level when appropriately applied.
 
 ## Token grammar
 

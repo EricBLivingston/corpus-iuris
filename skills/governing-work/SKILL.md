@@ -25,7 +25,7 @@ Write each per ∋4: a bound is both the gate's pattern and the verdict on it. T
 | ---- | ---- |
 | No file outside `skills/governing-work/` is modified | Keep the change focused |
 | No provision is minted, amended, or renumbered | Follow doctrine |
-| `SKILL.md` stays under §P4's on-demand ceiling | Keep it short |
+| `SKILL.md` stays under 3,000 tokens | Keep it short |
 | No `agents/` body is edited | Be careful with the agents |
 
 The filters at `{reference-root}/templates/plan/bounds-sources.md § Filters on every row's output` decide whether a candidate is a bound at all. They are written for plan bounds and hold for the other two homes as far as each one's sources reach.
