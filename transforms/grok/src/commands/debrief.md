@@ -9,7 +9,7 @@ Invoke the analyzer agent to consolidate unaddressed items from a completed impl
 
 ## Scope
 
-**Every phase in the plan folder is in scope, always.** `Implementation-Debrief.md` is the only artifact that records an assessment; until it exists no phase has been debriefed, whatever other evidence of work the folder holds.
+**Every phase in the plan folder is in scope, always.** `Implementation-Debrief.md` is the only artifact that records an assessment; until it exists no phase has been debriefed, whatever other evidence of work the folder contains.
 
 State the full phase range explicitly in the dispatch so the analyzer cannot infer a narrower one (∋3).
 
@@ -17,7 +17,7 @@ State the full phase range explicitly in the dispatch so the analyzer cannot inf
 
 ### Scan Plan Folder
 
-A. Ingest all `.md` files in the plan folder root — not `archive/`, which holds the specs `/phase` superseded — and extract items into the categories the Debrief template defines.
+A. Ingest all `.md` files in the plan folder root — not `archive/`, which contains the specs `/phase` superseded — and extract items into the categories the Debrief template defines.
 
 B. For each item, capture source file, the item itself, and severity (critical/important/minor)
 

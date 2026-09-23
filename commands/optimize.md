@@ -14,8 +14,8 @@ Invoke the analyzer agent to optimize the indicated document.
 
 A. Apply these optimizations per ∋5 (this list is a superset of ∋1, restated and enhanced for focus and to underscore the imperative):
 
-1. **Lingua**: Apply each lingua the document carries, `§en` to its prose.
-2. **Redundancy**: Apply DRY principles jointly across all reviewed artifacts and always-loaded context. Two duplicates are legitimate and stay: an enumeration that **names the provision it enforces** (A's own parenthetical above is the model; an enumeration naming nothing gets no exception), and a passage carrying a reason or operational detail the source lacks.
+1. **Lingua**: Apply each lingua the document uses, `§en` to its prose.
+2. **Redundancy**: Apply DRY principles jointly across all reviewed artifacts and always-loaded context. Two duplicates are legitimate and stay: an enumeration that **names the provision it enforces** (A's own parenthetical above is the model; an enumeration naming nothing gets no exception), and a passage stating a reason or operational detail the source lacks.
 3. **Verbosity**: Reduce wordiness; every token counts
 4. **Tutelage**: Remove tutorial-style explanations from non-tutorial artifacts unless explicitly requested
 5. **Tautology**: Eliminate redundant phrasing and tighten language
@@ -24,7 +24,7 @@ A. Apply these optimizations per ∋5 (this list is a superset of ∋1, restated
 8. **Vacuity**: Remove prose that reads as guidance but commits to nothing actionable (i.e. removing it changes nothing substantive)
 9. **Scaffolding**: Remove unnecessary navigation apparatus, (always true for artifacts constrained by ※5)
 10. **Tamarian**: Refactor, if possible, to evoke maximum model understanding with minimum tokens.
-11. **Citation integrity**: every inbound reference to the document that the cut invalidates is found and repaired in this pass, ordinals and identifiers included (`⊨2`); a passage rewritten to replace another leaves no residue of the replaced (`⊨3`).
+11. **Reference integrity**: every inbound reference to the document that the cut invalidates is found and repaired in this pass, ordinals and identifiers included (`⊨2`); a passage rewritten to replace another leaves no residue of the replaced (`⊨3`).
 
 B. Write the optimized content to the Output path.
 

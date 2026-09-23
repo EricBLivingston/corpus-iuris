@@ -5,7 +5,7 @@ description: Routes codebase-scale investigation to the analyzer agent — how a
 
 # Analyzing Codebases Skill
 
-Delegates large-scale analysis tasks to the analyzer agent, which engages periti as a complementary analysis perspective for comprehensive codebase understanding.
+Routes large-scale analysis tasks to the analyzer agent, which engages periti as a complementary analysis perspective for comprehensive codebase understanding.
 
 ---
 

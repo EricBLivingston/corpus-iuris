@@ -112,7 +112,7 @@ Your harness's system prompt instructs the agent to change only what was asked; 
 
 | Governs | Displaced shape | Holding |
 | ---- | ---- | ---- |
-| ※10 | Scope held to the literal ask (`do not rewrite unrelated code`; `do not touch files that are not relevant`) | ※10. A fix inside a file the work already opens is swept in; a file the work does not otherwise touch stays closed. |
+| ※10 | Scope held to the literal ask (`do not rewrite unrelated code`; `do not touch files that are not relevant`) | ※10. A fix inside a file the work already opens is swept in, unless a governance bound's file set excludes it; a file the work does not otherwise touch stays closed. |
 
 ### A collision with canon you already carry
 

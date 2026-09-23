@@ -36,7 +36,7 @@ Any of these failing — no `Overview.md`, no phase file, a gap in the numbering
 
 Invoke the governor agent, inverting its usual charter: the **bound sets are the content**, tested against the criteria below.
 
-**Content** — the `## Governance Bounds` section of `{Project Path}/Overview.md` and of every `Phase-X.md`, plus each phase's Acceptance Criteria, which must be satisfiable alongside the bounds governing them. Hand over as well every source document the `/phase` sweep archives, wherever they currently sit (`{Project Path}/archive/` once swept), and every file the bounds themselves name, read-only, as the evidence channel Authority needs: a bound's provenance is undecidable from the bounds sections alone, and a governor holding no source passes that criterion rather than reporting it untested.
+**Content** — the `## Governance Bounds` section of `{Project Path}/Overview.md` and of every `Phase-X.md`, plus each phase's Acceptance Criteria, which must be satisfiable alongside the bounds binding them. Hand over as well every source document the `/phase` sweep archives, wherever they currently sit (`{Project Path}/archive/` once swept), and every file the bounds themselves name, read-only, as the evidence channel Authority needs: a bound's provenance is undecidable from the bounds sections alone, and a governor possessing no source passes that criterion rather than reporting it untested.
 
 **Criteria** — every filter in `{reference-root}/templates/plan/bounds-sources.md § Filters on every row's output`, applied per bound, plus these two, which have no filter counterpart and report per Overview/phase pair:
 
@@ -46,7 +46,7 @@ Invoke the governor agent, inverting its usual charter: the **bound sets are the
 **Route the return:**
 
 - `^CLEAR.*` — continue to the next step.
-- A `STOP` carrying no crossed row — hand the governor what its evidence column names as absent, and re-dispatch.
+- A `STOP` containing no crossed row — hand the governor what its evidence column names as absent, and re-dispatch.
 - Anything else — write the governor's return verbatim to `{Project Path}/Boundary-Validation.md`, then enter the **Terminal**.
 
 **You do not remediate** — not a wording fix, not an obvious typo, not a bound whose intent you can see (⊬※10). A bound repaired by the party it constrains is no bound. The user corrects the plan folder and restarts the run.
@@ -57,7 +57,7 @@ Invoke the `writing-code` skill, then read `{command-root}/implement.md` to cont
 
 ### 4. Execute Each Phase Sequentially
 
-For each `Phase-X.md` (in order, starting from `{Starting Phase}`), read the phase file, then execute the implementation cycle by dispatching specialist sub-agents directly. Each step below names its dispatch prompt's file under `{reference-root}/templates/orchestration/`; read that file and pass the prompt it carries. Resolve every placeholder before passing a prompt — sub-agents receive concrete paths, none left standing except `{Subject}`, which the sub-agent determines during execution.
+For each `Phase-X.md` (in order, starting from `{Starting Phase}`), read the phase file, then execute the implementation cycle by dispatching specialist sub-agents directly. Each step below names its dispatch prompt's file under `{reference-root}/templates/orchestration/`; read that file and pass the prompt it contains. Resolve every placeholder before passing a prompt — sub-agents receive concrete paths, none left standing except `{Subject}`, which the sub-agent determines during execution.
 
 `{File Rules}` is defined in `{reference-root}/templates/orchestration/file-rules.md` and substituted verbatim into each specialist prompt beside it.
 

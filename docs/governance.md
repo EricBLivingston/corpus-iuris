@@ -36,7 +36,7 @@ A bound is a limit on produced content, decidable by a reader holding only the c
 | The skill file stays under its token ceiling | Keep it short |
 | No agent definition body is edited | Be careful with the agents |
 
-Authoring the set is the scoping party's job and never the governor's. The set lives in the first of these that applies: the `## Governance Bounds` section of a plan file, a delegate's dispatch prompt, or a stated block in the session. Fixed before the first edit is the load-bearing half, because a bound written afterwards certifies whatever happened.
+Authoring the set is the scoping party's job and never the governor's. The set lives in the first of these that applies: the `## Governance Bounds` section of a plan file, a delegate's dispatch prompt, or a stated block in the session. Fixed before the first edit is the half that binds, because a bound written afterwards certifies whatever happened.
 
 Each bound is written by defining shape rather than by enumerated vocabulary, and where no shape-wise assay exists it names what it excludes (`⊨4`, `§17`). A gate whose pattern is a list of words passes cleanly over everything the list forgot, and the verdict travels downstream carrying no sign of it.
 
@@ -48,9 +48,9 @@ The split is by rank rather than breadth. Plan-wide bounds are immutable once th
 
 A missing document is not a missing bound. Where a row's source document does not exist, the row's question goes to the artifacts that do, and the bound cites the source actually read.
 
-## The seven filters
+## The six filters
 
-Converting a row produces a candidate rather than a bound. Seven filters stand between the two: Authority, Evaluability, Verifiability, Coverage, Satisfiability, Self-execution and Warrant. A faithful quotation of the source clears none of them on its own. `bounds-sources.md § Filters on every row's output` states each at length, with the failing shapes it rejects.
+Converting a row produces a candidate rather than a bound. Six filters stand between the two: Shape, Authority, Evaluability, Satisfiability, Self-execution and Warrant. A faithful quotation of the source clears none of them on its own. `bounds-sources.md § Filters on every row's output` states each at length, with the failing shapes it rejects.
 
 What they have in common is that they test a candidate as the governor will read it: from the bound's own text alone, against a named check that decides it, with a false-positive trap wherever that check could match something the bound does not govern. Where nothing could, that is recorded, because an absent trap and an unexamined one read alike. An edit to a bound re-tests it against every filter rather than the one it failed, because a repair that clears one routinely crosses another.
 
@@ -80,7 +80,7 @@ flowchart TD
   SRC["The plan's own sections: non-goals, guardrails, rejected options, risk mitigations, out-of-scope items, acceptance criteria"]
   CONV["Row conversion, through the bounds source map"]
   CAND["Candidate"]
-  FILT{"The seven filters"}
+  FILT{"The six filters"}
   AUTHOR["Back to its author. An edit re-tests the bound against every filter, not only the one it failed"]
   LISTS["Two lists in the Governance Bounds sections: plan-wide, immutable once the plan starts, and phase-scoped, subordinate"]
   G1["Governor, before the work: the set is the content, the filters are the bounds"]

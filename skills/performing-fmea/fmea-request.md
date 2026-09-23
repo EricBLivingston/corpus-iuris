@@ -61,7 +61,7 @@ The table is the assay's record, not a launch order. Draft it, band it, and then
 
 ## Amending a bound
 
-The Cost row carries the complete replacement bound, ready to record verbatim — never a delta. Every site, count and line in it is measured from the tree by a command whose output the row quotes. It reaches no further than what the bound it replaces governs. Any constraint it adds is tested against every landed hunk first. A retrospective repair drafts best as a single-site carve-out: one baseline line and no other.
+The Cost row records the complete replacement bound, ready to record verbatim — never a delta. Every site, count and line in it is measured from the tree by a command whose output the row quotes. It applies no further than what the bound it replaces binds. Any constraint it adds is tested against every landed hunk first. A retrospective repair drafts best as a single-site carve-out: one baseline line and no other.
 
 ## Launch procedure
 
@@ -69,23 +69,23 @@ The Cost row carries the complete replacement bound, ready to record verbatim �
 
    Where it lands — the first of these three that applies:
 
-   - **The plan folder governing the work** — the `plans/<name>/fmea/` your implementation is running inside.
-   - **The project you are working in**, when no plan folder governs — its own `{analysis-root}/fmea/`.
+   - **The plan folder binding the work** — the `plans/<name>/fmea/` your implementation is running inside.
+   - **The project you are working in**, when no plan folder binds — its own `{analysis-root}/fmea/`.
    - **The corpus itself**, when the work belongs to no project at all — its own `{analysis-root}/fmea/`.
 
    The last two are not lesser records: a launch no plan called for is the kind this protocol exists to catch.
 
 2. Dispatch to the authorizer agent as Authorizing Official, giving it the statement file's absolute path — the file is what it assesses, never a copy of the table in the prompt — and pointing it at `{skill-root}/performing-fmea/fmea-assessment.md` for the standard it assesses against.
-3. **Wait on the decision.** The AO fills the ATO row in the file you handed it, grant or denial alike; read it back there. The launch does not start until that row carries a grant. A denial is binding: narrow and resubmit, or drop — disagreement escalates to the user, never past the AO. A missing, partial, or malformed response is a denial too: restore the ATO row to empty before resubmitting.
+3. **Wait on the decision.** The AO fills the ATO row in the file you handed it, grant or denial alike; read it back there. The launch does not start until that row records a grant. A denial is binding: narrow and resubmit, or drop — disagreement escalates to the user, never past the AO. A missing, partial, or malformed response is a denial too: restore the ATO row to empty before resubmitting.
 
    Resubmission caps under ⊨7. A resubmission changes only what the denial names, and appends its table beneath the first in that same file.
 
-Where the framing deviates from what the borrowed term already carries:
+Where the framing deviates from what the borrowed term already conveys:
 
 - The AO is the authorizer agent, not you and not the user.
 - The authorization boundary is the statement's Cost bound. Crossing it is not overrun, it is operating unauthorized: re-assay, re-grant.
 - The user sits above the framework: standing veto over any grant. Where a request's true cost runs far past what it implied, surface the estimate before the spend, not after.
-- The statement binds the session that drafted it. A delegate's dispatch prompt is its own ask and its own bound (※12); the drafting session's Cost bound reaches that delegate only as the prompt writes it in (⊢5).
+- The statement binds the session that drafted it. A delegate's dispatch prompt is its own ask and its own bound (※12); the drafting session's Cost bound binds that delegate only as the prompt writes it in (⊢5).
 
 ## Collisions
 

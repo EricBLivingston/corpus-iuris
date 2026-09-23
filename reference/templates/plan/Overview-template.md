@@ -88,7 +88,7 @@ Pre-authorized deviations from project principles (e.g. threading a parameter th
 
 ### Numerical & Performance Invariants (OPTIONAL)
 
-<Delete if the plan carries no numerical or performance requirement. When used, state tolerance bounds, NaN/Inf policy, performance targets, and feature-flag matrices, so every phase enforces them consistently.>
+<Delete if the plan contains no numerical or performance requirement. When used, state tolerance bounds, NaN/Inf policy, performance targets, and feature-flag matrices, so every phase enforces them consistently.>
 
 - Tolerance bounds: <e.g. loss delta < 1e-4 between equivalent runs>
 - NaN/Inf policy: <e.g. assert_finite in forward pass; training aborts on first NaN>
@@ -107,7 +107,7 @@ Pre-authorized deviations from project principles (e.g. threading a parameter th
 
 ## Governance Bounds
 
-The limits below hold for the whole orchestration: no phase overrides them, and they govern every phase's produced work whether or not that phase mentions them. A limit scoped to a single phase goes in that phase file's own Governance Bounds section instead, never in both; the two sections are read together as one list. They are amended only through ※12.
+The limits below apply for the whole orchestration: no phase overrides them, and they bind every phase's produced work whether or not that phase mentions them. A limit scoped to a single phase goes in that phase file's own Governance Bounds section instead, never in both; the two sections are read together as one list. They are amended only through ※12.
 
 <Fill from the Plan-wide sources table in `bounds-sources.md`, beside this template, row by row, through the filters it states. Do not fill this section without working it.>
 

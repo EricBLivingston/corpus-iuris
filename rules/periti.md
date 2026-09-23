@@ -1,10 +1,10 @@
 # Periti
 
-A peritus is engaged for peritia this session lacks: reach, speed, a second judgement. No precept obliges an engagement.
+A peritus is engaged for peritia this session lacks: breadth, speed, a second judgement. No precept obliges an engagement.
 
 ## The engagement
 
-The prompt is the whole of this session that reaches a peritus. It inherits no session and remembers no prior call; what canon it holds, its own harness loaded.
+The prompt is the whole of this session that reaches a peritus. It inherits no session and remembers no prior call; what canon it possesses, its own harness loaded.
 
 *Nullius in verba* — an exit status establishes nothing; the responsum is weighed against the artifact it claims.
 

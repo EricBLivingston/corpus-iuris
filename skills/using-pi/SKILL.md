@@ -22,9 +22,9 @@ Every call names both halves: `--provider openrouter` and an explicit `--model`.
 
 ## Invocation Floor
 
-These shapes cover every engagement. Both need `--provider openrouter`, an explicit roster `--model`, `-p`, and absolute paths in the prompt text. pi in print mode has no sandbox axis of its own: the call is single-shot text in, text out, and the invoking session's own permission mode governs the Bash call that launches it, so there is no privilege flag to choose and none to invent. Its approval mode is `always-ask`, which print mode cannot satisfy, so a tool call pi elects is denied. Inline everything the answer needs and name no path, since a named path invites the read that is about to be refused. An exit 0 is not success. One blocking foreground call, with the harness's own wait set to its maximum — a default wait cuts a long engagement off mid-run.
+These shapes cover every engagement. Both need `--provider openrouter`, an explicit roster `--model`, `-p`, and absolute paths in the prompt text. pi in print mode has no sandbox axis of its own: the call is single-shot text in, text out, and the invoking session's own permission mode controls the Bash call that launches it, so there is no privilege flag to choose and none to invent. Its approval mode is `always-ask`, which print mode cannot satisfy, so a tool call pi elects is denied. Inline everything the answer needs and name no path, since a named path invites the read that is about to be refused. An exit 0 is not success. One blocking foreground call, with the harness's own wait set to its maximum — a default wait cuts a long engagement off mid-run.
 
-**The prompt is the only control.** pi holds no canon of its caller's (`periti.md § The engagement`), and its default tools include `bash`, `find`, `grep` and `ls`, so a prompt that does not preclude a sweep permits one. Every call that could touch the filesystem closes, verbatim and last, with the no-shell clause, the mandate clause, and a scope line naming the paths the work is confined to. Whether pi honours them is unmeasured; the roots below are the backstop if it does not.
+**The prompt is the only control.** pi possesses no canon of its caller's (`periti.md § The engagement`), and its default tools include `bash`, `find`, `grep` and `ls`, so a prompt that does not preclude a sweep permits one. Every call that could touch the filesystem closes, verbatim and last, with the no-shell clause, the mandate clause, and a scope line naming the paths the work is confined to. Whether pi honours them is unmeasured; the roots below are the backstop if it does not.
 
 **cwd is the workspace root**, extended by `--add-dir`; paths outside every root are fail-closed. Independently, pi discovers `AGENTS.md` / `CLAUDE.md` in the cwd and every ancestor directory, which only `--no-context-files` disables. Launch from the directory the work is in, and grant no root wider than the work: a root the scope line does not name is one the scope line cannot confine.
 
@@ -32,7 +32,7 @@ These shapes cover every engagement. Both need `--provider openrouter`, an expli
 | ---- | ---- |
 | `{pi-micro}` | `meta/muse-spark-1.2-contributor` |
 
-Live guidance carries the placeholder, never the literal: the model identifier resolves in the table above, and every `{…-root}` placeholder in the instance ambit.
+Live guidance uses the placeholder, never the literal: the model identifier resolves in the table above, and every `{…-root}` placeholder in the instance ambit.
 
 ### Case 1 — answer to stdout
 
@@ -103,7 +103,7 @@ A stored key may be a literal, `$ENV:VAR`, or `$CMD:command` resolved at request
 - **Empty stdout is a refusal or an auth failure**, not an empty finding. Run `pi doctor` first, then check the model identifier.
 - **A rejected model identifier** is checked against `pi --list-models | awk '$1=="openrouter"'`, not against memory — the roster is the provider's and it moves.
 - **`pi: command not found`, or a binary that vanished**, is an installation fault rather than a shape fault.
-- **A slow run whose answers carry the CLI's denial text**, others returning a bare `NONE`, is a prompt that invited a tool call. Measured against the same content: minutes per call with a path named above it, 1.4s with it inlined and no path. That pi retries the denial rather than surfacing it is inferred from the elapsed time, not observed.
+- **A slow run whose answers contain the CLI's denial text**, others returning a bare `NONE`, is a prompt that invited a tool call. Measured against the same content: minutes per call with a path named above it, 1.4s with it inlined and no path. That pi retries the denial rather than surfacing it is inferred from the elapsed time, not observed.
 
 ## References
 

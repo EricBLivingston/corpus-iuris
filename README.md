@@ -97,7 +97,7 @@ flowchart LR
   H -->|"granted"| K
 ```
 
-[The governance page](docs/governance.md) goes into more detail: where a bound comes from, the seven filters a candidate clears before it becomes one, the governor's inverted charter served twice on the same dispatch shape, the statement of assumed risk row by row, and the refutation standard the Official assesses it against.
+[The governance page](docs/governance.md) goes into more detail: where a bound comes from, the six filters a candidate clears before it becomes one, the governor's inverted charter served twice on the same dispatch shape, the statement of assumed risk row by row, and the refutation standard the Official assesses it against.
 
 ## The repository layout
 

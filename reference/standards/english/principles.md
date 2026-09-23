@@ -2,13 +2,17 @@
 
 What each `§en` provision reaches, what it leaves alone, and the assay that decides.
 
+## Readers
+
+The lingua is tuned for the agent as reader. Its primary object is the Markdown that directs agent behavior and records its work; its secondary object is technical writing for humans. Where the two readers diverge, the agent decides. The standard is signal rate: the strongest signal the reader ingests at full comprehension. A provision suppresses a span that lowers the rate one of three ways: padding contributes zero information, dilution less than the form could carry, noise false information.
+
 ## §en1
 
 The relations are Halliday's logico-semantic relations of expansion: elaboration, extension, enhancement. The colon takes elaboration as a genus; `i.e.` and `e.g.` take two of its species, exposition and exemplification. Enhancement (temporal, causal, conditional) has no reserved stop: a conjunction states it, or the reader infers it. The aside belongs to no category in the system; the mapping is working guidance, not a reproduction of the taxonomy.
 
 ## §en2
 
-Information focus is Halliday's: unmarked on the final element, marked anywhere else, and speech marks it by placing the tonic. Prose has no tonic, so it realizes marked focus by syntax: a thematic equative carrying the element to final position, or an it-cleft rendering the remainder Given. Bold on the final element duplicates a signal the structure already supplies.
+Information focus is Halliday's: unmarked on the final element, marked anywhere else, and speech marks it by placing the tonic. Prose has no tonic, so it realizes marked focus by syntax: a thematic equative carrying the element to final position, or an it-cleft rendering the remainder Given. Bold on the final element duplicates a signal the structure already supplies. For the agent, bold is a landmark retrieval locks onto, and it works as one only while rare in the window: the defining first use and the table-cell anchor are both valid landmarks.
 
 ## §en3
 
@@ -56,11 +60,16 @@ Licensed where the contrast is real: the text hedged, and this clause does not, 
 
 ## §en12
 
-Mann and Thompson's Preparation satellite increases the reader's readiness for the nucleus. A forward orientation supplying what the reader needs to interpret the nucleus is Background, outside the provision. The assay is entailment: a candidate the nucleus entails goes. Metatext goes regardless, being about the text rather than its subject. Not reached: a topic sentence its span supports, support not entailing its claim; a span whose nucleus is still unread, which §en9 licenses for an abstract or an Overview file. §en8 reaches this redundancy after the claim rather than before it.
+Mann and Thompson's Preparation satellite increases the reader's readiness for the nucleus. A forward orientation supplying what the reader needs to interpret the nucleus is Background, outside the provision. The assay is entailment: a candidate the nucleus entails goes. Metatext goes regardless, being about the text rather than its subject. Exempt: a topic sentence its span supports, support not entailing its claim; a span whose nucleus is still unread, which §en9 licenses for an abstract or an Overview file. §en8 reaches this redundancy after the claim rather than before it.
+
+## §en13
+
+Horn's division of pragmatic labor: the unmarked form implicates the stereotypical sense, so the default word leaves a marked one unsaid. Rosch's basic level is where naming falls under no pressure; the assay asks for the exact term, a hyponym or a co-hyponym of the default. Tells at the sentence: a binary metaphor graded; a foil in the same sentence, whose opposite names the sense (§en10); a general noun (*thing*, *info*); an evaluative adjective stating no criterion (*important*, *robust*); a metaphor used for its gloss rather than its mapping. Across a text: recurrence, one word doing several jobs. Exempt: a predicate coined at its site with a stated test, a term of art whose trained sense is the sense meant, and the correct word repeated, against Fowler's elegant variation.
 
 ## Sources
 
 - Dik, Simon C. *The Theory of Functional Grammar*. 1997, edited by Kees Hengeveld. Part 2, *Complex and Derived Constructions*, carries the extra-clausal constituents.
+- Fowler, H. W. *A Dictionary of Modern English Usage*. 1926. Carries elegant variation.
 - Grice, H. P. "Logic and Conversation." *Syntax and Semantics 3: Speech Acts*, 1975; reprinted in *Studies in the Way of Words*, 1989. Carries the maxims §en11 turns on.
 - Halliday, M. A. K., and Christian Matthiessen. *Halliday's Introduction to Functional Grammar*. 4th edition, 2014, the edition consulted: chapter 3 Theme and information structure, chapter 5 process types, chapter 7 logico-semantic relations, chapter 10 grammatical metaphor.
 - Halliday, M. A. K., and Ruqaiya Hasan. *Cohesion in English*. 1976.
@@ -76,4 +85,6 @@ Mann and Thompson's Preparation satellite increases the reader's readiness for t
 - Quirk, Randolph, Sidney Greenbaum, Geoffrey Leech and Jan Svartvik. *A Comprehensive Grammar of the English Language*. 1985. Chapter 8 carries the adjunct, subjunct, disjunct and conjunct division, and within it the style/content split §en11 turns on.
 - Roberts, Craige. "Information Structure in Discourse: Towards an Integrated Formal Theory of Pragmatics." *OSU Working Papers in Linguistics* 49, 1996; reprinted *Semantics and Pragmatics* 5(6), 2012.
 - Rooth, Mats. "A Theory of Focus Interpretation." *Natural Language Semantics*, 1992.
+- Rosch, Eleanor, and colleagues. "Basic Objects in Natural Categories." *Cognitive Psychology*, 1976.
 - Silvennoinen, Olli O. *Contrastive Negation: Constructional Variation within and across Languages*. PhD thesis, University of Helsinki, 2019.
+- Zipf, George Kingsley. *Human Behavior and the Principle of Least Effort*. 1949.

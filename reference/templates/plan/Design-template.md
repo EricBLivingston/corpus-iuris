@@ -11,7 +11,7 @@
 
 ## 1. Design spine
 
-<The load-bearing idea in 1–3 sentences: the ONE central invariant or insight the rest of the design serves, the thing that unravels everything else if it is wrong. Then a text diagram of the data or control flow.>
+<The one idea the rest of the design serves, in 1–3 sentences: the central invariant or insight that unravels everything else if it is wrong. Then a text diagram of the data or control flow.>
 
 ```text
 <source>             <transform / decision>          <consumer>
@@ -25,7 +25,7 @@
 
 ## 2. Data model / Components
 
-<Typed models and component responsibilities, in the project's own language. Where a type carries a rejection or an invalid state, encode the reason in the type rather than in a comment or a runtime guard. For a pure refactor with no new types, describe the components touched and their responsibilities instead.>
+<Typed models and component responsibilities, in the project's own language. Where a type contains a rejection or an invalid state, encode the reason in the type rather than in a comment or a runtime guard. For a pure refactor with no new types, describe the components touched and their responsibilities instead.>
 
 ## 3. <The mechanism> (rename to the actual hard part)
 

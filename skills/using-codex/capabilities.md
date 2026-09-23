@@ -4,13 +4,13 @@ What the canonical shapes' elements mean, opt-in flags, the `review` subcommand,
 
 ## Shape Semantics
 
-The canonical shapes are **Case 1** and **Case 2**, in [SKILL.md](SKILL.md) § Invocation Floor; nothing below reproduces them — a shape is copied from there, never assembled from this file (⊢2). This section carries only what the shapes leave unexplained — what their elements mean, and what breaks when one is varied.
+The canonical shapes are **Case 1** and **Case 2**, in [SKILL.md](SKILL.md) § Invocation Floor; nothing below reproduces them — a shape is copied from there, never assembled from this file (⊢2). This section states only what the shapes leave unexplained — what their elements mean, and what breaks when one is varied.
 
 **`--sandbox read-only` confines writes, not reads or traversal.** `-C, --cd` is a working root, not a read boundary, and no flag bounds where Codex looks. The prompt's scope line is therefore the only thing that does, which is why it is a required element of the shape rather than a courtesy.
 
 **stdin is read.** `</dev/null` is in both shapes because a non-interactive run must never block on an inherited stdin — it is a default, not a prohibition, and a deliberate pipe displaces it. Piped content arrives as a `<stdin>` block *appended* to the prompt argument rather than replacing it, so the instructions stay in the positional argument and both are read.
 
-**`--add-dir` is the write grant here; on agy it is the read grant and the resolution anchor.** An output directory under `-C` is already writable under `workspace-write`, so `--add-dir` is reached for only when the output directory sits outside `-C`, and it must then be named on the scope line too. Never carry agy's `--add-dir` reasoning across.
+**`--add-dir` is the write grant here; on agy it is the read grant and the resolution anchor.** An output directory under `-C` is already writable under `workspace-write`, so `--add-dir` is resorted to only when the output directory sits outside `-C`, and it must then be named on the scope line too. Never carry agy's `--add-dir` reasoning across.
 
 **The final message is printed exactly once.** The run's interleaved stdout and stderr go to a scratch log, read only when triaging; the answer is `cat`-ed from the `-o` capture. Printing the transcript *and* the capture duplicates the whole answer into the context window.
 
@@ -22,13 +22,13 @@ The canonical shapes are **Case 1** and **Case 2**, in [SKILL.md](SKILL.md) § I
 
 ## Opt-In Flags
 
-Absent from an ordinary engagement; each is reached for deliberately.
+Absent from an ordinary engagement; each is resorted to deliberately.
 
 | Flag | Purpose |
 | ---- | ---- |
 | `-c key=value` | Ad-hoc TOML config override. The one in routine use is `-c model_reasoning_effort="medium"` for a latency-sensitive call. |
 | `--output-schema <FILE>` | A JSON Schema file describing the final response's shape — the clean way to get a machine-readable verdict, versus asking for JSON in-prompt and parsing whatever comes back. |
-| `--json` | Print events to stdout as JSONL. Reach for it to see *what the run did* when a run misbehaves; `-o` remains the way to capture the answer. |
+| `--json` | Print events to stdout as JSONL. Resort to it to see *what the run did* when a run misbehaves; `-o` remains the way to capture the answer. |
 | `-i, --image <FILE>` | Attach image(s) to the initial prompt — a failure screenshot, a diagram, a rendered output under review. Beats describing the image in prose. Repeatable. |
 | `-p, --profile <NAME>` | Layers `$CODEX_HOME/<name>.config.toml` over the base user config. **Footgun: agy's `-p` is its prompt flag.** On Codex the prompt is a positional argument, so a ported `-p "…"` is consumed as a profile name and never reaches the model as instructions. Live for anyone who *varies* a shape — a floor copied verbatim is already correct at its own site. |
 | `--full-auto` | Alias for `--sandbox workspace-write` on `codex exec`. Prefer the explicit `--sandbox` spelling; recognise the alias in others' commands. |
@@ -37,7 +37,7 @@ Absent from an ordinary engagement; each is reached for deliberately.
 
 ## The `review` Subcommand
 
-`codex exec review [PROMPT]` runs a code review against the current repository and selects the diff itself — `--uncommitted`, `--base <BRANCH>`, or `--commit <SHA>` — so no staging or piping step is needed. Prefer it over a hand-rolled review prompt whenever the unit under review is exactly one of those three; the optional prompt argument carries custom review instructions on top, and `--title <TITLE>` labels the summary.
+`codex exec review [PROMPT]` runs a code review against the current repository and selects the diff itself — `--uncommitted`, `--base <BRANCH>`, or `--commit <SHA>` — so no staging or piping step is needed. Prefer it over a hand-rolled review prompt whenever the unit under review is exactly one of those three; the optional prompt argument contains custom review instructions on top, and `--title <TITLE>` labels the summary.
 
 Its flag set is not the `exec` flag set: no `-C/--cd`, no `-s/--sandbox`, no `--add-dir`, no `-i`. The repository is the one containing the working directory, so the canonical single-root shape does not transfer wholesale. Shared with `exec`: `-m`, `-o`, `-c`, `--json`, `--output-schema`, `--skip-git-repo-check`.
 

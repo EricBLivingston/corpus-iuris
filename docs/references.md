@@ -1,6 +1,6 @@
 # The work behind the claims
 
-Every empirical claim the corpus makes about model behavior sits in this table beside the work it rests on. The claims are load-bearing rather than decorative: the argument for [rare tokens](lexicon.md), for [terms whose trained sense already agrees with ours](lexicon.md), and for [handing an executing agent one phase and withholding the rest](pipeline.md) is an argument about attention and retrieval, and it is only as good as the results below.
+Every empirical claim the corpus makes about model behavior sits in this table beside the work it rests on. The argument for [rare tokens](lexicon.md), for [terms whose trained sense already agrees with ours](lexicon.md), and for [handing an executing agent one phase and withholding the rest](pipeline.md) is an argument about attention and retrieval, and it is only as good as the results below.
 
 A row that misreads the work it cites is a defect in this repository, and `CONTRIBUTING.md` names it as one of the few worth opening an issue over.
 

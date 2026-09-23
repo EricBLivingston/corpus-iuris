@@ -20,7 +20,7 @@ These shapes cover every engagement. Both need absolute paths in the prompt text
 | ---- | ---- |
 | `{codex}` | `gpt-5.6-sol` |
 
-Live guidance carries the placeholder, never the literal: the model identifier resolves in the table above, and every `{…-root}` placeholder in the instance ambit.
+Live guidance uses the placeholder, never the literal: the model identifier resolves in the table above, and every `{…-root}` placeholder in the instance ambit.
 
 ### Case 1 — answer to stdout
 
@@ -67,9 +67,9 @@ The two checks are independent — neither result implies the other. Always ask 
 
 ## Shapes Beyond The Single-Root Call
 
-Deltas on the shape already in hand; the mandatory prompt clauses ride along unchanged. Opt-in flags reached for by these shapes are inventoried in [capabilities.md](capabilities.md).
+Deltas on the shape already in hand; the mandatory prompt clauses ride along unchanged. Opt-in flags resorted to by these shapes are inventoried in [capabilities.md](capabilities.md).
 
-### Feeding in content Codex cannot reach by path
+### Feeding in content Codex cannot read by path
 
 Codex has no `@` reference syntax, so command output arrives one of two ways.
 
@@ -79,7 +79,7 @@ Codex has no `@` reference syntax, so command output arrives one of two ways.
 git diff HEAD~3 | codex exec … "Review the diff in the <stdin> block for bugs and security issues."
 ```
 
-**Staged.** Capture to a file, then name that file by absolute path in the prompt body — the route whenever a later run must reread the content or the answer should cite it by path.
+**Staged.** Capture to a file, then name that file by absolute path in the prompt body — the route whenever a later run must reread the content or the answer should name it by path.
 
 ```bash
 git diff HEAD~3 > "$PROJECT_DIR/{analysis-root}/diff.patch"
@@ -93,7 +93,7 @@ Keep the capture file under `-C` so it needs no extra grant, and name it on the 
 - **An empty final message is a refusal or an abort**, not an empty finding, and its diagnostic is already on disk: read the run log the shape redirects the interleaved transcript into before re-running, because a headless auto-deny announces itself nowhere else.
 - **Suspect the prompt's paths first.** Codex must locate every path the prompt names; a path that is wrong, relative, or ungranted turns into a search, which the home-scan mandate forbids.
 - **A refused write** under `read-only` is the sandbox working as intended, not a failure to diagnose — the fix is choosing the right privilege for the case, never widening it after the fact.
-- That log's banner and token-usage footer also carry the model version, effort level, and token cost — worth reading on any run whose answer looks off-model.
+- That log's banner and token-usage footer also record the model version, effort level, and token cost — worth reading on any run whose answer looks off-model.
 
 ## References
 

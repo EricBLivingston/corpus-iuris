@@ -4,13 +4,13 @@ What the canonical shapes' elements mean, the native tool inventory, the write g
 
 ## Shape Semantics
 
-The canonical shapes are **Case 1** and **Case 2**, in [SKILL.md](SKILL.md) § Invocation Floor; nothing below reproduces them — a shape is copied from there, never assembled from this file (⊢2). This section carries only what the shapes leave unexplained: what their elements mean, and what breaks when one is varied.
+The canonical shapes are **Case 1** and **Case 2**, in [SKILL.md](SKILL.md) § Invocation Floor; nothing below reproduces them — a shape is copied from there, never assembled from this file (⊢2). This section states only what the shapes leave unexplained: what their elements mean, and what breaks when one is varied.
 
 ### `--add-dir` is a permission grant, not only an anchor
 
-A read is gated by the **headless approval gate**, not by path resolution: `-p` mode cannot prompt, so a `read_file` whose target sits under no grant is auto-denied — `toolPermission` defaults to `request-review`, and headless has no reviewer — and the denial text recommends the forbidden bypass flag. Grant membership is the only thing that decides it. Path shape does not enter into it, and neither does cwd nor a `trustedWorkspaces` root: the settings key that pre-trusts workspace paths was measured against this gate and did not lift it. `allowNonWorkspaceAccess`, whose name claims exactly the power denied here, is **untested headlessly** — nothing establishes that it does or does not lift the gate, so never reach for it in place of a grant.
+A read is gated by the **headless approval gate**, not by path resolution: `-p` mode cannot prompt, so a `read_file` whose target sits under no grant is auto-denied — `toolPermission` defaults to `request-review`, and headless has no reviewer — and the denial text recommends the forbidden bypass flag. Grant membership is the only thing that decides it. Path shape does not enter into it, and neither does cwd nor a `trustedWorkspaces` root: the settings key that pre-trusts workspace paths was measured against this gate and did not lift it. `allowNonWorkspaceAccess`, whose name claims exactly the power denied here, is **untested headlessly** — nothing establishes that it does or does not lift the gate, so never resort to it in place of a grant.
 
-The anchor role is separate and still holds: a bare relative reference to a tree outside cwd resolves only through the grant.
+The anchor role is separate and still applies: a bare relative reference to a tree outside cwd resolves only through the grant.
 
 | Operation | `--add-dir` required? |
 | ---- | ---- |
@@ -45,7 +45,7 @@ agy's **native** tools, all available in headless mode:
 | `write_file` | Create or overwrite files. Auto-creates parent directories. Gated — see below. |
 | `replace` | Precise text replacement (old_string → new_string) within files. Gated — see below. |
 
-`@`-referenced content is read **before** the prompt is sent and consumes the context window, so reference the narrowest path that answers the question rather than a whole tree. Searching and listing cost nothing up front — `grep_search` / `glob` / `list_directory` reach across a tree without paying for it.
+`@`-referenced content is read **before** the prompt is sent and consumes the context window, so reference the narrowest path that answers the question rather than a whole tree. Searching and listing cost nothing up front — `grep_search` / `glob` / `list_directory` search across a tree without paying for it.
 
 Shell execution is not *unavailable* headlessly, it is **unapprovable**: agy can still elect a `command` / `run_command` call, and headless mode then refuses it, yielding empty stdout and exit 0. This is why the caller handles all shell work itself.
 
@@ -57,7 +57,7 @@ agy (the Antigravity CLI) does not use the retired `gemini` CLI's `~/.gemini/pol
 
 - **`agentMode` must be present with the value `accept-edits`.** With it set, agy logs `Accept-edits mode: auto-approving file write` and the write lands. The operator sets it by hand.
 - **`--mode` on the command line does nothing.** It is not a substitute for the key; passed with the key absent, the write still fails.
-- **`accept-edits` is the only value to use**, and `toolPermission: always-proceed` — the settings key governing confirmation mode — is not a substitute for it.
+- **`accept-edits` is the only value to use**, and `toolPermission: always-proceed` — the settings key controlling confirmation mode — is not a substitute for it.
 - **Privileges are ambient.** Nothing on the command line grants or confines them, so *every* run is write-capable whenever the key is set — Case 1 included, which is why "do not modify any file" is worth saying in a read-only prompt. Nothing confines *where* a write lands either, which is why the shape names an exact output path: a run has been seen writing a helper script into agy's own `~/.gemini/antigravity-cli/brain/<uuid>/scratch/`, under no grant covering it. A Case 2 run silently writes nothing without `accept-edits` set.
 
 ## The In-Place Bulk-Edit Shape
@@ -93,4 +93,4 @@ The canonical shapes capture `rc=$?` immediately after the call and print it in 
 | 1 | General error or API failure, including an invalid `--model` identifier (fails loudly, with a model list on stderr) |
 | 42 | Input error (invalid prompt/arguments) |
 | 53 | Turn limit exceeded |
-| 124 | `timeout` fired — check whether a slow pipeline producer, not agy, held the shell open |
+| 124 | `timeout` fired — check whether a slow pipeline producer, not agy, kept the shell open |

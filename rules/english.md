@@ -27,3 +27,5 @@ Cited sources delimit the linguistic target to which the provision applies. Grou
 **§en11. Style Disjuncts** — Quality is a standing commitment of every assertion; an adverbial attesting a virtue of your own utterance (honest, frank, plain, brief) creates only a contrast, putting unmarked assertions under suspicion. Delete it; the claim is unchanged. (Grice, Quirk)
 
 **§en12. Preparation Satellites** — A clause readying the reader for the next one asserts nothing. It states the claim at low resolution, and the nucleus then states it in full: RST's Preparation, narrowed to a satellite carrying no content of its own. Assert the nucleus and delete the satellite. (Mann and Thompson)
+
+**§en13. Underspecified Lexis** — A default word chosen where an exact one carries the sense meant leaves that sense unsaid; meaning is diluted. Zipf's hearer's economy governs: prefer the exact word over the frequent. Rarity is orthogonal: where the default word is exact, it stays. (Horn, Rosch, Zipf)

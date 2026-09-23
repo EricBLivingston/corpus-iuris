@@ -16,7 +16,7 @@
 
 **Charter**: the grant a piece of work runs under (the ask, the dispatch prompt, the plan and its ratified bounds, any authorization issued under ※12), together with the author who granted it.
 
-**Peritus**: an AI model, or a model-agnostic harness reaching one, engaged per question through a command-line program and returning one responsum.
+**Peritus**: an AI model, or a model-agnostic harness accessing one, engaged per question through a command-line program and returning one responsum.
 
 **Agent**: a subagent the harness invokes by agent type, built in or defined under `agents/`.
 
@@ -80,16 +80,16 @@ A provision's token has four positions:
 | Project | one project |
 | Agent | one agent |
 
-Ambit files carry rubric as well as provisions.
+Ambit files include rubric as well as provisions.
 
-Instance outranks the universal ambit, which holds on every installation and so names no tool, path or peritus of one. It yields to Project and Agent so a single project or agent can still deviate from an installation-wide decision. An Instance provision takes one of two forms:
+Instance outranks the universal ambit, which applies on every installation and so names no tool, path or peritus of one. It yields to Project and Agent so a single project or agent can still deviate from an installation-wide decision. An Instance provision takes one of two forms:
 
 - **Keyed** — headed by an existing universal token, which it overlays for this installation. The token keeps its number; location decides the ambit.
 - **Minted** — a fresh token in the `I` ambit, numbered from 1, for a provision the universal ambit does not supply at all.
 
 ### Lingua
 
-A lingua proxies a language by membership, not extension string: `§cc` reaches `.cc`, `.cpp`, `.h` and every other C/C++ source. In use: `py` Python, `rs` Rust, `md` Markdown, `en` English. A lingua's namespace lives at `reference/standards/<language>/principles.md`, or resides in canon. Its provisions are canon wherever a project imports its namespace; a project imports one for each language it carries.
+A lingua proxies a language by membership, not extension string: `§cc` covers `.cc`, `.cpp`, `.h` and every other C/C++ source. In use: `py` Python, `rs` Rust, `md` Markdown, `en` English. A lingua's namespace lives at `reference/standards/<language>/principles.md`, or resides in canon. Its provisions are canon wherever a project imports its namespace; a project imports one for each language it uses.
 
 ## Precedence: *lex specialis*
 
@@ -100,7 +100,7 @@ A lingua proxies a language by membership, not extension string: `§cc` reaches 
 
 User Instructions are the live instruction of the session. Not corpus: standing instruction, once written down, is precept and takes its precept rank.
 
-Within [2, 3, 4], the more specific governs: by ambit first (Agent, then Project, then Instance, then Universal), and within one ambit, a named lingua beats a blank one. Location decides ambit where there is no instrument.
+Within [2, 3, 4], the more specific prevails: by ambit first (Agent, then Project, then Instance, then Universal), and within one ambit, a named lingua beats a blank one. Location decides ambit where there is no instrument.
 
 Clarifications:
 
@@ -108,5 +108,5 @@ Clarifications:
 - Instance provisions may replace, amend, or disable anything in the universal ambit.
 - Project provisions may replace, amend, or disable anything in their base namespace, and a project's own rules files may do so in place.
 - Project caselaw may compose any doctrine.
-- Agent provisions carry the reach of Project provisions, and may act upon Project provisions as well. Minted in an agent's own definition file, they bind that agent's conduct alone; they are not visible to invokers or invokees.
-- Precedence ≠ severity/authority. Uncontested rubric carries the same authority as a provision. Provisions are minted mainly to prevail in a collision, and for citability outside canon.
+- Agent provisions have the reach of Project provisions, and may act upon Project provisions as well. Minted in an agent's own definition file, they bind that agent's conduct alone; they are not visible to invokers or invokees.
+- Precedence ≠ severity/authority. Uncontested rubric bears the same authority as a provision. Provisions are minted mainly to prevail in a collision, and for citability outside canon.

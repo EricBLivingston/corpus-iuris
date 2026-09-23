@@ -70,7 +70,7 @@ See Principle §2 (YAGNI); name adjacent work only where excluding it removes re
 
 ## Acceptance Criteria
 
-<Each `- [ ]` item carries a verifier hint: `(cargo test: <name>)`, `(grep: <pattern>)`, `(manual: <inverse check>)`, `(build: <warning/error>)`, `(benchmark: <metric vs baseline>)`, `(metric: <quantitative threshold>)`. Coin further tags as cases dictate: `(visual:)`, `(golden:)`, `(script:)`, `(log:)`. A missing hint is flagged by the reviewer, not rejected.>
+<Each `- [ ]` item contains a verifier hint: `(cargo test: <name>)`, `(grep: <pattern>)`, `(manual: <inverse check>)`, `(build: <warning/error>)`, `(benchmark: <metric vs baseline>)`, `(metric: <quantitative threshold>)`. Coin further tags as cases dictate: `(visual:)`, `(golden:)`, `(script:)`, `(log:)`. A missing hint is flagged by the reviewer, not rejected.>
 
 - [ ] <Observable outcome 1> (cargo test: `<test_name>`)
 - [ ] <Observable outcome 2> (grep: `<pattern>` returns zero hits)
@@ -82,9 +82,9 @@ See Principle §2 (YAGNI); name adjacent work only where excluding it removes re
 
 ## Governance Bounds
 
-<The limits scoped to THIS phase: lines its work must not cross, not outcomes to reach (those are the Goals and Acceptance Criteria above). The plan-wide bounds in `Overview.md` are amended only through ※12 and already govern this phase's produced work whether or not this file mentions them. If this phase adds no limit of its own, write "None beyond Overview.md.">
+<The limits scoped to THIS phase: lines its work must not cross, not outcomes to achieve (those are the Goals and Acceptance Criteria above). The plan-wide bounds in `Overview.md` are amended only through ※12 and already bind this phase's produced work whether or not this file mentions them. If this phase adds no limit of its own, write "None beyond Overview.md.">
 
-<Admissibility. A phase bound goes in the list only if both tests hold.>
+<Admissibility. A phase bound goes in the list only if both tests obtain.>
 
 1. **It does not conflict with an Overview bound.** It may narrow one, or apply one more precisely to this phase's work; it may not widen one, add an exception to one, or soften its terms. Test it against the Overview's text, never against how sensible it sounds standing alone: this failure looks like careful scoping, and nothing in the bound's own wording gives it away.
 2. **It is not a restatement, subset, or tautology of an Overview bound.** Where an Overview bound already handles the thing, the phase bound is deleted, not reworded, not narrowed for form's sake.

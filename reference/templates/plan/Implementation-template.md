@@ -5,11 +5,11 @@
 
 ## Orientation
 
-<One paragraph: what gets built and where (target file, module, or crate), pointing each concern back to its Design section (spine §1, data model §2, the mechanism §3, ...). State the conventions that hold throughout once here rather than per phase: typing discipline, test runner invocation, debug-script placement, naming. Name any ratified residual ("do not chase X") so the builder does not fight it.>
+<One paragraph: what gets built and where (target file, module, or crate), pointing each concern back to its Design section (spine §1, data model §2, the mechanism §3, ...). State the conventions that apply throughout once here rather than per phase: typing discipline, test runner invocation, debug-script placement, naming. Name any ratified residual ("do not chase X") so the builder does not fight it.>
 
 ---
 
-> **Filling this template.** Every phase carries the spine: **Goal** (observable outcome for THIS phase) → concrete steps naming the file or symbol and the exact change, each an imperative led by Add, Edit, or Delete, citing Design §N instead of re-deriving why. **Done** is recommended but sits outside the spine. Add or drop phases freely. Do not reorganize into thematic sections that re-explain architecture, and do not add per-step "Rationale / Why" (that belongs in Design). Delete this block when filling in real phases.
+> **Filling this template.** Every phase contains the spine: **Goal** (observable outcome for THIS phase) → concrete steps naming the file or symbol and the exact change, each an imperative led by Add, Edit, or Delete, citing Design §N instead of re-deriving why. **Done** is recommended but sits outside the spine. Add or drop phases freely. Do not reorganize into thematic sections that re-explain architecture, and do not add per-step "Rationale / Why" (that belongs in Design). Delete this block when filling in real phases.
 
 ---
 

@@ -18,14 +18,14 @@ The canonical invocation shapes, workflow, triage, edge cases, and model selecti
 
 ## Invocation Floor
 
-These shapes cover every engagement. Both need `@`+**absolute** file references, an explicit roster model, `--print-timeout 8m` (agy's own default is `5m0s`, which silently cuts a large-tree run off), and — as the prompt's closing lines, verbatim — the no-shell clause, the mandate clause, and a scope line naming exactly the paths granted on the command line. Every path the prompt `@`-references must itself be granted: headless mode cannot prompt for approval, so an ungranted read is auto-denied, and neither cwd nor a trusted workspace substitutes. `--add-dir` is the only grant channel and it takes **directories** — the scope line renders the grant and never creates one, so an `@`-referenced file is reached by granting a directory above it, not by naming the file anywhere. An exit 0 is not success. One blocking foreground call, with the harness's own wait set to its maximum — a default wait cuts a long engagement off mid-run.
+These shapes cover every engagement. Both need `@`+**absolute** file references, an explicit roster model, `--print-timeout 8m` (agy's own default is `5m0s`, which silently cuts a large-tree run off), and — as the prompt's closing lines, verbatim — the no-shell clause, the mandate clause, and a scope line naming exactly the paths granted on the command line. Every path the prompt `@`-references must itself be granted: headless mode cannot prompt for approval, so an ungranted read is auto-denied, and neither cwd nor a trusted workspace substitutes. `--add-dir` is the only grant channel and it takes **directories** — the scope line renders the grant and never creates one, so an `@`-referenced file is accessed by granting a directory above it, not by naming the file anywhere. An exit 0 is not success. One blocking foreground call, with the harness's own wait set to its maximum — a default wait cuts a long engagement off mid-run.
 
 | Placeholder | Model identifier |
 | ---- | ---- |
 | `{gemini-pro}` | `gemini-3.1-pro-high` |
 | `{gemini-flash}` | `gemini-3.7-flash-high` |
 
-Live guidance carries the placeholder, never the literal: model identifiers resolve in the table above, and every `{…-root}` placeholder in the instance ambit.
+Live guidance uses the placeholder, never the literal: model identifiers resolve in the table above, and every `{…-root}` placeholder in the instance ambit.
 
 ### Case 1 — answer to stdout
 
@@ -92,7 +92,7 @@ uv run pytest tests/unit/ > "$OUTDIR/pytest.out" 2>&1
 # prompt body: Review the changes in @$OUTDIR/diff.patch for bugs.
 ```
 
-Never pipe a producer into agy. Beyond losing the input, a slow producer holds the shell open long after agy exits and looks exactly like an agy hang: `bash` waits for every pipeline member, so the harness timeout can fire although agy already answered and exited.
+Never pipe a producer into agy. Beyond losing the input, a slow producer keeps the shell open long after agy exits and looks exactly like an agy hang: `bash` waits for every pipeline member, so the harness timeout can fire although agy already answered and exited.
 
 ### Capturing large output
 

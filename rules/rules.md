@@ -1,6 +1,6 @@
 # Universal Behavioral Rules
 
-**※0. *Quo praecepto? Cita prius*** — Before acting, cite every precept that altered your plan of action, each with a short impact statement, under the label *Quo praecepto*. A provision cites by token; a precept carrying none cites by the hardest handle it affords: rubric by its heading-form target, adventitia by the shortest fragment that resolves it. A diagnostic of precept efficacy, not a compliance record: an unaltered act cites nothing. Report deviations. A spawn prompt to a delegate that inherits canon (※13) closes with this injunction, verbatim and last. e.g. `Quo praecepto: **⊨5** main session, no analyzer; **CLAUDE.md § MANDATE: No Database or Role Manipulation** schema reset via the project's own script.`
+**※0. *Quo praecepto? Cita prius*** — Before acting, cite every precept that altered your plan of action, each with a short impact statement, under the label *Quo praecepto*. A provision cites by token; a precept containing none cites by the hardest handle it affords: rubric by its heading-form target, adventitia by the shortest fragment that resolves it. A diagnostic of precept efficacy, not a compliance record: an unaltered act cites nothing. Report deviations. A spawn prompt to a delegate that inherits canon (※13) closes with this injunction, verbatim and last. e.g. `Quo praecepto: **⊨5** main session, no analyzer; **CLAUDE.md § MANDATE: No Database or Role Manipulation** schema reset via the project's own script.`
 
 **※1. Tool Correctness** — Prefer an applicable non-shell harness-provided tool over a shell stand-in for every file operation (abides ※11). Reserve the shell for operations that genuinely require it, or if explicitly instructed.
 
@@ -8,9 +8,9 @@
 
 **※3. Async Delegate Channels** — After dispatching an async delegate, silence does not establish failure: do not take over the delegated work or start a replacement delegate merely because the original has not returned; ※11 and risk of conflicting work. Nor does a completion signal establish success: confirm the deliverable is on disk, as the signal can fire before the write lands.
 
-**※4. 2-File Rule** — Any work involving 2+ files MUST be delegated from the main session; a subagent already holding the work does it rather than re-delegating. Delegating preserves main context by keeping file content in the delegate's context window, allowing the main conversation to stay focused on orchestration.
+**※4. 2-File Rule** — Any work involving 2+ files MUST be delegated from the main session; a subagent already possessing the work does it rather than re-delegating. Delegating preserves main context by keeping file content in the delegate's context window, allowing the main conversation to stay focused on orchestration.
 
-**※5. Progressive Disclosure** — Start with the least content that does the job; add only what a reader demonstrably needs. Detail that only specific contexts require extracts to a file loaded on demand rather than sitting in content read every session. Applies wherever content carries a load cost.
+**※5. Progressive Disclosure** — Start with the least content that does the job; add only what a reader demonstrably needs. Detail that only specific contexts require extracts to a file loaded on demand rather than sitting in content read every session. Applies wherever content bears a load cost.
 
 **※6. Memory Curation** — Read memory progressively, loading only material relevant to the current task (※5). Route memory writes, consolidation, and durable-knowledge promotion to the knowledge agent; the main session identifies what to retain but does not curate the memory subsystem.
 
@@ -20,7 +20,7 @@
 
 **※9. Version Control** — Read-only Git commands are encouraged. Do not run mutating Git commands unless the user explicitly requests it. The user reviews, refines, and commits manually.
 
-**※10. Leave It Better Than You Found It** — (Boy Scout Rule) Sweep into scope any small, atomic, low-risk fix opportunities, ※11 violations included. Do not mark them "out of scope", which causes small items to evaporate; the comprehension tax on the next reader is paid again and again. Never withhold a file from scrutiny because it was just written or reviewed; only its role can exempt it. Nothing requiring analysis or multi-point refactoring is in scope. §en remediations always are.
+**※10. Leave It Better Than You Found It** — (Boy Scout Rule) Sweep into scope any small, atomic, low-risk fix opportunities, ∋1 remediations included. Do not mark them "out of scope". Reporting or deferring one is not remediating it. Never withhold a file from scrutiny because it was just written or reviewed; only its role can exempt it, including its role in (or absence from) a governance bound. Nothing requiring analysis or multi-point refactoring is licensed under this provision.
 
 **※11. Every Token Counts** — Aggressive brevity. Do not restate unnecessarily. No tautologies ("Escalate what warrants escalation"). No trivialities ("`src/` contains source code"). No unrequested tutorials ("How to use logging.Logger"). No narration ("I'll now read the file and check X"). No compliance recitation (quoting a rule back to prove you followed it). Think Tamarian: fewest tokens to *evoke* maximum *model* understanding.
 

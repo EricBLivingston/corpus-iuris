@@ -1,5 +1,5 @@
 ---
-description: Converts a plan's debrief into a close-out plan — every carried item gets a binary Yes or No, and the Yes list becomes an Implementation.md ready to re-phase. Takes the plan folder, the one holding Implementation-Debrief.md; use when loose ends must be closed rather than carried forward.
+description: Converts a plan's debrief into a close-out plan — every carried item gets a binary Yes or No, and the Yes list becomes an Implementation.md ready to re-phase. Takes the plan folder, the one containing Implementation-Debrief.md; use when loose ends must be closed rather than carried forward.
 argument-hint: "[plan-folder]"
 model: opus
 ---
@@ -12,11 +12,11 @@ Convert an `/orchestrate` debrief into a binary-triage close-out plan. Workflow 
 
 `$ARGUMENTS` = the plan folder containing `Implementation-Debrief.md` — the same path `/debrief` and `/phase` take.
 
-Set `{Project Path}` = the output of `pwd` prepended to `plans/{Plan Folder}/`. It must begin with `/`: the analyzer may execute with a different cwd, where a relative `plans/...` silently lands outside the project. It must NOT resolve inside your agent-configuration directory — the tree holding your rules, agents and commands — unless the user is genuinely finalizing a plan that lives in that meta-project.
+Set `{Project Path}` = the output of `pwd` prepended to `plans/{Plan Folder}/`. It must begin with `/`: the analyzer may execute with a different cwd, where a relative `plans/...` silently lands outside the project. It must NOT resolve inside your agent-configuration directory — the tree containing your rules, agents and commands — unless the user is genuinely finalizing a plan that lives in that meta-project.
 
 ## Critical Directives
 
-**Finality.** The `Implementation.md` this command produces is the **final** reference to the parent plan's loose ends. After it executes and is archived, every debrief item is closed, not deferred — so every item takes a binary Yes or No, with no third bucket and no tri-state escape (Step 4 greps for the recurring wordings). A "No" is a closure carrying a rationale, not a backlog entry: if the item still matters, a future implementation's own analyzer rediscovers it from the live codebase, and if it is never rediscovered it was not material.
+**Finality.** The `Implementation.md` this command produces is the **final** reference to the parent plan's loose ends. After it executes and is archived, every debrief item is closed, not deferred — so every item takes a binary Yes or No, with no third bucket and no tri-state escape (Step 4 greps for the recurring wordings). A "No" is a closure stating a rationale, not a backlog entry: if the item still matters, a future implementation's own analyzer rediscovers it from the live codebase, and if it is never rediscovered it was not material.
 
 **Upstream artifacts are immutable.** Everything in `{Project Path}/` outside `debrief/` — `Overview.md`, `Phase-*.md`, analyses, reviews, test reports — is a historic record, errors and stale claims included; future forensic research depends on those files remaining exactly as the implementation left them, and rewriting them in arrears destroys the audit trail. The only writes `/finalize` and its delegated analyzer may make are **new files inside `{Project Path}/debrief/`** — no edits, renames, reformatting, lint-cleanups or deletions anywhere else. The sole exception is Step 2's staging move. The payload below binds the produced plan's *contents* by the same rule.
 
@@ -81,7 +81,7 @@ A table counting Yes / No / Total per debrief category, plus a 1-3 sentence summ
 
 ### 2. Yes-List — Ordered Work Items
 
-Group by work-class (production defects first, then tech-debt closure that unlocks other work, then test-quality, then ※10 boy-scout sweeps in *live* source — adjust groupings to the actual content). No "plan-document reconciliation" or "upstream-artifact fix-up" work-class exists; per the immutability constraint those items belong on the No-list. Each item carries:
+Group by work-class (production defects first, then tech-debt closure that unlocks other work, then test-quality, then ※10 boy-scout sweeps in *live* source — adjust groupings to the actual content). No "plan-document reconciliation" or "upstream-artifact fix-up" work-class exists; per the immutability constraint those items belong on the No-list. Each item contains:
 
 - Anchor: original finding ID(s) from Debrief.md (e.g., "Y-1. W1 — ...")
 - File path with line anchors where known
@@ -109,7 +109,7 @@ Return only a one-line status summary: "Yes: N / No: M / Total: T → {Project P
 
 ### 4. Verdict-Language Check
 
-The payload forbids tri-state language; verify it before handing back. The pattern below is a net, not the rule: it catches the recurring wordings and reaches no novel one, so a clean grep is evidence of a binary draft and not proof of it (⊨4):
+The payload forbids tri-state language; verify it before handing back. The pattern below is a net, not the rule: it catches the recurring wordings and matches no novel one, so a clean grep is evidence of a binary draft and not proof of it (⊨4):
 
 ```
 grep -niE '\b(deferred|defer to|tbd|revisit|maybe|conditional|track separately|follow up in|future plan|future work|watchlist|if touched|if revisited)\b' {Project Path}/debrief/Implementation.md
