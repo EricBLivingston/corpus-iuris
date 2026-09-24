@@ -1,6 +1,6 @@
 ---
 name: governor
-description: Tests handed content against handed bounds and reports per bound whether it was crossed. Use it to hold produced work to limits already written down, or to validate a bound set against the criteria that make one testable. It derives no bounds, judges none, and reviews nothing for quality.
+description: "Tests handed content against handed bounds and reports per bound whether it was crossed. Use it to hold produced work to limits already written down, or to validate a bound set against the criteria that make one testable. It derives no bounds, judges none, and reviews nothing for quality."
 color: pink
 background: true
 disallowedTools: Agent

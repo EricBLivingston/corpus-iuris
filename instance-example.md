@@ -2,7 +2,7 @@
 
 ## Refinements
 
-| Governs | Intent on this installation |
+| Token | Intent on this installation |
 | ---- | ---- |
 | ⊨1 | The language-server-backed symbolic toolserver is Serena; prefer its symbolic tools over their built-in and shell equivalents. |
 | ※md1 | The Markdown linter is `rumdl` — `rumdl check <path>`, `rumdl check --fix <path>`. |

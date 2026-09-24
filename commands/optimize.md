@@ -1,5 +1,5 @@
 ---
-description: Rewrites a document to strip redundancy, wordiness, tutorial explanation, tautology, and stale claims, landing a reviewed -OPT copy under `.analysis/`. Takes the document path; use to tighten a plan or spec where the meaning must survive the cut.
+description: "Rewrites a document for the strongest signal at the fewest tokens (∋1), meaning intact, as a reviewed copy. Takes the document path; use on any prose artifact grown slack: plan, spec, reference, rule, skill."
 argument-hint: "[document-path]"
 model: opus
 ---
@@ -12,17 +12,17 @@ Invoke the analyzer agent to optimize the indicated document.
 
 ### Optimize Document
 
-A. Apply these optimizations per ∋5 (this list is a superset of ∋1, restated and enhanced for focus and to underscore the imperative):
+A. Apply the following optimizations, drawn in part from ∋5 and ∋1, restated for focus and force:
 
 1. **Lingua**: Apply each lingua the document uses, `§en` to its prose.
-2. **Redundancy**: Apply DRY principles jointly across all reviewed artifacts and always-loaded context. Two duplicates are legitimate and stay: an enumeration that **names the provision it enforces** (A's own parenthetical above is the model; an enumeration naming nothing gets no exception), and a passage stating a reason or operational detail the source lacks.
+2. **Redundancy**: Apply DRY principles jointly across all reviewed artifacts and always-loaded context. Two duplicates are legitimate and stay: an enumeration that **names the provision it enforces** (A's own lead-in is the model; an enumeration naming nothing gets no exception), and a passage stating a reason or operational detail the source lacks.
 3. **Verbosity**: Reduce wordiness; every token counts
 4. **Tutelage**: Remove tutorial-style explanations from non-tutorial artifacts unless explicitly requested
 5. **Tautology**: Eliminate redundant phrasing and tighten language
 6. **Superfluity**: Remove content that is obvious or well-understood
-7. **Obsolescence**: Remove or update outdated or incorrect information based on current state of the project or domain.
+7. **Obsolescence**: Remove or update outdated or incorrect information against the current state of the project or domain.
 8. **Vacuity**: Remove prose that reads as guidance but commits to nothing actionable (i.e. removing it changes nothing substantive)
-9. **Scaffolding**: Remove unnecessary navigation apparatus, (always true for artifacts constrained by ※5)
+9. **Scaffolding**: Remove unnecessary navigation apparatus (always true for artifacts constrained by ※5)
 10. **Tamarian**: Refactor, if possible, to evoke maximum model understanding with minimum tokens.
 11. **Reference integrity**: every inbound reference to the document that the cut invalidates is found and repaired in this pass, ordinals and identifiers included (`⊨2`); a passage rewritten to replace another leaves no residue of the replaced (`⊨3`).
 
@@ -30,7 +30,7 @@ B. Write the optimized content to the Output path.
 
 ### Review
 
-Invoke the reviewer agent to compare the `-OPT` document in `.analysis/` against the original at its source path:
+Invoke the reviewer agent to compare the `-OPT` document in `{analysis-root}/` against the original at its source path:
 
 1. **Comprehensiveness**: All important source content is represented
 2. **Sufficiency**: Enough content remains to fully represent each concept without over-optimization
@@ -40,7 +40,7 @@ Edit the optimized document as needed.
 
 ## Output
 
-Write the optimized document to `.analysis/{document-path-without-extension}-OPT.{extension}`. `.analysis/` sits outside command/skill/agent discovery paths; create it if missing. Never write beside the original — an `-OPT` copy in an always-loaded directory gets loaded alongside it, doubling the cost the optimization was performed to cut.
+Write the optimized document to `{analysis-root}/{document-path-without-extension}-OPT.{extension}`. `{analysis-root}/` sits outside command/skill/agent discovery paths; create it if missing. Never write beside the original: an `-OPT` copy in an always-loaded directory gets loaded alongside it, doubling the cost the optimization exists to cut.
 
 Report:
 

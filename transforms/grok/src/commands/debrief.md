@@ -1,5 +1,5 @@
 ---
-description: Sweeps a completed plan folder for what it left open — suggestions, warnings, deferred items, technical debt, failing or skipped tests — into a severity-ranked Implementation-Debrief.md. Takes the plan folder; use once every phase is complete.
+description: "Sweeps a completed plan folder for everything it left open into a severity-ranked Implementation-Debrief.md. Takes the plan folder; use once every phase is complete."
 argument-hint: "[plan-folder]"
 ---
 
@@ -9,15 +9,15 @@ Invoke the analyzer agent to consolidate unaddressed items from a completed impl
 
 ## Scope
 
-**Every phase in the plan folder is in scope, always.** `Implementation-Debrief.md` is the only artifact that records an assessment; until it exists no phase has been debriefed, whatever other evidence of work the folder contains.
+Every phase in the plan folder is in scope, always. `Implementation-Debrief.md` is the only artifact that records an assessment; until it exists no phase has been debriefed, whatever other evidence of work the folder contains.
 
-State the full phase range explicitly in the dispatch so the analyzer cannot infer a narrower one (∋3).
+State the full phase range in the dispatch so the analyzer cannot infer a narrower one (∋3).
 
 ## Process
 
 ### Scan Plan Folder
 
-A. Ingest all `.md` files in the plan folder root — not `archive/`, which contains the specs `/phase` superseded — and extract items into the categories the Debrief template defines.
+A. Ingest all `.md` files in the plan folder root (excluding `archive/`, which holds the specs `/phase` superseded) and extract items into the categories the Debrief template defines.
 
 B. For each item, capture source file, the item itself, and severity (critical/important/minor)
 
@@ -30,13 +30,11 @@ C. Prioritize within each category (critical first)
 ### Questions and Triage
 
 A. Identify ambiguous items requiring clarification
-B. Triage Out-of-Scope items — either bring in scope or close with rationale
+B. Triage Out-of-Scope items: bring each in scope or close it with rationale
 
 ### Generate Report
 
-Create `Implementation-Debrief.md` in the plan folder:
-
-Use the structure in `{reference-root}/templates/debrief/Debrief-template.md`. Fill placeholders with extracted findings.
+Create `Implementation-Debrief.md` in the plan folder from `{reference-root}/templates/debrief/Debrief-template.md`, its placeholders filled with the extracted findings.
 
 ## Output
 

@@ -1,6 +1,6 @@
 ---
 name: writing-code
-description: Runs the implementation cycle over a change — the analyzer agent scopes it, the coder agent writes it, the reviewer reviews it, the tester verifies it, iterating until review passes and tests are green. Use for any feature, bug fix, or refactor, and always once a change spans two or more files.
+description: "Runs the implementation cycle over a change — the analyzer agent scopes it, the coder agent writes it, the reviewer reviews it, the tester verifies it, iterating until review passes and tests are green. Use for any feature, bug fix, or refactor, and always once a change spans two or more files."
 ---
 
 # Writing Code Skill

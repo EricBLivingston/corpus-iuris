@@ -1,5 +1,5 @@
 ---
-description: Builds from one implementation plan by driving the analyze, code, review, test cycle until review passes and tests are green. Takes a single plan file, or a plan already in the conversation. Use for an unphased plan; a folder of Overview plus phase files goes to orchestrate.
+description: "Builds from one implementation plan by driving the analyze, code, review, test cycle until review passes and tests are green. Takes a single plan file, or a plan already in the conversation. Use for an unphased plan; a folder of Overview plus phase files goes to orchestrate."
 argument-hint: "[plan-file]"
 ---
 
@@ -12,11 +12,11 @@ Execute an implementation plan through the `writing-code` skill.
 1. **Establish Plan**
    - Read the plan file if provided, or use conversation context
    - Set `{Plan Folder}` = absolute path of the directory containing the plan file
-   - If the plan is conversation-borne, there is no such directory: ask the user for the destination folder and confirm it before proceeding past this step
+   - A conversation-borne plan has no such directory: ask the user for the destination folder and confirm it before proceeding
 
 2. **Execute the plan via the `writing-code` skill**
 
-   Additional Notes:
+   Notes:
 
    - The coder must update the plan file's Deviations section before invoking the reviewer. A departure that would cross a bound in `## Governance Bounds` is ultra vires (※12), not a Deviation: the ATO is obtained before the edit.
    - The reviewer also verifies Deviations was filled and that ACs have verifier hints.

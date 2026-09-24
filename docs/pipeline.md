@@ -16,7 +16,7 @@ Spec-Driven Development is one of the three layers published here. It is the par
 | `implement` | one plan file, or a plan already in conversation | an implementation report beside the plan | nothing staged; it is the whole run | yes, through the coder agent |
 | `debrief` | the plan folder, every phase complete | `Implementation-Debrief.md` | the debrief, to `finalize` | no |
 | `finalize` | the plan folder holding that debrief | `debrief/Debrief.md` and `debrief/Implementation.md` | a close-out plan the user reviews, then re-phases | no |
-| `optimize` | one document path | an `-OPT` copy under `.analysis/`, never beside the original | nothing; a standalone pass | no |
+| `optimize` | one document path | an `-OPT` copy under `{analysis-root}/`, never beside the original | nothing; a standalone pass | no |
 
 Only `orchestrate` and `implement` reach code, and neither writes any itself: both route every edit through the coder agent.
 
@@ -119,13 +119,13 @@ A deviation is a departure the plan did not anticipate, and the plan file record
 
 `finalize` converts that into a plan, under two rules. The first rule is the binary decision: every carried item takes a Yes or a No, with no third option, and a No is a closure carrying its rationale, on the reasoning that if the item still matters a future analyzer rediscovers it from the live codebase, and if it is never rediscovered it was not material. The Yes list becomes an implementation plan grouped by work class, each item carrying its original finding ID, its file path and a verifier hint.
 
-The second rule is immutability, and it binds the produced plan's contents as much as its file operations. Everything in the plan folder outside `debrief/` is a historic record, errors and stale claims included, because forensic work later depends on those files reading exactly as the implementation left them. A defect spotted in an upstream artifact therefore goes on the No list with that rationale, rather than becoming a Yes-list item that would edit it: the same prohibited modification, deferred by one hop, is still prohibited.
+The second rule is immutability, and it binds the produced plan's contents as much as its file operations. Everything in the plan folder outside `debrief/` is a historical record, errors and stale claims included, because forensic work later depends on those files reading exactly as the implementation left them. A defect spotted in an upstream artifact therefore goes on the No list with that rationale, rather than becoming a Yes-list item that would edit it: the same prohibited modification, deferred by one hop, is still prohibited.
 
 ## `optimize`: a pass over one document
 
 The analyzer applies a fixed set of cuts (redundancy, verbosity, tutelage, tautology, superfluity, obsolescence, vacuity and scaffolding), and a ninth optimization refactors for maximum understanding at minimum tokens. The reviewer then compares the copy against the original for comprehensiveness, sufficiency and accuracy. Two kinds of duplicate are legitimate and stay: an enumeration that names the provision it enforces, and a passage carrying a reason or an operational detail the source lacks.
 
-The copy lands under `.analysis/`, the staging area the command names, rather than beside the original, because an optimized copy in an always-loaded directory is loaded alongside the file it optimized and doubles the cost the pass was run to cut.
+The copy lands under `{analysis-root}/`, the staging area the command names, rather than beside the original, because an optimized copy in an always-loaded directory is loaded alongside the file it optimized and doubles the cost the pass was run to cut.
 
 ## Why an executing phase is handed so little
 

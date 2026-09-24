@@ -1,6 +1,6 @@
 ---
 name: coder
-description: Writes and modifies source code — a feature, a bug fix, a refactor, or a plan's implementation steps — following the project's existing conventions and standards. Use it whenever files must actually change, and always across two or more. It does not review its own work, write tests, or run git.
+description: "Writes and modifies source code — a feature, a bug fix, a refactor, or a plan's implementation steps — following the project's existing conventions and standards. Use it whenever files must actually change, and always across two or more. It does not review its own work, write tests, or run git."
 model: opus
 color: green
 background: true

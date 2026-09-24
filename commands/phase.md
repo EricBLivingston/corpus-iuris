@@ -1,5 +1,5 @@
 ---
-description: "Converts the Spec-Driven Development specs into the folder orchestrate consumes: an Overview carrying what more than one phase needs, one Phase-X file of work each, superseded specs archived. Takes the plan folder; use between authoring the specs and executing them."
+description: "Converts the Spec-Driven Development specs into the folder orchestrate consumes: an Overview containing what more than one phase needs, one Phase-X file per phase, superseded specs archived. Takes the plan folder; use between authoring the specs and executing them."
 argument-hint: "[plan-folder]"
 model: sonnet
 ---
@@ -72,7 +72,7 @@ Edit the files as needed to satisfy these criteria.
 
 ### Assay the bounds
 
-Make the inverted-charter governor dispatch `{command-root}/orchestrate.md` § 2 Validate Boundaries specifies — its Content and its Criteria — over this plan folder. It runs before the Sweep, while the source documents are unarchived and the analyzer that wrote the bounds can still repair them.
+Make the inverted-charter governor dispatch `{command-root}/orchestrate.md` § 2 Validate Boundaries specifies (its Content and its Criteria) over this plan folder. It runs before the Sweep, while the source documents are unarchived and the analyzer that wrote the bounds can still repair them.
 
 - `STOP` containing no crossed row — hand the governor what its evidence column names as absent, and re-dispatch.
 - `STOP` — hand the return to the analyzer to repair, and re-run the assay. A second `STOP` routes through `governing-work` § Routing the return before the re-dispatch.
@@ -86,19 +86,19 @@ Runs immediately after the assay returns `CLEAR`, the last step of `/phase`, ove
 
 - **Source specs** — whatever was used to author Overview and Phase (`Implementation.md`, `Design.md`, `RFC.md`, `Plan.md`) → SWEEP unconditionally. The Overview and phase files supersede them, and keeping one pulls the plan into context twice. Substantial content is a reason to verify the carry-forward, never to KEEP.
 - **Background, rationale, history, design discussion, and the `/phase` run's own process artifacts** → SWEEP unconditionally. Spec-Driven Development leaves the rationale behind at this seam. An atypical plan (doc, template, command-file) sweeps its process artifacts too, however much they look like evidence.
-- **Secondary reference material** → KEEP: content that is not itself the plan but illuminates specifics during implementation — sample data files, code/ID mappings (ANSI/ISO tables, zip lookups, enum sheets), architecture diagrams or system overviews shared across phases, fixture inputs and golden outputs, files the implementation edits in place.
+- **Secondary reference material** → KEEP: content that is not itself the plan but illuminates specifics during implementation: sample data files, code/ID mappings (ANSI/ISO tables, zip lookups, enum sheets), architecture diagrams or system overviews shared across phases, fixture inputs and golden outputs, files the implementation edits in place.
 
 A file containing any part of the plan is a source spec whatever its size or apparent value.
 
 **b. Reconcile** — both passes run over every KEEP file; symbolic references do not surface in path-based greps.
 
-**b.1 File paths.** Grep each KEEP file for references to SWEEP candidates (filenames, relative paths, `archive/...` prefixes) and strip the cosmetic ones (Related Documents links, "see also" mentions, footnotes). A surviving non-cosmetic reference means the phasing failed to inline what the KEEP file needs; flag it for user decision — backfill inline and strip, or reclassify the candidate as an implementation artifact where it qualifies. A properly phased plan produces none.
+**b.1 File paths.** Grep each KEEP file for references to SWEEP candidates (filenames, relative paths, `archive/...` prefixes) and strip the cosmetic ones (Related Documents links, "see also" mentions, footnotes). A surviving non-cosmetic reference means the phasing failed to inline what the KEEP file needs; flag it for user decision: backfill inline and strip, or reclassify the candidate as an implementation artifact where it qualifies. A properly phased plan produces none.
 
-**b.2 Symbolic identifiers.** From each SWEEP candidate extract every identifier it *defines* — table-row IDs (`T-1`), finding codes (`S5`, `W-3`, `F-7`), glossary terms, numbered-list anchors referenced elsewhere by number, and any other code whose meaning lives only there — and record the set in the Sweep-Manifest for the convergence test. Resolution is mechanical and single-branch: carry the referenced rows or list items of the defining construct into the Overview or phase file that owns them, header and column structure unchanged, so the codes read against the source's schema. Referenced by two or more Phase files → `Overview.md`; by exactly one → that `Phase-X.md`. Carry only the rows or items actually referenced. A bare code whose defining rows were not carried into the referring file, or into `Overview.md` in the shared case, is a defect: the next coder cannot tell `T-1` from noise without opening the archive.
+**b.2 Symbolic identifiers.** From each SWEEP candidate extract every identifier it *defines*: table-row IDs (`T-1`), finding codes (`S5`, `W-3`, `F-7`), glossary terms, numbered-list anchors referenced elsewhere by number, and any other code whose meaning lives only there. Record the set in the Sweep-Manifest for the convergence test. Resolution is mechanical and single-branch: carry the referenced rows or list items of the defining construct into the Overview or phase file that owns them, header and column structure unchanged, so the codes read against the source's schema. Referenced by two or more Phase files → `Overview.md`; by exactly one → that `Phase-X.md`. Carry only the rows or items actually referenced. A bare code whose defining rows were not carried into the referring file, or into `Overview.md` in the shared case, is a defect: the next coder cannot tell `T-1` from noise without opening the archive.
 
 **c. Move and manifest** — move SWEEP files to `plans/<plan>/archive/` and write `plans/<plan>/archive/Sweep-Manifest.md` recording per-file classification with reason, the file-path references stripped (b.1), the identifier set per SWEEP candidate with the destination each carried subset landed in (b.2), and any user-decision flags.
 
-**Convergence test:** over every KEEP file, two greps must return zero hits — any path under `archive/`, and each Sweep-Manifest identifier, run one identifier at a time so a missed inlining attributes to its source.
+**Convergence test:** over every KEEP file, two greps must return zero hits: any path under `archive/`, and each Sweep-Manifest identifier, run one identifier at a time so a missed inlining traces to its source.
 
 ## Output
 

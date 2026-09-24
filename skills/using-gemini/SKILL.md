@@ -1,6 +1,6 @@
 ---
 name: using-gemini
-description: Documents agy invocation, the CLI for Gemini models — the canonical shapes, the mandatory prompt clauses and the model roster live here (⊢2). Use Gemini for analysis of very large files, surveys across many documents, instance-finding over a tree, mechanical bulk edits, second-opinion review. Use when the user asks for Gemini, or when the reading spans more files than this context should take on — the window buys breadth of reading and judgement over it, not counting. A task whose product is a tally, a per-file column, or any other count stays local, where grep answers it in a fraction of the wall clock.
+description: "Documents agy invocation, the CLI for Gemini models — the canonical shapes, the mandatory prompt clauses and the model roster live here (⊢2). Use Gemini for analysis of very large files, surveys across many documents, instance-finding over a tree, mechanical bulk edits, second-opinion review. Use when the user asks for Gemini, or when the reading spans more files than this context should take on — the window buys breadth of reading and judgement over it, not counting. A task whose product is a tally, a per-file column, or any other count stays local, where grep answers it in a fraction of the wall clock."
 ---
 
 # Using Gemini Skill

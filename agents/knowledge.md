@@ -1,6 +1,6 @@
 ---
 name: knowledge
-description: Writes and curates persistent memory — a project's memory file and sidecars, and the cross-project store — including deduplication, scope and category organization, health checks, and promotion of stable content. Use it for any memory write; this gains context preservation and coordinated curation vs. simple appending. Searching needs no agent.
+description: "Writes and curates persistent memory — a project's memory file and sidecars, and the cross-project store — including deduplication, scope and category organization, health checks, and promotion of stable content. Use it for any memory write; this gains context preservation and coordinated curation vs. simple appending. Searching needs no agent."
 model: opus
 color: blue
 background: true

@@ -2,7 +2,7 @@
 
 ## Refinements
 
-| Governs | Intent on this installation |
+| Token | Intent on this installation |
 | ---- | ---- |
 | ※7 | The main session reads a skill file Grok has already listed when invoking that skill. Still do not open `agents/` to learn a role: spawn it. |
 | ※13 | On this harness, `explore` and `plan` do not inherit the parent system-prompt template or the parent skill listing. They do receive the same discovered instruction files as the primary session, in full. They are the context-free pair: anything turning on §, ※, delegate, or MCP-tool routing that is not already in those files still goes in the spawn prompt. |

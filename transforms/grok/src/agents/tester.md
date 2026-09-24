@@ -1,6 +1,6 @@
 ---
 name: tester
-description: Writes tests, runs suites, and diagnoses failures — unit, integration and end-to-end coverage, edge and error cases, flaky tests, and whether a failure is a code defect or a test defect. Use it to cover new code or to interpret a failing suite. It never edits the code under test.
+description: "Writes tests, runs suites, and diagnoses failures — unit, integration and end-to-end coverage, edge and error cases, flaky tests, and whether a failure is a code defect or a test defect. Use it to cover new code or to interpret a failing suite. It never edits the code under test."
 color: cyan
 background: true
 ---

@@ -4,7 +4,7 @@
 
 **Precepts**: all corpus that binds.
 
-**Canon**: precepts whose presence is guaranteed for the readers they bind (by residency, import, path rule, or harness insertion). Presence admits, not merit; a citation to canon always resolves in context. What lies outside is deuterocanonical rather than apocryphal: it binds once read.
+**Canon**: precepts whose presence is guaranteed for the readers they bind (by residency, import, path rule, or harness insertion). Presence admits; merit does not. A citation to canon always resolves in context. What lies outside is deuterocanonical rather than apocryphal: it binds once read.
 
 **Provisions**: canon's instrument-labelled precepts (`§`, `※`, `⊢`, `⊨`), each at its defining site.
 
@@ -20,7 +20,7 @@
 
 **Agent**: a subagent the harness invokes by agent type, built in or defined under `agents/`.
 
-**Delegate**: any actor assigned work: an agent or a peritus. The verb keeps its ordinary sense, so work delegated to an agent excludes periti.
+**Delegate**: any actor assigned work: an agent or a peritus.
 
 **Ultra vires**: characterizes any act that would put more work under a charter than granted by the charter. ※12's whole jurisdiction.
 
@@ -37,7 +37,7 @@
 - **Provision** — the statutory sense: a discrete, citable clause.
 - **Rubric** — the liturgical sense: the red-letter directions for performing the rite, as against the words of the rite.
 - **Adventitia** — the Cartesian sense: *ideae adventitiae*, ideas arriving from outside the mind, neither innate nor self-made. What one authors one may edit; the adventitious admit only adoption or rejection.
-- **Doctrine** — principle systematized out of accumulated experience. Each provision is an a posteriori remediation of an observed failure.
+- **Doctrine** — principle systematized out of accumulated experience. Each provision is a remediation of an observed failure.
 - **Caselaw** — the litigants are the colliding precepts; the bench is the author and the model, arguing to a holding. A ruling is amended by rewriting it.
 - **Peritus** — the civil-law sense: the expert a tribunal appoints and questions, not the expert witness a party retains and an opponent cross-examines. It answers what is asked; the tribunal weighs the answer and is not bound by it.
 - **Responsum** — the Roman-law sense: *responsa prudentium*, a jurist's written answer to the question as put. Its authority is the answerer's standing; its scope is no wider than the question.

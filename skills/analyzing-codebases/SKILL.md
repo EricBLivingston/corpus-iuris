@@ -1,6 +1,6 @@
 ---
 name: analyzing-codebases
-description: Routes codebase-scale investigation to the analyzer agent — how a system is put together, what a legacy area does, where a pattern recurs, what a migration would cost, dependency and security audits. Use when understanding must span two or more files and comprehension, not an edit, is wanted.
+description: "Routes codebase-scale investigation to the analyzer agent — how a system is put together, what a legacy area does, where a pattern recurs, what a migration would cost, dependency and security audits. Use when understanding must span two or more files and comprehension, not an edit, is wanted."
 ---
 
 # Analyzing Codebases Skill

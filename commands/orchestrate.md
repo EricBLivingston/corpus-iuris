@@ -1,6 +1,6 @@
 ---
-description: Executes a phased plan folder end to end — an Overview plus numbered phase files, the terminal stage of Spec-Driven Development — driving every phase through the analyze, code, review, test cycle. Takes the folder, optionally a phase to start from. A single unphased plan file goes to implement instead.
-argument-hint: "[plan-folder] [starting at Phase N]"
+description: "Executes a phased plan folder (an Overview plus numbered phase files) end to end as the terminal stage of Spec-Driven Development, driving every phase through the analyze, code, review, test cycle. Takes the folder, optionally a phase to start from. A single unphased plan file goes to implement instead."
+argument-hint: "[plan-folder] [starting at Phase X]"
 model: fable
 ---
 
@@ -13,17 +13,17 @@ model: fable
 - `{Plan Folder}` — the plan folder name (the tokens before "starting at")
 - `{Starting Phase}` — the phase to begin at, phases before it skipped (default: 1)
 
-Set `{Project Path}` = absolute path of `plans/{Plan Folder}` resolved against the **invoking user's current working directory** — run `pwd` and prepend its output. Sub-agents may execute with a different cwd, so a relative `plans/...` silently lands outside the project; every downstream substitution embeds the absolute prefix verbatim. Verify it begins with `/` and does NOT resolve inside your agent-configuration directory, unless the plan genuinely lives in that meta-project.
+Set `{Project Path}` = absolute path of `plans/{Plan Folder}` resolved against the invoking user's current working directory: run `pwd` and prepend its output. Sub-agents may execute with a different cwd, so a relative `plans/...` silently lands outside the project; every downstream substitution embeds the absolute prefix verbatim. Verify it begins with `/` and does NOT resolve inside your agent-configuration directory, unless the plan lives in that meta-project.
 
 ## Critical Directive: Context Preservation
 
-You orchestrate; you do not investigate. **NEVER** read source, or any file a sub-agent in this run wrote; **NEVER** write, edit, review, or test code yourself — a granted replacement into this plan's bounds is yours to record. Read only `Overview.md` and the `Phase-X.md` files — the whole specification this run executes against — plus `{command-root}/{implement,debrief}.md` and the dispatch prompts under `{reference-root}/templates/orchestration/` once each; a skill this workflow directs you to invoke is not a read. The specs those phase files superseded are archived and closed to you and to every implementing specialist; the Validate Boundaries gate alone is handed them, for provenance. **DO** pass file paths between sub-agents and instruct each to write detailed output to files and return only a one-line status. If something fails, dispatch a specialist — don't investigate yourself.
+You orchestrate; you do not investigate. NEVER read source, or any file a sub-agent in this run wrote; NEVER write, edit, review, or test code yourself, except that a granted replacement into this plan's bounds is yours to record. Read only `Overview.md` and the `Phase-X.md` files (the whole specification this run executes against), plus `{command-root}/{implement,debrief}.md` and the dispatch prompts under `{reference-root}/templates/orchestration/` once each; a skill this workflow directs you to invoke is not a read. The specs those phase files superseded are archived and closed to you and to every implementing specialist; the Validate Boundaries gate alone is handed them, for provenance. Pass file paths between sub-agents; instruct each to write detailed output to files and return only a one-line status. If something fails, dispatch a specialist.
 
 ## Workflow
 
 ### 0. Pre-Flight
 
-Verify clean working tree: `git status --porcelain` must be empty. If dirty, enter the **Terminal** with: "Commit or stash before running orchestrate — the run requires a clean tree."
+Verify clean working tree: `git status --porcelain` must be empty. If dirty, enter the **Terminal** with: "Commit or stash before running orchestrate: the run requires a clean tree."
 
 ### 1. Validate Plan Folder
 
@@ -31,13 +31,13 @@ A. Confirm `{Project Path}/Overview.md` exists
 B. Discover all `Phase-X.md` files in `{Project Path}`
 C. Sort phases numerically and report the plan structure to the user before proceeding
 
-Any of these failing — no `Overview.md`, no phase file, a gap in the numbering — enters the **Terminal**.
+Any of these failing (no `Overview.md`, no phase file, a gap in the numbering) enters the **Terminal**.
 
 ### 2. Validate Boundaries
 
-Invoke the governor agent, inverting its usual charter: the **bound sets are the content**, tested against the criteria below.
+Invoke the governor agent, inverting its usual charter: the bound sets are the content, tested against the criteria below.
 
-**Content** — the `## Governance Bounds` section of `{Project Path}/Overview.md` and of every `Phase-X.md`, plus each phase's Acceptance Criteria, which must be satisfiable alongside the bounds binding them. Hand over as well every source document the `/phase` sweep archives, wherever they currently sit (`{Project Path}/archive/` once swept), and every file the bounds themselves name, read-only, as the evidence channel Authority needs: a bound's provenance is undecidable from the bounds sections alone, and a governor possessing no source passes that criterion rather than reporting it untested.
+**Content** — the `## Governance Bounds` section of `{Project Path}/Overview.md` and of every `Phase-X.md`, plus each phase's Acceptance Criteria, which must be satisfiable alongside the bounds binding them. Hand over as well every source document the `/phase` sweep archives, wherever they sit (`{Project Path}/archive/` once swept), and every file the bounds themselves name, read-only, as the evidence channel Authority needs: a bound's provenance is undecidable from the bounds sections alone, and a governor possessing no source passes that criterion rather than reporting it untested.
 
 **Criteria** — every filter in `{reference-root}/templates/plan/bounds-sources.md § Filters on every row's output`, applied per bound, plus these two, which have no filter counterpart and report per Overview/phase pair:
 
@@ -50,7 +50,7 @@ Invoke the governor agent, inverting its usual charter: the **bound sets are the
 - A `STOP` containing no crossed row — hand the governor what its evidence column names as absent, and re-dispatch.
 - Anything else — write the governor's return verbatim to `{Project Path}/Boundary-Validation.md`, then enter the **Terminal**.
 
-**You do not remediate** — not a wording fix, not an obvious typo, not a bound whose intent you can see (⊬※10). A bound repaired by the party it constrains is no bound. The user corrects the plan folder and restarts the run.
+You do not remediate, whether a wording fix, an obvious typo, or a bound whose intent you can see (⊬※10). A bound repaired by the party it constrains is no bound. The user corrects the plan folder and restarts the run.
 
 ### 3. Learn the Implementation Cycle
 
@@ -58,13 +58,13 @@ Invoke the `writing-code` skill, then read `{command-root}/implement.md` to cont
 
 ### 4. Execute Each Phase Sequentially
 
-For each `Phase-X.md` (in order, starting from `{Starting Phase}`), read the phase file, then execute the implementation cycle by dispatching specialist sub-agents directly. Each step below names its dispatch prompt's file under `{reference-root}/templates/orchestration/`; read that file and pass the prompt it contains. Resolve every placeholder before passing a prompt — sub-agents receive concrete paths, none left standing except `{Subject}`, which the sub-agent determines during execution.
+For each `Phase-X.md` (in order, starting from `{Starting Phase}`), read the phase file, then execute the implementation cycle by dispatching specialist sub-agents directly. Each step below names its dispatch prompt's file under `{reference-root}/templates/orchestration/`; read that file and pass the prompt it contains. Resolve every placeholder before passing a prompt: sub-agents receive concrete paths, none left standing except `{Subject}`, which the sub-agent determines during execution.
 
 `{File Rules}` is defined in `{reference-root}/templates/orchestration/file-rules.md` and substituted verbatim into each specialist prompt beside it.
 
-∋3 — each specialist writes its file and returns one line; wait for that line.
+∋3: each specialist writes its file and returns one line; wait for that line.
 
-**Amending a bound**: a departure that would cross one is ultra vires (※12) — the specialist that finds it obtains the ATO through `performing-fmea` and reports the statement's path; on a grant you write that text over the bound it replaces, record the grant under `### Amendments`, and re-dispatch the governor against the set as replaced; on a denial the bound stands and the work is cut back inside it. Cycles cap under ⊨7.
+**Amending a bound**: a departure that would cross one is ultra vires (※12). The specialist that finds it obtains the ATO through `performing-fmea` and reports the statement's path; on a grant you write that text over the bound it replaces, record the grant under `### Amendments`, and re-dispatch the governor against the set as replaced; on a denial the bound stands and the work is cut back inside it. Cycles cap under ⊨7.
 
 #### A. Analyze
 
@@ -102,7 +102,7 @@ Invoke `governing-work`, prompting the governor agent with the following paramet
 - `{Project Path}/Phase-X-Review.md`
 - `{Project Path}/Phase-X-Test-Report.md`
 
-Before composing the dispatch, confirm every artifact listed under **Content** is on disk (※3 — a directory listing, not a read). A missing one is a failure of the specialist step that owed it: re-invoke that specialist — do not dispatch the governor with a gap.
+Before composing the dispatch, confirm every artifact listed under **Content** is on disk (※3, by directory listing). A missing one is a failure of the specialist step that owed it: re-invoke that specialist before dispatching the governor.
 
 Route the governor's return per `governing-work`'s table, narrowed onto this run's own procedure. Anything but `^CLEAR.*` is documented first: create or append to `{Project Path}/Phase-X-Adjudication.md` with the governor's return verbatim, and the bounds it was dispatched against.
 
@@ -127,9 +127,9 @@ If the `auditing-subagents` skill is not installed, skip to Final Summary.
 
 Invoke the `auditing-subagents` skill via the Skill tool with `{Project Path}` as args.
 
-An **honesty check, not a quality gate**: critical findings do NOT halt the workflow — the user reviews the audit report directly. The skill folds `{Project Path}/Implementation-Debrief.md` into its roll-up automatically.
+An honesty check: critical findings do NOT halt the workflow; the user reviews the audit report directly. The skill folds `{Project Path}/Implementation-Debrief.md` into its roll-up automatically.
 
-It returns a path to `{Project Path}/subagent-audit.md` and a one-line verdict (PASS / Critical count / Major count). Capture that line for the summary and notification below, and relay it alone — do NOT read `subagent-audit.md` yourself.
+It returns a path to `{Project Path}/subagent-audit.md` and a one-line verdict (PASS / Critical count / Major count). Capture that line for the summary and notification below, and relay it alone; do NOT read `subagent-audit.md` yourself.
 
 ### 7. Final Summary
 
@@ -148,7 +148,7 @@ Report to the user:
 
 Reachable from any step: every gate enters it on failure, and no branch continues past a gate it did not clear.
 
-1. Stop. Leave the tree exactly as it is — revert nothing, commit nothing, delete nothing.
+1. Stop. Leave the tree exactly as it is: revert nothing, commit nothing, delete nothing.
 2. Report to the user: the phase and step reached; the failing gate, details.
 3. Push-notify the user with that same failure line, if the capability exists.
 4. Hand control back and end the run.

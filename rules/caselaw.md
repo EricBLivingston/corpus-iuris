@@ -4,17 +4,17 @@ Origins and rationale live in `reference/case-history.md`, keyed by token. The h
 
 ## Interpretive Rulings (⊢)
 
-**⊢1. A cross-boundary test is never dropped for production-path purity.** A **valve** is a real, deployable, independently-valuable configuration surface widened so a cross-boundary test drives real state through the production path. Where §15's production-path requirement appears to forbid a §16 end-to-end test, widen one on a concrete trigger: a real production configuration wrongly rejected. Never a test-only artifact, never a production refactor on a test's whim, never a dropped cross-boundary test; a valve knob counts as configurability only with a genuine non-test consumer.
+**⊢1. Configuration valves.** A **valve** is a configuration surface widened for a test's sake (§15) that a deployment would plausibly want (§11), no wider than the test requires (§2).
 
-**Governs:** §15, §16, §11, §13.
+**Governs:** §2, §11, §15.
 
 **⊢2. Periti skills are the sole authorized invocation source.** Each peritus skill records the invocation measured in the field to succeed, and is not transferrable; a shared parameter name is not a shared meaning. ※5 requires that load rather than excusing it: memory is not an authorized alternative.
 
 **Governs:** ※5, periti.md § The engagement.
 
-**⊢3. Adventitia precedence.** Whatever channel adventitia arrives through, the precept or user instruction it collides with prevails on the point of conflict, including universal-ambit rubric that is not itself adventitia. The overrides are registers keyed to this token at the ambit that observes the collision; this entry contains none. Report any harness override that prevents this resolution, identifying the precept displaced (§8).
+**⊢3. Adventitia precedence.** Whatever channel adventitia arrives through, the precept or user instruction it collides with prevails on the point of conflict, including universal-ambit rubric that is not itself adventitia. The overrides are registers keyed to this token at the ambit that observes the collision; this entry contains none. Report any harness override that prevents this resolution, identifying the precept displaced (※0).
 
-**Governs:** adventitia, §8, ※1, and the precept it collides with in each case.
+**Governs:** adventitia, ※0, ※1, and the precept it collides with in each case.
 
 **⊢4. Doctrine-prescribed actions are exempt from ※12, no wider than the provision claimed.** Where the cited provision carves itself out (*e.g.*, ※10), the exemption ends at that carve-out and ※12 binds the remainder.
 
@@ -38,7 +38,7 @@ Origins and rationale live in `reference/case-history.md`, keyed by token. The h
 
 **Governs:** §1, §2.
 
-**⊨4. A verdict bears the authority of the chain, not the scope of its pattern.** Write a gate's pattern by defining shape, never by enumerated vocabulary (§17); where no shape-wise assay exists, the verdict names what its pattern excludes. The chain forwards the verdict alone, so a blind spot undisclosed at the gate is unreachable everywhere downstream.
+**⊨4. A verdict bears the chain's authority; its pattern's scope stays at the gate.** Write a gate's pattern by defining shape, never by enumerated vocabulary (§17); where no shape-wise assay exists, the verdict names what its pattern excludes. The chain forwards the verdict alone, so a blind spot undisclosed at the gate is unreachable everywhere downstream.
 
 **Governs:** ※8, §17.
 

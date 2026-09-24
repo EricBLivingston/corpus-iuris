@@ -1,6 +1,6 @@
 ---
 name: performing-fmea
-description: 'Run this BEFORE spending on anything nobody asked for — a dispatch, a sweep, an audit, a guard — and before amending a bound the asked-for work cannot land inside. Both are ultra vires (※12); this is how a charter is expanded. A hard precondition, not an invitation. Serves the requestor weighing the act and the authorizer assessing its statement.'
+description: "Run this BEFORE spending on anything nobody asked for — a dispatch, a sweep, an audit, a guard — and before amending a bound the asked-for work cannot land inside. Both are ultra vires (※12); this is how a charter is expanded. A hard precondition. Serves the requestor weighing the act and the authorizer assessing its statement."
 ---
 
 # Performing FMEA

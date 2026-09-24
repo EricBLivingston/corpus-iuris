@@ -68,7 +68,7 @@ Each is an entry as it would stand in your corpus: in your instance file, refact
 
 House style bans the em dash outright; `§en1` licenses one where interruption itself is the relation. Everything else the provision holds is untouched, so one keyed row carries it:
 
-| Governs | Intent on this installation |
+| Token | Intent on this installation |
 | ---- | ---- |
 | §en1 | House style bars the em dash outright, so interruption has no licensed dash realization here. Every other connective resolution stands. |
 
@@ -78,7 +78,7 @@ A narrowing and a disagreement take the same form, and the entry records the tex
 
 An installed writing skill covers the whole of what `§en1` covers, and is stricter across it. There is nothing to disagree with and no local rule to restate, so the row defers wholesale:
 
-| Governs | Intent on this installation |
+| Token | Intent on this installation |
 | ---- | ---- |
 | §en1 | Skill `my-skill` supersedes entirely |
 
@@ -90,7 +90,7 @@ Your harness carries a standing instruction not to dispatch subagents, written b
 
 Erasing the provision takes either of two forms. The negation carries it in your instance file, which is itself a site, so the marker reaches the whole installation:
 
-| Governs | Intent on this installation |
+| Token | Intent on this installation |
 | ---- | ---- |
 | ※4 | ⊬※4 in all cases: disabled |
 

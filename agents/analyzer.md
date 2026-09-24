@@ -1,6 +1,6 @@
 ---
 name: analyzer
-description: Investigates a codebase or text at scale — architecture, control and data flow, recurring patterns, dependencies, migration cost, security and quality audits — and reports what it finds. Use it when a question spans more files than this context should hold, and as an author of prose and markdown artifacts; it writes no code.
+description: "Investigates a codebase or text at scale — architecture, control and data flow, recurring patterns, dependencies, migration cost, security and quality audits — and reports what it finds. Use it when a question spans more files than this context should hold, and as an author of prose and markdown artifacts; it writes no code."
 model: opus
 color: orange
 background: true
