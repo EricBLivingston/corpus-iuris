@@ -1,12 +1,12 @@
 # Codex Transform
 
-This package turns the shared Corpus Iuris sources into a coherent Codex installation. It ships no replacement for a user's live Codex configuration: what it installs is merged into whatever that home already holds. `AGENTS.md` beside this file governs work performed inside the transform.
+This package turns the shared Corpus Iuris sources into a Codex installation. It ships no replacement for a user's live Codex configuration: what it installs is merged into whatever that home already holds. `AGENTS.md` beside this file governs work performed inside the transform.
 
 ## For an adopting Codex
 
 The root `installing.md` § The installation sequence governs the separation between the working clone, the installed corpus, and the user's live Codex configuration, and its § On Codex states what makes an artifact resident here. What this package adds is where each piece lands and the admission order, below.
 
-This repository is designed to guide its own adoption. When a user points Codex at the repository URL, the expected journey is:
+When a user points Codex at the repository URL, the expected journey is:
 
 1. Obtain a local working copy and read the root `README.md`, `adopting.md`, this file, and `AGENTS.md`.
 2. Inspect the active Codex home and current official Codex documentation read-only. Identify active configuration layers, existing hooks, collisions, and required destinations.
@@ -28,9 +28,9 @@ This repository is designed to guide its own adoption. When a user points Codex 
 | each skill directory in `skills/` | `<codex-home>/skills/<name>/` |
 | each `<name>.md` in `commands/` | `<codex-home>/skills/<name>/SKILL.md` (needs conversion from stand-alone file to skill folder) |
 
-The loader takes the Codex home from `CODEX_HOME`, falling back to the parent of the directory it sits in — so leaving `CODEX_HOME` unset is correct only where the loader lives one level below the Codex home, as `<codex-home>/hooks/`. Set it explicitly for any other placement: a Codex home resolved one level too high finds no `canon.md` and exits successfully with no output, which is indistinguishable from the empty-canon state below. It takes the corpus root from `CORPUS_IURIS_ROOT`, falling back to `<codex-home>/corpus`. The production root may live wherever the installation chooses; set `CORPUS_IURIS_ROOT` rather than deriving a path from the checkout.
+The loader takes the Codex home from `CODEX_HOME`, falling back to the parent of the directory it sits in. Therefore, leaving `CODEX_HOME` unset is correct only where the loader lives one level below the Codex home, as `<codex-home>/hooks/`. Set it explicitly for any other placement: a Codex home resolved one level too high finds no `canon.md` and exits successfully with no output, which is indistinguishable from the empty-canon state below. It takes the corpus root from `CORPUS_IURIS_ROOT`, falling back to `<codex-home>/corpus`. The production root may live wherever the installation chooses; set `CORPUS_IURIS_ROOT` rather than deriving a path from the checkout.
 
-The loader expands two entrypoints. `<codex-home>/canon.md` is read in every session. `<project-root>/.codex/canon.md` — the project root being the nearest ancestor of the session's working directory that holds a `.git` — is read only in sessions under that project, and is the surface a `P`-ambit file reaches. A project entrypoint's imports resolve inside its own `.codex/` directory and may not escape it, so a project's corpus files live there beside it.
+The loader expands its entrypoints. `<codex-home>/canon.md` is read in every session. `<project-root>/.codex/canon.md` (the project root is the nearest ancestor of the session's working directory that holds a `.git`) is read only in sessions under that project, and is the surface a `P`-ambit file reaches. A project entrypoint's imports resolve inside its own `.codex/` directory and may not escape it, so a project's corpus files live there beside it.
 
 Codex discovers custom agents at `<codex-home>/agents/*.toml` for a personal installation, or `.codex/agents/*.toml` for one project: one file per agent, and the `name` key inside the file is the identifier rather than the filename. That is Codex's own admission channel — an agent definition takes it instead of a `canon.md` import, never both.
 
