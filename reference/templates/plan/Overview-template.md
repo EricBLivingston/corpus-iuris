@@ -105,22 +105,6 @@ Pre-authorized deviations from project principles (e.g. threading a parameter th
 
 ---
 
-## Governance Bounds
-
-The limits below apply for the whole orchestration: no phase overrides them, and they bind every phase's produced work whether or not that phase mentions them. A limit scoped to a single phase goes in that phase file's own Governance Bounds section instead, never in both; the two sections are read together as one list. They are amended only through ※12.
-
-<Fill from the Plan-wide sources table in `bounds-sources.md`, beside this template, row by row, through the filters it states. Do not fill this section without working it.>
-
-1. <Bound 1 — e.g. `PRD.md §3 Non-goals` directs that this work introduces no new crates, so no crate is added to a runtime dependency table of any `Cargo.toml`.>
-2. <Bound 2 — e.g. `Design.md §4 Reuse vs. replace` directs Replace for `LegacyStore`, so `LegacyStore` and its `LEGACY_` env prefix are absent from the tree at plan close. Its warrant: a replacement leaving the old path callable is not a replacement (⊨3).>
-3. <Bound N — the same parts: the citation, what it directs with the observable inline, and the cited element's own warrant where it states one.>
-
-### Amendments
-
-<Empty until a bound above is amended through ※12; leave the heading standing. One entry per grant: the bound, the statement, and the text it replaced.>
-
----
-
 ## Risk Mitigations
 
 | Risk | Mitigation |

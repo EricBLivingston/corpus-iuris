@@ -4,11 +4,11 @@
 
 ![Corpus Iuris: the three goals, the four instruments, and the Spec-Driven Development layer](docs/diagrams/framework-overview.svg)
 
-This repository contains my own "Body of Rules" for directing agentic work, in three parts: a lexicon and a structure that make a rule stand out from the background and resolve to a single defining site, a Spec-Driven Development pipeline that turns a request into phased work, and a production chain that executes one phase under a governance apparatus holding every act to limits written before the work began. The base is harness-neutral, Claude Code is the harness I run it on, and [`adopting.md`](adopting.md) and the `transforms/` packages carry it to others: a package ships for Codex and one for Grok.
+This repository contains my own "Body of Rules" for directing agentic work, in three parts: a lexicon and a structure that make a rule stand out from the background and resolve to a single defining site, a Spec-Driven Development pipeline that turns a request into phased work, and a production chain that executes one phase under a governance apparatus holding every act to the remit the plan files grant. The base is harness-neutral, Claude Code is the harness I run it on, and [`adopting.md`](adopting.md) and the `transforms/` packages carry it to others: a package ships for Codex and one for Grok.
 
 ## What the corpus is
 
-A set of provisions, rules and caselaw directing how a model proceeds with creating content, whether that content is Markdown or source code, plus the commands, agents and templates that put them to work. Spec-Driven Development is one aspect of that: the directives, rules and caselaw bind every session whatever it is doing, and the pipeline, the chain and its governance decide how one piece of work is shaped, executed and bounded.
+A set of provisions, rules and caselaw directing how a model proceeds with creating content, whether that content is Markdown or source code, plus the commands, agents and templates that put them to work. Spec-Driven Development is one aspect of that: the directives, rules and caselaw bind every session whatever it is doing, and the pipeline, the chain and its governance decide how one piece of work is shaped, executed and held to its remit.
 
 The main goals of the system are:
 
@@ -52,7 +52,7 @@ A *token* (a special kind of label or prefix) comprises four elements, and two o
 
 ## From a request to phased work
 
-`prepare`, `phase`, `orchestrate`, `debrief` and `finalize` comprise the development lifecycle. `prepare` authors the specs in order, PRD then Design then Implementation. `phase` converts them into an Overview carrying what more than one phase needs plus one `Phase-N.md` per unit of work. `orchestrate` executes the phases; `debrief` sweeps what the run left open, and `finalize` forces each open item to a binary Yes or No, which closes the cycle into a loop, as the close-out plan can re-enter at `phase`.
+`prepare`, `phase`, `orchestrate`, `debrief` and `finalize` comprise the development lifecycle. `prepare` authors the specs in order, PRD then Design then Implementation. `phase` converts them into an Overview carrying what more than one phase needs plus one `Phase-N.md` per unit of work, the governor checking that those files can hold the work to its task before they are reviewed. `orchestrate` executes the phases; `debrief` sweeps what the run left open, and `finalize` forces each open item to a binary Yes or No, which closes the cycle into a loop, as the close-out plan can re-enter at `phase`.
 
 `implement` is the unphased alternative to `orchestrate`, and `optimize` is a pruning pass over a single document. Only `orchestrate` and `implement` reach code, and neither writes any itself.
 
@@ -68,11 +68,11 @@ Four specialists run in a fixed order: the analyzer establishes scope, the coder
 
 [The execution page](docs/execution.md) carries the roster and what each role is barred from, where the loops re-enter, and the fifth stage `orchestrate` adds after the tester.
 
-## Bounds: keeping the work in scope
+## Keeping the work inside its remit
 
-An agent that can widen its own remit has no remit, so the corpus makes moving a limit an explicit, refereed act. A bound is a limit on produced content, written by the party scoping the work and fixed before the first edit. The governor tests produced work against that set and reports violations, stopping further progress.
+An agent that can widen its own remit has no remit, so widening one is an explicit, refereed act. The remit is what the plan files already grant; after each phase the governor asks whether everything the reports record was necessary to the phase's task, work the task did not need goes back to the coder to contract, ratify under authorization or escalate, and the orchestrator ends the run on an untasked change outside the repository.
 
-Anything that would put more work under a charter than the charter granted is *ultra vires*, whether it is a dispatch nobody asked for or an amendment to a bound the work cannot land inside. Neither is forbidden, and neither is self-authorized: where the assay lands on proceed, the agent submits a request, which an Authorizing Official grants or denies.
+Anything that would put more work under a charter than the charter granted is *ultra vires*, whether it is a dispatch nobody asked for or work beyond the remit the plan grants. Neither is forbidden, and neither is self-authorized: where the assay lands on proceed, the agent submits a request, which an Authorizing Official grants or denies.
 
 ```mermaid
 flowchart LR
@@ -97,7 +97,7 @@ flowchart LR
   H -->|"granted"| K
 ```
 
-[The governance page](docs/governance.md) goes into more detail: where a bound comes from, the six filters a candidate clears before it becomes one, the governor's inverted charter served twice on the same dispatch shape, the statement of assumed risk row by row, and the refutation standard the Official assesses it against.
+[The governance page](docs/governance.md) goes into more detail: what the remit is and where it lives, how the governor judges necessity and checks the remit while the plan is phased, how a failed phase is remediated, the statement of assumed risk row by row, and the refutation standard the Official assesses it against.
 
 ## The repository layout
 

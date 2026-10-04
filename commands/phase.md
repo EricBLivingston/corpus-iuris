@@ -18,8 +18,6 @@ A. Create `Overview.md` in the plan folder: the overall orchestration, the backg
 
 B. Create one `Phase-X.md` per phase, the set derived as below: specific, actionable tasks for that phase, not redundant with Overview (the executor possesses both).
 
-C. Populate the `## Governance Bounds` section of `Overview.md` and of every `Phase-X.md` from the limits the plan folder's source documents place on the work, in those documents' own words. Overview contains the bounds spanning phases; each phase file contains those scoped to it alone. `bounds-sources.md` beside the templates contains the source map, the filters every candidate passes before it is written (shape among them), and the rank the two lists stand in; each template names the table its own list draws from.
-
 #### Deriving the phase set
 
 A phase is one ※8 cycle; several logical units routinely close inside one. Re-derive the set rather than inheriting the source plan's phase count or its narrative units. Three forces pull against one another:
@@ -41,7 +39,6 @@ Hand the analyzer every path below (∋3).
 
 - `{reference-root}/templates/plan/Overview-template.md` — skeleton for `Overview.md`
 - `{reference-root}/templates/plan/Phase-X-template.md` — skeleton for each `Phase-X.md`
-- `{reference-root}/templates/plan/bounds-sources.md` — step C's source map, filters and ranks
 
 **Analyzer instructions:**
 
@@ -49,9 +46,13 @@ Hand the analyzer every path below (∋3).
 2. Config Literal Audit must scan inline-TOML-literal sites (`toml::from_str(r#"..."#)` in tests, fixture strings, docs) as well as on-disk `.toml` files: inline literals are the commonest hiding place for stale field names after a schema rename.
 3. Overview plus one phase file must reconstruct the plan without the sources, which the Sweep archives: carry forward every implementation-relevant detail.
 
+### Check the remit
+
+Invoke `governing-work` and dispatch the governor agent with its remit-check shape, Remit being the new `Overview.md` and every `Phase-X.md`. On `FAIL`, re-dispatch the analyzer with the governor's findings to repair the plan files from the sources, then check again (⊨7). Once it passes, the Review's repair cycle never re-runs it.
+
 ### Review
 
-Invoke the reviewer agent to compare the Overview and Phase files against the source specs, handing it `bounds-sources.md` as well (the enforcement list below turns on terms defined there). The Sweep archives the sources, leaving the coder `Overview.md` plus one phase file, so the standard is reconstruction: an Overview or phase file *discussing* the subject is a miss, and a decision surviving only in a source document is lost whatever its quality.
+Invoke the reviewer agent to compare the Overview and Phase files against the source specs, handing it every `FAIL` return the remit check produced. The Sweep archives the sources, leaving the coder `Overview.md` plus one phase file, so the standard is reconstruction: an Overview or phase file *discussing* the subject is a miss, and a decision surviving only in a source document is lost whatever its quality.
 
 1. **Completion**: walk every section and every table row of every source document, `Implementation.md` and later arrivals included, keying the sweep to source location, never to bolding (bold marks conclusions, so a bold-keyed sweep misses warrant by construction and reads a table as zero items). Test each item:
 
@@ -59,7 +60,7 @@ Invoke the reviewer agent to compare the Overview and Phase files against the so
    - **Warrant carried** — needed to build correctly and resist undoing → travels with the constraint, or an implementer tidies the rule away; record of how it was chosen over the alternatives → stays with the source. Report a constraint carried without its warrant as a partial loss.
    - **Qualification carried** — rank this highest. Qualifications travel with what they qualify; enumerate the sources' own directly.
 
-2. **Efficiency**: Phase files are not redundant and introduce no content beyond the source specs.
+2. **Efficiency**: Phase files are not redundant and introduce no content beyond the source specs; content a `FAIL` return required is not content beyond them.
 
 Edit the files as needed to satisfy these criteria.
 
@@ -68,19 +69,10 @@ Edit the files as needed to satisfy these criteria.
 - Flag any AC lacking a verifier hint (soft rule: flag, do not reject)
 - Confirm the Deviations section is present and filled
 - Reject any file still containing literal `<placeholder>` markers
-- Reject any bound failing a filter in `bounds-sources.md § Filters on every row's output` (a repair made here costs no governor round trip at the assay below)
-
-### Assay the bounds
-
-Make the inverted-charter governor dispatch `{command-root}/orchestrate.md` § 2 Validate Boundaries specifies (its Content and its Criteria) over this plan folder. It runs before the Sweep, while the source documents are unarchived and the analyzer that wrote the bounds can still repair them.
-
-- `STOP` containing no crossed row — hand the governor what its evidence column names as absent, and re-dispatch.
-- `STOP` — hand the return to the analyzer to repair, and re-run the assay. A second `STOP` routes through `governing-work` § Routing the return before the re-dispatch.
-- `CLEAR` — proceed to the Sweep, so `/orchestrate` § 2 confirms rather than discovers.
 
 ### Sweep
 
-Runs immediately after the assay returns `CLEAR`, the last step of `/phase`, over every other file in `plans/<plan>/` (everything but `Overview.md` and `Phase-X.md`).
+Runs once the Review passes, the last step of `/phase`, over every other file in `plans/<plan>/` (everything but `Overview.md` and `Phase-X.md`).
 
 **a. Classify** — default SWEEP; a KEEP justifies itself against "is this content directly related to, and necessary for, implementing this phase's requirements?"
 
@@ -98,7 +90,7 @@ A file containing any part of the plan is a source spec whatever its size or app
 
 **c. Move and manifest** — move SWEEP files to `plans/<plan>/archive/` and write `plans/<plan>/archive/Sweep-Manifest.md` recording per-file classification with reason, the file-path references stripped (b.1), the identifier set per SWEEP candidate with the destination each carried subset landed in (b.2), and any user-decision flags.
 
-**Convergence test:** over every KEEP file, two greps must return zero hits: any path under `archive/`, and each Sweep-Manifest identifier, run one identifier at a time so a missed inlining traces to its source.
+**Convergence test:** over every KEEP file, two greps, the second run one Sweep-Manifest identifier at a time so a missed inlining traces to its source. A path under `archive/` returns zero hits. An identifier returns hits only in a file carrying its defining rows, or in a `Phase-X.md` whose shared definition sits in `Overview.md`.
 
 ## Output
 

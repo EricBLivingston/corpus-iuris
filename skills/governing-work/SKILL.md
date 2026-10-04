@@ -1,85 +1,62 @@
 ---
 name: governing-work
-description: "Use this skill when scoping work: to write and validate the bounds work will be held to, and again when the work returns and must be held to them. Documents the bound-authoring form, the two governor dispatches — the set as content before the work, the work as content after — the test for when either earns the round trip, and the routing on each return, which sends a bound that proves wrong to performing-fmea rather than across it."
+description: "Use this skill when work must be held to its remit: before work begins, to check that its remit is clear and complete enough to hold the work to, and once work is documented (a phase, an unwatched delegate, or any task and its record), to have the governor judge whether the documented work was necessary to its task. Documents where the remit lives, when a dispatch earns its round trip, the two dispatch shapes, the routing of PASS and FAIL, and the remediation hand-off that sends a necessary expansion to performing-fmea."
 ---
 
-# Governing Work
+# Governing work
 
-Bounds bind work. Authoring them is the scoping party's responsibility. The governor agent tests handed content against handed bounds and nothing else, and serves twice on that one contract: before the work, the bound set is the content and the filters are the bounds; after it, the produced work is the content and the set is the bounds. Either dispatch only when it earns the round trip, per ⊨5.
+※12 routes ultra vires work here. The governor agent referees scope over Markdown it takes at face value; the remit is read from where it already lives and never authored a second time.
 
-## Written before the work
+## Where the remit lives
 
-A bound is a limit on produced content, decidable by a reader possessing only the content and the bound. Not a goal, not a quality bar, not an instruction to the producer.
+The remit is whatever defined the work, plus every expansion ratified into it: a plan, a delegate's dispatch prompt, a session's ask.
 
-Where the set lives — the first that applies:
+## When a dispatch earns its round trip
 
-- **Plan-bound work** — the `## Governance Bounds` section of an Overview, phase, or other plan file.
-- **A dispatched delegate** — its dispatch prompt.
-- **Otherwise** — a stated block in the session, fixed before the first edit.
+Per ⊨5. `phase` takes the remit check and `orchestrate` the adjudication after each phase, each at its own step. A session's own work takes none. Other work takes an adjudication when the work ran unwatched or its record is larger than the dispatcher will read. A verdict on record is re-asked only after a remediation changed the work or a grant changed the remit.
 
-Fixed *before* is critical: a bound written afterward certifies whatever happened.
+## Dispatch shapes
 
-Write each per ∋4: a bound is both the gate's pattern and the verdict on it. Test each against ∋2.
-
-| Bound | Not a bound |
-| ---- | ---- |
-| No file outside `skills/governing-work/` is modified | Keep the change focused |
-| No provision is minted, amended, or renumbered | Follow doctrine |
-| `SKILL.md` stays under 3,000 tokens | Keep it short |
-| No `agents/` body is edited | Be careful with the agents |
-
-The filters at `{reference-root}/templates/plan/bounds-sources.md § Filters on every row's output` decide whether a candidate is a bound at all. They are written for plan bounds and apply for the other two homes as far as each one's sources extend.
-
-## When the assay earns a dispatch
-
-The artifact is cheap; the dispatch is not (⊨5). Dispatch the governor when any obtains:
-
-- The work ran unwatched — an orchestrated phase, a background chain, a delegate whose output you did not follow.
-- The produced content is larger than the dispatcher will actually read.
-- The bounds are numerous, or turn on shape a skim will not settle.
-- A gate in the binding plan calls for it.
-
-Before the work only the last two apply, and a plan folder's sets always go: that is the gate `orchestrate` runs before its first phase. Otherwise hold the work to the bounds yourself, and validate the set yourself, per bound, against the filters. Never skip the *writing* on this ground — the assay is what scales, not the artifact.
-
-**A bound set already adjudicated is not re-dispatched**, however it was adjudicated. A verdict on record is evidence, not a question to re-ask. What earns a re-assay is a change in what is tested: content cut back inside a bound it overran, the evidence an undetermined row named as absent, or a bound replaced by an amendment granted after that verdict. Dispatching again over content already dispositioned, unchanged, reopens a call that was the dispatcher's alone.
-
-## Dispatch to governor agent
-
-One prompt shape, filled two ways.
+Filled with absolute paths.
 
 ```text
-Test the produced content below against the bounds below, and report per bound whether that bound was crossed.
+Adjudicate the documentation below against the remit below: judge whether all the documented work was necessary to accomplish the task, and return the verdict.
 
-Bounds:
-{the enumerated set, inline or as the numbered bounds of a named section of a file at an absolute path}
+Remit:
+{what defined the work}
 
-Content:
-{absolute paths to the produced material}
+Documentation:
+{what documents the work done}
 ```
 
-**Before the work**, Bounds is the filters, one bound each, plus — for a plan folder — the two relational criteria `orchestrate` § Validate Boundaries states; Content is the bound set under validation, with the material it was written from — the ask, the plan, the dispatch prompt — read-only, as the evidence its provenance and satisfiability turn on. A governor possessing no source passes those filters rather than reporting them untested.
+```text
+Check whether the remit below defines the work clearly and completely enough that a later adjudication could tell whether work exceeded it: report each part it cannot hold the work to, and return the verdict.
 
-**After the work**, Bounds is the set and Content is what the work produced. Hand it the set as it stands at that moment — each bound in its current text, an amended bound present as its replacement and never beside it (⊨3); a superseded text survives only in whatever records the grant, which is not part of the set. It opens no evidence channel beyond what you hand it, so an amendment you did not include does not exist, and neither does a bound you forgot.
+Remit:
+{what defines the work to be done}
+```
 
-## Routing the return
+## Routing the verdict
 
-Read the summary line; on a `STOP`, read the evidence of every row that is not *held* as well. The summary line splits crossed from undetermined but says nothing about which crossing is which, and that is what the overran-versus-wrong call turns on; an undetermined row's evidence column is the only place what was absent is named.
+The last line routes.
 
-| Return | Disposition |
-| ---- | ---- |
-| `CLEAR` | Proceed. |
-| `STOP` — a crossed row, and the work overran | Cut the work back inside the bound; re-assay. |
-| `STOP` — a crossed row, and the bound was wrong | Amend it (below); re-assay against the set as replaced. |
-| `STOP` — an undetermined row | Supply what the evidence column names as absent; re-assay. |
+| Verdict | Before the work | After the work |
+| ---- | ---- | ---- |
+| `PASS` | Proceed. | Accept. |
+| `FAIL` of the remit check | Its author repairs the remit, then it is checked again (⊨7). | — |
+| `FAIL`, any `external` finding | — | Stop for the user. |
+| `FAIL`, `beyond` findings only | — | Remediation (below). |
+| Malformed | Stop. | Stop for the user. |
 
-A line containing both counts routes per row, not per line.
+The governor returns the verdict and its findings; halting is the dispatcher's call, made here. `phase` and `orchestrate` narrow this table onto their own steps.
 
-Before the work, a crossed row is a bound that failed a filter. It goes back to its author, never repaired by the party it constrains; where you are its author, rewrite it before the first edit and re-test the rewrite against every filter, not only the one it failed (⊨7). That is authoring, not amendment: the door below opens only once the work has begun.
+## Remediation
 
-A second `STOP` surfacing shapes the first did not means the set contains more of those shapes than one assay samples: sweep every bound against every shape surfaced so far, author-side, before re-dispatching.
+`FAIL` returns the adjudication to the party that produced the work, as prior findings. It disposes of every `beyond` finding by contracting the work, filing one statement under `performing-fmea` and dispatching the authorizer itself (⊢5), or escalating. A denial leaves that finding to contract or escalate in the same dispatch. Dispositions are recorded under `## Remediation` in its report, and it returns one line:
 
-Which disposition applies is the dispatcher's call alone. The governor reports whether a bound was crossed, never whether crossing it was acceptable — read no preference into its evidence column, and never ask it for one.
+```text
+REMEDIATED <n> of <n> — <c> contracted, <g> granted: <statement paths>
+ESCALATED <e> of <n> — <c> contracted, <g> granted: <statement paths>
+```
 
-## Amending a bound
-
-A bound that proves wrong once the work has begun is amended, never crossed. The amendment is ultra vires (※12): state the FMEA through `performing-fmea`, whose § Amending a bound controls the Cost row. The grant's Cost bound *is* the amended bound: it replaces the bound it amends in the set, and the re-assay runs against the set as replaced. A denial leaves the original standing.
+A grant's amendment is inserted into the remit it amends, and the work is then re-verified and re-adjudicated. Three remediation dispatches cap the cycle (⊨7). A launch stays prospective under `performing-fmea`.

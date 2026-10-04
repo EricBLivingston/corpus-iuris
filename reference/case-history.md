@@ -2,7 +2,7 @@
 
 ## ※12
 
-**Origin:** every widening argues for itself from inside the work that wants it — a delegate reads four more files to rule something out, a phase that cannot fit a bound crosses it and files a deviation — and the party proposing it is never a fair judge of it. So the office is separate: the governor tests the bound, the authorizer grants the widening, and the requestor instructs neither. The Authorizing Official is the authorizer agent in every run: independence is the office's, not a human's.
+**Origin:** every widening argues for itself from inside the work that wants it — a delegate reads four more files to rule something out, a phase that cannot stay within its remit exceeds it and files a deviation — and the party proposing it is never a fair judge of it. So the office is separate: the governor holds the work to its remit, the authorizer grants the widening, and the requestor instructs neither. The Authorizing Official is the authorizer agent in every run: independence is the office's, not a human's.
 
 ## ⊢2
 

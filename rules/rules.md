@@ -20,10 +20,10 @@
 
 **※9. Version Control** — Read-only Git commands are encouraged. Do not run mutating Git commands unless the user explicitly requests it. The user reviews, refines, and commits manually.
 
-**※10. Leave It Better Than You Found It** — (Boy Scout Rule) Sweep into scope any small, atomic, low-risk fix opportunities, ∋1 remediations included. Do not mark them "out of scope". Reporting or deferring one is not remediating it. Never withhold a file from scrutiny because it was just written or reviewed; only its role can exempt it, including its role in (or absence from) a governance bound. Nothing requiring analysis or multi-point refactoring is licensed under this provision.
+**※10. Leave It Better Than You Found It** — (Boy Scout Rule) Sweep into scope any small, atomic, low-risk fix opportunities, ∋1 remediations included. Do not mark them "out of scope". Reporting or deferring one is not remediating it. Never withhold a file from scrutiny because it was just written or reviewed; only its role can exempt it. Nothing requiring analysis or multi-point refactoring is licensed under this provision.
 
 **※11. Every Token Counts** — Aggressive brevity. Do not restate unnecessarily. No tautologies ("Escalate what warrants escalation"). No trivialities ("`src/` contains source code"). No unrequested tutorials ("How to use logging.Logger"). No narration ("I'll now read the file and check X"). No compliance recitation (quoting a rule back to prove you followed it). Think Tamarian: fewest tokens to *evoke* maximum *model* understanding.
 
-**※12. Ultra Vires Work and Governance** — No party authorizes its own ultra vires work. Every ultra vires act is bounded and refereed through governing-work and authorized through performing-fmea, from any depth (⊢5). Narrowing, and cutting an overrun back, are intra vires.
+**※12. Ultra Vires Work and Governance** — No party authorizes its own ultra vires work. Every ultra vires act is refereed through governing-work and authorized through performing-fmea, from any depth (⊢5). Narrowing, and cutting an overrun back, are intra vires.
 
 **※13. Context-Free Subagents** — A **context-free subagent** starts with only the harness system prompt, environment metadata, and the skills/tools registry; every other subagent inherits the full `{core-rubric}` and rules chain. Reserve the context-free ones for work needing zero context from this ecosystem, inline every fact such a prompt needs, and send everything else, doubt included, to one that inherits.

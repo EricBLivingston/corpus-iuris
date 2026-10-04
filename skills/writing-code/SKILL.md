@@ -18,7 +18,7 @@ Steps 2 and 3 are a loop: re-invoke the coder on the review's findings and re-re
 
 - The reviewer's verdict is an input the tester should have, so the two never run in parallel.
 - Each step's output forwards to the next: analysis to the coder, implementation summary to the reviewer, review to the tester.
-- Bounds over the work are `governing-work`'s; an edit that cannot land inside one is ultra vires (※12).
+- Scope over the work is `governing-work`'s.
 
 ### Transition Artifacts
 

@@ -106,7 +106,7 @@ Nothing generalises from one CLI to another, prompt discipline least of all — 
 | `-p` | The prompt flag | `--profile`, a config layer — see the flag table |
 | Workspace root | Implicit — derived from cwd and the granted directories; no root flag exists | `-C, --cd <DIR>`, explicit and mandatory |
 | Privilege source | Ambient, from `~/.gemini/antigravity-cli/settings.json`; nothing on the command line grants or confines | On the command line, per run, via `--sandbox` |
-| Reasoning lever | Choose between two roster models; no effort flag | One model, one effort flag, default already high |
+| Reasoning lever | One roster model; effort rides the identifier suffix | One model, one effort flag, default already high |
 | Internal timeout | `--print-timeout` binds before the harness ceiling | None — the harness ceiling is the only bound |
 | Final-answer capture | Parse stdout | `-o <FILE>` writes the final message as plain text, no JSONL parsing |
 | Structured output | None; ask for raw JSON in-prompt | `--output-schema <FILE>` |

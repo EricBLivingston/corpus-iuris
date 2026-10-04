@@ -1,6 +1,6 @@
 # Execution: inside one phase
 
-The [pipeline](pipeline.md) produces a folder of phases. This page sets out what happens inside one of them: four specialists in a fixed order, two loops that re-enter it, and a gate at the end that tests the produced work against the limits the plan set before any of it ran.
+The [pipeline](pipeline.md) produces a folder of phases. This page sets out what happens inside one of them: four specialists in a fixed order, two loops that re-enter it, and a gate at the end that holds the produced work to the remit the plan files state.
 
 ![The production chain inside one phase, its loops, and the governor gate](diagrams/phase-cycle.svg)
 
@@ -23,11 +23,11 @@ Each row is one definition file under `agents/`, and the charter column paraphra
 
 | Agent | Charter in one sentence | Barred from |
 | ---- | ---- | ---- |
-| analyzer | Investigates code or text at scale and reports what it finds, including as the author of prose and Markdown artifacts. | Writing code; amending a bound the work cannot land inside, without authorization first |
-| coder | Writes and modifies source to the project's existing conventions. | Reviewing or testing its own work, or dispatching anything to do so; running git; an edit that cannot land inside a bound, without authorization first |
-| reviewer | Reviews an already-written change and ranks what it finds. | Editing; recording a deviation that crosses a bound, which takes authorization instead |
+| analyzer | Investigates code or text at scale and reports what it finds, including as the author of prose and Markdown artifacts. | Writing code |
+| coder | Writes and modifies source to the project's existing conventions. | Reviewing or testing its own work, or dispatching anything to do so save an authorization; running git |
+| reviewer | Reviews an already-written change and ranks what it finds. | Editing |
 | tester | Writes tests, runs suites, and decides whether a failure is a code defect or a test defect. | Editing the code under test; refactoring project code to make a test pass |
-| governor | Tests handed content against handed bounds and reports, per bound, whether it was crossed. | Deriving or judging a bound, saying whether a crossing was acceptable, or dispatching at all |
+| governor | Judges whether all the work a phase's reports record was necessary to the task the plan files set, from those files and the four reports alone, taken at face value. | Reading anything it was not handed, running any command, judging quality, test outcomes or wording, or dispatching at all |
 | authorizer | Assesses a draft statement of assumed risk as Authorizing Official and records the decision. | Performing or redesigning the proposed act, acting as a stage of this chain, or dispatching at all |
 | knowledge | Writes and curates persistent memory. | Writing without the scope-aware duplicate search that precedes every write, or duplicating an entry rather than updating the one already there |
 
@@ -45,16 +45,15 @@ Implement and review are a loop: the coder is re-invoked on the review's finding
 
 ## The fifth stage: adjudicate
 
-`orchestrate` adds a stage the chain itself does not carry. After the tester, the phase's produced work is dispatched to the governor: the bounds are the Overview's and the phase file's bounds sections taken together, and the content is the reports the phase just produced.
+`orchestrate` adds a stage the chain itself does not carry. After the tester, the governor is handed the remit (the Overview and the phase file) and the four reports the phase just produced.
 
-The return routes four ways, and which one applies is the dispatcher's call alone:
+The return routes three ways, the orchestrator deciding whether to halt:
 
-- A clear return continues to the next phase.
-- A crossed row where the work overran sends the coder back to cut it inside the bound, and the chain re-runs.
-- A crossed row where the bound itself was wrong takes authorization before anything is amended, since amending it is ultra vires; [the governance page](governance.md) covers what that costs.
-- An undetermined row means supplying what the governor's evidence column named as absent, and re-assaying.
+- `PASS` continues to the next phase.
+- `FAIL` with only `beyond` findings sends the coder back to contract the work, ratify it under authorization or escalate, and review, test and adjudication then run again.
+- `FAIL` with an `external` finding enters the Terminal.
 
 ## Related pages
 
 - [The pipeline](pipeline.md): what produces the phases this chain executes.
-- [Governance](governance.md): the bounds the adjudication tests against, and the path an act takes when it needs to move one.
+- [Governance](governance.md): the remit the adjudication holds the work to, and the path an expansion takes to be ratified.

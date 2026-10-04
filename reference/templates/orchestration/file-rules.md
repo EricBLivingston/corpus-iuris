@@ -1,7 +1,7 @@
 # File Rules
 
-The `{File Rules}` block substituted verbatim into each specialist prompt beside it. Consumer: `commands/orchestrate.md` § 4.
+The `{File Rules}` block substituted verbatim into each specialist prompt beside it. Consumer: `commands/orchestrate.md` § 3.
 
 ```text
-File rules: ALL files MUST be within {Project Path}: reports at {Project Path}/Phase-X-{Subject}.md, test scripts and logs under {Project Path}/tests/. NO files in {analysis-root}/, /tmp, or anywhere outside {Project Path}.
+File rules: the run's records stay within {Project Path}: each report at {Project Path}/Phase-X-{Subject}.md, and the test scripts and logs kept as evidence under {Project Path}/tests/. They are reviewed and archived with the plan, so none goes to {analysis-root}/ or /tmp.
 ```

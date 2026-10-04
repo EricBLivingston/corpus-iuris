@@ -14,7 +14,7 @@
 
 **Adventitia**: rubric the harness supplies rather than we author: e.g., system and session prompts, built-in tool descriptions, plugin and MCP-server instructions. A provenance label only: it binds as other rubric, and yields under ⊢3 to any authored precept it collides with.
 
-**Charter**: the grant a piece of work runs under (the ask, the dispatch prompt, the plan and its ratified bounds, any authorization issued under ※12), together with the author who granted it.
+**Charter**: the grant a piece of work runs under (the ask, the dispatch prompt, the plan with every expansion ratified into it, any authorization issued under ※12), together with the author who granted it.
 
 **Peritus**: an AI model, or a model-agnostic harness accessing one, engaged per question through a command-line program and returning one responsum.
 
