@@ -43,7 +43,9 @@ For each `Phase-X.md` (in order, starting from `{Starting Phase}`), read the pha
 
 `{File Rules}` is defined in `{reference-root}/templates/orchestration/file-rules.md` and substituted verbatim into each specialist prompt beside it.
 
-∋3: each specialist writes its file and returns one line; wait for that line.
+Every dispatch in phase X, remediations included, carries the `description` `{Plan Folder} Phase-X <role>` (e.g. `audit-refactor Phase-2 coder`), the role being the agent's name; the audit's is `{Plan Folder} audit Phase-X`. The label bounds the audit's record.
+
+∋3: each specialist writes its file and returns one line; wait for that line. The audits of § 3.F are the exception: an audit line, whenever it arrives, answers no specialist's wait and is held for § 5.
 
 #### A. Analyze
 
@@ -70,7 +72,7 @@ Dispatch the tester agent with the prompt at `{reference-root}/templates/orchest
 Invoke `governing-work` and dispatch the governor agent with its adjudication shape, Remit being `{Project Path}/Overview.md` and `{Project Path}/Phase-X.md`, Documentation being:
 
 - `{Project Path}/Phase-X-Analysis.md`
-- `{Project Path}/Phase-X-Implementation.md`
+- `{Project Path}/Phase-X-Implementation-Report.md`
 - `{Project Path}/Phase-X-Review.md`
 - `{Project Path}/Phase-X-Test-Report.md`
 
@@ -78,7 +80,7 @@ Before composing the dispatch, confirm every report listed above is on disk (※
 
 `governing-work`'s routing table narrows onto this run as follows:
 
-- `^PASS`: Between Phases.
+- `^PASS`: § 3.F, then Between Phases.
 - `^FAIL` with an `external` finding: append the return verbatim to `{Project Path}/Phase-X-Adjudication.md`, then enter the **Terminal**.
 - `^FAIL` otherwise: append the return verbatim to `Phase-X-Adjudication.md`. If three remediation dispatches have run in this phase, enter the **Terminal** (⊨7). Otherwise dispatch the coder agent with `coder-prompt.md`, `{Prior Report Path}` set to the adjudication, and route its line:
   - `^REMEDIATED`: record each grant the line names, then run § 3.C (`{Prior Report Path}` the adjudication) and § 3.D over the phase, each with its own loop and cap, then § 3.E again.
@@ -86,6 +88,10 @@ Before composing the dispatch, confirm every report listed above is on disk (※
 - Anything else from the governor: append the return verbatim to `Phase-X-Adjudication.md`, then enter the **Terminal**. A malformed coder line: enter the **Terminal**.
 
 Recording a grant: read the ATO row of each named statement; on `granted`, insert what it authorizes into the plan files it amends, composing nothing. Leave the coder's Deviations entry standing.
+
+#### F. Audit
+
+Invoke `performing-audits` (once per run) and dispatch the auditor agent in the background with its run shape: Work `{Project Path}/Overview.md` and `{Project Path}/Phase-X.md`; Record the session's transcript directory with the selector `"{Plan Folder} Phase-X "` (quoted, its trailing space kept); Reports `{Project Path}/Phase-X-*.md`; report `{Project Path}/audit/Phase-X-Audit.md`; staging `<session scratchpad>/audit/Phase-X/`.
 
 #### Between Phases
 
@@ -95,17 +101,11 @@ Recording a grant: read the ATO row of each named statement; on `granted`, inser
 
 ### 4. Debrief
 
-After all phases are complete, read `{command-root}/debrief.md`, then invoke the analyzer agent with a prompt derived from its instructions, passing `{Project Path}` as the plan folder. The analyzer must write the debrief report to `{Project Path}/Implementation-Debrief.md` and return only a one-line status summary.
+After all phases are complete, read `{command-root}/debrief.md`, then invoke the analyzer agent with a prompt derived from its instructions, passing `{Project Path}` as the plan folder, with the `description` `{Plan Folder} debrief`. The analyzer must write the debrief report to `{Project Path}/Implementation-Debrief.md` and return only a one-line status summary.
 
-### 5. Fact-Check
+### 5. Collect Audits
 
-If the `auditing-subagents` skill is not installed, skip to Final Summary.
-
-Invoke the `auditing-subagents` skill via the Skill tool with `{Project Path}` as args.
-
-An honesty check: critical findings do NOT halt the workflow; the user reviews the audit report directly. The skill folds `{Project Path}/Implementation-Debrief.md` into its roll-up automatically.
-
-It returns a path to `{Project Path}/subagent-audit.md` and a one-line verdict (PASS / Critical count / Major count). Capture that line for the summary and notification below, and relay it alone; do NOT read `subagent-audit.md` yourself.
+Collect every dispatched audit's line per `performing-audits`.
 
 ### 6. Final Summary
 
@@ -113,18 +113,19 @@ Report to the user:
 
 - Number of phases completed
 - One-line status per phase, from the summaries you collected
-- Report locations: `{Project Path}/Implementation-Debrief.md` and `{Project Path}/subagent-audit.md`
-- Audit verdict: [e.g. `PASS (0 Critical, 0 Major)` or `2 Critical findings — review subagent-audit.md`]
+- Report locations: `{Project Path}/Implementation-Debrief.md` and `{Project Path}/audit/`
+- One `Phase-X audit: <line>` per audited phase
 
 ### 7. Push Notification
 
-- Push-notify the user, if the capability exists, carrying the final summary and the audit verdict, omitting the report locations (inaccessible from a phone): e.g. `Implementation complete. Audit: PASS`.
+- Push-notify the user, if the capability exists, carrying the final summary and the audit lines compressed to phase and counts, omitting the report locations (inaccessible from a phone): e.g. `Implementation complete. Audits: P1 CLEAN; P2 0C 1M 2m`. A line other than `CLEAN` or `FINDINGS` is carried by its kind (`P3 UNAUDITABLE`, `P2 malformed`, `P1 no line returned`).
 
 ### Terminal
 
 Reachable from any step: every gate enters it on failure, and no branch continues past a gate it did not clear.
 
-1. Stop. Leave the tree exactly as it is: revert nothing, commit nothing, delete nothing.
-2. Report to the user: the phase and step reached; the failing gate, details; for an adjudication, the `Phase-X-Adjudication.md` path, and on an escalation `Phase-X-Implementation.md § Remediation` too.
-3. Push-notify the user with that same failure line, if the capability exists.
-4. Hand control back and end the run.
+1. Stop dispatching. Leave the tree exactly as it is: revert nothing, commit nothing, delete nothing.
+2. Push-notify the user with the failure line at once, if the capability exists.
+3. Collect the audits already dispatched (§ 5).
+4. Report to the user: the phase and step reached; the failing gate, details; for an adjudication, the `Phase-X-Adjudication.md` path, and on an escalation `Phase-X-Implementation-Report.md § Remediation` too; each `Phase-X audit: <line>`.
+5. Hand control back and end the run.

@@ -1,12 +1,12 @@
 ---
-description: "Converts a plan's debrief into a close-out plan: every carried item takes a binary Yes or No, and the Yes list becomes an Implementation.md ready to re-phase. Takes the plan folder containing Implementation-Debrief.md; use when loose ends must be closed rather than carried forward."
+description: "Converts a plan's debrief and phase audits into a close-out plan: every carried item and audit finding takes a binary Yes or No, and the Yes list becomes an Implementation.md ready to re-phase. Takes the plan folder containing Implementation-Debrief.md; use when loose ends must be closed rather than carried forward."
 argument-hint: "[plan-folder]"
 model: opus
 ---
 
 # Finalize Command
 
-Convert an `/orchestrate` debrief into a binary-triage close-out plan. Workflow position: `orchestrate → finalize → (manual review) → phase → orchestrate (close-out)`.
+Convert an `/orchestrate` debrief and its phase audits into a binary-triage close-out plan. Workflow position: `orchestrate → finalize → (manual review) → phase → orchestrate (close-out)`.
 
 ## Arguments
 
@@ -16,7 +16,7 @@ Set `{Project Path}` = the output of `pwd` prepended to `plans/{Plan Folder}/`. 
 
 ## Critical Directives
 
-**Finality.** The `Implementation.md` this command produces is the final reference to the parent plan's loose ends. After it executes and is archived, every debrief item is closed, so each takes a binary Yes or No with no tri-state escape (Step 4 greps for its recurring wordings). A "No" is a closure stating its rationale: if the item still matters, a future implementation's own analyzer rediscovers it from the live codebase, and if it is never rediscovered it was not material.
+**Finality.** The `Implementation.md` this command produces is the final reference to the parent plan's loose ends. After it executes and is archived, every debrief item and audit finding is closed, so each takes a binary Yes or No with no tri-state escape (Step 4 greps for its recurring wordings). A "No" is a closure stating its rationale: if the item still matters, a future implementation's own analyzer rediscovers it from the live codebase, and if it is never rediscovered it was not material. An ius item is a Yes listed as Open, and the Open heading is no third verdict.
 
 **Upstream artifacts are immutable.** Everything in `{Project Path}/` outside `debrief/` (e.g., `Overview.md`, `Phase-*.md`, analyses, reviews, test reports) is a historical record, errors and stale claims included: future forensic research depends on those files remaining exactly as the implementation left them. The only writes `/finalize` and its delegated analyzer may make are new files inside `{Project Path}/debrief/`. The sole exception is Step 2's staging move. The payload below binds the produced plan's *contents* by the same rule.
 
@@ -27,6 +27,7 @@ Set `{Project Path}` = the output of `pwd` prepended to `plans/{Plan Folder}/`. 
 A. Confirm `{Project Path}/Implementation-Debrief.md` exists. If absent, abort with: "No Implementation-Debrief.md in {Project Path} — run /orchestrate first."
 B. Confirm `{Project Path}/debrief/` does NOT already exist. If it does, abort with: "{Project Path}/debrief/ already exists — finalize has already been run. Remove it or pick a different plan."
 C. Report the resolved `{Project Path}` to the user before continuing.
+D. List `{Project Path}/audit/*-Audit.md`; report the files found and each phase file `Phase-<N>.md` without one. A missing audit never aborts.
 
 ### 2. Stage the Debrief
 
@@ -43,6 +44,7 @@ Invoke the analyzer agent with the prompt below (∋3), passing the absolute `{P
 ```
 Produce a close-out Implementation.md from the debrief at:
 {Project Path}/debrief/Debrief.md
+and from every audit at {Project Path}/audit/*-Audit.md
 
 Write the plan to:
 {Project Path}/debrief/Implementation.md
@@ -57,13 +59,14 @@ The rule binds the Implementation.md you produce as much as your direct file ope
 
 ## Closure Constraint — Read Before Drafting
 
-This Implementation.md is the last reference to the debrief's loose ends. After it executes and is archived, every debrief item is closed; an item resurfaces only through a future implementation's own investigation, never by re-reading this plan.
+This Implementation.md is the last reference to the debrief's loose ends. After it executes and is archived, every debrief item and audit finding is closed; an item resurfaces only through a future implementation's own investigation, never by re-reading this plan.
 
 Triage rules:
 
 1. **Binary verdict: Yes or No.** Every finding takes exactly one label. Any wording that defers, conditions, re-queues or watch-lists an item instead of closing it is a forbidden third bucket, whatever word it wears.
-2. **Every debrief finding takes a verdict.** Every item in {Project Path}/debrief/Debrief.md must appear with a Yes or No under its original finding ID, so the mapping is auditable.
+2. **Every finding takes a verdict.** Every item in {Project Path}/debrief/Debrief.md must appear with a Yes or No under its original finding ID, and every audit finding under its ID `<file stem>#<n>`, so the mapping is auditable.
 3. **The No-list is the closure.** A "No" is a deliberate close-out with a one-line rationale; once the rationale is written, the item is closed.
+4. **Ius items are listed as Open.** An ius item is a Yes, from the debrief or an audit, whose fix is in a universal precept or in an agent, skill, command or reference of the agent-configuration directory. Unless {Project Path} is inside that directory, list it in section 6 only; inside it, it stays in section 2.
 
 Triage heuristics:
 
@@ -77,32 +80,36 @@ Follow this exact section ordering:
 
 ### 1. Scope and Outcome Tally
 
-A table counting Yes / No / Total per debrief category, plus a 1-3 sentence summary of the themes driving the Yes-list and the dominant rationale categories on the No-list.
+A table counting Yes / No / Total per debrief category and for Audit, plus a 1-3 sentence summary of the themes driving the Yes-list and the dominant rationale categories on the No-list.
 
 ### 2. Yes-List — Ordered Work Items
 
 Group by work-class, adjusted to the actual content: production defects first, then tech-debt closure that unlocks other work, then test quality, then ※10 sweeps in live source. No work-class reconciles plan documents or fixes upstream artifacts; the immutability constraint puts those items on the No-list. Each item contains:
 
-- Anchor: original finding ID(s) from Debrief.md (e.g., "Y-1. W1 — ...")
+- Anchor: original finding ID(s), from Debrief.md or as `<file stem>#<n>` from an audit (e.g., "Y-1. W1 — ...")
 - File path with line anchors where known
 - Concrete change summary (what to do, not just what is wrong)
 - Verifier hint (a runnable command, grep pattern, or visual diff target)
 
 ### 3. No-List — Drops with One-Line Rationale
 
-Group by debrief category. Each entry is one bullet: the finding ID, a one-sentence summary, and a one-clause rationale beginning with "No:". Acceptable shapes: "No: coverage-only, behavior verified empirically", "No: style preference; current form is mypy-clean", "No: by-design environment guard", "No: upstream plan artifact, immutable historical record". A rationale using tri-state vocabulary is forbidden.
+Group by debrief category, audit findings under Audit. Each entry is one bullet: the finding ID, a one-sentence summary, and a one-clause rationale beginning with "No:". Acceptable shapes: "No: coverage-only, behavior verified empirically", "No: style preference; current form is mypy-clean", "No: by-design environment guard", "No: upstream plan artifact, immutable historical record". A rationale using tri-state vocabulary is forbidden.
 
 ### 4. Acceptance Criteria
 
-A numbered list of pass/fail conditions for the close-out plan as a whole (e.g., full test suite green, specific verifier commands return expected output). ACs target only live source artifacts (production code, tests, configs), never the state of an upstream plan document, and cover only the Yes-list: the No-list is already closed.
+A numbered list of pass/fail conditions for the close-out plan as a whole (e.g., full test suite green, specific verifier commands return expected output). ACs target only live source artifacts (production code, tests, configs), never the state of an upstream plan document, and cover only section 2's items: the No-list is already closed.
 
 ### 5. Verification Commands
 
 A code block listing the runnable commands a reviewer would execute end-to-end to confirm closure, grouped by work-class to match Section 2.
 
+### 6. Open for review
+
+Each ius item under its ID, with its source, the ius artifact, the change and the verifier hint; no acceptance criteria, no verification commands. Omit the section when there are none.
+
 ## Output
 
-Return only a one-line status summary: "Yes: N / No: M / Total: T → {Project Path}/debrief/Implementation.md".
+Return only a one-line status summary: "Yes: N / No: M / Total: T / Open: <IDs or none> → {Project Path}/debrief/Implementation.md".
 ```
 
 ### 4. Verdict-Language Check
@@ -117,7 +124,7 @@ On any hit, re-invoke the analyzer with: "The previous draft contains forbidden 
 
 ### 5. Final Summary
 
-Report the resolved `{Project Path}`, the analyzer's one-line status (Yes / No / Total), the location of `debrief/Debrief.md` and `debrief/Implementation.md`, and the next step: "Review and refactor `{Project Path}/debrief/Implementation.md`, then run `/phase debrief` (or equivalent) to break it into executable phases."
+Report the resolved `{Project Path}`, the analyzer's one-line status (Yes / No / Total, and the Open IDs), the location of `debrief/Debrief.md` and `debrief/Implementation.md`, and the next step: "Review and refactor `{Project Path}/debrief/Implementation.md`, then run `/phase debrief` (or equivalent) to break it into executable phases." When any Open IDs exist, the next-step line instead has the user resolve the Open for review section in that manual review before `/phase`.
 
 Do NOT continue into `/phase` or `/orchestrate` automatically: the user re-enters the workflow at this seam to refine the close-out plan before phasing.
 

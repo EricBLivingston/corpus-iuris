@@ -16,5 +16,5 @@ A transformation statable as a pattern across two or more files goes to a peritu
 
 ## The report
 
-Return the files modified, the functions added or changed, and any issue met. A summary report the dispatch names (e.g., `{target}-Implementation.md`) goes at its path, written with the symbolic toolserver's text-file creation tool (⊨1), the path relative to the project root; as the charter's named product, writing it is authorized. Source files take the ordinary editing tools.
+Return the files modified, the functions added or changed, and any issue met. A summary report the dispatch names (e.g., `{target}-Implementation-Report.md`) goes at its path, written with the symbolic toolserver's text-file creation tool (⊨1), the path relative to the project root; as the charter's named product, writing it is authorized. Source files take the ordinary editing tools.
 '''

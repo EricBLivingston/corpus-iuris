@@ -7,7 +7,7 @@ Write and run tests to verify the implementation for the following phase.
 
 Phase file: {Project Path}/Phase-X.md
 Project overview: {Project Path}/Overview.md
-Implementation summary: {Project Path}/Phase-X-Implementation.md
+Implementation summary: {Project Path}/Phase-X-Implementation-Report.md
 Review: {Project Path}/Phase-X-Review.md
 
 {File Rules}

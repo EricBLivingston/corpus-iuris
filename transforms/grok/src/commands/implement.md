@@ -25,7 +25,7 @@ Execute an implementation plan through the `writing-code` skill.
 
 3. **Completion Report**
 
-   Write the implementation report to `{Plan Folder}/Phase-N-Implementation.md`, where `N` is the phase number just completed; an unphased plan takes `{Plan Folder}/Implementation.md`. Include:
+   Write the implementation report to `{Plan Folder}/Phase-N-Implementation-Report.md` when the plan file is `Phase-N.md`, else `{Plan Folder}/Implementation-Report.md`. Include:
 
    - Files modified/created with brief descriptions
    - Confirmation all plan items completed

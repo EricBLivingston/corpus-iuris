@@ -106,8 +106,8 @@ flowchart LR
 | `rules/` | The precepts themselves: the specification of the instruments and their ambits, the directives, the rules, the caselaw, the peritus engagement protocol, and the language namespaces |
 | `reference/` | What loads on demand: the case history behind each ruling, the language principles, the plan, debrief and orchestration templates, and the statement of assumed risk |
 | `agents/` | One definition each: the chain's specialists, the two the governance apparatus dispatches, and support roles |
-| `commands/` | The Spec-Driven Development commands, `prepare` through `finalize`, plus `implement` and `optimize` |
-| `skills/` | The dispatch cards: the production chain and codebase analysis, governing work and the risk assay, and one per peritus command-line program |
+| `commands/` | The Spec-Driven Development commands, `prepare` through `finalize`, plus `implement`, `optimize` and `audit` |
+| `skills/` | The dispatch cards: the production chain and codebase analysis, governing work, the risk assay and audits, and one per peritus command-line program |
 | `transforms/` | Instructions and guidance on implementing the corpus ius under different Agents (e.g. Codex) |
 | `docs/` | The deck, the diagrams, and the detail pages linked above |
 | `adopting.md` | General instructions on implementing the corpus locally, one provision at a time |
@@ -126,7 +126,7 @@ Releases are tagged `MAJOR.MINOR.PATCH`, and relate to whether a keyed overlay y
 
 The lexicon and the structure need nothing but a harness that will load Markdown into a session's context. The other two layers require the ability to dispatch: every file under `agents/` is a definition for a harness that dispatches subagents by agent type.
 
-Where a tool the corpus refers to is absent, the intent is that the part depending on it degrades rather than fails. That is design intent rather than a gated property: `commands/orchestrate.md` carries an actual guard and skips its fact-check when the auditing skill is absent, and `agents/knowledge.md` states its own degraded mode in prose, but nothing checks either.
+Where a tool the corpus refers to is absent, the part depending on it is meant to degrade rather than fail; `agents/knowledge.md` states its own degraded mode in prose, but nothing checks it.
 
 `※md1` names a Markdown linter and `⊨1` names a symbolic toolserver, and neither provision says which one: [`adopting.md`](adopting.md) is where filling those slots is covered. My installation (and the examples) assume the following are present:
 
@@ -144,7 +144,7 @@ The rest are conditional on which published parts you take:
 | `transforms/grok/` | Grok, which discovers the agent and command artifacts the package carries |
 | `agents/*.md`, and every command dispatching one | A harness that dispatches subagents by agent type |
 | `commands/phase.md` | A way to move files into a new directory, for the sweep into `plans/<plan>/archive/`, and a text search for the convergence test it runs per identifier |
-| `commands/orchestrate.md` | git and a shell. Its closing fact-check wants an auditing skill that is not yet published; the command guards that and skips to the summary |
+| `commands/orchestrate.md` | git and a shell |
 | `commands/finalize.md` | A POSIX shell: `mkdir`, `mv`, and the grep behind the verdict-language check |
 | `agents/knowledge.md` | Nothing. A durable knowledge store is an upgrade rather than a dependency, and is not distributed; without one, the agent's own prose makes the project memory file the whole of persistent memory and the curation doctrine applies to it unchanged |
 

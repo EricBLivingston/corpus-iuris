@@ -29,9 +29,10 @@ Each row is one definition file under `agents/`, and the charter column paraphra
 | tester | Writes tests, runs suites, and decides whether a failure is a code defect or a test defect. | Editing the code under test; refactoring project code to make a test pass |
 | governor | Judges whether all the work a phase's reports record was necessary to the task the plan files set, from those files and the four reports alone, taken at face value. | Reading anything it was not handed, running any command, judging quality, test outcomes or wording, or dispatching at all |
 | authorizer | Assesses a draft statement of assumed risk as Authorizing Official and records the decision. | Performing or redesigning the proposed act, acting as a stage of this chain, or dispatching at all |
+| auditor | Answers whether the work reported matches the work performed, and whether the work performed abides every precept binding it. | Reading anything in the work's folder beyond what it was handed, what that cites, and the work's record; writing anything but its report and scratch |
 | knowledge | Writes and curates persistent memory. | Writing without the scope-aware duplicate search that precedes every write, or duplicating an entry rather than updating the one already there |
 
-The governor, the authorizer and the knowledge agent are not chain stages. The governor and the authorizer belong to [the governance apparatus](governance.md), and both are barred from dispatching precisely because a referee that can dispatch the work it referees is not a referee. The knowledge agent belongs to neither chain nor apparatus: `※6` routes every memory write to it, and searching needs no agent at all.
+The governor, the authorizer, the auditor and the knowledge agent are not chain stages. The governor and the authorizer belong to [the governance apparatus](governance.md), and both are barred from dispatching because a referee that can dispatch the work it referees is not a referee. The auditor runs in the background once a phase's adjudication passes, and halts nothing. The knowledge agent belongs to neither chain nor apparatus: `※6` routes every memory write to it, and searching needs no agent.
 
 ## Periti, and which specialists engage them
 
@@ -49,7 +50,7 @@ Implement and review are a loop: the coder is re-invoked on the review's finding
 
 The return routes three ways, the orchestrator deciding whether to halt:
 
-- `PASS` continues to the next phase.
+- `PASS` dispatches the phase's audit in the background, then continues to the next phase.
 - `FAIL` with only `beyond` findings sends the coder back to contract the work, ratify it under authorization or escalate, and review, test and adjudication then run again.
 - `FAIL` with an `external` finding enters the Terminal.
 

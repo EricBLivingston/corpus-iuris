@@ -6,23 +6,24 @@ Spec-Driven Development is one of the three layers published here. It is the par
 
 ## The commands, and what each produces
 
-`prepare`, `phase`, `orchestrate`, `debrief` and `finalize` are the staged line. `implement` is the unphased alternative to `orchestrate`, for a plan small enough to run as one unit. `optimize` sits off the line entirely, as a pass over a single document.
+`prepare`, `phase`, `orchestrate`, `debrief` and `finalize` are the staged line. `implement` is the unphased alternative to `orchestrate`, for a plan small enough to run as one unit. `optimize` and `audit` are off the line entirely, each a pass over one target.
 
 | Command | Takes | Produces | Hands on | Changes code |
 | ---- | ---- | ---- | ---- | ---- |
 | `prepare` | the target artifact's path | `PRD.md`, `Design.md` or `Implementation.md`, plus `Background.md` on the PRD branch | the next artifact, named by the PRD's own next-step section | no |
 | `phase` | the plan folder | `Overview.md`, one or more `Phase-N.md`, and a sweep manifest under `archive/` | a folder `orchestrate` can consume | no |
-| `orchestrate` | the plan folder, optionally a phase to start from | per-phase analysis, implementation, review, test reports and, on a non-pass verdict, adjudication reports, then `Implementation-Debrief.md` | the debrief, to `finalize` | yes, through the coder agent |
+| `orchestrate` | the plan folder, optionally a phase to start from | per-phase analysis, implementation, review, test reports and, on a non-pass verdict, adjudication reports, a per-phase audit under `audit/`, then `Implementation-Debrief.md` | the debrief, to `finalize` | yes, through the coder agent |
 | `implement` | one plan file, or a plan already in conversation | an implementation report beside the plan | nothing staged; it is the whole run | yes, through the coder agent |
 | `debrief` | the plan folder, every phase complete | `Implementation-Debrief.md` | the debrief, to `finalize` | no |
-| `finalize` | the plan folder holding that debrief | `debrief/Debrief.md` and `debrief/Implementation.md` | a close-out plan the user reviews, then re-phases | no |
+| `finalize` | the plan folder holding that debrief and its audits | `debrief/Debrief.md` and `debrief/Implementation.md` | a close-out plan the user reviews, then re-phases | no |
 | `optimize` | one document path | an `-OPT` copy under `{analysis-root}/`, never beside the original | nothing; a standalone pass | no |
+| `audit` | one path relative to the project root | a findings table and summary line under `{analysis-root}/` | nothing; a standalone pass | no |
 
 Only `orchestrate` and `implement` reach code, and neither writes any itself: both route every edit through the coder agent.
 
 ## The line closes into a loop
 
-`finalize` states its own position as `orchestrate → finalize → (manual review) → phase → orchestrate`, and it stops at the review. The close-out plan it produces is a plan like any other, so the user reads it, then re-enters the pipeline at `phase`. Nothing continues automatically, because the decision the loop turns on is which of the debrief's items are worth doing at all.
+`finalize` states its own position as `orchestrate → finalize → (manual review) → phase → orchestrate`, and it stops at the review. The close-out plan it produces is a plan like any other, so the user reads it, then re-enters the pipeline at `phase`. Nothing continues automatically, because the decision the loop turns on is which of the debrief's items and the audits' findings are worth doing at all.
 
 ## `prepare`: the artifact you name is the artifact it writes
 
@@ -94,9 +95,10 @@ The run then proceeds through gates, in order:
 
 1. A clean working tree.
 2. A plan folder with an Overview, phase files discovered and sorted, and no gap in the numbering.
-3. The production chain over each phase in turn, covered in [the execution page](execution.md), each phase closing on the governor's adjudication.
+3. The production chain over each phase in turn, covered in [the execution page](execution.md), each phase closing on the governor's adjudication; each governor `PASS` dispatches that phase's audit in the background.
 4. A debrief.
-5. A fact-check of the sub-agents' own reports against the session record, which is an honesty check rather than a quality gate and does not halt the run.
+
+The run closes by collecting every audit's summary line; no audit gates or halts it.
 
 Every gate shares one failure mode, called **the Terminal**. It stops, leaves the tree exactly as it is, reverting nothing and committing nothing and deleting nothing, reports the phase and step reached and the gate that failed, and hands control back. No branch continues past a gate it did not clear.
 
@@ -115,7 +117,7 @@ A deviation is work the plan did not anticipate, and the plan file records it wi
 
 `debrief` sweeps the whole plan folder unconditionally. The debrief is the only artifact that records an assessment, so nothing else marks a phase as already assessed: not a commit, not a green test report, not a passing review. It reads every Markdown file in the folder root and none of the archived specs, extracts what the run left open into the categories its template defines, and ranks each item by severity.
 
-`finalize` converts that into a plan, under two rules. The first rule is the binary decision: every carried item takes a Yes or a No, with no third option, and a No is a closure carrying its rationale, on the reasoning that if the item still matters a future analyzer rediscovers it from the live codebase, and if it is never rediscovered it was not material. The Yes list becomes an implementation plan grouped by work class, each item carrying its original finding ID, its file path and a verifier hint.
+`finalize` converts that into a plan, under two rules. The first rule is the binary decision: every carried item takes a Yes or a No, with no third option, and a No is a closure carrying its rationale, on the reasoning that if the item still matters a future analyzer rediscovers it from the live codebase, and if it is never rediscovered it was not material. The Yes list becomes an implementation plan grouped by work class, each item carrying its original finding ID, its file path and a verifier hint. Audit findings take Yes or No beside the debrief's items, and in any project but the corpus's own a Yes whose fix is in the corpus itself is listed as Open for review rather than executed.
 
 The second rule is immutability, and it binds the produced plan's contents as much as its file operations. Everything in the plan folder outside `debrief/` is a historical record, errors and stale claims included, because forensic work later depends on those files reading exactly as the implementation left them. A defect spotted in an upstream artifact therefore goes on the No list with that rationale, rather than becoming a Yes-list item that would edit it: the same prohibited modification, deferred by one hop, is still prohibited.
 

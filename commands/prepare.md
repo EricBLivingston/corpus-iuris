@@ -1,7 +1,7 @@
 ---
 description: "Authors the next Spec-Driven Development artifact (PRD, then Design, then Implementation) by exploring the codebase, reading the precursors already in the plan folder, and filling that artifact's template. Takes the target path, whose filename selects the branch; writes that artifact, plus a Background.md beside it on the PRD branch. Changes no code."
 argument-hint: "[plans/<name>/PRD.md|Design.md|Implementation.md]"
-model: fable
+model: opus
 ---
 
 # Prepare Command

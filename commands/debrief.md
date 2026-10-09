@@ -18,7 +18,7 @@ State the full phase range in the dispatch so the analyzer cannot infer a narrow
 
 ### Scan Plan Folder
 
-A. Ingest all `.md` files in the plan folder root (excluding `archive/`, which holds the specs `/phase` superseded) and extract items into the categories the Debrief template defines.
+A. Ingest all `.md` files in the plan folder root (excluding `archive/`, which holds the specs `/phase` superseded, and `audit/`, which `/finalize` reads directly) and extract items into the categories the Debrief template defines.
 
 B. For each item, capture source file, the item itself, and severity (critical/important/minor)
 

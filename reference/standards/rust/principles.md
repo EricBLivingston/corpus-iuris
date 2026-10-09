@@ -135,8 +135,9 @@ Universal §11 governs unchanged; the one carve-out is that a test exposing a ge
 ## §12. Testing
 
 - Tests in dedicated `tests.rs` files, not inline `#[cfg(test)] mod tests`
-- For `module/mod.rs`, tests go in `module/tests.rs`
+- A module with its own `tests.rs` or with submodules resides in `module/mod.rs`, beside `module/tests.rs`; `module.rs` beside a `module/` directory is forbidden
 - Integration tests in top-level `tests/` directory
+- An integration-test crate with submodules is rooted at `tests/<name>/main.rs`
 - Production logic files stay focused on production code
 
 ## §rs1. Workspace Boundaries

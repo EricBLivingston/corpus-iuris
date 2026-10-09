@@ -8,7 +8,7 @@ Review the implementation for the following phase against the plan and analysis.
 Phase file: {Project Path}/Phase-X.md
 Project overview: {Project Path}/Overview.md
 Analysis: {Project Path}/Phase-X-Analysis.md
-Implementation summary: {Project Path}/Phase-X-Implementation.md
+Implementation summary: {Project Path}/Phase-X-Implementation-Report.md
 Prior findings to address: {Prior Report Path}
 
 {File Rules}
@@ -16,7 +16,7 @@ Prior findings to address: {Prior Report Path}
 Write your review to: {Project Path}/Phase-X-Review.md
 Include: issues found (critical/important/minor), whether implementation matches the plan, and suggested fixes.
 
-**Scope audit (mandatory before verdict).** Establish that every file this phase touched is in the plan's scope or a filed Deviation. Anything else fails the phase — the plan was incomplete, or the coder departed scope. An accepted Deviation re-engages the analyzer for related collateral.
+**Scope audit (mandatory before verdict).** Establish that every file this phase touched outside the run's records and {Project Path}/audit/ is in the plan's scope or a filed Deviation. Anything else fails the phase — the plan was incomplete, or the coder departed scope. An accepted Deviation re-engages the analyzer for related collateral.
 
 Verify Deviations was filled. Verify ACs have verifier hints. Run a Reverse Dependency Audit if the phase changed any struct, enum, or public-API surface.
 
