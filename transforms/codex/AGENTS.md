@@ -47,12 +47,18 @@ Begin from the new source artifact and reapply only the local corrections that r
 1. Refresh the clone; record its revision outside the resident canon, or a content digest where no stable revision exists.
 2. Rebuild `<codex-home>/corpus-staging/` as a clean copy of that clone. Do not reuse a previous staging tree or keep a resident artifact there. Preserve source-relative paths for the release's root rules, reference material, and skills.
 3. Overlay `src/agents/*.toml` onto the staged custom-agent surface. These are the Codex-ready transpositions of root `agents/*.md`; deploy the TOML definitions, not a second copy of the Markdown sources. Inspect each definition for Codex-specific conflicts before selecting it.
-4. Transpose any `commands/<name>.md` into a skill directory under staging, as `<codex-home>/corpus-staging/skills/<name>/SKILL.md`. The conversion adds `name: <name>` and removes the command-only `argument-hint` and `model` frontmatter fields. In each command body, replace `{command-root}/<name>.md` with `{skill-root}/<name>/SKILL.md`; expand brace-list forms into one skill path per name. Verify that converted skills contain no residual flat `{command-root}` references. Inspect each resulting skill for Codex-specific conflicts before selecting it.
+4. Transpose each selected `commands/<name>.md` to staged `skills/<name>/SKILL.md` with a deterministic recipe kept outside disposable staging. Set frontmatter `name: <name>`, remove only `argument-hint` and `model`, replace body paths `{command-root}/<name>.md` with `{skill-root}/<name>/SKILL.md`, and expand brace lists into one skill path per name. These are the mechanical conversion deltas; compare the result against the source after applying that recipe and reject residual flat or brace-list command paths. Record any further Codex correction separately and inspect the resulting skill before selecting it. Then overlay each provided `src/skills/<name>/` onto staged `skills/<name>/`: these are ready Codex runtime transpositions and take precedence over generic command conversion. Inspect each overlay and its destination for conflicts; after promotion require the installed skill to match the selected staged transposition byte-for-byte.
 5. Apply only necessary Codex corrections in staging. Keep the local instance input outside the staging tree and curate the staged instance file from it; a refresh must not overwrite installation facts.
 6. Read the existing `canon.md` as the rule-selection manifest. Resolve its import closure against staging, then choose any newly staged rules to admit. A rule's staged file must be in place before its import is added.
 7. Diff staged carries and amendments against their release counterparts, ignoring whitespace first and then ordinarily. Account for every surviving delta; reject reflow and collateral edits.
-8. Promote only validated staged outputs to their live destinations. Before promoting a selected skill, inspect its target directory and resolve any collision with an existing skill. Do not copy the whole checkout and do not delete unselected resident files. Update the non-resident adoption ledger with source identity and retained corrections.
+8. Promote only validated staged outputs. Inspect a colliding skill's whole directory, including references and agent metadata; preserve locally owned content and defer the incoming artifact until the user decides its disposition. The non-resident adoption ledger maps each selected source to its installed destination, source revision or digest, installed content digest, and retained corrections; it also records preserved collisions and deferred artifacts. Remove a vanished release artifact only where the prior ledger or installation history establishes ownership and the authorized update replaces it. Do not copy the whole checkout or delete unselected resident files.
 9. Run the installed loader directly, then start a matching session and confirm the selected canon is injected exactly once. Confirm Codex discovers selected skills and agents. A second deployment with unchanged staged outputs must change nothing.
+
+## Installing runtime corrections
+
+`src/skills/` carries ready Codex skill transpositions. Overlay them after generic command conversion and promote the selected staged output to the live skill-discovery path. Runtime instructions belong in those loaded skills; this guide is not a substitute for their deployment.
+
+The provided `orchestrate` skill is generated from its corpus command before publication. It records dispatch identities and own execution spans, queues per-role single-root audits through one reused auditor, and collects every job verdict. Keep that mapping and audit procedure in the skill rather than recreating it during installation. Record its source, installed digest and retained corrections in the adoption ledger.
 
 ## Touching live Codex configuration
 
@@ -67,8 +73,35 @@ Configuration and discovery surfaces in the live Codex home can collide with set
 
 Superseded configuration is removed as part of an authorized migration and not otherwise. `../../rules/caselaw.md` `⊨3` requires that a replacement purge the replaced thing's whole footprint; inspect the live installation to identify the superseded configuration's whole footprint before removing it.
 
+## Registering and verifying the loader
+
+Merge the following registration into the active `<codex-home>/hooks.json`, preserving other hooks and registering this loader once. This example uses `<codex-home>/hooks/`. Set `CODEX_HOME` to the active home when it differs from `$HOME/.codex`. For a loader outside that home's `hooks/`, set `CODEX_HOME` explicitly and adjust the command to the installed loader path.
+
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/env python3 \"${CODEX_HOME:-$HOME/.codex}/hooks/corpus_iuris_session_start.py\"",
+            "timeout": 10,
+            "statusMessage": "Loading Corpus Iuris canon",
+            "additionalContextLimit": 64000
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+Use Codex's native hook approval to trust the installed command; never transplant another installation's trust hashes. Verify the active hook schema against current official Codex documentation before registration. With no admitted canon, invoking the installed loader with `{}` on stdin must succeed without output. After admission, invoke it with the intended session working directory and environment, parse its JSON response, and confirm `hookSpecificOutput.hookEventName` is `SessionStart` and `additionalContext` contains the selected canon within the configured limit. Then start a matching session and confirm injection exactly once; a direct invocation alone does not verify hook discovery or trust.
+
 ## What `src/` holds
 
-There are no per-artifact transposition recipes, and none are planned: the corpus sources carry `{placeholders}` for whatever an installation names for itself, and the naming is done once, in the instance file.
+There are no per-provision doctrinal rewrite recipes: the corpus sources carry `{placeholders}`, resolved once in the instance file. The mechanical command conversion and ready skill transpositions concern harness interaction, and their retained corrections belong in the ledger.
 
-`src/` is installed or run, not applied. `src/hooks/` holds the SessionStart loader and its tests; `src/agents/` holds one Codex custom-agent definition per corpus agent, each generated from its corpus original before this package reached you. `src/instance-example.md` is the one exception: another installation's filled instance file, copied out and refactored rather than installed as it stands. Read each set from its directory rather than from a list here, which would go stale by omission the moment either set changed. An agent definition may depend on a source-harness feature that Codex lacks. Read each definition before installing it; in the usual case install it as it stands.
+`src/` holds installed runtime artifacts. `src/skills/` holds ready Codex skill transpositions; `src/hooks/` holds the SessionStart loader and its tests; `src/agents/` holds one Codex custom-agent definition per corpus agent, each generated from its corpus original before this package reached you. `src/instance-example.md` is the one exception: another installation's filled instance file, copied out and refactored rather than installed as it stands. Read each set from its directory rather than from a list here, which would go stale by omission the moment either set changed. An agent definition may depend on a source-harness feature that Codex lacks. Read each definition before installing it; in the usual case install it as it stands.

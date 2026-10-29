@@ -144,7 +144,7 @@ self_named_module_files = "deny"
 - `Result` and `?` consistently; `.unwrap()` only in tests (enforced by `clippy::unwrap_used`, §rs3); `.expect()` only where failure means a broken invariant
 - A non-`Copy` parameter borrows (`&T`, `&str`, `&[T]`) unless the function keeps it; kept and returned values are owned
 - `TryFrom` over `as` for narrowing; checked or saturating arithmetic on integers from external input
-- No `_` catch-all arm over an enum this workspace defines
+- No pattern stands in place of a variant of an enum this workspace defines, at any depth of a `match` arm where a sibling arm names a variant in that position, so a new variant fails to compile there
 - `thiserror` for library errors, `anyhow` for application entry points
 - `Display` for every custom error and user-facing type
 - Derive `Debug`, `Clone`, `PartialEq` where appropriate; `Copy` only for small value types
@@ -154,6 +154,6 @@ self_named_module_files = "deny"
 ## §rs5. Async Hazards
 
 - No `std` lock guard (`Mutex`, `RwLock`) is held across `.await`; a `tokio` guard may be, where serializing access to the awaited resource is the point
-- No blocking call on a runtime thread: blocking I/O goes through `spawn_blocking`; sustained CPU work goes to a dedicated thread or pool
+- No blocking call on a runtime thread: blocking I/O goes through `spawn_blocking`; sustained CPU work goes to a dedicated thread or pool. Startup work that completes before the program serves its first request is exempt
 - `select!` branches are cancellation-safe
 - Channels are bounded

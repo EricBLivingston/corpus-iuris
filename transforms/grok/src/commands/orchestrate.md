@@ -12,11 +12,11 @@ argument-hint: "[plan-folder] [starting at Phase X]"
 - `{Plan Folder}` — the plan folder name (the tokens before "starting at")
 - `{Starting Phase}` — the phase to begin at, phases before it skipped (default: 1)
 
-Set `{Project Path}` = absolute path of `plans/{Plan Folder}` resolved against the invoking user's current working directory: run `pwd` and prepend its output. Sub-agents may execute with a different cwd, so a relative `plans/...` silently lands outside the project; every downstream substitution embeds the absolute prefix verbatim. Verify it begins with `/` and does NOT resolve inside your agent-configuration directory, unless the plan lives in that meta-project.
+Set `{Project Path}` to the absolute path of `plans/{Plan Folder}`: run `pwd` in the invoking user's working directory and prepend its output. Use that absolute prefix in every downstream substitution. It must not resolve inside your agent-configuration directory unless the plan lives in that meta-project.
 
 ## Read only the specification; delegate everything else
 
-You orchestrate; you do not investigate. NEVER read source, or any file a sub-agent in this run wrote; NEVER write, edit, review, or test code yourself, except that inserting a granted amendment into the charter is yours (§ 3.E). Read only `Overview.md` and the `Phase-X.md` files (the whole specification this run executes against), plus `{command-root}/{implement,debrief}.md` and the dispatch prompts under `{reference-root}/templates/orchestration/` once each; the ATO row of each statement a coder's remediation return names, and the amendment it authorizes, are the one sub-agent-written text you read; a skill this workflow directs you to invoke is not a read. The specs those phase files superseded are archived and closed to every reader in this run, the governor included. Pass file paths between sub-agents; instruct each to write detailed output to files and return only a one-line status. If something fails, dispatch a specialist.
+NEVER read source, or any file a sub-agent in this run wrote; NEVER write, edit, review, or test code yourself, except that inserting a granted amendment into the charter is yours (§ 3.E). Read only `Overview.md` and the `Phase-X.md` files, plus `{command-root}/{implement,debrief}.md` and the dispatch prompts under `{reference-root}/templates/orchestration/` once each; the ATO row of each statement a coder's remediation return names, and the amendment it authorizes, are the one sub-agent-written text you read; a skill this workflow directs you to invoke is not a read. The specs those phase files superseded are archived and closed to every reader in this run, the governor included. Pass file paths between sub-agents; instruct each to write detailed output to files and return only a one-line status. If something fails, dispatch a specialist.
 
 ## Run every phase, then debrief and report
 
@@ -38,7 +38,7 @@ Invoke the `writing-code` skill, then read `{command-root}/implement.md` to cont
 
 ### 3. Execute each phase sequentially
 
-For each `Phase-X.md` (in order, starting from `{Starting Phase}`), read the phase file, then execute the implementation cycle by dispatching specialist sub-agents directly. Each step below names its dispatch prompt's file under `{reference-root}/templates/orchestration/`; read that file and pass the prompt it contains. Resolve every placeholder before passing a prompt: sub-agents receive concrete paths, none left standing except `{Subject}`, which the sub-agent determines during execution.
+Read each `Phase-X.md` in order from `{Starting Phase}` and dispatch the specialists directly. Read and pass each step's named prompt under `{reference-root}/templates/orchestration/`, resolving all placeholders except `{Subject}`, which the delegate determines.
 
 `{File Rules}` is defined in `{reference-root}/templates/orchestration/file-rules.md` and substituted verbatim into each specialist prompt beside it.
 
@@ -58,13 +58,13 @@ Dispatch the coder agent with the prompt at `{reference-root}/templates/orchestr
 
 Dispatch the reviewer agent with the prompt at `{reference-root}/templates/orchestration/reviewer-prompt.md`. Same omission rule as the coder's, `{Prior Report Path}` being the report that prompted the coder pass now under review.
 
-**If the review fails**: re-invoke the coder agent with the review file path, then re-invoke the reviewer. Repeat until the review passes. If the review has not passed after 3 iterations, enter the **Terminal**, supplying the review gate and the iteration count in place of a verdict line.
+If the review fails: re-invoke the coder agent with the review file path, then re-invoke the reviewer. Repeat until the review passes. If the review has not passed after 3 iterations, enter the **Terminal**, supplying the review gate and the iteration count in place of a verdict line.
 
 #### D. Test
 
 Dispatch the tester agent with the prompt at `{reference-root}/templates/orchestration/tester-prompt.md`.
 
-**If tests fail**: re-invoke the coder agent with the test report file path, then the reviewer with that same test report as its `{Prior Report Path}`, then the tester. Repeat until tests pass. If tests have not passed after 3 iterations, enter the **Terminal**, supplying the test gate and the iteration count in place of a verdict line.
+If tests fail: re-invoke the coder agent with the test report file path, then the reviewer with that same test report as its `{Prior Report Path}`, then the tester. Repeat until tests pass. If tests have not passed after 3 iterations, enter the **Terminal**, supplying the test gate and the iteration count in place of a verdict line.
 
 #### E. Adjudicate
 
@@ -117,11 +117,9 @@ Report to the user:
 
 ### 7. Push-notify the user
 
-Push-notify the user, if the capability exists, with § 6's report and the audit lines compressed to phase and counts, omitting the report locations (inaccessible from a phone): e.g. `Implementation complete. Audits: P1 CLEAN; P2 0C 1M 2m`. A line other than `CLEAN` or `FINDINGS` is compressed to its kind (`P3 UNAUDITABLE`, `P2 malformed`, `P1 no line returned`).
+Push-notify the user, if the capability exists, with § 6's report and audit lines compressed to phase and counts, omitting report paths. Compress a line other than `CLEAN` or `FINDINGS` to its kind.
 
 ### Terminal: stop, report, hand back
-
-Reachable from any step: every gate enters it on failure, and no branch continues past a gate it did not clear.
 
 1. Stop dispatching. Leave the tree exactly as it is: revert nothing, commit nothing, delete nothing.
 2. Push-notify the user with the failure line at once, if the capability exists.
