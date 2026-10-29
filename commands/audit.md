@@ -8,7 +8,7 @@ model: sonnet
 
 Dispatch the auditor agent over one target of the invoking project. This session's canon is the project's, which the auditor inherits (※13).
 
-## Process
+## Resolve the target and its report, then dispatch
 
 1. Set `{Project Root}` from `pwd`, absolute.
 2. Resolve the target: the argument relative to `{Project Root}`, a trailing slash normalized away; abort with a clear message if missing. For a folder, the members are its files.

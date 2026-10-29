@@ -14,7 +14,7 @@ Refute row by row; you are briefed to break the table.
 | **Severity** | Is there an actual path from the event to something that depends on it? Where the trigger is retrospective, is this the unresolved residue rather than the class of the event? **Scrutinize underlying assumptions** |
 | **Occurrence** | Does an *observed* grade contain an independently checkable citation, or does it rest on prose and code comments? |
 | **Detection** | Would being wrong really stay silent, in an environment with tests, type checkers, linters, and a reader on the diff? |
-| **Cost** | Launch: is the bound tight and enforceable in the prompt? Remit expansion: the Occurrence citation exists and says what the statement claims, and the amendment reaches no further than the adjudication finding; any mismatch is a denial |
+| **Cost** | Launch: is the bound tight and enforceable in the prompt? Charter expansion: the Occurrence citation exists and says what the statement claims, and the amendment reaches no further than the adjudication finding; any mismatch is a denial |
 | **Verdict** | Does the band follow from the rows above, under the decision predicate in `fmea-request.md` — and is there a cheaper probe that answers the same question? |
 
 Name the cheaper disconfirmation wherever one exists: that is usually the finding worth more than the decision.

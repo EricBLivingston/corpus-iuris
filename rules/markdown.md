@@ -5,8 +5,9 @@
 **§md1** — Always leave a blank line before and after: bulleted list, numbered list, fenced code block.
 **§md2** — Always leave spaces surrounding table structure verticals: `| ---- | ---- | ---- |`.
 **§md3** — Do not insert explicit line-breaks inside table cells. Tables should wrap with terminal width at render time.
-**§md4** — Outside fenced blocks, do not break authored prose at a column boundary. A paragraph or list item is written as one line however long; a line break bears meaning or is not made.
+**§md4** — Outside fenced blocks, do not break authored prose at a column boundary. A paragraph or list item is written as one line however long; a line break is meaningful or is not made.
 **§md5** — A heading is the Theme of the section beneath it, a fragment of that prose rather than a name for it. Sentence case at every level below the document title.
+**§md6** — A list sets out two or more parallel items under a heading or clause stating what they share; a lead-in the heading or the items already state is §en12's satellite. A lone item is a sentence.
 
 ## Rules
 

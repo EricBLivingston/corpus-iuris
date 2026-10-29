@@ -4,11 +4,11 @@
 
 ![Corpus Iuris: the three goals, the four instruments, and the Spec-Driven Development layer](docs/diagrams/framework-overview.svg)
 
-This repository contains my own "Body of Rules" for directing agentic work, in three parts: a lexicon and a structure that make a rule stand out from the background and resolve to a single defining site, a Spec-Driven Development pipeline that turns a request into phased work, and a production chain that executes one phase under a governance apparatus holding every act to the remit the plan files grant. The base is harness-neutral, Claude Code is the harness I run it on, and [`adopting.md`](adopting.md) and the `transforms/` packages carry it to others: a package ships for Codex and one for Grok.
+This repository contains my own "Body of Rules" for directing agentic work, in three parts: a lexicon and a structure that make a rule stand out from the background and resolve to a single defining site, a Spec-Driven Development pipeline that turns a request into phased work, and a production chain that executes one phase under a governance apparatus holding every act to the charter the plan files grant. The base is harness-neutral, Claude Code is the harness I run it on, and [`adopting.md`](adopting.md) and the `transforms/` packages carry it to others: a package ships for Codex and one for Grok.
 
 ## What the corpus is
 
-A set of provisions, rules and caselaw directing how a model proceeds with creating content, whether that content is Markdown or source code, plus the commands, agents and templates that put them to work. Spec-Driven Development is one aspect of that: the directives, rules and caselaw bind every session whatever it is doing, and the pipeline, the chain and its governance decide how one piece of work is shaped, executed and held to its remit.
+A set of provisions, rules and caselaw directing how a model proceeds with creating content, whether that content is Markdown or source code, plus the commands, agents and templates that put them to work. Spec-Driven Development is one aspect of that: the directives, rules and caselaw bind every session whatever it is doing, and the pipeline, the chain and its governance decide how one piece of work is shaped, executed and held to its charter.
 
 The main goals of the system are:
 
@@ -68,11 +68,11 @@ Four specialists run in a fixed order: the analyzer establishes scope, the coder
 
 [The execution page](docs/execution.md) carries the roster and what each role is barred from, where the loops re-enter, and the fifth stage `orchestrate` adds after the tester.
 
-## Keeping the work inside its remit
+## Keeping the work inside its charter
 
-An agent that can widen its own remit has no remit, so widening one is an explicit, refereed act. The remit is what the plan files already grant; after each phase the governor asks whether everything the reports record was necessary to the phase's task, work the task did not need goes back to the coder to contract, ratify under authorization or escalate, and the orchestrator ends the run on an untasked change outside the repository.
+An agent that can widen its own charter has no charter, so widening one is an explicit, refereed act. The charter is what the plan files already grant; after each phase the governor asks whether everything the reports record was necessary to the phase's task, work the task did not need goes back to the coder to contract, ratify under authorization or escalate, and the orchestrator ends the run on an untasked change outside the repository.
 
-Anything that would put more work under a charter than the charter granted is *ultra vires*, whether it is a dispatch nobody asked for or work beyond the remit the plan grants. Neither is forbidden, and neither is self-authorized: where the assay lands on proceed, the agent submits a request, which an Authorizing Official grants or denies.
+Anything that would put more work under a charter than the charter granted is *ultra vires*, whether it is a dispatch nobody asked for or work beyond the charter the plan grants. Neither is forbidden, and neither is self-authorized: where the assay lands on proceed, the agent submits a request, which an Authorizing Official grants or denies.
 
 ```mermaid
 flowchart LR
@@ -97,7 +97,7 @@ flowchart LR
   H -->|"granted"| K
 ```
 
-[The governance page](docs/governance.md) goes into more detail: what the remit is and where it lives, how the governor judges necessity and checks the remit while the plan is phased, how a failed phase is remediated, the statement of assumed risk row by row, and the refutation standard the Official assesses it against.
+[The governance page](docs/governance.md) goes into more detail: what the charter is and where it lives, how the governor judges necessity and checks the charter while the plan is phased, how a failed phase is remediated, the statement of assumed risk row by row, and the refutation standard the Official assesses it against.
 
 ## The repository layout
 
@@ -145,7 +145,7 @@ The rest are conditional on which published parts you take:
 | `agents/*.md`, and every command dispatching one | A harness that dispatches subagents by agent type |
 | `commands/phase.md` | A way to move files into a new directory, for the sweep into `plans/<plan>/archive/`, and a text search for the convergence test it runs per identifier |
 | `commands/orchestrate.md` | git and a shell |
-| `commands/finalize.md` | A POSIX shell: `mkdir`, `mv`, and the grep behind the verdict-language check |
+| `commands/finalize.md` | A POSIX shell: `mkdir`, `mv`, and the grep behind the tri-state language check |
 | `agents/knowledge.md` | Nothing. A durable knowledge store is an upgrade rather than a dependency, and is not distributed; without one, the agent's own prose makes the project memory file the whole of persistent memory and the curation doctrine applies to it unchanged |
 
 Gemini, Codex and pi are periti in the default installation, engaged one question at a time through their own command-line programs, and each is optional on its own. Codex and Grok are also harnesses, and the `transforms/` packages are what carry the corpus onto them.

@@ -37,8 +37,6 @@ Delegating to the analyzer subagent preserves main-conversation context, and a p
 
 ## Redirects
 
-Hand the work elsewhere for:
-
 - Analyzing 1-5 specific files — direct tools
 - Implementing code changes — the coder agent
 - Writing tests — the tester agent

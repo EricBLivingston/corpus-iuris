@@ -1,5 +1,5 @@
 ---
-description: "Builds from one implementation plan by driving the analyze, code, review, test cycle until review passes and tests are green. Takes a single plan file, or a plan already in the conversation. Use for an unphased plan; a folder of Overview plus phase files goes to orchestrate."
+description: "Builds from one implementation plan by driving the analyze, code, review, test cycle until review passes and tests are green. Takes a single plan file, or a plan already in the conversation."
 argument-hint: "[plan-file]"
 ---
 
@@ -7,7 +7,7 @@ argument-hint: "[plan-file]"
 
 Execute an implementation plan through the `writing-code` skill.
 
-## Workflow
+## Establish the plan, execute it, report
 
 1. **Establish Plan**
    - Read the plan file if provided, or use conversation context
@@ -21,7 +21,7 @@ Execute an implementation plan through the `writing-code` skill.
    - The coder must update the plan file's Deviations section before invoking the reviewer.
    - The reviewer also verifies Deviations was filled and that ACs have verifier hints.
    - The tester's verification includes the §16 cross-boundary end-to-end gate wherever the plan's work crosses a boundary.
-   - `governing-work` documents when holding the produced work to the plan's remit earns a governor dispatch, and the routing of its verdict.
+   - `governing-work` documents when holding the produced work to the plan's charter earns a governor dispatch, and the routing of its verdict.
 
 3. **Completion Report**
 

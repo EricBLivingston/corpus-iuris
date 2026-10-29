@@ -31,3 +31,4 @@ Resolved on demand by commands, skills and project-ambit provisions; a loaded co
 | `{agent-root}` | `~/.codex/agents/`, user-level custom agents. |
 | `{command-root}` | `~/.codex/skills/`, shared with `{skill-root}`. Commands resolve to skills. |
 | `{analysis-root}` | `.codex/.analysis`, relative to the project root. |
+| `{delegate-log-root}` | `~/.codex/sessions/`, one `YYYY/MM/DD/rollout-<timestamp>-<thread-uuid>.jsonl` per delegate, written as a top-level session is. A child log carries `parent_thread_id` but its only dispatch label is `task_name`, recorded as the last segment of `agent_path`, a name rather than free text, so no log carries a selector prefix; a run audit here takes one delegate's log by path. |

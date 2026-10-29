@@ -47,3 +47,4 @@ A row names the precept under Governs and the shape of adventitia it displaces. 
 | `{agent-root}` | `~/.grok/agents/` |
 | `{command-root}` | `~/.grok/commands/`: Grok's slash-command surface; not merged with `{skill-root}` |
 | `{analysis-root}` | `.grok/.analysis`, relative to the project root. |
+| `{delegate-log-root}` | `~/.grok/sessions/<the session's launch directory, URL-encoded>/<session_id>/subagents/`; each `<subagent_id>/meta.json` holds `description` (the dispatch label verbatim), `parent_session_id` (the dispatching session), and `child_cwd` and `child_session_id`, which locate the delegate's execution log: the child's own session directory `~/.grok/sessions/<child_cwd, URL-encoded>/<child_session_id>/` (`updates.jsonl`, `chat_history.jsonl`, `events.jsonl`); the sibling `output.json` is only the child's return value. A delegate's own delegates sit under `subagents/` of its session directory in turn. |

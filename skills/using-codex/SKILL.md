@@ -18,7 +18,7 @@ These shapes cover every engagement. Both need absolute paths in the prompt text
 
 | Placeholder | Model identifier |
 | ---- | ---- |
-| `{codex}` | `gpt-5.6-sol` |
+| `{codex}` | `gpt-6.1-sol` |
 
 Live guidance uses the placeholder, never the literal: the model identifier resolves in the table above, and every `{…-root}` placeholder in the instance ambit.
 

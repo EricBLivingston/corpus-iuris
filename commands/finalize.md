@@ -1,5 +1,5 @@
 ---
-description: "Converts a plan's debrief and phase audits into a close-out plan: every carried item and audit finding takes a binary Yes or No, and the Yes list becomes an Implementation.md ready to re-phase. Takes the plan folder containing Implementation-Debrief.md; use when loose ends must be closed rather than carried forward."
+description: "Converts a plan's debrief and phase audits into a close-out plan: every carried item and audit finding takes a binary Yes or No, and the Yes list becomes an Implementation.md ready to re-phase. Takes the plan folder containing Implementation-Debrief.md."
 argument-hint: "[plan-folder]"
 model: opus
 ---
@@ -8,28 +8,28 @@ model: opus
 
 Convert an `/orchestrate` debrief and its phase audits into a binary-triage close-out plan. Workflow position: `orchestrate → finalize → (manual review) → phase → orchestrate (close-out)`.
 
-## Arguments
+## The argument is the plan folder holding the debrief
 
 `$ARGUMENTS` = the plan folder containing `Implementation-Debrief.md` (the path `/debrief` and `/phase` take).
 
 Set `{Project Path}` = the output of `pwd` prepended to `plans/{Plan Folder}/`. It must begin with `/`: the analyzer may run in a different cwd, where a relative `plans/...` silently lands outside the project. It must NOT resolve inside your agent-configuration directory (the tree containing your rules, agents and commands) unless the plan being finalized lives in that meta-project.
 
-## Critical Directives
+## Every item closes, and upstream artifacts stay immutable
 
 **Finality.** The `Implementation.md` this command produces is the final reference to the parent plan's loose ends. After it executes and is archived, every debrief item and audit finding is closed, so each takes a binary Yes or No with no tri-state escape (Step 4 greps for its recurring wordings). A "No" is a closure stating its rationale: if the item still matters, a future implementation's own analyzer rediscovers it from the live codebase, and if it is never rediscovered it was not material. An ius item is a Yes listed as Open, and the Open heading is no third verdict.
 
 **Upstream artifacts are immutable.** Everything in `{Project Path}/` outside `debrief/` (e.g., `Overview.md`, `Phase-*.md`, analyses, reviews, test reports) is a historical record, errors and stale claims included: future forensic research depends on those files remaining exactly as the implementation left them. The only writes `/finalize` and its delegated analyzer may make are new files inside `{Project Path}/debrief/`. The sole exception is Step 2's staging move. The payload below binds the produced plan's *contents* by the same rule.
 
-## Workflow
+## Stage the debrief, then draft and check the close-out plan
 
-### 1. Validate Inputs
+### 1. Validate the inputs
 
 A. Confirm `{Project Path}/Implementation-Debrief.md` exists. If absent, abort with: "No Implementation-Debrief.md in {Project Path} — run /orchestrate first."
 B. Confirm `{Project Path}/debrief/` does NOT already exist. If it does, abort with: "{Project Path}/debrief/ already exists — finalize has already been run. Remove it or pick a different plan."
 C. Report the resolved `{Project Path}` to the user before continuing.
 D. List `{Project Path}/audit/*-Audit.md`; report the files found and each phase file `Phase-<N>.md` without one. A missing audit never aborts.
 
-### 2. Stage the Debrief
+### 2. Stage the debrief
 
 One Bash command creates the subfolder and moves the debrief into it under its new name:
 
@@ -37,7 +37,7 @@ One Bash command creates the subfolder and moves the debrief into it under its n
 mkdir -p {Project Path}/debrief && mv {Project Path}/Implementation-Debrief.md {Project Path}/debrief/Debrief.md
 ```
 
-### 3. Generate the Close-Out Implementation Plan
+### 3. Generate the close-out implementation plan
 
 Invoke the analyzer agent with the prompt below (∋3), passing the absolute `{Project Path}` verbatim. It writes the file and returns one line; wait for that line, and do not read `debrief/Debrief.md`, `debrief/Implementation.md` or any phase artifact yourself.
 
@@ -112,7 +112,7 @@ Each ius item under its ID, with its source, the ius artifact, the change and th
 Return only a one-line status summary: "Yes: N / No: M / Total: T / Open: <IDs or none> → {Project Path}/debrief/Implementation.md".
 ```
 
-### 4. Verdict-Language Check
+### 4. Check the draft for tri-state language
 
 The payload forbids tri-state language; check the draft for it before handing back. The pattern below matches only the recurring wordings, and a novel one escapes it, so a clean grep is evidence of a binary draft (⊨4):
 
@@ -122,13 +122,13 @@ grep -niE '\b(deferred|defer to|tbd|revisit|maybe|conditional|track separately|f
 
 On any hit, re-invoke the analyzer with: "The previous draft contains forbidden tri-state language at these lines: <paste grep output>. Rewrite affected entries as binary Yes/No with concrete rationale, then overwrite the file." Repeat up to twice; on a third failure, surface the offending lines to the user and stop. On zero hits, proceed.
 
-### 5. Final Summary
+### 5. Report the result and the next step
 
 Report the resolved `{Project Path}`, the analyzer's one-line status (Yes / No / Total, and the Open IDs), the location of `debrief/Debrief.md` and `debrief/Implementation.md`, and the next step: "Review and refactor `{Project Path}/debrief/Implementation.md`, then run `/phase debrief` (or equivalent) to break it into executable phases." When any Open IDs exist, the next-step line instead has the user resolve the Open for review section in that manual review before `/phase`.
 
 Do NOT continue into `/phase` or `/orchestrate` automatically: the user re-enters the workflow at this seam to refine the close-out plan before phasing.
 
-## Output
+## `Debrief.md` and the close-out plan, under `debrief/`
 
 - `{Project Path}/debrief/Debrief.md` — the parent `Implementation-Debrief.md`, relocated under its new name
 - `{Project Path}/debrief/Implementation.md` — binary-triage close-out plan

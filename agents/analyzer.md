@@ -1,11 +1,9 @@
 ---
 name: analyzer
 description: "Investigates a codebase or text at scale and reports what it finds: architecture, control and data flow, recurring patterns, dependencies, migration cost, security and quality audits. Use it when a question spans more files than this context should hold, and to author prose and Markdown artifacts; it writes no code."
-model: opus
+model: sonnet
 color: orange
 background: true
-experimental:
-  cacheTtl: "1h"
 ---
 
 # Role

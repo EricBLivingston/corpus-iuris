@@ -1,5 +1,5 @@
 ---
-description: "Authors the next Spec-Driven Development artifact (PRD, then Design, then Implementation) by exploring the codebase, reading the precursors already in the plan folder, and filling that artifact's template. Takes the target path, whose filename selects the branch; writes that artifact, plus a Background.md beside it on the PRD branch. Changes no code."
+description: "Authors the next Spec-Driven Development artifact by exploring the codebase, reading the precursors already in the plan folder, and filling that artifact's template. Takes the target path, whose filename selects the branch; writes that artifact, plus a Background.md beside it on the PRD branch. Changes no code."
 argument-hint: "[plans/<name>/PRD.md|Design.md|Implementation.md]"
 ---
 
@@ -7,7 +7,7 @@ argument-hint: "[plans/<name>/PRD.md|Design.md|Implementation.md]"
 
 `/prepare` authors the next artifact in the Spec-Driven Development pipeline (PRD → Design → Implementation), the specs downstream execution builds from. Explore the codebase, fill the matching template, write nothing but that artifact (and, on the PRD branch, its `Background.md`).
 
-## Target Artifact
+## The target path selects the plan folder and the branch
 
 The argument is the target artifact's path (e.g. `/prepare plans/<name>/Design.md`). Two things are read from it: its directory is the plan folder (where this artifact lands and where any precursors already live), and its filename selects the branch and template below. Point the exploring agent directly at the template in `{reference-root}/templates/plan/`; do not restate its structure here.
 
@@ -17,9 +17,7 @@ The argument is the target artifact's path (e.g. `/prepare plans/<name>/Design.m
 | `Design.md` | `Design-template.md` | the sibling `PRD.md` | always → Implementation |
 | `Implementation.md` | `Implementation-template.md` | the sibling `PRD.md`, plus `Design.md` if present (short-circuit: PRD only) | terminal → `/implement` or `/orchestrate` |
 
-## The Regimes
-
-An artifact's boundary is the swap that would rewrite it.
+## An artifact's boundary is the swap that would rewrite it
 
 | Artifact | Regime | Rewritten by |
 | ---- | ---- | ---- |
@@ -30,7 +28,7 @@ An artifact's boundary is the swap that would rewrite it.
 
 Rows above the rewritten one stand. Each regime keeps its own deliberation and passes on only its result: why we need this at all stays in the PRD, why this design and not another stays in Design. Justification is a context sink; compartmentalizing it keeps each artifact focused on its own job.
 
-## Workflow (identical for every target)
+## One workflow for every target
 
 1. **Clarify** — use AskUserQuestion for ambiguous requests.
 
@@ -40,7 +38,7 @@ Rows above the rewritten one stand. Each regime keeps its own deliberation and p
 
 4. **Present** — what the artifact settled, the next-step call, and a one-line rationale for it. Nothing the artifact already says.
 
-## Routing Rubric (PRD branch only): Design.md vs Implementation.md
+## Routing rubric: the PRD branch goes to Design.md or Implementation.md
 
 The exploring agent makes the call from what it observed in the codebase:
 

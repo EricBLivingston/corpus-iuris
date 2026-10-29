@@ -37,8 +37,6 @@ Alignment also buys compression. A trained name arrives carrying its own frame, 
 
 ## The rungs of referential precision
 
-Precision of reference has rungs:
-
 1. **No rules at all: ad hoc** — "When writing this, make sure not to introduce functions and things we don't need right now. Keep it to just what we discussed and no more"
 2. **Rule defined in general terms** — "When writing this, remember our Rule about going out of scope"
 3. **Precept defined rigorously** — "Abide by §2" (often not needed, but sometimes worth reinforcement)

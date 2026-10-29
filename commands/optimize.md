@@ -1,5 +1,5 @@
 ---
-description: "Rewrites prose artifacts grown slack (plan, spec, reference, rule, skill) for the strongest signal at the fewest tokens (∋1), meaning intact: a reviewed `-OPT` copy by default, or reviewed in place against a `-PRE` snapshot. Takes one or more document paths, and `in-place` to edit them directly."
+description: "Rewrites slack prose artifacts for the strongest signal at the fewest tokens (∋1), meaning intact: a reviewed `-OPT` copy by default, or reviewed in place against a `-PRE` snapshot. Takes one or more document paths, and `in-place` to edit them directly."
 argument-hint: "[document-path...] [in-place]"
 model: opus
 ---
@@ -8,9 +8,9 @@ model: opus
 
 Invoke the analyzer agent once over the indicated documents: item 2 reads across them. Each result is written in place when the invocation says so, otherwise to an `-OPT` copy, which leaves the original untouched until the user replaces it.
 
-## Process
+## Optimize the batch, then review it
 
-### Optimization
+### Apply the optimizations
 
 A. Apply the following optimizations, drawn in part from ∋5 and ∋1, restated for focus and force:
 
@@ -38,7 +38,7 @@ Invoke the reviewer agent once over the batch to compare each result against its
 
 Remediate the findings and re-review (⊨7).
 
-## Output
+## Results land under `{analysis-root}`
 
 Per document, the `-OPT` copy goes to `{analysis-root}/{document-path-without-extension}-OPT.{extension}` and the `-PRE` snapshot to `{analysis-root}/{document-path-without-extension}-PRE.{extension}`, whichever the mode produces. `{analysis-root}/` sits outside command/skill/agent discovery paths; create it if missing. Never write beside the original: an `-OPT` copy or `-PRE` snapshot in an always-loaded directory gets loaded alongside it, doubling the cost the optimization exists to cut. The snapshot is left for the user: restoring it reverts the optimization alone.
 

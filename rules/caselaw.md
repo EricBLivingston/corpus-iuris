@@ -2,7 +2,7 @@
 
 Origins and rationale live in `reference/case-history.md`, keyed by token. The holdings below apply without it: open an entry only when a provision's application is genuinely in question, never as background before applying one.
 
-## Interpretive Rulings (⊢)
+## Interpretive rulings (⊢)
 
 **⊢1. Configuration valves.** A **valve** is a configuration surface widened for a test's sake (§15) that a deployment would plausibly want (§11), no wider than the test requires (§2).
 
@@ -24,7 +24,7 @@ Origins and rationale live in `reference/case-history.md`, keyed by token. The h
 
 **Governs:** ※4, ※12.
 
-## Empirical Resolutions (⊨)
+## Empirical resolutions (⊨)
 
 **⊨1. A language-server-backed symbolic toolserver supersedes built-in-tool-description adventitia for symbol-bearing files.** Built-in-tool-description adventitia preferring harness tools or shell commands (bound by ※1) are written for projects with no symbolic toolserver. Where a language server backs the file (so symbol-level lookup and edit are meaningful), the symbolic equivalent is preferred: its ※11 efficiency is unmatched in those cases.
 

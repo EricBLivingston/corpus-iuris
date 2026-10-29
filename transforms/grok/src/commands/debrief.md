@@ -1,5 +1,5 @@
 ---
-description: "Sweeps a completed plan folder for everything it left open into a severity-ranked Implementation-Debrief.md. Takes the plan folder; use once every phase is complete."
+description: "Sweeps a completed plan folder for everything it left open into a severity-ranked Implementation-Debrief.md. Takes the plan folder."
 argument-hint: "[plan-folder]"
 ---
 
@@ -7,35 +7,31 @@ argument-hint: "[plan-folder]"
 
 Invoke the analyzer agent to consolidate unaddressed items from a completed implementation plan folder into a debrief report.
 
-## Scope
+## Every phase is in scope, always
 
-Every phase in the plan folder is in scope, always. `Implementation-Debrief.md` is the only artifact that records an assessment; until it exists no phase has been debriefed, whatever other evidence of work the folder contains.
+`Implementation-Debrief.md` is the only artifact that records an assessment; until it exists no phase has been debriefed, whatever other evidence of work the folder contains.
 
 State the full phase range in the dispatch so the analyzer cannot infer a narrower one (∋3).
 
-## Process
+## Sweep the plan folder into the debrief
 
-### Scan Plan Folder
+### Scan the plan folder
 
 A. Ingest all `.md` files in the plan folder root (excluding `archive/`, which holds the specs `/phase` superseded, and `audit/`, which `/finalize` reads directly) and extract items into the categories the Debrief template defines.
 
 B. For each item, capture source file, the item itself, and severity (critical/important/minor)
 
-### Organize and Deduplicate
+### Organize and deduplicate
 
 A. Group findings by category
 B. Deduplicate across files
 C. Prioritize within each category (critical first)
 
-### Questions and Triage
+### Clarify the ambiguous, triage the out-of-scope
 
 A. Identify ambiguous items requiring clarification
 B. Triage Out-of-Scope items: bring each in scope or close it with rationale
 
-### Generate Report
+### Generate the report from the Debrief template
 
 Create `Implementation-Debrief.md` in the plan folder from `{reference-root}/templates/debrief/Debrief-template.md`, its placeholders filled with the extracted findings.
-
-## Output
-
-`Implementation-Debrief.md` in the plan folder

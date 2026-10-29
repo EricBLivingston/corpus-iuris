@@ -36,10 +36,12 @@ Leave `compat.claude.*` at the defaults. Load doctrine, skills, the instance fil
 
 Copy a surface into `~/.grok` only when that cell is off, or when a same-named Grok file must shadow. Leave Claude-only names to fall through.
 
+The worked pattern:
+
 - Rules cell off: full copy in `~/.grok/rules/`, so Grok's `instance.md` is the only instance file and caselaw is not loaded twice.
 - Agents and commands cells on: Grok files for names that must differ (the transposed corpus set); Claude files for names that can stand.
 - Skills cell on: no Grok skill tree; `{skill-root}` is `~/.claude/skills/`.
-- `{reference-root}` and `{core-rubric}` point at the Claude home; `{rules-root}`, `{agent-root}`, `{command-root}`, and `{analysis-root}` point at the Grok home.
+- `{reference-root}` and `{core-rubric}` point at the Claude home; `{rules-root}`, `{agent-root}`, `{command-root}`, `{analysis-root}`, and `{delegate-log-root}` point at the Grok home.
 
 A fourth hybrid is not a default. Only `instance.md` in `~/.grok/rules/`, with the rules cell still on, loads the Grok instance file plus Claude doctrine. Caselaw is not doubled (different filenames). Claude's `instance.md` loads beside it (two placeholder tables). The worked pattern turns the rules cell off so that hybrid does not occur.
 

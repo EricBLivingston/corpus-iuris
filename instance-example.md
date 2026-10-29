@@ -33,3 +33,4 @@ Resolved on demand by commands, skills and project-ambit provisions; a loaded co
 | `{agent-root}` | `~/.claude/agents/`, user-level agent definitions. |
 | `{command-root}` | `~/.claude/commands/`, where the filename becomes the command name. |
 | `{analysis-root}` | `.claude/.analysis`, relative to the project root. |
+| `{delegate-log-root}` | `~/.claude/projects/<project-key>/<session_id>/subagents/`, `<project-key>` the session's launch directory with every character other than an ASCII letter or digit replaced by `-`, and `<session_id>` the current session's id (e.g. surfaced by a SessionStart hook); each delegate's `agent-<id>.jsonl` sits beside an `agent-<id>.meta.json` whose `description` is the dispatch label verbatim and whose `parentAgentId`, present on nested logs alone, names the dispatching delegate. |

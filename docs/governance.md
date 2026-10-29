@@ -1,6 +1,6 @@
 # Governance: what the work may not do
 
-The [pipeline](pipeline.md) decides what the work is. The [chain](execution.md) does it. Governance decides what the work may not do, and it exists because an agent that can widen its own remit has no remit. It relies on the remit the plan files already state, a governor that holds each phase's reports to it, an assay any agent runs on itself the moment it notices itself about to spend, and an Authorizing Official who is the only party that can say yes.
+The [pipeline](pipeline.md) decides what the work is. The [chain](execution.md) does it. Governance decides what the work may not do, and it exists because an agent that can widen its own charter has no charter. It relies on the charter the plan files already state, a governor that holds each phase's reports to it, an assay any agent runs on itself the moment it notices itself about to spend, and an Authorizing Official who is the only party that can say yes.
 
 The files that govern it are `skills/governing-work/SKILL.md`, `skills/performing-fmea/SKILL.md` with its two protocol files (`fmea-request.md` for the party weighing an act, `fmea-assessment.md` for the party deciding on it), the form they fill at `reference/templates/fmea-statement.md`, and the two role definitions `agents/governor.md` and `agents/authorizer.md`.
 
@@ -15,9 +15,9 @@ Governance is the heaviest layer here, and the reason is empirical: unauthorized
 It takes one of two shapes:
 
 - **A launch**: a dispatch, or a sweep past what is already in hand, that the charter does not grant.
-- **A remit expansion**: produced work beyond what the plan files or the dispatch prompt grant, ratified after the fact when the work could not be done without it.
+- **A charter expansion**: produced work beyond what the plan files or the dispatch prompt grant, ratified after the fact when the work could not be done without it.
 
-A launch becomes ultra vires at the crossing, before it goes any further; produced work beyond the remit is caught at the phase boundary: `beyond` findings are contracted, ratified or escalated; an untasked change outside the repository ends the run there, by the dispatcher's call. Three things are not: narrowing, cutting an overrun back, and an action doctrine itself prescribes. The last of those reaches no wider than the provision claimed (`⊢4`). Obtaining the authorization is not delegation either (`⊢5`), so an agent at any depth of the chain can run this from where it stands.
+A launch becomes ultra vires at the crossing, before it goes any further; produced work beyond the charter is caught at the phase boundary: `beyond` findings are contracted, ratified or escalated; an untasked change outside the repository ends the run there, by the dispatcher's call. Three things are not: narrowing, cutting an overrun back, and an action doctrine itself prescribes. The last of those reaches no wider than the provision claimed (`⊢4`). Obtaining the authorization is not delegation either (`⊢5`), so an agent at any depth of the chain can run this from where it stands.
 
 ## What settles below the protocol
 
@@ -25,9 +25,9 @@ Most defensive impulses never reach the protocol. The decision settles inline wh
 
 Conceivable-only risk buys no defense at any severity, and in doubt the work proceeds undefended. Nothing at this scale earns a statement: a protocol that emits a table per guard has reproduced the disease it was built to cure.
 
-## The remit is read where it lives
+## The charter is read where it lives
 
-The remit is the Overview and the phase file as they stand, with every expansion ratified into them. Nothing is written a second time for the governor to test against, so no second text can drift from the first. A dispatched delegate's remit is its dispatch prompt, and a session's is its ask.
+The charter is the Overview and the phase file as they stand, with every expansion ratified into them. Nothing is written a second time for the governor to test against, so no second text can drift from the first. A dispatched delegate's charter is its dispatch prompt, and a session's is its ask.
 
 ## The governor asks whether the work was necessary
 
@@ -35,24 +35,24 @@ The governor reads the Markdown it is handed and nothing else, at face value: it
 
 The summary line is `PASS` or `FAIL`, and each finding is marked `beyond` or `external`. Whether to halt is the dispatcher's call: the orchestrator stops on a `FAIL` holding an `external` finding. `agents/governor.md` carries the exact wording.
 
-## The remit check during phasing
+## The charter check during phasing
 
 In `phase`, after the plan files are written and before their review, the governor takes them alone and asks of each phase whether a later adjudication could tell from its phase file and the Overview whether the phase exceeded its task. The verdict is `PASS` or `FAIL`. A `FAIL` sends the analyzer back to repair the plan files from the source specs, still in the plan folder, and the check runs again; a third `FAIL` stops for the user (`⊨7`). The check never re-runs once it passes.
 
 ## A failed phase goes back to its coder
 
-A `FAIL` returns the adjudication to the party that produced the work, which disposes of every `beyond` finding in one of three ways: contract the work back inside the remit; file one statement under `performing-fmea` and dispatch the authorizer itself, which is not delegation (`⊢5`); or escalate. A denial leaves that finding to contract or escalate. The dispositions are recorded under `## Remediation`, and the coder returns `REMEDIATED` or `ESCALATED` with its counts and statement paths.
+A `FAIL` returns the adjudication to the party that produced the work, which disposes of every `beyond` finding in one of three ways: contract the work back inside the charter; file one statement under `performing-fmea` and dispatch the authorizer itself, which is not delegation (`⊢5`); or escalate. A denial leaves that finding to contract or escalate. The dispositions are recorded under `## Remediation`, and the coder returns `REMEDIATED` or `ESCALATED` with its counts and statement paths.
 
 A grant's amendment is inserted by the orchestrator into the plan file it amends, and then review, test and adjudication run again over the changed work. Three remediation dispatches per phase cap the cycle (`⊨7`), and a `FAIL` after the third dispatch ends the run.
 
 ```mermaid
 flowchart TD
-  REPORTS["The phase's four reports, with the remit"]
+  REPORTS["The phase's four reports, with the charter"]
   GOV{"Governor: adjudicate"}
   NEXT["Next phase"]
   TERM["Terminal: stop, revert nothing"]
   CODER{"Back to the coder, per beyond finding"}
-  CONTRACT["Contract the work inside the remit"]
+  CONTRACT["Contract the work inside the charter"]
   FILE["File a statement and dispatch the authorizer"]
   ESC["Escalate"]
   AUTH{"Authorizing Official"}
@@ -78,7 +78,7 @@ flowchart TD
 
 ## The assay an agent runs on itself
 
-Everything above governs work someone asked for. The other half of the apparatus governs work nobody asked for, and it fires the moment an agent notices itself deciding to spend, or to widen a remit.
+Everything above governs work someone asked for. The other half of the apparatus governs work nobody asked for, and it fires the moment an agent notices itself deciding to spend, or to widen a charter.
 
 The default is don't. The cost of the extra work is certain and immediate, while its benefit is discounted three times independently: the failure it guards against must occur, must escape detection, and must resist cheap repair. Those three discounts are the only thing that overrides the default.
 
@@ -100,7 +100,7 @@ Its shape is the template at `reference/templates/fmea-statement.md`: the questi
 
 Cost is a bound rather than an estimate, and the distinction is practical: delegated spend is not predictable within a factor of two, and the dispatching session does not control what a delegate does. So the row is written to be enforceable in the dispatch prompt, or recorded in the plan file the next adjudication reads, and checkable afterwards either way. It is also how narrowing is executed, since narrowing is mostly a matter of choosing a tighter bound rather than a different question.
 
-An expansion's Cost row is the amendment to the remit, ready to insert as is, each added line carrying the statement's citation.
+An expansion's Cost row is the amendment to the charter, ready to insert as is, each added line carrying the statement's citation.
 
 ## What the Authorizing Official decides
 
@@ -116,7 +116,7 @@ Above all of it sits the user, with a standing veto over any grant.
 
 ```mermaid
 flowchart TD
-  SPEND["An agent notices itself about to spend, or to widen a remit"]
+  SPEND["An agent notices itself about to spend, or to widen a charter"]
   SCALE{"Scale"}
   MICRO["Micro: nothing dispatched, nothing read past what is in hand. Settles inline, default don't, and never a statement"]
   REACH{"Reachability: is there a path from the event to a caller, reader or downstream artifact?"}
@@ -139,7 +139,7 @@ flowchart TD
 
   SPEND --> SCALE
   SCALE -->|"micro"| MICRO
-  SCALE -->|"a launch, or a remit expansion"| REACH
+  SCALE -->|"a launch, or a charter expansion"| REACH
   REACH -->|"no"| ZERO
   ZERO --> SKIP
   REACH -->|"yes"| ORACLE
@@ -165,5 +165,5 @@ flowchart TD
 
 ## Related pages
 
-- [Execution](execution.md): the chain whose produced work the adjudication holds to the remit.
-- [The pipeline](pipeline.md): how the plan files that state the remit are produced, and where the remit check runs.
+- [Execution](execution.md): the chain whose produced work the adjudication holds to the charter.
+- [The pipeline](pipeline.md): how the plan files that state the charter are produced, and where the charter check runs.

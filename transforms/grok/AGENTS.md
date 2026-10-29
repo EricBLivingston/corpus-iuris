@@ -49,6 +49,8 @@ Begin each refresh from the new source artifact. Reapply only the local correcti
 
 This package may add files under `~/.grok/rules/`, `~/.grok/skills/`, `~/.grok/commands/`, `~/.grok/agents/`, and `~/.grok/corpus/` for non-scanned reference. Those directories can collide with configuration the user depends on.
 
+User-owned files stay outside the default install:
+
 - Never write the adopter's `AGENTS.md` (user or project). Do not treat it as an install target, a merge target, or a prerequisite. Do not create one to make the install look complete, and do not edit one on refresh.
 - The default path requires no edit to `config.toml`. Setting a `compat.claude.*` cell to `false` is an authorized overlay when a Grok-only copy of that surface is wanted. That overlay is not required to install. Inspect the cells before proposing that edit. Do not flip a cell as part of a silent install. Obtain authorization.
 
@@ -67,5 +69,5 @@ Superseded configuration is removed only as part of an authorized migration. `..
 - `src/instance-example.md` is the one file copied out and refactored. It is not installed as it stands.
 - Transposed agents are generated into the published tree at `transforms/grok/src/agents/*.md` by `transpose_agent.py`. Transposed commands are generated into the published tree at `transforms/grok/src/commands/*.md` by `transpose_command.py`. Both generators are unpublished build tooling: an adopter does not run them and installs the markdown they emitted.
 - There is no hooks directory.
-- Read each set from its directory. A list here would go stale by omission the moment either set changed.
-- Read each definition before installing it. Install it as it stands unless it depends on a harness particular Grok lacks.
+
+Read each set from its directory. A list here would go stale by omission the moment either set changed. Read each definition before installing it. Install it as it stands unless it depends on a harness particular Grok lacks.

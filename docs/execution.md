@@ -1,6 +1,6 @@
 # Execution: inside one phase
 
-The [pipeline](pipeline.md) produces a folder of phases. This page sets out what happens inside one of them: four specialists in a fixed order, two loops that re-enter it, and a gate at the end that holds the produced work to the remit the plan files state.
+The [pipeline](pipeline.md) produces a folder of phases. This page sets out what happens inside one of them: four specialists in a fixed order, two loops that re-enter it, and a gate at the end that holds the produced work to the charter the plan files state.
 
 ![The production chain inside one phase, its loops, and the governor gate](diagrams/phase-cycle.svg)
 
@@ -46,7 +46,7 @@ Implement and review are a loop: the coder is re-invoked on the review's finding
 
 ## The fifth stage: adjudicate
 
-`orchestrate` adds a stage the chain itself does not carry. After the tester, the governor is handed the remit (the Overview and the phase file) and the four reports the phase just produced.
+`orchestrate` adds a stage the chain itself does not carry. After the tester, the governor is handed the charter (the Overview and the phase file) and the four reports the phase just produced.
 
 The return routes three ways, the orchestrator deciding whether to halt:
 
@@ -57,4 +57,4 @@ The return routes three ways, the orchestrator deciding whether to halt:
 ## Related pages
 
 - [The pipeline](pipeline.md): what produces the phases this chain executes.
-- [Governance](governance.md): the remit the adjudication holds the work to, and the path an expansion takes to be ratified.
+- [Governance](governance.md): the charter the adjudication holds the work to, and the path an expansion takes to be ratified.

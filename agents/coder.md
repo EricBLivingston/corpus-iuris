@@ -1,6 +1,6 @@
 ---
 name: coder
-description: "Writes and modifies source code (a feature, a bug fix, a refactor, or a plan's implementation steps), following the project's existing conventions and standards. Use it whenever files must change, and always across two or more. It does not review its own work, write tests, or run git."
+description: "Writes and modifies source code (a feature, a bug fix, a refactor, or a plan's implementation steps), following the project's existing conventions and standards. Use it when source code must change. It neither reviews nor tests its own work."
 model: sonnet
 color: green
 background: true

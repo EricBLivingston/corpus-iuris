@@ -20,9 +20,7 @@
 
 ## 3. Goals
 
-**Output goal** — the single outcome metric this initiative is judged on.
-
-- e.g. _cut p95 request latency by 30% without raising the error rate_
+**Output goal** — the single outcome metric this initiative is judged on, e.g. _cut p95 request latency by 30% without raising the error rate_
 
 **Input metrics** — 2–3 leading indicators that move the output.
 

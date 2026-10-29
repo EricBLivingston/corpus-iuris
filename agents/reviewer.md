@@ -4,8 +4,6 @@ description: "Reviews a change already written and returns findings ranked by se
 model: opus
 color: yellow
 background: true
-experimental:
-  cacheTtl: "1h"
 ---
 
 # Role

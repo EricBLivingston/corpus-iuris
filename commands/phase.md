@@ -1,5 +1,5 @@
 ---
-description: "Converts the Spec-Driven Development specs into the folder orchestrate consumes: an Overview containing what more than one phase needs, one Phase-X file per phase, superseded specs archived. Takes the plan folder; use between authoring the specs and executing them."
+description: "Converts the Spec-Driven Development specs into the folder orchestrate consumes: an Overview containing what more than one phase needs, one Phase-X file per phase, superseded specs archived. Takes the plan folder."
 argument-hint: "[plan-folder]"
 model: sonnet
 ---
@@ -8,7 +8,7 @@ model: sonnet
 
 Invoke the analyzer agent to break the plan folder at `$ARGUMENTS` into an Overview and phase documents.
 
-## Process
+## Phase the plan, check its charter, review, then sweep
 
 ### Break the plan into phases
 
@@ -33,9 +33,9 @@ Test each candidate against all three:
 - A phase whose review would demand two unlike competencies, or whose files span unrelated surfaces, splits.
 - A phase bearing real risk, or a §16 cross-boundary gate, is kept. Where that gate sits as a phase's test step, state it as the gate, so an executor cannot read it as optional.
 
-#### Templates
+#### Hand the analyzer every template path
 
-Hand the analyzer every path below (∋3).
+Each path with its role (∋3):
 
 - `{reference-root}/templates/plan/Overview-template.md` — skeleton for `Overview.md`
 - `{reference-root}/templates/plan/Phase-X-template.md` — skeleton for each `Phase-X.md`
@@ -46,13 +46,13 @@ Hand the analyzer every path below (∋3).
 2. Config Literal Audit must scan inline-TOML-literal sites (`toml::from_str(r#"..."#)` in tests, fixture strings, docs) as well as on-disk `.toml` files: inline literals are the commonest hiding place for stale field names after a schema rename.
 3. Overview plus one phase file must reconstruct the plan without the sources, which the Sweep archives: carry forward every implementation-relevant detail.
 
-### Check the remit
+### Check the charter
 
-Invoke `governing-work` and dispatch the governor agent with its remit-check shape, Remit being the new `Overview.md` and every `Phase-X.md`. On `FAIL`, re-dispatch the analyzer with the governor's findings to repair the plan files from the sources, then check again (⊨7). Once it passes, the Review's repair cycle never re-runs it.
+Invoke `governing-work` and dispatch the governor agent with its charter-check shape, Charter being the new `Overview.md` and every `Phase-X.md`. On `FAIL`, re-dispatch the analyzer with the governor's findings to repair the plan files from the sources, then check again (⊨7). Once it passes, the Review's repair cycle never re-runs it.
 
 ### Review
 
-Invoke the reviewer agent to compare the Overview and Phase files against the source specs, handing it every `FAIL` return the remit check produced. The Sweep archives the sources, leaving the coder `Overview.md` plus one phase file, so the standard is reconstruction: an Overview or phase file *discussing* the subject is a miss, and a decision surviving only in a source document is lost whatever its quality.
+Invoke the reviewer agent to compare the Overview and Phase files against the source specs, handing it every `FAIL` return the charter check produced. The Sweep archives the sources, leaving the coder `Overview.md` plus one phase file, so the standard is reconstruction: an Overview or phase file *discussing* the subject is a miss, and a decision surviving only in a source document is lost whatever its quality.
 
 1. **Completion**: walk every section and every table row of every source document, `Implementation.md` and later arrivals included, keying the sweep to source location, never to bolding (bold marks conclusions, so a bold-keyed sweep misses warrant by construction and reads a table as zero items). Test each item:
 
@@ -62,7 +62,7 @@ Invoke the reviewer agent to compare the Overview and Phase files against the so
 
 2. **Efficiency**: Phase files are not redundant and introduce no content beyond the source specs; content a `FAIL` return required is not content beyond them.
 
-Edit the files as needed to satisfy these criteria.
+The reviewer returns findings and edits nothing. On findings, re-dispatch the analyzer with them to repair the Overview and Phase files from the sources, then review again; a third failed review stops for the user (⊨7).
 
 **Reviewer enforcement (apply to every Overview and Phase file):**
 
@@ -92,6 +92,6 @@ A file containing any part of the plan is a source spec whatever its size or app
 
 **Convergence test:** over every KEEP file, two greps, the second run one Sweep-Manifest identifier at a time so a missed inlining traces to its source. A path under `archive/` returns zero hits. An identifier returns hits only in a file carrying its defining rows, or in a `Phase-X.md` whose shared definition sits in `Overview.md`.
 
-## Output
+## Overview and phase files, the sources archived
 
 `Overview.md` and one `Phase-X.md` per phase in the plan folder; the superseded sources under `plans/<plan>/archive/` beside `Sweep-Manifest.md`.

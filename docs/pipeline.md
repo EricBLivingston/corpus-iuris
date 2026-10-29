@@ -49,13 +49,13 @@ Which of the two lower regimes a PRD routes into is decided by the exploring age
 
 ## `phase`: from specs to a folder that executes
 
-Three steps produce a folder shaped for execution rather than for reading, with a remit check between the first two. The first two are delegated to the analyzer and the reviewer, the check to the governor; the sweep that closes the run names no delegate.
+Three steps produce a folder shaped for execution rather than for reading, with a charter check between the first two. The first two are delegated to the analyzer and the reviewer, the check to the governor; the sweep that closes the run names no delegate.
 
 ```mermaid
 flowchart TD
   SPECS["The plan folder as the authoring left it: PRD, Design, Implementation, and whatever else accumulated"]
   WRITE["1. Analyzer: Overview.md, and one Phase-N.md per unit of work"]
-  GATE{"1b. Governor: is the remit sound enough to hold the work to?"}
+  GATE{"1b. Governor: is the charter sound enough to hold the work to?"}
   REVIEW{"2. Reviewer: could a reader holding only these files rebuild the constraint, its warrant and its qualifications?"}
   BACK["The analyzer repairs the files"]
   STOP["Stop for the user"]
@@ -79,9 +79,9 @@ flowchart TD
 
 The analyzer writes `Overview.md` and one `Phase-N.md` per unit of work (1). The Overview carries the orchestration and everything more than one phase needs; each phase file carries that phase's own actionable tasks and nothing redundant with the Overview, since both are handed to every phase.
 
-The governor then checks the remit (1b): the new Overview and every phase file, with the sources still in the plan folder, so a remit it finds unsound is repaired from them. A `FAIL` sends the analyzer back with the findings, and a third `FAIL` stops for the user. Once it passes, the review's repair loop never re-runs it.
+The governor then checks the charter (1b): the new Overview and every phase file, with the sources still in the plan folder, so a charter it finds unsound is repaired from them. A `FAIL` sends the analyzer back with the findings, and a third `FAIL` stops for the user. Once it passes, the review's repair loop never re-runs it.
 
-The reviewer then compares the produced files against the source specs (2), and the standard is reconstruction rather than mention: could a reader holding only these files rebuild the constraint, its warrant and its qualifications? Content added to satisfy the remit check is not content beyond the sources. A file still carrying a literal placeholder is rejected.
+The reviewer then compares the produced files against the source specs (2), and the standard is reconstruction rather than mention: could a reader holding only these files rebuild the constraint, its warrant and its qualifications? Content added to satisfy the charter check is not content beyond the sources. A file still carrying a literal placeholder is rejected.
 
 The sweep runs last, once the review passes. Every file in the folder that is not `Overview.md` or `Phase-N.md` is classified against one question (3a): is this content directly related to, and necessary for, implementing this phase's requirements? The default is to sweep (3c), and each file must earn a keep (3b). Source specs sweep unconditionally, however substantial they are, because keeping one pulls the plan into context twice; background, rationale, history and the process artifacts of the phasing run itself go with them. A keep is reserved for secondary reference material: sample data, code and ID mappings, diagrams shared across phases, fixture inputs and golden outputs, files being edited in place.
 
@@ -109,9 +109,9 @@ Every gate shares one failure mode, called **the Terminal**. It stops, leaves th
 - The coder records deviations in the plan file before review.
 - The reviewer checks that they were recorded and that acceptance criteria carry verifier hints.
 - The tester's verification includes the cross-boundary end-to-end gate wherever the work crosses a boundary.
-- `governing-work` documents when holding the produced work to the plan's remit earns a governor dispatch.
+- `governing-work` documents when holding the produced work to the plan's charter earns a governor dispatch.
 
-A deviation is work the plan did not anticipate, and the plan file records it with the remit element it serves. Work beyond the remit is caught after the fact and contracted, ratified under authorization, or escalated.
+A deviation is work the plan did not anticipate, and the plan file records it with the charter element it serves. Work beyond the charter is caught after the fact and contracted, ratified under authorization, or escalated.
 
 ## `debrief` and `finalize`: closing what the run left open
 
@@ -133,9 +133,9 @@ The copy lands under `{analysis-root}/`, the staging area the command names, rat
 
 `commands/orchestrate.md` opens with the constraint, which reads in full:
 
-> You orchestrate; you do not investigate. NEVER read source, or any file a sub-agent in this run wrote; NEVER write, edit, review, or test code yourself, except that inserting a granted amendment into the remit is yours (§ 3.E). Read only `Overview.md` and the `Phase-X.md` files (the whole specification this run executes against), plus `{command-root}/{implement,debrief}.md` and the dispatch prompts under `{reference-root}/templates/orchestration/` once each; the ATO row of each statement a coder's remediation return names, and the amendment it authorizes, are the one sub-agent-written text you read; a skill this workflow directs you to invoke is not a read. The specs those phase files superseded are archived and closed to every reader in this run, the governor included. Pass file paths between sub-agents; instruct each to write detailed output to files and return only a one-line status. If something fails, dispatch a specialist.
+> You orchestrate; you do not investigate. NEVER read source, or any file a sub-agent in this run wrote; NEVER write, edit, review, or test code yourself, except that inserting a granted amendment into the charter is yours (§ 3.E). Read only `Overview.md` and the `Phase-X.md` files (the whole specification this run executes against), plus `{command-root}/{implement,debrief}.md` and the dispatch prompts under `{reference-root}/templates/orchestration/` once each; the ATO row of each statement a coder's remediation return names, and the amendment it authorizes, are the one sub-agent-written text you read; a skill this workflow directs you to invoke is not a read. The specs those phase files superseded are archived and closed to every reader in this run, the governor included. Pass file paths between sub-agents; instruct each to write detailed output to files and return only a one-line status. If something fails, dispatch a specialist.
 
-The archived specs therefore reach no reader in the whole run, the governor included: it holds the work to the remit the Overview and phase files state.
+The archived specs therefore reach no reader in the whole run, the governor included: it holds the work to the charter the Overview and phase files state.
 
 The reason for the cut is that the adjacent phase is close to the worst possible distractor. Irrelevant material competes for attention rather than sitting inertly beside the signal, and the damage scales with resemblance: same project, same vocabulary, same file paths, adjacent intent, no longer relevant. Length alone degrades performance too, so dropping even harmless material pays. [The references](references.md) carry the work behind both claims.
 
@@ -149,5 +149,5 @@ It does write two things into the plan folder, and both are records of a gate ra
 ## Related pages
 
 - [Execution](execution.md): the chain of specialists that executes what this pipeline produces.
-- [Governance](governance.md): what the remit is, and what it costs to widen it.
+- [Governance](governance.md): what the charter is, and what it costs to widen it.
 - [The references](references.md): the published work behind the attention and length claims this page rests on.

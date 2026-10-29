@@ -1,11 +1,11 @@
 ---
-description: "Executes a phased plan folder (an Overview plus numbered phase files) end to end as the terminal stage of Spec-Driven Development, driving every phase through the analyze, code, review, test cycle. Takes the folder, optionally a phase to start from. A single unphased plan file goes to implement instead."
+description: "Executes a phased plan folder (an Overview plus numbered phase files) end to end as the terminal stage of Spec-Driven Development, driving every phase through the analyze, code, review, test cycle. Takes the folder, optionally a phase to start from."
 argument-hint: "[plan-folder] [starting at Phase X]"
 ---
 
 # Orchestrate Command
 
-## Arguments
+## Parse the plan folder and the starting phase
 
 `$ARGUMENTS` = the plan folder name, optionally followed by `starting at Phase X`. Parse it to extract:
 
@@ -14,17 +14,17 @@ argument-hint: "[plan-folder] [starting at Phase X]"
 
 Set `{Project Path}` = absolute path of `plans/{Plan Folder}` resolved against the invoking user's current working directory: run `pwd` and prepend its output. Sub-agents may execute with a different cwd, so a relative `plans/...` silently lands outside the project; every downstream substitution embeds the absolute prefix verbatim. Verify it begins with `/` and does NOT resolve inside your agent-configuration directory, unless the plan lives in that meta-project.
 
-## Critical Directive: Context Preservation
+## Read only the specification; delegate everything else
 
-You orchestrate; you do not investigate. NEVER read source, or any file a sub-agent in this run wrote; NEVER write, edit, review, or test code yourself, except that inserting a granted amendment into the remit is yours (§ 3.E). Read only `Overview.md` and the `Phase-X.md` files (the whole specification this run executes against), plus `{command-root}/{implement,debrief}.md` and the dispatch prompts under `{reference-root}/templates/orchestration/` once each; the ATO row of each statement a coder's remediation return names, and the amendment it authorizes, are the one sub-agent-written text you read; a skill this workflow directs you to invoke is not a read. The specs those phase files superseded are archived and closed to every reader in this run, the governor included. Pass file paths between sub-agents; instruct each to write detailed output to files and return only a one-line status. If something fails, dispatch a specialist.
+You orchestrate; you do not investigate. NEVER read source, or any file a sub-agent in this run wrote; NEVER write, edit, review, or test code yourself, except that inserting a granted amendment into the charter is yours (§ 3.E). Read only `Overview.md` and the `Phase-X.md` files (the whole specification this run executes against), plus `{command-root}/{implement,debrief}.md` and the dispatch prompts under `{reference-root}/templates/orchestration/` once each; the ATO row of each statement a coder's remediation return names, and the amendment it authorizes, are the one sub-agent-written text you read; a skill this workflow directs you to invoke is not a read. The specs those phase files superseded are archived and closed to every reader in this run, the governor included. Pass file paths between sub-agents; instruct each to write detailed output to files and return only a one-line status. If something fails, dispatch a specialist.
 
-## Workflow
+## Run every phase, then debrief and report
 
-### 0. Pre-Flight
+### 0. Verify a clean working tree
 
-Verify clean working tree: `git status --porcelain` must be empty. If dirty, enter the **Terminal** with: "Commit or stash before running orchestrate: the run requires a clean tree."
+`git status --porcelain` must be empty. If dirty, enter the **Terminal** with: "Commit or stash before running orchestrate: the run requires a clean tree."
 
-### 1. Validate Plan Folder
+### 1. Validate the plan folder
 
 A. Confirm `{Project Path}/Overview.md` exists
 B. Discover all `Phase-X.md` files in `{Project Path}`
@@ -32,17 +32,17 @@ C. Sort phases numerically and report the plan structure to the user before proc
 
 Any of these failing (no `Overview.md`, no phase file, a gap in the numbering) enters the **Terminal**.
 
-### 2. Learn the Implementation Cycle
+### 2. Learn the implementation cycle
 
 Invoke the `writing-code` skill, then read `{command-root}/implement.md` to contextualize the workflow in our Implementation protocol.
 
-### 3. Execute Each Phase Sequentially
+### 3. Execute each phase sequentially
 
 For each `Phase-X.md` (in order, starting from `{Starting Phase}`), read the phase file, then execute the implementation cycle by dispatching specialist sub-agents directly. Each step below names its dispatch prompt's file under `{reference-root}/templates/orchestration/`; read that file and pass the prompt it contains. Resolve every placeholder before passing a prompt: sub-agents receive concrete paths, none left standing except `{Subject}`, which the sub-agent determines during execution.
 
 `{File Rules}` is defined in `{reference-root}/templates/orchestration/file-rules.md` and substituted verbatim into each specialist prompt beside it.
 
-Every dispatch in phase X, remediations included, carries the `description` `{Plan Folder} Phase-X <role>` (e.g. `audit-refactor Phase-2 coder`), the role being the agent's name; the audit's is `{Plan Folder} audit Phase-X`. The label bounds the audit's record.
+Every dispatch in phase X, remediations included, carries the `description` `{Plan Folder} Phase-X <role>` (e.g. `auth-rework Phase-2 coder`), the role being the agent's name; the audit's is `{Plan Folder} audit Phase-X`. The label bounds the audit's record.
 
 ∋3: each specialist writes its file and returns one line; wait for that line. The audits of § 3.F are the exception: an audit line, whenever it arrives, answers no specialist's wait and is held for § 5.
 
@@ -68,7 +68,7 @@ Dispatch the tester agent with the prompt at `{reference-root}/templates/orchest
 
 #### E. Adjudicate
 
-Invoke `governing-work` and dispatch the governor agent with its adjudication shape, Remit being `{Project Path}/Overview.md` and `{Project Path}/Phase-X.md`, Documentation being:
+Invoke `governing-work` and dispatch the governor agent with its adjudication shape, Charter being `{Project Path}/Overview.md` and `{Project Path}/Phase-X.md`, Documentation being:
 
 - `{Project Path}/Phase-X-Analysis.md`
 - `{Project Path}/Phase-X-Implementation-Report.md`
@@ -79,7 +79,7 @@ Before composing the dispatch, confirm every report listed above is on disk (※
 
 `governing-work`'s routing table narrows onto this run as follows:
 
-- `^PASS`: § 3.F, then Between Phases.
+- `^PASS`: § 3.F, then Between phases.
 - `^FAIL` with an `external` finding: append the return verbatim to `{Project Path}/Phase-X-Adjudication.md`, then enter the **Terminal**.
 - `^FAIL` otherwise: append the return verbatim to `Phase-X-Adjudication.md`. If three remediation dispatches have run in this phase, enter the **Terminal** (⊨7). Otherwise dispatch the coder agent with `coder-prompt.md`, `{Prior Report Path}` set to the adjudication, and route its line:
   - `^REMEDIATED`: record each grant the line names, then run § 3.C (`{Prior Report Path}` the adjudication) and § 3.D over the phase, each with its own loop and cap, then § 3.E again.
@@ -90,9 +90,9 @@ Recording a grant: read the ATO row of each named statement; on `granted`, inser
 
 #### F. Audit
 
-Invoke `performing-audits` (once per run) and dispatch the auditor agent in the background with its run shape: Work `{Project Path}/Overview.md` and `{Project Path}/Phase-X.md`; Record the session's transcript directory with the selector `"{Plan Folder} Phase-X "` (quoted, its trailing space kept); Reports `{Project Path}/Phase-X-*.md`; report `{Project Path}/audit/Phase-X-Audit.md`; staging `<session scratchpad>/audit/Phase-X/`.
+Invoke `performing-audits` (once per run) and dispatch the auditor agent in the background with its run shape: Work `{Project Path}/Overview.md` and `{Project Path}/Phase-X.md`; Record `{delegate-log-root}` resolved for the session with the selector `"{Plan Folder} Phase-X "` (quoted, its trailing space kept); Reports `{Project Path}/Phase-X-*.md`; report `{Project Path}/audit/Phase-X-Audit.md`; staging `<session scratchpad>/audit/Phase-X/`.
 
-#### Between Phases
+#### Between phases
 
 1. Report phase completion status to the user (one line per specialist: analysis, implementation, review, test, adjudication)
 2. Continue immediately to the next phase
@@ -102,11 +102,11 @@ Invoke `performing-audits` (once per run) and dispatch the auditor agent in the 
 
 After all phases are complete, read `{command-root}/debrief.md`, then invoke the analyzer agent with a prompt derived from its instructions, passing `{Project Path}` as the plan folder, with the `description` `{Plan Folder} debrief`. The analyzer must write the debrief report to `{Project Path}/Implementation-Debrief.md` and return only a one-line status summary.
 
-### 5. Collect Audits
+### 5. Collect the audits
 
 Collect every dispatched audit's line per `performing-audits`.
 
-### 6. Final Summary
+### 6. Report the run to the user
 
 Report to the user:
 
@@ -115,11 +115,11 @@ Report to the user:
 - Report locations: `{Project Path}/Implementation-Debrief.md` and `{Project Path}/audit/`
 - One `Phase-X audit: <line>` per audited phase
 
-### 7. Push Notification
+### 7. Push-notify the user
 
-- Push-notify the user, if the capability exists, carrying the final summary and the audit lines compressed to phase and counts, omitting the report locations (inaccessible from a phone): e.g. `Implementation complete. Audits: P1 CLEAN; P2 0C 1M 2m`. A line other than `CLEAN` or `FINDINGS` is carried by its kind (`P3 UNAUDITABLE`, `P2 malformed`, `P1 no line returned`).
+Push-notify the user, if the capability exists, with § 6's report and the audit lines compressed to phase and counts, omitting the report locations (inaccessible from a phone): e.g. `Implementation complete. Audits: P1 CLEAN; P2 0C 1M 2m`. A line other than `CLEAN` or `FINDINGS` is compressed to its kind (`P3 UNAUDITABLE`, `P2 malformed`, `P1 no line returned`).
 
-### Terminal
+### Terminal: stop, report, hand back
 
 Reachable from any step: every gate enters it on failure, and no branch continues past a gate it did not clear.
 

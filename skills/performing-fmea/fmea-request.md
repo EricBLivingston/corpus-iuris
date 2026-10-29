@@ -54,7 +54,7 @@ Draft the table, band it, and then:
 
 ## Ratifying an expansion
 
-The requestor is the coder, or a delegate, remediating its adjudication. The trigger is retrospective: the statement covers only what the necessity reaches and cites the adjudication finding; landed work beyond it is contracted or escalated. Its Cost is the amendment to the remit, written so the dispatcher can insert it as is, each added line carrying `(ratified: fmea/<statement file name>)`.
+The requestor is the coder, or a delegate, remediating its adjudication. The trigger is retrospective: the statement covers only what the necessity reaches and cites the adjudication finding; landed work beyond it is contracted or escalated. Its Cost is the amendment to the charter, written so the dispatcher can insert it as is, each added line carrying `(ratified: fmea/<statement file name>)`.
 
 ## Statement procedure
 
@@ -69,8 +69,10 @@ The requestor is the coder, or a delegate, remediating its adjudication. The tri
 2. Dispatch to the authorizer agent as Authorizing Official, giving it the statement file's absolute path — the file is what it assesses, never a copy of the table in the prompt — and pointing it at `{skill-root}/performing-fmea/fmea-assessment.md` for the standard it assesses against.
 3. **Wait on the decision.** The AO fills the ATO row in the file you handed it, grant or denial alike; read it back there. The launch does not start until that row records a grant. A denial is binding: narrow and resubmit, or drop — disagreement escalates to the user, never past the AO. A missing, partial, or malformed response is a denial too: restore the ATO row to empty before resubmitting. Resubmission caps under ⊨7; it changes only what the denial names and appends its table beneath the first in that same file.
 
+Terms of the authorization:
+
 - The AO is the authorizer agent, not you and not the user.
-- The authorization boundary is the statement's Cost bound. Crossing it is not overrun, it is operating unauthorized: re-assay, re-grant.
+- The authorization boundary is the statement's Cost bound. Crossing it is operating unauthorized: re-assay, re-grant.
 - The user sits above the framework: standing veto over any grant. Where a request's true cost runs far past what it implied, surface the estimate before the spend, not after.
 - The statement binds the session that drafted it. A delegate's dispatch prompt is its own ask and its own bound (※12); the drafting session's Cost bound binds that delegate only as the prompt writes it in (⊢5).
 

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-labelledby="t d">
 <title id="t">Inside one phase</title>
-<desc id="d">Analyzer, coder, reviewer and tester run in order, with loops back to the coder, then the governor holds the phase's reports to the plan's remit.</desc>
+<desc id="d">Analyzer, coder, reviewer and tester run in order, with loops back to the coder, then the governor holds the phase's reports to the plan's charter.</desc>
 <style>
   text{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
   .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
@@ -48,7 +48,7 @@
 
 <rect class="gate" x="996" y="300" width="192" height="88" rx="6"/>
 <text x="1016" y="332" class="ink" font-size="17" font-weight="600">governor</text>
-<text x="1016" y="364" class="mut" font-size="13.5">hold to the remit</text>
+<text x="1016" y="364" class="mut" font-size="13.5">hold to the charter</text>
 
 <path class="ln" d="M284 344 L314 344" marker-end="url(#a)"/>
 <path class="ln" d="M510 344 L540 344" marker-end="url(#a)"/>

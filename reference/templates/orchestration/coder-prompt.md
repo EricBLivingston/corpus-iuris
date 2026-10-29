@@ -19,7 +19,7 @@ Return only a one-line status summary.
 
 After implementing, fill the Deviations section of the phase file: why each was needed, and any state it changed outside the repository.
 
-Remediation, in force when the prior findings are `Phase-X-Adjudication.md`: dispose of every `beyond` finding in this dispatch by contracting the work back inside the remit, by filing one FMEA statement under the `performing-fmea` skill and dispatching the authorizer agent yourself (⊢5), or by escalating it. Contract only what the task can do without; work a Goal or Acceptance Criterion needs goes to a statement, or escalate. Record each disposition under `## Remediation` in `{Project Path}/Phase-X-Implementation-Report.md`. In place of the status summary, return exactly one of these lines:
+Remediation, in force when the prior findings are `Phase-X-Adjudication.md`: dispose of every `beyond` finding in this dispatch by contracting the work back inside the charter, by filing one FMEA statement under the `performing-fmea` skill and dispatching the authorizer agent yourself (⊢5), or by escalating it. Contract only what the task can do without; work a Goal or Acceptance Criterion needs goes to a statement, or escalate. Record each disposition under `## Remediation` in `{Project Path}/Phase-X-Implementation-Report.md`. In place of the status summary, return exactly one of these lines:
 
   REMEDIATED <n> of <n> — <c> contracted, <g> granted: <statement paths>
   ESCALATED <e> of <n> — <c> contracted, <g> granted: <statement paths>
