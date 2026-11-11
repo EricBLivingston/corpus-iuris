@@ -46,6 +46,14 @@ Use agent roles as `task_name`, omitting `agent_type`. Record phase and attempt 
 
 ∋3: each specialist writes its file and returns one line; wait for it. Audit returns belong to their queued jobs (§ 5).
 
+#### Judgement over the loops
+
+The caps of § 3.C to § 3.E bound a loop; they oblige none. Tell each reviewer dispatch to `FAIL` only on a correctness, security or charter defect, to name each such finding's class in its return line, and to propose no guard or check outside the phase's steps (§2, §8).
+
+- A review `FAIL` whose line names none of those classes passes: record the override under `## Orchestrator ruling` in `Phase-X-Adjudication.md`.
+- On the last permitted review iteration, bound the reviewer to the prior findings and to new correctness, security or charter defects.
+- A governor `beyond` finding over a check, a duplicate-shaped type, or content a later phase owns takes one contraction dispatch (the coder, `{Prior Report Path}` the adjudication), then § 3.C bounded to the contraction, § 3.D, and § 3.E again.
+
 #### Dispatch records
 
 Use `{Project Path}/audit/dispatch-map.jsonl` for `{Dispatch Map}`. Resolve the orchestrator's thread from `CODEX_THREAD_ID`, its `agent_path` from its original log's first `session_meta`, and its active `task_started.turn_id`. Record each dispatch's phase, role, attempt, prompt, report paths and initiating thread/path/turn.

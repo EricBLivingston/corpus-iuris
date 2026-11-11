@@ -18,3 +18,5 @@ A titulus is no provision: it confers no additional authority, in aggregate or f
 | ∋3 Dispatch Discipline | ※2, ※3, ※4, ※13, ⊢2, ⊢5, ⊨5, ⊨6 | Delegation, and waiting on it |
 | ∋4 Sets by Shape | §17, ⊨4 | A set named by its defining property |
 | ∋5 Scope Discipline | §2, ※10, ※11, ⊨2, ⊨3, ⊨5, ⊨6 | What a change adds, sweeps in, or purges |
+| ∋6 Configuration Lifecycle | §3, §4, §5, §6, §7, §13, §14, ⊢1 | Values declared, typed, validated once, threaded, closed |
+| ∋7 Test Suite Discipline | §2, §11, §12, §13, §15, §16, ※11, ⊢1, ⊨5 | Test floor, tier, fidelity, relevancy, redundancy, and ROI |

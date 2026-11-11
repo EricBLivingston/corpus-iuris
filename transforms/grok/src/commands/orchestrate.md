@@ -46,6 +46,14 @@ Every dispatch in phase X, remediations included, carries the `description` `{Pl
 
 ∋3: each specialist writes its file and returns one line; wait for that line. The audits of § 3.F are the exception: an audit line, whenever it arrives, answers no specialist's wait and is held for § 5.
 
+#### Judgement over the loops
+
+The caps of § 3.C to § 3.E bound a loop; they oblige none. Tell each reviewer dispatch to `FAIL` only on a correctness, security or charter defect, to name each such finding's class in its return line, and to propose no guard or check outside the phase's steps (§2, §8).
+
+- A review `FAIL` whose line names none of those classes passes: record the override under `## Orchestrator ruling` in `Phase-X-Adjudication.md`.
+- On the last permitted review iteration, bound the reviewer to the prior findings and to new correctness, security or charter defects.
+- A governor `beyond` finding over a check, a duplicate-shaped type, or content a later phase owns takes one contraction dispatch (the coder, `{Prior Report Path}` the adjudication), then § 3.C bounded to the contraction, § 3.D, and § 3.E again.
+
 #### A. Analyze
 
 Dispatch the analyzer agent with the prompt at `{reference-root}/templates/orchestration/analyzer-prompt.md`.
