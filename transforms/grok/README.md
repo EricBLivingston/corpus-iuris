@@ -4,7 +4,7 @@ This package installs the shared Corpus Iuris sources beside an existing Grok co
 
 When `compat.claude.*` is on (the default), Grok ingests named `CLAUDE.md` files, `~/.claude/rules/`, skills, commands, agents, hooks, and MCP. § Discovery states the cells and the copy rules.
 
-Do not require edits to files that already exist and have prior content. Do not treat the adopter's `AGENTS.md` (user or project) as an install target, a merge target, or a prerequisite. Do not create or edit one to make the install look complete. The default path requires no edit to `config.toml`. Setting a `compat.claude.*` cell to `false` is an authorized overlay when a Grok-only copy of that surface is wanted. That overlay is not required to install. Inspect the cells with `grok inspect` before proposing that edit. Obtain authorization.
+Do not require edits to files that already exist and have prior content. Do not treat the adopter's `AGENTS.md` (user or project) as an install target, a merge target, or a prerequisite. The default path requires no edit to `config.toml`. Setting a `compat.claude.*` cell to `false` is an authorized overlay when a Grok-only copy of that surface is wanted. Inspect the cells with `grok inspect` before proposing that edit. Obtain authorization.
 
 ## For an adopting Grok
 
@@ -77,7 +77,7 @@ A same-named Grok agent, command, or skill is the intended shadow. Do not skip i
 
 ## Initial scope
 
-The first cut is the corpus files this repository publishes: the tree as it stands beside this transform. This file does not list that set again.
+The first cut is the corpus files this repository publishes: the tree as it stands beside this transform.
 
 The doctrinal core is copied as it stands. Do not correct it provision by provision. The upstream refactor moved the harness particulars out of those files and into the instance ambit, so the instance file names this installation's referents. `src/instance-example.md` is an unfilled example of that file. Custom-agent definitions are already transposed, per AGENTS.md § What `src/` holds. Do not defer them and do not author them here. Commands stay commands: they are already transposed, per the same section. Skills are native Grok discovery artifacts, copied unchanged only for scenario 1 or for a skill that needs a Grok body. Every other artifact an admitted source merely names is a deferred dependency.
 

@@ -1,10 +1,10 @@
 # Contributing
 
-This is one person's corpus, published as a worked example rather than as a project seeking contributors. Suggestions are welcome, but adoption depends on their fit into my own ecosystem.
+This is one person's corpus, published as a worked example. Suggestions are welcome, but adoption depends on their fit into my own ecosystem.
 
 ## Issues are open
 
-Open one for anything that is wrong on its own terms rather than wrong by preference:
+Open one for anything that is wrong on its own terms:
 
 - A citation that resolves to nothing: a provision token with no defining site in the published set, or a cross-reference into a file that was never published.
 - A broken link, a dead path, a filename that no longer exists.
@@ -13,7 +13,7 @@ Open one for anything that is wrong on its own terms rather than wrong by prefer
 
 ## What earns a new provision
 
-`doctrine` was chosen over every synonym for one reason, given in [the lexicon](docs/lexicon.md): it is built from experience rather than reasoned out in advance. Every provision here is the remediation of a failure I actually observed.
+`doctrine` was chosen over every synonym for one reason, given in [the lexicon](docs/lexicon.md): it is built from experience. Every provision here is the remediation of a failure I actually observed.
 
 If you have experienced a similar deficiency and have worked out a remediating provision, please send it. A case where a model reliably did the wrong thing, and a precept that reliably stopped it, is worth an issue, and it is the only kind of contribution likely to be adopted. Show what the model did, how often, and what changed once the precept was in place. If it reproduces locally it probably becomes a provision.
 

@@ -35,7 +35,7 @@ The argument is a path, for example `plans/<name>/Design.md`. Two facts are read
 | `Design.md` | the Design template | the sibling `PRD.md` | always Implementation |
 | `Implementation.md` | the Implementation template | the sibling `PRD.md`, plus `Design.md` where one exists | terminal: `implement` or `orchestrate` |
 
-`Background.md` is the ground: why there is a plan at all. It exists for a mechanical reason: the agent that authors the artifact does not inherit the session where the request was made, so whatever the session knows and the plan folder does not has to be written down before the dispatch.
+`Background.md` is the ground: why there is a plan at all. The agent that authors the artifact does not inherit the session where the request was made, so whatever the session knows and the plan folder does not has to be written down before the dispatch.
 
 The three artifacts are three regimes, and the test for which one owns a fact is which change would rewrite it:
 
@@ -81,7 +81,7 @@ The analyzer writes `Overview.md` and one `Phase-N.md` per unit of work (1). The
 
 The governor then checks the charter (1b): the new Overview and every phase file, with the sources still in the plan folder, so a charter it finds unsound is repaired from them. A `FAIL` sends the analyzer back with the findings, and a third `FAIL` stops for the user. Once it passes, the review's repair loop never re-runs it.
 
-The reviewer then compares the produced files against the source specs (2), and the standard is reconstruction rather than mention: could a reader holding only these files rebuild the constraint, its warrant and its qualifications? Content added to satisfy the charter check is not content beyond the sources. A file still carrying a literal placeholder is rejected.
+The reviewer then compares the produced files against the source specs (2), and the standard is reconstruction: could a reader holding only these files rebuild the constraint, its warrant and its qualifications? Content added to satisfy the charter check is not content beyond the sources. A file still carrying a literal placeholder is rejected.
 
 The sweep runs last, once the review passes. Every file in the folder that is not `Overview.md` or `Phase-N.md` is classified against one question (3a): is this content directly related to, and necessary for, implementing this phase's requirements? The default is to sweep (3c), and each file must earn a keep (3b). Source specs sweep unconditionally, however substantial they are, because keeping one pulls the plan into context twice; background, rationale, history and the process artifacts of the phasing run itself go with them. A keep is reserved for secondary reference material: sample data, code and ID mappings, diagrams shared across phases, fixture inputs and golden outputs, files being edited in place.
 
@@ -135,11 +135,9 @@ The copy lands under `{analysis-root}/`, the staging area the command names, rat
 
 > You orchestrate; you do not investigate. NEVER read source, or any file a sub-agent in this run wrote; NEVER write, edit, review, or test code yourself, except that inserting a granted amendment into the charter is yours (§ 3.E). Read only `Overview.md` and the `Phase-X.md` files (the whole specification this run executes against), plus `{command-root}/{implement,debrief}.md` and the dispatch prompts under `{reference-root}/templates/orchestration/` once each; the ATO row of each statement a coder's remediation return names, and the amendment it authorizes, are the one sub-agent-written text you read; a skill this workflow directs you to invoke is not a read. The specs those phase files superseded are archived and closed to every reader in this run, the governor included. Pass file paths between sub-agents; instruct each to write detailed output to files and return only a one-line status. If something fails, dispatch a specialist.
 
-The archived specs therefore reach no reader in the whole run, the governor included: it holds the work to the charter the Overview and phase files state.
-
 The reason for the cut is that the adjacent phase is close to the worst possible distractor. Irrelevant material competes for attention rather than sitting inertly beside the signal, and the damage scales with resemblance: same project, same vocabulary, same file paths, adjacent intent, no longer relevant. Length alone degrades performance too, so dropping even harmless material pays. [The references](references.md) carry the work behind both claims.
 
-Pruning at the outset is only half of the remedy, because an orchestrator that reads what it dispatches re-accumulates everything the split was meant to prevent. The orchestrating session therefore never reads source, and reads nothing a sub-agent in the run wrote save the ATO row of a statement a remediation names: not the analysis, not the implementation report, not the review, not the test report, not the audit. The discipline holds because the specialists return one line each and write their detail to files, rather than because the orchestrator exercises restraint over content it is holding.
+Pruning at the outset is only half of the remedy, because an orchestrator that reads what it dispatches re-accumulates everything the split was meant to prevent. The orchestrating session therefore never reads source, and reads nothing a sub-agent in the run wrote save the ATO row of a statement a remediation names: not the analysis, not the implementation report, not the review, not the test report, not the audit. The discipline holds because the specialists return one line each and write their detail to files.
 
 It does write two things into the plan folder, and both are records of a gate rather than work product:
 

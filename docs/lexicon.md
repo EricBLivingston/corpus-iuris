@@ -1,6 +1,6 @@
 # Why the Latin, and the odd symbols
 
-This page is the long form of [the lexicon section of the README](../README.md). It covers the two properties every term and symbol here was selected for, the failure at each end of that selection, and the table of what each one was chosen to carry.
+This page is the long form of [the lexicon section of the README](../README.md).
 
 We select for two properties, and both do the same job: minimizing competition for the referent.
 
@@ -23,7 +23,7 @@ That count is what has to survive scaling up. Attention is a fixed budget, and s
 
 ### The Goldilocks zone
 
-Rarity has a floor as well as a ceiling. A term too common competes for its own referent; a token too rare is *undertrained*, vocabulary entries a model has barely seen carrying degenerate embeddings and behaving erratically. This is why we do not just make up nonsense words. We want a term rare enough to be unambiguous, but not so rare that it is untrained.
+Rarity has a floor as well as a ceiling. A term too common competes for its own referent; a token too rare is *undertrained*, vocabulary entries a model has barely seen carrying degenerate embeddings and behaving erratically.
 
 ## Semantic alignment: no fight with the prior
 
@@ -31,7 +31,7 @@ Where a term *does* occur in training data, its sense there should be close to o
 
 A term whose trained default contradicts our stipulated use sets what the context says against what the weights expect, and that conflict resolves unreliably. Operating against a trained default is also expensive; the same task gets worse when familiar terms are given unfamiliar meanings. The stipulation itself leaves the trained associations in place, competing while the local definition is in force, and across most kinds of remapping the strength of that familiar preference predicts how much interference follows.
 
-So we avoid that fight rather than trying to win it. Where the prior already agrees, term fidelity comes free: `provision` means a discrete citable clause in ordinary legal use, so nothing has to be overridden.
+So we avoid that fight. Where the prior already agrees, term fidelity comes free: `provision` means a discrete citable clause in ordinary legal use, so nothing has to be overridden.
 
 Alignment also buys compression. A trained name arrives carrying its own frame, and *peritus*, *ultra vires* and *rubric* each retrieve in one word what would otherwise cost a paragraph of stipulation.
 
@@ -53,9 +53,9 @@ The terms below are also a taxonomy: they sort what binds from what does not, an
 | ---- | ---- | ---- |
 | **Ius** | Roman law: law as a body of right (*ius civile*), as against *lex*, the single enacted statute. | Names our body of rules as a whole, so no one rule can be mistaken for the whole. |
 | **Corpus** | In scholarly publishing, the live collection, with withdrawn and archived material excluded by definition; in ML, a curated dataset, where membership follows from active inclusion rather than mere availability. | Membership by inclusion, not by presence on disk: what no loader, invoker, or live reference reaches is dead code, and dead code is not corpus. |
-| **Adventitia** | Latin: "externally added"; Descartes' *ideae adventitiae*, ideas arriving from outside the mind — neither innate nor self-made. | Marks rubric the harness supplies. It is a provenance decorator, and does not affect authority. |
+| **Adventitia** | Latin: "externally added"; Descartes' *ideae adventitiae*, ideas arriving from outside the mind: neither innate nor self-made. | Marks rubric the harness supplies. It is a provenance decorator, and does not affect authority. |
 | **Precept** | A rule of conduct laid down by an authority. | The umbrella for everything that binds, whichever instrument minted it. |
-| **Canon** | The closed, admitted set of texts constituting a body — always read, as against material that may be read but is not guaranteed. | Admission by guaranteed presence, so a citation always resolves in context; what lies outside is deuterocanonical, and binds once read. |
+| **Canon** | The closed, admitted set of texts constituting a body: always read, as against material that may be read but is not guaranteed. | Admission by guaranteed presence, so a citation always resolves in context; what lies outside is deuterocanonical, and binds once read. |
 | **Provision** | A clause of a statute or contract: a discrete, citable term. | A uniquely labeled precept, so it can be cited from anywhere instead of quoted as text. |
 | **Doctrine** | Legal doctrine: the systematized principles of a field, accreted through commentary and experience rather than enacted a priori. | Signals that nothing here was reasoned out in advance; each provision represents an a posteriori remediation. |
 | **Rubric** | Liturgical rubric: the red-letter directions governing how the rite is performed, as against the words of the rite. | Separates procedure from the precepts it carries out: rubric instructs without minting anything citable. |
@@ -79,7 +79,7 @@ The terms below are also a taxonomy: they sort what binds from what does not, an
 
 Most of this vocabulary never leaves the ius. In ordinary use only the symbols surface, plus the occasional category name ("scan for doctrine violations"), while the rest works internally, resolving context rather than being recited.
 
-The definitions above are what the terms were selected for. What each one binds is set in `rules/ius.md` and `rules/tituli.md`, where the corpus states them for itself.
+What each one binds is set in `rules/ius.md` and `rules/tituli.md`, where the corpus states them for itself.
 
 ## Related pages
 

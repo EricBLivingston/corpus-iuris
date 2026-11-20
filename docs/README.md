@@ -1,6 +1,6 @@
 # Docs
 
-Presentation and explanatory material about the corpus. It exists to explain the body to someone who has not read it.
+Presentation and explanatory material about the corpus.
 
 ## Pages
 
@@ -14,9 +14,9 @@ The README is the front door and each of its sections is deliberately short. Eve
 
 `diagrams/` holds standalone SVGs, each named for its subject, carrying its own `<title>`, theme-aware through `prefers-color-scheme`, and embedded where the prose goes into its subject.
 
-The two `framework-*` files answer the same question at opposite ends of the vocabulary, and are deliberately built differently so neither reads as a version of the other. `framework-in-brief.svg` is two panels and no jargon, for someone who has not been given a single term yet. `framework-overview.svg` is the dense one, and works alone as a README hero, a share image, or a printed handout. The rest each take one part of that detailed sheet further.
+The two `framework-*` files answer the same question at opposite ends of the vocabulary, and are deliberately built differently. `framework-in-brief.svg` is two panels and no jargon, for someone who has not been given a single term yet. `framework-overview.svg` is the dense one, and works alone as a README hero, a share image, or a printed handout. The rest each take one part of that detailed sheet further.
 
-Embed one in Markdown the usual way. This path is written from the repository root:
+From the repository root:
 
 ```md
 ![The spec-driven development pipeline](docs/diagrams/sdd-pipeline.svg)

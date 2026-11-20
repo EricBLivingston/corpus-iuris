@@ -4,15 +4,15 @@ This guide is working discipline for the Codex transform: what may change on the
 
 ## Scope
 
-This is a maintained downstream realization of a live upstream corpus, not a one-time port. Resynchronization after upstream changes is normal operating procedure, so **minimum-necessary change** is the governing criterion: every edit to a copied file is a divergence that must be reconciled at every later refresh, and must earn that permanent cost. An installation's own facts belong in its instance file, where a keyed entry merges with a later upstream revision instead of colliding with it.
+Resynchronization after upstream changes is normal, so **minimum-necessary change** is the governing criterion: every edit to a copied file is a divergence that must be reconciled at every later refresh, and must earn that permanent cost. An installation's own facts belong in its instance file, where a keyed entry merges with a later upstream revision instead of colliding with it.
 
-- Work only from sources present in this clone. A missing source is deferred, not reconstructed from memory or another installation.
+- Work only from sources present in this clone. A missing source is deferred.
 - Staging, `<codex-home>/corpus-staging/`, is this installation's staging surface in the sequence `../../installing.md § The installation sequence` sets out. Rebuild it from the checkout for every refresh; it is disposable processing material, never canon.
 - Writing outside the clone, or changing user-level Codex configuration, requires explicit user authorization. Filesystem approval from the harness does not replace that conversation.
 - Style, wording preference, exposition, clarification, and cosmetic consistency never justify a delta. Preserve formatting; do not reflow carried text.
 - Prefer deleting or narrowly substituting a false clause over rewriting its sentence, paragraph, or section.
 - Do not add caveats that restate immutable harness or model bounds, including instruction priority. Translate only mechanics that must change for the provision's intended behavior to survive.
-- Keep doctrine declarative: state what binds, not how it is authored, admitted, loaded, or maintained. Those procedures belong in a guide like this one or in a context-curation skill, not in the statute they operate on.
+- Keep doctrine declarative: state what binds. Procedures for authoring, admitting, loading, and maintaining belong in a guide like this one or in a context-curation skill, not in the statute they operate on.
 - Use current official OpenAI documentation for the Codex surfaces this package touches.
 
 ## Admit or defer
@@ -23,7 +23,7 @@ The loader fails closed: an import written ahead of its file rejects the entire 
 
 A provision that is merely generic where Codex is specific, or that Codex contradicts outright, is neither deferred nor edited: it takes a keyed entry in the installation's instance file, which keeps its number resolvable on both sides. `../../adopting.md § Taking a provision you do not want as written` sets that route against its alternatives and gives the cost of each.
 
-Amending a copied file is the escape hatch, and it should stay empty. A span Codex makes factually false — a tool named as a literal, an interaction model no keyed entry can reach — is upstream's defect rather than this installation's: it is wrong on every harness that is not the one it was written for, so report it upstream. Correct it locally only where waiting is not an option, confine the correction to the false span, and drop it when the upstream fix lands.
+Amending a copied file is the escape hatch, and it should stay empty. A span Codex makes factually false (e.g., a tool named as a literal, an interaction model no keyed entry can reach) is wrong on every harness other than the one it was written for, so report it upstream. Correct it locally only where waiting is not an option, confine the correction to the false span, and drop it when the upstream fix lands.
 
 ## Rule admission
 
@@ -34,11 +34,11 @@ A staged rule nothing loads binds nothing, so admitting one to the resident corp
 | the artifact | its source-relative path inside the production corpus root, unless Codex requires otherwise |
 | its admission | an `@import` line naming that path, in `canon.md` |
 
-Preserve the source-relative tree: mirrored paths keep every later refresh a diff rather than a hunt. The admission order is fixed: file first, then import. An import ahead of its file rejects the whole canon.
+Preserve the source-relative tree: mirrored paths keep every later refresh a diff.
 
 `canon.md` is the entrypoint the SessionStart loader expands into the next session's context; `src/hooks/corpus_iuris_session_start.py` implements its syntax, its budget and its failure modes, and is the authoritative account of them. An import resolves relative to the directory of the file declaring it, and its target must resolve inside the corpus root; an imported file may import in turn under the same rule. The global entrypoint sits beside the corpus root rather than inside it, so its imports have to reach in: `corpus/rules/ius.md` under the default layout, and a `../`-relative path wherever the installation puts the corpus elsewhere. Expansion is literal and in order, so the entrypoint's order is the corpus's reading order: place each import where the artifact should be read.
 
-The instance file takes one import however many rows it accumulates. Reference material is copied with the rule that reaches it, but is read on that rule's terms rather than imported merely because it is present. A skill takes Codex's discovery admission instead, never both.
+The instance file takes one import however many rows it accumulates. Reference material is copied with the rule that reaches it, but is read on that rule's terms rather than imported merely because it is present. A skill takes Codex's discovery admission instead.
 
 ## Refreshing through staging
 
@@ -56,7 +56,7 @@ Begin from the new source artifact and reapply only the local corrections that r
 
 ## Installing runtime corrections
 
-`src/skills/` carries ready Codex skill transpositions. Overlay them after generic command conversion and promote the selected staged output to the live skill-discovery path. Runtime instructions belong in those loaded skills; this guide is not a substitute for their deployment.
+`src/skills/` carries ready Codex skill transpositions. Overlay them after generic command conversion and promote the selected staged output to the live skill-discovery path. Runtime instructions belong in those loaded skills.
 
 The provided `orchestrate` skill is generated from its corpus command before publication. It records dispatch identities and own execution spans, queues per-role single-root audits through one reused auditor, and collects every job verdict. Keep that mapping and audit procedure in the skill rather than recreating it during installation. Record its source, installed digest and retained corrections in the adoption ledger.
 

@@ -1,6 +1,6 @@
 # Structure: how a precept is addressed, and how a collision resolves
 
-The [lexicon](lexicon.md) fixes the vocabulary. This page sets out what is built from it: the four instruments a precept may be minted under, the four positions of the token that addresses it, the ladder of reach those tokens sit on, the categories a precedence rank ranges over, and the rule that settles a collision between two of them. `rules/ius.md` states all of this for the corpus itself; what follows explains the mechanism rather than restating it.
+The [lexicon](lexicon.md) fixes the vocabulary. This page sets out what is built from it: the four instruments a precept may be minted under, the four positions of the token that addresses it, the ladder of reach those tokens sit on, the categories a precedence rank ranges over, and the rule that settles a collision between two of them. `rules/ius.md` states all of this for the corpus itself.
 
 ## The four instruments
 

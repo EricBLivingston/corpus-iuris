@@ -28,7 +28,7 @@ A symlinked corpus file makes the pull the installation step: an upstream change
 
 ## On Claude Code
 
-`~/.claude` is Claude Code's own state directory: a merge target, never a checkout. There is no `transforms/claude/` package, this being the harness the base is written for.
+`~/.claude` is Claude Code's own state directory: a merge target. Never clone into it. There is no `transforms/claude/` package, this being the harness the base is written for.
 
 | Piece | Destination |
 | ---- | ---- |

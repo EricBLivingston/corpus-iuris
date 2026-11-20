@@ -4,7 +4,7 @@ This package turns the shared Corpus Iuris sources into a Codex installation. It
 
 ## For an adopting Codex
 
-The root `installing.md` § The installation sequence governs the separation between the working clone, the installed corpus, and the user's live Codex configuration, and its § On Codex states what makes an artifact resident here. What this package adds is where each piece lands and the admission order, below.
+The root `installing.md` § The installation sequence governs the separation between the working clone, the installed corpus, and the user's live Codex configuration, and its § On Codex states what makes an artifact resident here.
 
 When a user points Codex at the repository URL, the expected journey is:
 
@@ -12,9 +12,9 @@ When a user points Codex at the repository URL, the expected journey is:
 2. Inspect the active Codex home and current official Codex documentation read-only. Identify active configuration layers, existing hooks, collisions, and required destinations.
 3. Report the proposed bootstrap and ask the user explicitly before writing to user-level Codex configuration.
 4. With approval, install and register only the inert SessionStart loader, `src/hooks/corpus_iuris_session_start.py`. Do not create or populate `canon.md` merely to make the hook appear complete.
-5. Copy the corpus into the production corpus root, preserving source-relative paths and running the copy model the root `installing.md` carries. The corpus is this repository's artifact tree — every directory whose contents an admission could name — as against the documents at the repository root, which are read rather than installed.
+5. Copy the corpus into the production corpus root, preserving source-relative paths and running the copy model the root `installing.md` carries. The corpus is this repository's artifact tree (every directory whose contents an admission could name), as against the documents at the repository root, which are read rather than installed.
 6. Write the installation's instance file: copy `src/instance-example.md` to `rules/instance.md` inside the production corpus root and refactor it for this installation, after the copy above rather than before it: written after, it is independent of whether the copy landing on that root overlays or mirrors. It resolves the `{placeholders}` and the generic slots every other file leaves open; the doctrinal core carries unchanged behind it.
-7. Admit rules one at a time, each given its `@import` line in `canon.md` only after its file is in place. `AGENTS.md § Rule admission` gives the order and why it is not negotiable.
+7. Admit rules one at a time, each given its `@import` line in `canon.md` only after its file is in place. `AGENTS.md § Admit or defer` gives the order and why it is not negotiable.
 8. Install the custom-agent definitions from `src/agents/` where Codex discovers them, reviewing each one first.
 
 ## Where the pieces go
@@ -32,11 +32,11 @@ The loader takes the Codex home from `CODEX_HOME`, falling back to the parent of
 
 The loader expands its entrypoints. `<codex-home>/canon.md` is read in every session. `<project-root>/.codex/canon.md` (the project root is the nearest ancestor of the session's working directory that holds a `.git`) is read only in sessions under that project, and is the surface a `P`-ambit file reaches. A project entrypoint's imports resolve inside its own `.codex/` directory and may not escape it, so a project's corpus files live there beside it.
 
-Codex discovers custom agents at `<codex-home>/agents/*.toml` for a personal installation, or `.codex/agents/*.toml` for one project: one file per agent, and the `name` key inside the file is the identifier rather than the filename. That is Codex's own admission channel — an agent definition takes it instead of a `canon.md` import, never both.
+Codex discovers custom agents at `<codex-home>/agents/*.toml` for a personal installation, or `.codex/agents/*.toml` for one project: one file per agent, and the `name` key inside the file is the identifier rather than the filename. That is Codex's own admission channel: an agent definition takes it instead of a `canon.md` import.
 
 ## Initial scope
 
-The first cut covers the corpus files this repository publishes — the tree as it stands beside this transform is the set, and this file does not restate its membership.
+The first cut covers the corpus files this repository publishes: the tree as it stands beside this transform is the set.
 
 That set's doctrinal core carries rather than being corrected provision by provision. The upstream refactor moved the harness particulars out of those files and into the instance ambit, so what a Codex installation owes them is not a corrected copy but an instance file naming its own referents; this transform ships an example rather than a filled one. Custom-agent definitions are neither deferred nor authored here: they arrive already transposed, per AGENTS.md § What `src/` holds. Skills are native Codex discovery artifacts: an installation that selects one copies its directory unchanged to `<codex-home>/skills/<name>/`. Every other artifact an admitted source merely names remains a deferred dependency.
 

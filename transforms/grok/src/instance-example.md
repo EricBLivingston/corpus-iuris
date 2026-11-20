@@ -11,7 +11,7 @@
 | ⊢2 | The installed periti are <name>, whose skill is `using-<name>`. |
 | ※6 | This harness does not auto-inject MEMORY.md. Grok's own memory store may be enabled separately. Every memory write goes through the knowledge agent. |
 
-This harness's subagent nesting depth is one: only the top-level session spawns. ※4 already says a child that has the work does it; the main session orchestrates the ※8 chain. The main session is the only dispatcher.
+This harness's subagent nesting depth is one: only the top-level session spawns, and the main session orchestrates the ※8 chain.
 
 ## Nouns
 

@@ -8,7 +8,7 @@
 | ※13 | There are no context-free subagents. All subagents receive full context. |
 | ⊢2 | The periti are Gemini, whose skill is `using-gemini`, and Pi, whose skill is `using-pi`. ('Pi' proxies the called model) |
 | ⊨1 | The language-server-backed symbolic toolserver is Serena; prefer its symbolic tools over their built-in and shell equivalents. |
-| ※md1 | The Markdown linter is `rumdl` — `rumdl check <path>` and `rumdl fmt <path>`. |
+| ※md1 | The Markdown linter is `rumdl`: `rumdl check <path>` and `rumdl fmt <path>`. |
 
 ### Register of ⊢3 holdings on this instance
 

@@ -14,7 +14,7 @@ The main goals of the system are:
 
 1. **Clarity and attentive power** — We want our rules to "pop out" from the background context and arrest a model's attention, helping to increase the likelihood of them being abided by.
 2. **Context cohesion and logical integrity** — We want our rules to not conflict or create ambiguity, especially when read along with other rules of our own making or those injected automatically by a harness's system prompt or other sources of direction.
-3. **Token efficiency** — We need to balance long-winded exposition and use cases with brevity, acknowledging that we pay for every token here in both real cost and in attention span. Less is more in context engineering.
+3. **Token efficiency** — We need to balance long-winded exposition and use cases with brevity, acknowledging that we pay for every token here in both real cost and in attention span.
 4. **Governance and accountability** — Every action taken within the system is subject to pre-established rules and oversight, ensuring that work is conducted within defined limits and responsibilities are clear.
 5. **Spec-driven and traceable** — Every piece of work is guided by a clear specification, and its execution is traceable back to the governing rules and directives, ensuring accountability and reproducibility.
 
@@ -146,7 +146,7 @@ The rest are conditional on which published parts you take:
 | `commands/phase.md` | A way to move files into a new directory, for the sweep into `plans/<plan>/archive/`, and a text search for the convergence test it runs per identifier |
 | `commands/orchestrate.md` | git and a shell |
 | `commands/finalize.md` | A POSIX shell: `mkdir`, `mv`, and the grep behind the tri-state language check |
-| `agents/knowledge.md` | Nothing. A durable knowledge store is an upgrade rather than a dependency, and is not distributed; without one, the agent's own prose makes the project memory file the whole of persistent memory and the curation doctrine applies to it unchanged |
+| `agents/knowledge.md` | Nothing. A durable knowledge store is an upgrade, and is not distributed; without one, the agent's own prose makes the project memory file the whole of persistent memory and the curation doctrine applies to it unchanged |
 
 Gemini, Codex and pi are periti in the default installation, engaged one question at a time through their own command-line programs, and each is optional on its own. Codex and Grok are also harnesses, and the `transforms/` packages are what carry the corpus onto them.
 

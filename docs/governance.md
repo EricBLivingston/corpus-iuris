@@ -10,7 +10,7 @@ Governance is the heaviest layer here, and the reason is empirical: unauthorized
 
 ## What counts as ultra vires
 
-*Ultra vires* (*lit.* *beyond the powers*) is the public-law sense, and it turns on *charter*, the grant a piece of work runs under; [the lexicon](lexicon.md) carries both terms and `rules/ius.md` defines them. An act is ultra vires when it would put more work under that charter than the charter granted. The term describes the act rather than its merit, so a perfectly sensible act can be ultra vires.
+*Ultra vires* (*lit.* *beyond the powers*) is the public-law sense, and it turns on *charter*, the grant a piece of work runs under; [the lexicon](lexicon.md) carries both terms and `rules/ius.md` defines them. An act is ultra vires when it would put more work under that charter than the charter granted. The term grades no merit: a perfectly sensible act can be ultra vires.
 
 It takes one of two shapes:
 
@@ -98,7 +98,7 @@ A proceed is written into a file of its own, one per act, so that concurrent del
 
 Its shape is the template at `reference/templates/fmea-statement.md`: the question the act would answer, the limbs the assay graded, the Cost bound, the band the verdict chose, and an authorization row carried into dispatch present and empty. Verdict and ATO are different rows with different authors, and neither is ever written into the other.
 
-Cost is a bound rather than an estimate, and the distinction is practical: delegated spend is not predictable within a factor of two, and the dispatching session does not control what a delegate does. So the row is written to be enforceable in the dispatch prompt, or recorded in the plan file the next adjudication reads, and checkable afterwards either way. It is also how narrowing is executed, since narrowing is mostly a matter of choosing a tighter bound rather than a different question.
+Cost is a bound: delegated spend is not predictable within a factor of two, and the dispatching session does not control what a delegate does. So the row is written to be enforceable in the dispatch prompt, or recorded in the plan file the next adjudication reads, and checkable afterwards either way. It is also how narrowing is executed, since narrowing is mostly a matter of choosing a tighter bound rather than a different question.
 
 An expansion's Cost row is the amendment to the charter, ready to insert as is, each added line carrying the statement's citation.
 
@@ -110,7 +110,7 @@ That standard is refutation, row by row, briefed to break the table: whether the
 
 What is final is the Official rather than the matter: a denial names the failing row and binds, no appeal reaches a second Official, and the requesting agent either narrows and resubmits or drops the act. Disagreement escalates to the user, never past the Official. A grant resting on anything the Official could not verify from the tree issues as interim and goes to a peritus for independent review, and that peritus's judgment is adopted.
 
-The response is the authorization row filled in place, and nothing else: no second document, no report file, no restated table. A grant authorizes the act at the Cost bound its row names and nothing wider, so crossing that bound is not overrun but operating unauthorized, and it takes a fresh statement. A denial is recorded exactly as a grant is, because the denials are what the record exists to measure.
+The response is the authorization row filled in place, and nothing else: no second document, no report file, no restated table. A grant authorizes the act at the Cost bound its row names and nothing wider, so crossing that bound is operating unauthorized and takes a fresh statement. A denial is recorded exactly as a grant is, because the denials are what the record exists to measure.
 
 Above all of it sits the user, with a standing veto over any grant.
 

@@ -5,14 +5,14 @@
 | Token | Intent on this installation |
 | ---- | ---- |
 | ⊨1 | The language-server-backed symbolic toolserver is Serena; prefer its symbolic tools over their built-in and shell equivalents. |
-| ※md1 | The Markdown linter is `rumdl` — `rumdl check <path>`, `rumdl check --fix <path>`. |
+| ※md1 | The Markdown linter is `rumdl`: `rumdl check <path>`, `rumdl check --fix <path>`. |
 | ⊢2 | The installed periti are Gemini, whose skill is `using-gemini`, Codex, whose skill is `using-codex`, and pi, whose skill is `using-pi`. |
 | ※13 | The context-free subagents are `Explore` and `Plan`. |
 | ※6 | No durable knowledge store is installed here, so the project memory file is the whole of persistent memory. |
 
 ### Register of ⊢3 holdings on this instance
 
-A row names the governing precept and the shape of adventitia it displaces. The quoted fragment is an example, not an anchor: same shape, any wording, same row (⊨6).
+A row names the governing precept and the shape of adventitia it displaces. The quoted fragment is an example: same shape, any wording, same row (⊨6).
 
 | Governs | Displaced shape | Holding |
 | ---- | ---- | ---- |

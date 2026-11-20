@@ -16,11 +16,9 @@ The base is generic wherever no concrete name would be true of every installatio
 
 `instance-example.md` is a platform-specific base example: copy it and refactor as necessary. Its content is the first thing to decide; where in the sequence the file is written is the harness's own call, and on Claude Code `installing.md` § What you supply places it in the installed tree after the corpus is copied rather than before it.
 
-The decisions below come one provision at a time, and that file is the mechanism nearly all of them use.
-
 ## Taking a provision you do not want as written
 
-These routes differ in cost and in what they leave behind rather than in legitimacy. What separates them is the fate of the token: whether it still resolves to the same provision on both sides, and what a reader finds where it does not. A removal is complete when the citations to it are gone from your live corpus. One provision is a text search and a few edits; an instrument costs what cites it, caselaw included. Stubbing and keying over leave every citation in place and resolving.
+These routes differ in cost and in what they leave behind. What separates them is the fate of the token: whether it still resolves to the same provision on both sides, and what a reader finds where it does not. A removal is complete when the citations to it are gone from your live corpus. One provision is a text search and a few edits; an instrument costs what cites it, caselaw included. Stubbing and keying over leave every citation in place and resolving.
 
 | Strategy | Root corpus | Instance ambit | Best for |
 | ---- | ---- | ---- | ---- |
@@ -34,7 +32,7 @@ Key over is the mechanism the ius is built around: a keyed entry *overlays* its 
 
 Key over to disable is that same entry saying the base does not bind here. The number stays resolvable, and resolving it tells a reader the absence was decided rather than overlooked, which is the record § Keeping a record otherwise asks you to keep by hand.
 
-Omit is for a provision with no subject on your installation at all, rather than merely a different subject, which is what keying over is for.
+Omit is for a provision with no subject on your installation at all; keying over is for one whose subject differs.
 
 Omit and replace gives you a full replacement at zero residual cost in root, but the number then denotes your provision in your corpus and ours in ours. If we later revise ours in a way you would have wanted, taking that revision is manual work and nothing will tell you it happened. How much that matters depends on how closely you expect to track us. Prefer keying over wherever your replacement still answers the question the original was asking.
 
@@ -126,6 +124,6 @@ The `Governs:` line names every provision the entry composes, which is what make
 
 ## Keeping a record
 
-Optional, and worth it for one reason: a keyed entry is visible in your corpus, and so is a minted replacement, but an omission leaves no trace anywhere, unless a transposition script performed it and stands as its own record, reapplying on every pull. Six months on you cannot tell a deliberate skip from an oversight, and neither can anyone reviewing your corpus. If that distinction is worth preserving, note the omitted provisions somewhere with a line on why. That is the whole record, and nothing else about adoption needs one. Keying over to disable buys the same record for free, which is the case for preferring it wherever the number is worth keeping resolvable.
+Optional, and worth it for one reason: a keyed entry is visible in your corpus, and so is a minted replacement, but an omission leaves no trace anywhere, unless a transposition script performed it and stands as its own record, reapplying on every pull. Six months on you cannot tell a deliberate skip from an oversight, and neither can anyone reviewing your corpus. If that distinction is worth preserving, note the omitted provisions somewhere with a line on why. Keying over to disable buys the same record for free, which is the case for preferring it wherever the number is worth keeping resolvable.
 
 The one check worth running afterward, and again on every MAJOR revision you take: every citation in your live corpus resolves to a provision you kept.

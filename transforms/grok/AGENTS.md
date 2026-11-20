@@ -24,7 +24,7 @@ Resynchronization after upstream changes is normal, so **minimum-necessary chang
 
 ## Rule admission
 
-- A file nothing loads binds nothing. Copying into staging is not admission. A rule is **admitted** by copying it into `~/.grok/rules/`; Grok loads every `*.md` there. There is no `@import` and no `canon.md`. In the trivial sense, file-first is this: the file is the admission.
+- A file nothing loads binds nothing. Copying into staging is not admission. A rule is **admitted** by copying it into `~/.grok/rules/`; Grok loads every `*.md` there. There is no `@import` and no `canon.md`.
 - Preserve source-relative names under each destination.
 - A skill, a command, or an agent is not admitted by a copy into `rules/`.
 - Do not drop keys from a transposed command at install time.
@@ -51,7 +51,7 @@ This package may add files under `~/.grok/rules/`, `~/.grok/skills/`, `~/.grok/c
 
 User-owned files stay outside the default install:
 
-- Never write the adopter's `AGENTS.md` (user or project). Do not treat it as an install target, a merge target, or a prerequisite. Do not create one to make the install look complete, and do not edit one on refresh.
+- Never write the adopter's `AGENTS.md` (user or project): not as an install, merge or refresh target, or a prerequisite, nor to make the install look complete.
 - The default path requires no edit to `config.toml`. Setting a `compat.claude.*` cell to `false` is an authorized overlay when a Grok-only copy of that surface is wanted. That overlay is not required to install. Inspect the cells before proposing that edit. Do not flip a cell as part of a silent install. Obtain authorization.
 
 1. Resolve the active Grok home. Do not assume `~/.grok`; `GROK_HOME` may point elsewhere.
@@ -65,7 +65,7 @@ Superseded configuration is removed only as part of an authorized migration. `..
 
 ## What `src/` holds
 
-- There are no per-artifact transposition recipes, and none are planned. Corpus sources contain `{placeholders}` for whatever an installation names for itself. The instance file does the naming once.
+- There are no per-artifact transposition recipes. Corpus sources contain `{placeholders}` for whatever an installation names for itself. The instance file does the naming once.
 - `src/instance-example.md` is the one file copied out and refactored. It is not installed as it stands.
 - Transposed agents are generated into the published tree at `transforms/grok/src/agents/*.md` by `transpose_agent.py`. Transposed commands are generated into the published tree at `transforms/grok/src/commands/*.md` by `transpose_command.py`. Both generators are unpublished build tooling: an adopter does not run them and installs the markdown they emitted.
 - There is no hooks directory.

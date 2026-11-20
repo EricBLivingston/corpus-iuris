@@ -14,4 +14,4 @@ The tip of the default branch, and nothing else. §1 governs: there are no relea
 
 Please do not open a public issue for anything that would give a working exploit to a reader before the fix lands. Anything else (a hook that refuses valid canon, a loader that is merely wrong) is an ordinary defect and belongs in an issue.
 
-Expect a slow reply. This is maintained in the margins of other work; there is no team behind it, and there is no disclosure deadline I can honestly promise to meet.
+Expect a slow reply. This is maintained in the margins of other work; there is no team behind it, and there is no disclosure deadline I can promise to meet.

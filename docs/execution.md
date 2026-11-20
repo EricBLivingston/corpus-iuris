@@ -1,6 +1,6 @@
 # Execution: inside one phase
 
-The [pipeline](pipeline.md) produces a folder of phases. This page sets out what happens inside one of them: four specialists in a fixed order, two loops that re-enter it, and a gate at the end that holds the produced work to the charter the plan files state.
+The [pipeline](pipeline.md) produces a folder of phases. Four specialists run in a fixed order, two loops re-enter it, and a gate at the end holds the produced work to the charter the plan files state.
 
 ![The production chain inside one phase, its loops, and the governor gate](diagrams/phase-cycle.svg)
 
@@ -15,7 +15,7 @@ The [pipeline](pipeline.md) produces a folder of phases. This page sets out what
 
 Each step's output is the next step's input: the analysis to the coder, the implementation summary to the reviewer, the review to the tester. Review and test never run in parallel, because the reviewer's verdict is an input the tester should be holding.
 
-The chain scales to the work rather than the reverse. Where the content is smaller than the round trip that would move it, analysis and testing fall away and the coding happens in the session that asked for it, with the review dispatched under a bounded charter. What does not scale away is the review: an independent pass over a change is the one stage sizing never removes, including for a non-code refactor.
+The chain scales to the work. Where the content is smaller than the round trip that would move it, analysis and testing fall away and the coding happens in the session that asked for it, with the review dispatched under a bounded charter. What does not scale away is the review: an independent pass over a change is the one stage sizing never removes, including for a non-code refactor.
 
 ## The roster
 
