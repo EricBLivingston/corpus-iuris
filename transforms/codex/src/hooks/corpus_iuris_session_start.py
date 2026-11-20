@@ -6,9 +6,12 @@ from __future__ import annotations
 import json
 import os
 import sys
+import tomllib
 from dataclasses import dataclass
+from enum import Enum
 from pathlib import Path
-from typing import TextIO, cast
+from string import ascii_lowercase, ascii_uppercase
+from typing import TextIO, TypedDict, cast
 
 
 CODEX_HOME = Path(os.environ.get("CODEX_HOME", Path(__file__).resolve().parents[1]))
@@ -22,6 +25,46 @@ class CanonError(Exception):
     """The admitted canon cannot be loaded completely and safely."""
 
 
+class CanonBudgetError(CanonError):
+    """The expanded doctrine exceeds the context budget."""
+
+
+class SavedTrust(Enum):
+    TRUSTED = "trusted"
+    UNTRUSTED = "untrusted"
+    UNDETERMINED = "undetermined"
+
+
+class ProjectOmission(Enum):
+    """Fixed reasons keep the notice and separator within 512 UTF-8 bytes."""
+
+    DISCOVERY_UNCERTAIN = "the hook could not determine whether project canon exists"
+    TRUST_DENIED = "the project is saved as untrusted"
+    TRUST_UNAVAILABLE = "saved trust for this project could not be established"
+    LOAD_FAILED = "canon could not be loaded"
+    OVER_BUDGET = "expanded doctrine exceeded the context limit"
+
+
+@dataclass(frozen=True, slots=True, kw_only=True)
+class SessionStart:
+    cwd: str | None
+
+
+@dataclass(frozen=True, slots=True, kw_only=True)
+class AdmittedProject:
+    root: Path
+
+
+class SessionStartContext(TypedDict):
+    hookEventName: str
+    additionalContext: str
+
+
+class HookOutput(TypedDict, total=False):
+    systemMessage: str
+    hookSpecificOutput: SessionStartContext
+
+
 @dataclass(frozen=True)
 class MarkdownFence:
     marker: str
@@ -29,59 +72,84 @@ class MarkdownFence:
     trailing: str
 
 
-def read_hook_payload(stdin: TextIO = sys.stdin) -> dict[str, object]:
+def read_hook_payload(stdin: TextIO) -> SessionStart:
     if stdin.isatty():
-        return {}
+        return SessionStart(cwd=None)
 
     try:
-        raw_payload = stdin.read()
-    except OSError:
-        return {}
-
-    if not raw_payload.strip():
-        return {}
-
-    try:
-        payload = json.loads(raw_payload)
-    except json.JSONDecodeError:
-        return {}
+        payload: object = json.load(stdin)
+    except (OSError, ValueError, RecursionError):
+        return SessionStart(cwd=None)
 
     if not isinstance(payload, dict):
-        return {}
+        return SessionStart(cwd=None)
 
-    return cast(dict[str, object], payload)
+    cwd = cast(dict[str, object], payload).get("cwd")
+    return SessionStart(cwd=cwd if isinstance(cwd, str) else None)
 
 
-def resolve_session_cwd(payload: dict[str, object]) -> Path:
-    cwd = payload.get("cwd")
-    if isinstance(cwd, str) and cwd.strip():
-        candidate = Path(cwd).expanduser()
-        try:
-            if candidate.is_absolute() and candidate.is_dir():
-                return candidate.resolve()
-        except (OSError, RuntimeError, ValueError):
-            pass
+def resolve_session_cwd(payload: SessionStart) -> Path | None:
+    if payload.cwd is None:
+        return None
+    cwd = Path(payload.cwd)
+    if not cwd.is_absolute():
+        return None
 
-    return Path.cwd().resolve()
+    try:
+        resolved = cwd.resolve(strict=True)
+        return resolved if resolved.is_dir() else None
+    except (OSError, RuntimeError, ValueError):
+        return None
 
 
 def resolve_project_root(session_cwd: Path) -> Path:
-    current = session_cwd
-    for candidate in (current, *current.parents):
+    for candidate in (session_cwd, *session_cwd.parents):
         try:
-            if (candidate / ".git").exists():
-                return candidate
-        except OSError:
+            (candidate / ".git").stat()
+        except FileNotFoundError:
             continue
+        return candidate
     return session_cwd
 
 
-def project_canon_path(session_cwd: Path) -> Path | None:
-    candidate = resolve_project_root(session_cwd) / ".codex" / "canon.md"
+def project_canon_path(session_cwd: Path | None) -> Path | ProjectOmission | None:
+    if session_cwd is None:
+        return ProjectOmission.DISCOVERY_UNCERTAIN
+
     try:
-        return candidate if candidate.is_file() else None
-    except OSError:
+        candidate = resolve_project_root(session_cwd) / ".codex" / "canon.md"
+        candidate.lstat()
+    except FileNotFoundError:
         return None
+    except OSError:
+        return ProjectOmission.DISCOVERY_UNCERTAIN
+    return candidate
+
+
+def read_saved_project_trust(codex_home: Path, project_root: Path) -> SavedTrust:
+    try:
+        with (codex_home / "config.toml").open("rb") as config_file:
+            config: dict[str, object] = tomllib.load(config_file)
+    except (OSError, ValueError, RecursionError):
+        return SavedTrust.UNDETERMINED
+
+    projects = config.get("projects")
+    if not isinstance(projects, dict):
+        return SavedTrust.UNDETERMINED
+
+    project_key = str(project_root)
+    if os.name == "nt":
+        project_key = project_key.translate(str.maketrans(ascii_uppercase, ascii_lowercase))
+    project = cast(dict[str, object], projects).get(project_key)
+    if not isinstance(project, dict):
+        return SavedTrust.UNDETERMINED
+
+    trust_level = cast(dict[str, object], project).get("trust_level")
+    if trust_level == SavedTrust.TRUSTED.value:
+        return SavedTrust.TRUSTED
+    if trust_level == SavedTrust.UNTRUSTED.value:
+        return SavedTrust.UNTRUSTED
+    return SavedTrust.UNDETERMINED
 
 
 def parse_import_target(line: str) -> str | None:
@@ -129,14 +197,6 @@ def closes_markdown_fence(candidate: MarkdownFence | None, active: MarkdownFence
     )
 
 
-def is_relative_to(path: Path, root: Path) -> bool:
-    try:
-        path.relative_to(root)
-    except ValueError:
-        return False
-    return True
-
-
 def display_path(path: Path) -> str:
     return path.name or str(path)
 
@@ -179,17 +239,16 @@ def expand_imports(
         except (OSError, RuntimeError, ValueError) as error:
             raise CanonError(f"invalid import target `{target}`") from error
 
-        if not is_relative_to(resolved_target, corpus_root):
+        if not resolved_target.is_relative_to(corpus_root):
             raise CanonError(f"import target escapes the corpus root: `{target}`")
         if resolved_target in active_stack:
             cycle_start = active_stack.index(resolved_target)
             cycle_paths = (*active_stack[cycle_start:], resolved_target)
             cycle = " -> ".join(display_path(item) for item in cycle_paths)
             raise CanonError(f"import cycle: {cycle}")
-        if not resolved_target.is_file():
-            raise CanonError(f"import target is not a file: `{target}`")
-
         try:
+            if not resolved_target.is_file():
+                raise CanonError(f"import target is not a file: `{target}`")
             imported_text = resolved_target.read_text(encoding="utf-8")
         except UnicodeDecodeError as error:
             raise CanonError(f"import target is not UTF-8: `{target}`") from error
@@ -209,18 +268,38 @@ def expand_imports(
     return "".join(expanded_parts)
 
 
-def load_canon(corpus_dir: Path, canon_path: Path) -> str:
+def resolve_corpus_root(corpus_dir: Path) -> Path:
+    try:
+        corpus_root = corpus_dir.resolve(strict=True)
+        if not corpus_root.is_dir():
+            raise CanonError(f"corpus root is not a directory: `{corpus_root}`")
+    except FileNotFoundError as error:
+        raise CanonError(f"corpus directory not found at `{corpus_dir}`") from error
+    except (OSError, RuntimeError, ValueError) as error:
+        raise CanonError(f"cannot resolve corpus directory `{corpus_dir}`") from error
+
+    return corpus_root
+
+
+def load_canon(corpus_dir: Path, canon_path: Path, *, project: bool = False) -> str:
+    if project and resolve_corpus_root(corpus_dir) != corpus_dir:
+        raise CanonError("project corpus directory was redirected")
+
     try:
         resolved_canon = canon_path.resolve(strict=True)
-    except FileNotFoundError:
+    except FileNotFoundError as error:
+        if project:
+            raise CanonError("project canon entrypoint is missing") from error
         return ""
     except (OSError, RuntimeError, ValueError) as error:
         raise CanonError(f"cannot resolve canon entrypoint `{canon_path}`") from error
 
-    if not resolved_canon.is_file():
-        raise CanonError(f"canon entrypoint is not a file: `{resolved_canon}`")
+    if project and not resolved_canon.is_relative_to(corpus_dir):
+        raise CanonError("project canon entrypoint escapes the corpus root")
 
     try:
+        if not resolved_canon.is_file():
+            raise CanonError(f"canon entrypoint is not a file: `{resolved_canon}`")
         canon_text = resolved_canon.read_text(encoding="utf-8")
     except UnicodeDecodeError as error:
         raise CanonError("canon entrypoint is not UTF-8") from error
@@ -230,16 +309,7 @@ def load_canon(corpus_dir: Path, canon_path: Path) -> str:
     if not canon_text.strip():
         return ""
 
-    try:
-        corpus_root = corpus_dir.resolve(strict=True)
-    except FileNotFoundError as error:
-        raise CanonError(f"corpus directory not found at `{corpus_dir}`") from error
-    except (OSError, RuntimeError, ValueError) as error:
-        raise CanonError(f"cannot resolve corpus directory `{corpus_dir}`") from error
-
-    if not corpus_root.is_dir():
-        raise CanonError(f"corpus root is not a directory: `{corpus_root}`")
-
+    corpus_root = corpus_dir if project else resolve_corpus_root(corpus_dir)
     expanded = expand_imports(
         canon_text,
         resolved_canon,
@@ -254,17 +324,19 @@ def load_canon(corpus_dir: Path, canon_path: Path) -> str:
 
 
 def build_context(
-    corpus_dir: Path = CORPUS_DIR,
-    canon_path: Path = CANON_PATH,
-    project_canon: Path | None = None,
+    corpus_dir: Path,
+    canon_path: Path,
+    *,
+    admitted_project: AdmittedProject | None = None,
 ) -> str:
     sections: list[str] = []
     global_context = load_canon(corpus_dir, canon_path)
     if global_context:
         sections.append(f"# Global Corpus Iuris Canon\n\n{global_context}")
 
-    if project_canon is not None:
-        project_context = load_canon(project_canon.parent, project_canon)
+    if admitted_project is not None:
+        project_corpus = admitted_project.root / ".codex"
+        project_context = load_canon(project_corpus, project_corpus / "canon.md", project=True)
         if project_context:
             sections.append(f"# Project Corpus Iuris Canon\n\n{project_context}")
 
@@ -274,34 +346,54 @@ def build_context(
     context = "\n\n".join(sections)
     context_bytes = len(context.encode("utf-8"))
     if context_bytes > MAX_CONTEXT_BYTES:
-        raise CanonError(
+        raise CanonBudgetError(
             f"expanded canon is {context_bytes} bytes; limit is {MAX_CONTEXT_BYTES}"
         )
     return context
 
 
 def main() -> None:
-    payload = read_hook_payload()
+    payload = read_hook_payload(sys.stdin)
     session_cwd = resolve_session_cwd(payload)
+    discovery = project_canon_path(session_cwd)
+    omission = discovery if isinstance(discovery, ProjectOmission) else None
+    admitted_project: AdmittedProject | None = None
+    if isinstance(discovery, Path):
+        project_root = discovery.parent.parent
+        trust = read_saved_project_trust(CODEX_HOME, project_root)
+        if trust is SavedTrust.TRUSTED:
+            admitted_project = AdmittedProject(root=project_root)
+        elif trust is SavedTrust.UNTRUSTED:
+            omission = ProjectOmission.TRUST_DENIED
+        else:
+            omission = ProjectOmission.TRUST_UNAVAILABLE
+
+    output: HookOutput = {}
     try:
-        context = build_context(project_canon=project_canon_path(session_cwd))
+        context = build_context(CORPUS_DIR, CANON_PATH, admitted_project=admitted_project)
     except CanonError as error:
-        print(json.dumps({"systemMessage": f"Corpus Iuris was not loaded: {error}."}))
-        return
+        output["systemMessage"] = f"Corpus Iuris was not loaded: {error}."
+        context = ""
+        if admitted_project is not None:
+            omission = (
+                ProjectOmission.OVER_BUDGET if isinstance(error, CanonBudgetError) else ProjectOmission.LOAD_FAILED
+            )
 
-    if not context:
-        return
-
-    print(
-        json.dumps(
-            {
-                "hookSpecificOutput": {
-                    "hookEventName": "SessionStart",
-                    "additionalContext": context,
-                }
-            }
+    if omission is not None:
+        notice = (
+            "# Project canon status\n\n"
+            f"Project canon is inactive because {omission.value}. "
+            "State this status and its reason in your first user-facing reply."
         )
-    )
+        context = f"{notice}\n\n{context}" if context else notice
+
+    if context:
+        output["hookSpecificOutput"] = {
+            "hookEventName": "SessionStart",
+            "additionalContext": context,
+        }
+    if output:
+        print(json.dumps(output))
 
 
 if __name__ == "__main__":

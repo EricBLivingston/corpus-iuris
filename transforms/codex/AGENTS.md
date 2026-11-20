@@ -98,7 +98,7 @@ Merge the following registration into the active `<codex-home>/hooks.json`, pres
 }
 ```
 
-Use Codex's native hook approval to trust the installed command; never transplant another installation's trust hashes. Verify the active hook schema against current official Codex documentation before registration. With no admitted canon, invoking the installed loader with `{}` on stdin must succeed without output. After admission, invoke it with the intended session working directory and environment, parse its JSON response, and confirm `hookSpecificOutput.hookEventName` is `SessionStart` and `additionalContext` contains the selected canon within the configured limit. Then start a matching session and confirm injection exactly once; a direct invocation alone does not verify hook discovery or trust.
+Use Codex's native hook approval to trust the installed command; never transplant another installation's trust hashes. Verify the active hook schema against current official Codex documentation before registration. With no global canon admitted, invoke the installed loader with `{"cwd":"/absolute/path/to/canon-free-checkout"}` on stdin, substituting the absolute path of an existing checkout without project canon. The loader must exit successfully without output. After admission, invoke it with the intended session working directory and environment, parse its JSON response, and confirm `hookSpecificOutput.hookEventName` is `SessionStart` and `additionalContext` contains the selected canon within the configured limit. Then start a matching session and confirm injection exactly once; a direct invocation alone does not verify hook discovery or trust.
 
 ## What `src/` holds
 

@@ -5,7 +5,9 @@ import json
 import os
 import subprocess
 import sys
+from dataclasses import dataclass
 from pathlib import Path
+from typing import cast
 
 import pytest
 
@@ -153,7 +155,7 @@ def test_main_emits_sessionstart_additional_context(tmp_path):
 
     completed = subprocess.run(
         [sys.executable, str(HOOK_PATH)],
-        input=json.dumps({"hook_event_name": "SessionStart", "source": "startup"}),
+        input=json.dumps({"hook_event_name": "SessionStart", "source": "startup", "cwd": str(tmp_path)}),
         text=True,
         capture_output=True,
         check=False,
@@ -176,6 +178,7 @@ def test_main_reports_missing_corpus_directory_without_partial_context(tmp_path)
 
     completed = subprocess.run(
         [sys.executable, str(HOOK_PATH)],
+        input=json.dumps({"cwd": str(tmp_path)}),
         text=True,
         capture_output=True,
         check=False,
@@ -203,6 +206,7 @@ def test_main_honors_explicit_production_root(tmp_path):
 
     completed = subprocess.run(
         [sys.executable, str(HOOK_PATH)],
+        input=json.dumps({"cwd": str(tmp_path)}),
         text=True,
         capture_output=True,
         check=False,
@@ -224,6 +228,7 @@ def test_missing_canon_is_a_successful_noop(hook_module, tmp_path):
 
     completed = subprocess.run(
         [sys.executable, str(HOOK_PATH)],
+        input=json.dumps({"cwd": str(tmp_path)}),
         text=True,
         capture_output=True,
         check=False,
@@ -244,6 +249,7 @@ def test_empty_canon_is_a_successful_noop(hook_module, tmp_path):
 
     completed = subprocess.run(
         [sys.executable, str(HOOK_PATH)],
+        input=json.dumps({"cwd": str(tmp_path)}),
         text=True,
         capture_output=True,
         check=False,
@@ -255,49 +261,247 @@ def test_empty_canon_is_a_successful_noop(hook_module, tmp_path):
     assert completed.stderr == ""
 
 
-def test_global_and_project_canons_are_loaded_in_order(hook_module, tmp_path):
-    codex_home = tmp_path / "codex-home"
-    project = tmp_path / "project"
-    (project / ".git").mkdir(parents=True)
+@dataclass(frozen=True, slots=True, kw_only=True)
+class ProjectSession:
+    codex_home: Path
+    root: Path
+    workdir: Path
 
-    write_text(codex_home / "canon.md", "@import corpus/global.md\n")
-    write_text(codex_home / "corpus/global.md", "global provision\n")
-    write_text(project / ".codex/canon.md", "@import corpus/project.md\n")
-    write_text(project / ".codex/corpus/project.md", "project provision\n")
+    @property
+    def canon(self) -> Path:
+        return self.root / ".codex" / "canon.md"
 
-    context = hook_module.build_context(
-        codex_home / "corpus",
-        codex_home / "canon.md",
-        project / ".codex/canon.md",
-    )
-
-    assert context.index("global provision") < context.index("project provision")
-    assert context.count("global provision") == 1
-    assert context.count("project provision") == 1
+    @property
+    def config(self) -> Path:
+        return self.codex_home / "config.toml"
 
 
-def test_main_loads_project_canon_from_nested_session_directory(tmp_path):
+@pytest.fixture()
+def project_session(tmp_path: Path) -> ProjectSession:
     codex_home = tmp_path / "codex-home"
     project = tmp_path / "project"
     nested = project / "src/module"
     (project / ".git").mkdir(parents=True)
     nested.mkdir(parents=True)
-    (codex_home / "corpus").mkdir(parents=True)
-    write_text(codex_home / "canon.md", "global canon\n")
-    write_text(project / ".codex/canon.md", "project canon\n")
-    env = {**os.environ, "CODEX_HOME": str(codex_home)}
+    write_text(codex_home / "canon.md", "@import corpus/global.md\n")
+    write_text(codex_home / "corpus/global.md", "global provision\n")
+    write_text(project / ".codex/canon.md", "@import corpus/project.md\n")
+    write_text(project / ".codex/corpus/project.md", "project provision\n")
+    return ProjectSession(codex_home=codex_home, root=project, workdir=nested)
 
+
+def saved_entry(project: Path, level: str) -> str:
+    project_key = str(project.resolve())
+    if os.name == "nt":
+        project_key = project_key.lower()
+    return f"[projects.{json.dumps(project_key, ensure_ascii=False)}]\ntrust_level = {json.dumps(level)}\n"
+
+
+def run_project_hook(session: ProjectSession, *, cwd: object) -> dict[str, object]:
+    env = {
+        **os.environ,
+        "CODEX_HOME": str(session.codex_home),
+        "CORPUS_IURIS_ROOT": str(session.codex_home / "corpus"),
+    }
     completed = subprocess.run(
         [sys.executable, str(HOOK_PATH)],
-        input=json.dumps({"cwd": str(nested)}),
-        text=True,
-        capture_output=True,
-        check=False,
+        input=json.dumps({"hook_event_name": "SessionStart", "source": "startup", "cwd": cwd}),
+        cwd=session.workdir,
         env=env,
+        capture_output=True,
+        text=True,
+        check=False,
     )
 
-    assert completed.returncode == 0
+    assert completed.returncode == 0, completed.stderr
     assert completed.stderr == ""
-    output = json.loads(completed.stdout)
-    context = output["hookSpecificOutput"]["additionalContext"]
-    assert context.index("global canon") < context.index("project canon")
+    return cast(dict[str, object], json.loads(completed.stdout))
+
+
+def additional_context(output: dict[str, object]) -> str:
+    hook_output = output["hookSpecificOutput"]
+    assert isinstance(hook_output, dict)
+    assert hook_output["hookEventName"] == "SessionStart"
+    context = hook_output["additionalContext"]
+    assert isinstance(context, str)
+    return context
+
+
+def assert_notice(context: str, reason: str) -> None:
+    assert context.startswith("# Project canon status\n\n")
+    assert context.count("# Project canon status") == 1
+    assert reason in context
+    assert "first user-facing reply" in context
+
+
+def test_saved_grant_and_revocation_control_nested_project_canon(project_session: ProjectSession) -> None:
+    session = project_session
+    write_text(session.config, saved_entry(session.root, "trusted"))
+    output = run_project_hook(session, cwd=str(session.workdir))
+    context = additional_context(output)
+
+    assert context.index("global provision") < context.index("project provision")
+    assert context.count("global provision") == 1
+    assert context.count("project provision") == 1
+    assert "Project canon status" not in context
+    assert "systemMessage" not in output
+
+    write_text(session.config, saved_entry(session.root, "untrusted"))
+    output = run_project_hook(session, cwd=str(session.workdir))
+    context = additional_context(output)
+
+    assert_notice(context, "saved as untrusted")
+    assert "global provision" in context
+    assert "project provision" not in context
+    assert "systemMessage" not in output
+
+
+@pytest.mark.parametrize("main_grant_only", [True, False])
+def test_linked_worktree_requires_its_own_saved_grant(
+    project_session: ProjectSession, main_grant_only: bool
+) -> None:
+    session = project_session
+    (session.root / ".git").rmdir()
+    primary = session.root.parent / "primary"
+    write_text(session.root / ".git", f"gitdir: {primary / '.git/worktrees/project'}\n")
+    entries = saved_entry(primary, "trusted")
+    if not main_grant_only:
+        entries += saved_entry(session.root, "trusted")
+    write_text(session.config, entries)
+
+    context = additional_context(run_project_hook(session, cwd=str(session.workdir)))
+    if main_grant_only:
+        assert_notice(context, "saved trust for this project could not be established")
+        assert "project provision" not in context
+    else:
+        assert "project provision" in context
+        assert "Project canon status" not in context
+
+
+@pytest.mark.parametrize(
+    "trust_case",
+    [
+        "missing-config", "unreadable-config", "malformed-config", "malformed-project-table",
+        "unsupported-value", "untrusted", "other-checkouts", "project-local",
+    ],
+)
+def test_withheld_project_canon_does_not_prevent_global_canon(
+    project_session: ProjectSession, trust_case: str
+) -> None:
+    session = project_session
+    write_text(session.canon, "@import\nnever disclose this project text\n")
+
+    if trust_case == "unreadable-config":
+        session.config.mkdir()
+    elif trust_case == "malformed-config":
+        write_text(session.config, "projects = [\nnever disclose this configuration")
+    elif trust_case == "malformed-project-table":
+        write_text(session.config, "projects = false\n")
+    elif trust_case == "unsupported-value":
+        write_text(session.config, saved_entry(session.root, "unsupported"))
+    elif trust_case == "untrusted":
+        write_text(session.config, saved_entry(session.root.parent, "trusted") + saved_entry(session.root, "untrusted"))
+    elif trust_case == "other-checkouts":
+        write_text(session.config, saved_entry(session.root.parent, "trusted") + saved_entry(session.workdir, "trusted"))
+    elif trust_case == "project-local":
+        write_text(session.canon.parent / "config.toml", saved_entry(session.root, "trusted"))
+
+    output = run_project_hook(session, cwd=str(session.workdir))
+    context = additional_context(output)
+    reason = "saved as untrusted" if trust_case == "untrusted" else "saved trust for this project could not be established"
+    assert_notice(context, reason)
+    assert "global provision" in context
+    assert "never disclose" not in context
+    assert "systemMessage" not in output
+
+
+@pytest.mark.parametrize("cwd", [None, 12, ".", "/missing\x00path"])
+def test_invalid_event_cwd_omits_project_with_discovery_uncertainty(project_session: ProjectSession, cwd: object) -> None:
+    session = project_session
+    write_text(session.config, saved_entry(session.root, "trusted"))
+
+    context = additional_context(run_project_hook(session, cwd=cwd))
+
+    assert_notice(context, "could not determine whether project canon exists")
+    assert "global provision" in context
+    assert "project provision" not in context
+
+
+@pytest.mark.parametrize("rejection", ["redirected-directory", "entrypoint", "invalid-import", "malformed", "early-global"])
+def test_admitted_canon_rejection_sends_warning_and_notice(
+    project_session: ProjectSession, rejection: str
+) -> None:
+    session = project_session
+    write_text(session.config, saved_entry(session.root, "trusted"))
+    outside = write_text(session.root.parent / "other-docs/canon.md", "external inert fixture\n")
+    if rejection == "redirected-directory":
+        session.canon.parent.rename(session.root / "old-canon-directory")
+        session.canon.parent.symlink_to(outside.parent, target_is_directory=True)
+    elif rejection == "entrypoint":
+        session.canon.unlink()
+        session.canon.symlink_to(outside)
+    elif rejection == "invalid-import":
+        (session.canon.parent / "outside.md").symlink_to(outside)
+        write_text(session.canon, "@import outside.md\n")
+    elif rejection == "malformed":
+        write_text(session.canon, "@import\n")
+    elif rejection == "early-global":
+        write_text(session.codex_home / "canon.md", "@import corpus/missing.md\n")
+
+    output = run_project_hook(session, cwd=str(session.workdir))
+    context = additional_context(output)
+
+    assert str(output["systemMessage"]).startswith("Corpus Iuris was not loaded")
+    assert_notice(context, "canon could not be loaded")
+    assert "global provision" not in context
+    assert "project provision" not in context
+    assert "external inert fixture" not in context
+    assert str(outside) not in context
+
+
+def test_notice_is_delivered_with_empty_global_canon(project_session: ProjectSession) -> None:
+    session = project_session
+    write_text(session.config, saved_entry(session.root, "untrusted"))
+    write_text(session.codex_home / "canon.md", "\n")
+
+    output = run_project_hook(session, cwd=str(session.workdir))
+    context = additional_context(output)
+
+    assert_notice(context, "saved as untrusted")
+    assert "provision" not in context
+    assert "systemMessage" not in output
+
+
+def test_absent_candidate_has_no_notice(project_session: ProjectSession) -> None:
+    session = project_session
+    session.canon.unlink()
+
+    context = additional_context(run_project_hook(session, cwd=str(session.workdir)))
+
+    assert "global provision" in context
+    assert "Project canon status" not in context
+
+
+def test_notice_fits_beside_exact_global_limit_and_overflow_rejects_doctrine(project_session: ProjectSession) -> None:
+    session = project_session
+    write_text(session.config, saved_entry(session.root, "untrusted"))
+    canon = write_text(session.codex_home / "canon.md", "G")
+    context = additional_context(run_project_hook(session, cwd=str(session.workdir)))
+    _, doctrine = context.split("\n\n# Global Corpus Iuris Canon", maxsplit=1)
+    exact_content_size = 64_000 - len(("# Global Corpus Iuris Canon" + doctrine).encode("utf-8")) + 1
+    write_text(canon, "G" * exact_content_size)
+    context = additional_context(run_project_hook(session, cwd=str(session.workdir)))
+    notice, doctrine = context.split("# Global Corpus Iuris Canon", maxsplit=1)
+
+    assert_notice(notice, "saved as untrusted")
+    assert len(notice.encode("utf-8")) <= 512
+    assert len(("# Global Corpus Iuris Canon" + doctrine).encode("utf-8")) == 64_000
+
+    write_text(session.config, saved_entry(session.root, "trusted"))
+    output = run_project_hook(session, cwd=str(session.workdir))
+    context = additional_context(output)
+
+    assert str(output["systemMessage"]).startswith("Corpus Iuris was not loaded")
+    assert_notice(context, "expanded doctrine exceeded the context limit")
+    assert "Global Corpus Iuris Canon" not in context
+    assert "Project Corpus Iuris Canon" not in context

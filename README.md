@@ -140,7 +140,7 @@ The rest are conditional on which published parts you take:
 | `skills/using-gemini/` | The Gemini CLI (agy). The skill drives that CLI |
 | `skills/using-codex/` | The Codex CLI (codex). The skill drives that CLI |
 | `skills/using-pi/` | pi, a model-agnostic CLI driving OpenRouter models |
-| `transforms/codex/` | Codex, and Python 3.10 or newer for the session-start loader |
+| `transforms/codex/` | Codex, and Python 3.11 or newer for the session-start loader; an older interpreter needs the loader modified as `transforms/codex/README.md` states |
 | `transforms/grok/` | Grok, which discovers the agent and command artifacts the package carries |
 | `agents/*.md`, and every command dispatching one | A harness that dispatches subagents by agent type |
 | `commands/phase.md` | A way to move files into a new directory, for the sweep into `plans/<plan>/archive/`, and a text search for the convergence test it runs per identifier |

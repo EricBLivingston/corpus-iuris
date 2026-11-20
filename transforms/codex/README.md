@@ -11,7 +11,7 @@ When a user points Codex at the repository URL, the expected journey is:
 1. Obtain a local working copy and read the root `README.md`, `adopting.md`, this file, and `AGENTS.md`.
 2. Inspect the active Codex home and current official Codex documentation read-only. Identify active configuration layers, existing hooks, collisions, and required destinations.
 3. Report the proposed bootstrap and ask the user explicitly before writing to user-level Codex configuration.
-4. With approval, install and register only the inert SessionStart loader, `src/hooks/corpus_iuris_session_start.py`. Do not create or populate `canon.md` merely to make the hook appear complete.
+4. With approval, install and register only the inert SessionStart loader, `src/hooks/corpus_iuris_session_start.py`. The loader imports the standard library's `tomllib`, so register an interpreter at Python 3.11 or newer; on an older one, first modify the loader to read `config.toml` with a parser that interpreter has. Do not create or populate `canon.md` merely to make the hook appear complete.
 5. Copy the corpus into the production corpus root, preserving source-relative paths and running the copy model the root `installing.md` carries. The corpus is this repository's artifact tree (every directory whose contents an admission could name), as against the documents at the repository root, which are read rather than installed.
 6. Write the installation's instance file: copy `src/instance-example.md` to `rules/instance.md` inside the production corpus root and refactor it for this installation, after the copy above rather than before it: written after, it is independent of whether the copy landing on that root overlays or mirrors. It resolves the `{placeholders}` and the generic slots every other file leaves open; the doctrinal core carries unchanged behind it.
 7. Admit rules one at a time, each given its `@import` line in `canon.md` only after its file is in place. `AGENTS.md § Admit or defer` gives the order and why it is not negotiable.
@@ -30,7 +30,7 @@ When a user points Codex at the repository URL, the expected journey is:
 
 The loader takes the Codex home from `CODEX_HOME`, falling back to the parent of the directory it sits in. Therefore, leaving `CODEX_HOME` unset is correct only where the loader lives one level below the Codex home, as `<codex-home>/hooks/`. Set it explicitly for any other placement: a Codex home resolved one level too high finds no `canon.md` and exits successfully with no output, which is indistinguishable from the empty-canon state below. It takes the corpus root from `CORPUS_IURIS_ROOT`, falling back to `<codex-home>/corpus`. The production root may live wherever the installation chooses; set `CORPUS_IURIS_ROOT` rather than deriving a path from the checkout.
 
-The loader expands its entrypoints. `<codex-home>/canon.md` is read in every session. `<project-root>/.codex/canon.md` (the project root is the nearest ancestor of the session's working directory that holds a `.git`) is read only in sessions under that project, and is the surface a `P`-ambit file reaches. A project entrypoint's imports resolve inside its own `.codex/` directory and may not escape it, so a project's corpus files live there beside it.
+The loader reads `<codex-home>/canon.md` in every session. It looks for `<project-root>/.codex/canon.md` at the nearest checkout root containing `.git`, or in the session directory when there is no checkout. It reads that project canon only when `<codex-home>/config.toml` carries the `trusted` decision Codex saves through its normal trust dialog for that exact checkout. A saved grant or revocation applies at the next matching SessionStart. The project entrypoint and its imports must resolve inside the checkout's own `.codex/` directory.
 
 Codex discovers custom agents at `<codex-home>/agents/*.toml` for a personal installation, or `.codex/agents/*.toml` for one project: one file per agent, and the `name` key inside the file is the identifier rather than the filename. That is Codex's own admission channel: an agent definition takes it instead of a `canon.md` import.
 
@@ -42,7 +42,9 @@ That set's doctrinal core carries rather than being corrected provision by provi
 
 ## Why the bootstrap is safe
 
-Install and register the user-level SessionStart loader before admitting any doctrine. With no `canon.md`, or with an empty one, the loader exits successfully without output: it injects no context and surfaces no warning. This is the safe initial state, and an artifact admitted later becomes resident at the next matching session start.
+Install and register the user-level SessionStart loader before admitting any doctrine. With empty or absent global canon and a confirmed absent project canon, the loader exits successfully without output. For a direct check, supply the intended absolute working directory as `cwd` in the hook payload.
+
+Without a saved grant for a known project canon, the loader keeps valid global doctrine and adds an omission notice to the session. A notice can appear by itself when there is no doctrine to inject. The assistant reports the known omission and reason in its first user-facing reply.
 
 A non-empty canon that is malformed, incomplete, cyclic, unreadable, or over budget fails closed, as does one whose imports resolve outside the corpus root: no partial doctrine is injected, and Codex surfaces a warning.
 
