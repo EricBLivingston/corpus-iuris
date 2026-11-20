@@ -1,12 +1,12 @@
 # Codex CLI Capabilities Reference
 
-What the canonical shapes' elements mean, opt-in flags, the `review` subcommand, sandbox and approval mechanics, gotchas, and the agy↔codex divergences for the using-codex skill. Everything here was measured against `codex-cli 0.145.0`; a later CLI may have moved, so check the installed version before treating a surprise as a defect in the shape.
+What the canonical shapes' elements mean, opt-in flags, the `review` subcommand, sandbox and approval mechanics, gotchas, and the agy↔codex divergences for the using-codex skill. Everything here was measured against `codex-cli 0.171.0`; a later CLI may have moved, so check the installed version before treating a surprise as a defect in the shape.
 
 ## Shape Semantics
 
 The canonical shapes are **Case 1** and **Case 2**, in [SKILL.md](SKILL.md) § Invocation Floor; nothing below reproduces them — a shape is copied from there, never assembled from this file (⊢2). This section states only what the shapes leave unexplained — what their elements mean, and what breaks when one is varied.
 
-**`--sandbox read-only` confines writes, not reads or traversal.** `-C, --cd` is a working root, not a read boundary, and no flag bounds where Codex looks. The prompt's scope line is therefore the only thing that does, which is why it is a required element of the shape rather than a courtesy.
+**`--sandbox read-only` confines writes, not reads or traversal** (a `head` of a file outside `-C` succeeds). `-C, --cd` is a working root, not a read boundary, and no flag bounds where Codex looks. The prompt's scope line is therefore the only thing that does, which is why it is a required element of the shape rather than a courtesy.
 
 **stdin is read.** `</dev/null` is in both shapes because a non-interactive run must never block on an inherited stdin — it is a default, not a prohibition, and a deliberate pipe displaces it. Piped content arrives as a `<stdin>` block *appended* to the prompt argument rather than replacing it, so the instructions stay in the positional argument and both are read.
 
@@ -31,53 +31,20 @@ Absent from an ordinary engagement; each is resorted to deliberately.
 | `--json` | Print events to stdout as JSONL. Resort to it to see *what the run did* when a run misbehaves; `-o` remains the way to capture the answer. |
 | `-i, --image <FILE>` | Attach image(s) to the initial prompt — a failure screenshot, a diagram, a rendered output under review. Beats describing the image in prose. Repeatable. |
 | `-p, --profile <NAME>` | Layers `$CODEX_HOME/<name>.config.toml` over the base user config. **Footgun: agy's `-p` is its prompt flag.** On Codex the prompt is a positional argument, so a ported `-p "…"` is consumed as a profile name and never reaches the model as instructions. Live for anyone who *varies* a shape — a floor copied verbatim is already correct at its own site. |
-| `--full-auto` | Alias for `--sandbox workspace-write` on `codex exec`. Prefer the explicit `--sandbox` spelling; recognise the alias in others' commands. |
 
 ---
 
 ## The `review` Subcommand
 
-`codex exec review [PROMPT]` runs a code review against the current repository and selects the diff itself — `--uncommitted`, `--base <BRANCH>`, or `--commit <SHA>` — so no staging or piping step is needed. Prefer it over a hand-rolled review prompt whenever the unit under review is exactly one of those three; the optional prompt argument contains custom review instructions on top, and `--title <TITLE>` labels the summary.
+`codex exec review` reviews the repository containing the working directory and selects the diff itself: `--uncommitted`, `--base <BRANCH>`, or `--commit <SHA>`. It has no `-C` and no `--sandbox`.
 
-Its flag set is not the `exec` flag set: no `-C/--cd`, no `-s/--sandbox`, no `--add-dir`, no `-i`. The repository is the one containing the working directory, so the canonical single-root shape does not transfer wholesale. Shared with `exec`: `-m`, `-o`, `-c`, `--json`, `--output-schema`, `--skip-git-repo-check`.
-
-### The `review` shape
-
-A third shape, not one of the floor's two — every mechanism the floor calls the privilege axis is absent, so confinement becomes **post-hoc detection**: treat the run as unconditionally write-capable and compare `git status --porcelain` before and after. `--base`, `--commit` and `--uncommitted` bound the unit under review, not the filesystem; traversal rests on the prompt scope line alone. agy's no-shell clause is **not** ported — the shell is Codex's only file access.
-
-```bash
-PROJECT_DIR=/absolute/path/to/repo
-SCRATCH=/absolute/path/to/session/scratchpad   # never /tmp, never the project tree
-LAST_MSG=$SCRATCH/codex-review.txt
-
-# `review` has no -C: the repo under review is the one containing the working
-# directory, so the cd is the only thing aiming it. Without it the run reviews
-# whatever repo the shell happens to sit in while the git gate below watches
-# $PROJECT_DIR — a mismatch no check catches.
-cd "$PROJECT_DIR" || exit 1
-
-before=$(git -C "$PROJECT_DIR" status --porcelain)
-codex exec review --base main --skip-git-repo-check \
-  -m {codex} -o "$LAST_MSG" --color never \
-  "Review the selected diff for auth bypasses and unhandled errors.
-
-Use shell commands only to read files within the paths listed below. Do not search, list, or traverse outside them.
-Never manipulate a database or a role, and never escalate to a superuser.
-Only search and operate within the following path(s): $PROJECT_DIR" </dev/null > "$SCRATCH/codex-review.log" 2>&1; rc=$?
-
-[ -s "$LAST_MSG" ] || echo "codex FAILED: no final message (rc=$rc)" >&2
-[ "$before" = "$(git -C "$PROJECT_DIR" status --porcelain)" ] || \
-  echo "codex FAILED: unrequested modification of the working tree" >&2
-cat "$LAST_MSG"; rm -f "$LAST_MSG"
-```
-
-The working-tree comparison is the general answer to an unrequested edit by any peritus, not a `review`-only precaution; the shared workflow makes it part of verifying before relaying.
+**A selector and a prompt argument are mutually exclusive** (exit 2), so a selected review cannot carry the mandatory closing clauses. A review therefore runs as Case 1 with the diff piped ([SKILL.md](SKILL.md) § Feeding in content Codex cannot read by path).
 
 ---
 
 ## Sandbox and Approval Mechanics
 
-The three sandbox levels are named `read-only`, `workspace-write`, and `danger-full-access`; the first two are selected with `--sandbox`, and the third exists only behind the forbidden blanket-bypass flag.
+The three sandbox levels are named `read-only`, `workspace-write`, and `danger-full-access`, all values of `--sandbox`. `workspace-write` makes `/tmp` and `$TMPDIR` writable besides `-C` and `--add-dir`.
 
 Approval is implicit `never` on `codex exec` — there is no interactive prompt to answer and no way to escalate mid-run, which is why the privilege decision is made when the command is composed. `-a, --ask-for-approval` is a root-`codex` flag and is not valid on `exec`.
 
@@ -85,9 +52,9 @@ Approval is implicit `never` on `codex exec` — there is no interactive prompt 
 
 ## Gotchas
 
-1. **Runtime defaults** — on `codex-cli 0.145.0` the CLI defaults to the `{codex}`-bound model at `reasoning effort: high`, so **only lowering is a real move**; there is nothing to raise, and raising was never the fix for a shallow answer. The explicit `-m {codex}` is still required per §3/§4 discipline, and to survive a future default change. A model bump may need a CLI upgrade: check the installed version before bumping the `{codex}` identifier in [SKILL.md](SKILL.md) § Invocation Floor. The forbidden-flag list itself is in [SKILL.md](SKILL.md) § Invocation Floor › Forbidden, copied with the shape (⊢2); only this version-conditional part is here.
+1. **Runtime defaults** — the model catalog (`codex debug models`) lists each model's efforts and its default, `medium` for the `{codex}`-bound model; `~/.codex/config.toml` overrides the catalog, and `-m` and `-c` override both. The floor's `-c model_reasoning_effort="high"` is therefore what sets `high`, and the explicit `-m {codex}` is required because the user config's `model` may differ. A model bump may need a CLI upgrade: check the installed version before bumping the `{codex}` identifier in [SKILL.md](SKILL.md) § Invocation Floor. The forbidden-flag list itself is in [SKILL.md](SKILL.md) § Invocation Floor › Forbidden, copied with the shape (⊢2); only this version-conditional part is here.
 
-2. **`-c key=value` is TOML** — quote string values: `-c model_reasoning_effort="medium"`, not `medium`. An unquoted value is a parse error, not a silent fallback.
+2. **`-c key=value` is TOML with a literal-string fallback** — a value that fails to parse as TOML is taken as a literal string, which is how the floor's shell-unquoted `high` arrives. An invalid value is not caught by the CLI: `-c model_reasoning_effort=bogus` reaches the API and exits 1 with `invalid_request_error`.
 
 3. **The stdin notice is not a hang** — the `Reading additional input from stdin...` line still prints even with stdin closed; the run proceeds regardless.
 
@@ -104,10 +71,12 @@ Nothing generalises from one CLI to another, prompt discipline least of all — 
 | File reading | Built-in listing and reading tools, with the shell barred in-prompt | The shell **is** the file reader; there is no separate one, so the prompt licenses shell reads inside the scoped paths and bans only traversal beyond them |
 | stdin | Not read in `-p` mode; capture command output to a file and `@`-reference it | Read — see *Shape Semantics* |
 | `-p` | The prompt flag | `--profile`, a config layer — see the flag table |
+| `-c` | `--continue`, which resumes the most recent conversation | A config override |
+| `-i` | `--prompt-interactive` | `--image` |
 | Workspace root | Implicit — derived from cwd and the granted directories; no root flag exists | `-C, --cd <DIR>`, explicit and mandatory |
-| Privilege source | Ambient, from `~/.gemini/antigravity-cli/settings.json`; nothing on the command line grants or confines | On the command line, per run, via `--sandbox` |
-| Reasoning lever | One roster model; effort rides the identifier suffix | One model, one effort flag, default already high |
-| Internal timeout | `--print-timeout` binds before the harness ceiling | None — the harness ceiling is the only bound |
+| Privilege source | Ambient, from `~/.gemini/antigravity-cli/settings.json`; `--mode plan` confines a run | On the command line, per run, via `--sandbox` |
+| Reasoning lever | Effort rides the identifier suffix; a conflicting `--effort` exits 1 | One model; effort set per run by `-c model_reasoning_effort`, which the floor pins to `high` |
+| Internal timeout | `--print-timeout`, which the shapes set below the harness ceiling; unset, agy waits for the turn to complete | None — the harness ceiling is the only bound |
 | Final-answer capture | Parse stdout | `-o <FILE>` writes the final message as plain text, no JSONL parsing |
-| Structured output | None; ask for raw JSON in-prompt | `--output-schema <FILE>` |
+| Structured output | `--output-format json` with `--json-schema`; the shapes ask for raw JSON in-prompt | `--output-schema <FILE>` |
 | Attachments | Reference any file, including images and PDFs, by `@` path | `-i <FILE>` for images; other files are named in the prompt text |

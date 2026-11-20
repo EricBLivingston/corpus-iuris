@@ -67,6 +67,7 @@ The requestor is the coder, or a delegate, remediating its adjudication. The tri
    - **The corpus itself**, when the work belongs to no project at all — its own `{analysis-root}/fmea/`.
 
 2. Dispatch to the authorizer agent as Authorizing Official, giving it the statement file's absolute path — the file is what it assesses, never a copy of the table in the prompt — and pointing it at `{skill-root}/performing-fmea/fmea-assessment.md` for the standard it assesses against.
+
 3. **Wait on the decision.** The AO fills the ATO row in the file you handed it, grant or denial alike; read it back there. The launch does not start until that row records a grant. A denial is binding: narrow and resubmit, or drop — disagreement escalates to the user, never past the AO. A missing, partial, or malformed response is a denial too: restore the ATO row to empty before resubmitting. Resubmission caps under ⊨7; it changes only what the denial names and appends its table beneath the first in that same file.
 
 Terms of the authorization:

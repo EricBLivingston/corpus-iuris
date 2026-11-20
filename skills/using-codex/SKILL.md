@@ -18,7 +18,7 @@ These shapes cover every engagement. Both need absolute paths in the prompt text
 
 | Placeholder | Model identifier |
 | ---- | ---- |
-| `{codex}` | `gpt-6.1-sol` |
+| `{codex}` | `gpt-6.2-sol` |
 
 Live guidance uses the placeholder, never the literal: the model identifier resolves in the table above, and every `{…-root}` placeholder in the instance ambit.
 
@@ -63,7 +63,7 @@ The two checks are independent — neither result implies the other. Always ask 
 
 ### Forbidden
 
-`--dangerously-bypass-approvals-and-sandbox`, and `--ephemeral` unconditionally (`periti.md § The engagement`) — `--ephemeral` discards the run log, the only place a headless auto-deny announces itself.
+`--dangerously-bypass-approvals-and-sandbox`, `--sandbox danger-full-access`, `--approve-for-me`, `--trust`, `--dangerously-bypass-hook-trust`, and `--ephemeral` unconditionally (`periti.md § The engagement`) — `--ephemeral` discards the run log, the only place a headless auto-deny announces itself.
 
 ## Shapes Beyond The Single-Root Call
 

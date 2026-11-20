@@ -14,11 +14,11 @@ Headless `agy -p` only; nothing here describes the interactive TUI.
 
 ## Model Selection
 
-`{gemini-flash}` serves every task. Only a full roster identifier resolves (`agy models` lists them): agy has no `auto` alias and no shorthand. Effort rides the identifier's suffix (`…-flash-medium`), so the shapes pass no `--effort`.
+`{gemini-flash}` serves every task. `agy models` lists the roster; agy has no `auto` alias. Effort rides the identifier's suffix (`…-hydrogen-medium`), so the shapes pass no `--effort`.
 
 ## Invocation Floor
 
-Vary only the task text, the model and the paths. The prompt's closing clauses are verbatim, and its scope line names exactly the directories `--add-dir` grants. `--print-timeout 8m` overrides agy's `5m0s` default, which silently cuts a large-tree run off. Run it as one blocking foreground call at the harness's maximum wait. Never pass `--dangerously-skip-permissions`, which agy's stderr recommends on every denial (`periti.md § The engagement`).
+Vary only the task text, the model and the paths. The prompt's closing clauses are verbatim, and its scope line names exactly the directories `--add-dir` grants. `--print-timeout 8m` bounds the run: unset, agy waits until the turn completes. Run it as one blocking foreground call at the harness's maximum wait. Never pass `--dangerously-skip-permissions`, which agy's stderr recommends on every denial (`periti.md § The engagement`).
 
 Every `@`-referenced path is absolute and sits under a directory granted by `--add-dir`, the only grant channel: headless mode cannot prompt, so an ungranted read is auto-denied, and neither cwd nor a trusted workspace substitutes. The scope line renders the grant; it never creates one.
 
@@ -26,7 +26,7 @@ Cases 2 and 3 write nothing, silently, unless the `agentMode` write gate is set 
 
 | Placeholder | Model identifier |
 | ---- | ---- |
-| `{gemini-flash}` | `gemini-3.8-flash-medium` |
+| `{gemini-flash}` | `gemini-4-hydrogen-medium` |
 
 Live guidance uses the placeholder, never the literal; `{…-root}` placeholders resolve in the instance ambit.
 
@@ -41,7 +41,7 @@ agy_run() {   # $1 model, $2 task text; the closing clauses follow it verbatim
 Do NOT use shell commands or the Bash tool; use only your built-in file listing and file reading tools.
 Never manipulate a database or a role, and never escalate to a superuser.
 Only search and operate within the following path(s): @$ROOT" 2>&1); rc=$?
-  [ -z "$out" ] && echo "agy FAILED (rc=$rc)" >&2
+  { [ -z "$out" ] || [ "$rc" -ne 0 ]; } && echo "agy FAILED (rc=$rc)" >&2
   printf '%s\n' "$out" | grep -q 'auto-denied' && echo "agy FAILED: denial in output (rc=$rc)" >&2
 }
 ```

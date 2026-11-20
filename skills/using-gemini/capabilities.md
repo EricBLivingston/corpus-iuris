@@ -1,6 +1,6 @@
 # Agy CLI Capabilities Reference
 
-Headless `agy -p` mechanics for the using-gemini skill.
+Headless `agy -p` mechanics for the using-gemini skill, measured against `agy 1.5.13`; a later CLI may have moved.
 
 ## Shape Semantics
 
@@ -24,16 +24,16 @@ Shell execution is unapprovable headlessly. Without the clause, agy elects a `co
 
 Search and listing are native tools, which run headlessly. `@`-referenced content, a directory's whole tree included, is read before the prompt is sent and consumes the context window: reference the narrowest path that answers, and let agy search the rest.
 
-Output is plain text, with no structured mode and no envelope: for data, ask for raw JSON in-prompt and parse stdout.
+Output is plain text by default. `--output-format json` wraps the run in a JSON envelope (`status`, `response`, `usage`), and `--json-schema` enforces a schema on it; the shapes use neither, so for data they ask for raw JSON in-prompt and parse stdout.
 
 ## Write Gate
 
 agy (the Antigravity CLI) ignores the retired `gemini` CLI's `~/.gemini/policies/*.toml`. Its config file is **`~/.gemini/antigravity-cli/settings.json`**, and one key there gates writes.
 
-- **`agentMode` must be present with the value `accept-edits`.** agy then logs `Accept-edits mode: auto-approving file write` and the write lands; `write_file` creates parent directories. The operator sets the key by hand.
-- **`--mode` on the command line does nothing**: with the key absent, the write still fails.
+- **`agentMode` must be present with the value `accept-edits`.** The log (`--log-file`) records `SetCycleMode called: accept-edits` and the write lands; `write_file` creates parent directories. The operator sets the key by hand.
+- **`--mode` on the command line is not a substitute for the key**: with the key absent, the write still fails (not reproduced). With the key set, `--mode plan` suppresses the write: agy writes a plan under its own `brain/` directory and asks for approval.
 - **`toolPermission: always-proceed` does not substitute** for `accept-edits`.
-- **Privileges are ambient.** With the key set, every run is write-capable, Case 1 included, and nothing confines where a write lands, a directory outside every grant included.
+- **Privileges are ambient.** With the key set, every run is write-capable, Case 1 included: a session `--settings` `agentMode` of `plan` or `""` still writes, and nothing confines where a write lands, a directory outside every grant included.
 
 ## Exit Codes
 
@@ -42,7 +42,9 @@ agy exits 0 on a refusal, so a shape's failure echo, not `$?`, is the signal.
 | Code | Meaning |
 | ---- | ---- |
 | 0 | Success — **or** a headless refusal |
-| 1 | General error or API failure, an invalid `--model` identifier included (stderr lists the models) |
-| 42 | Input error (invalid prompt/arguments) |
-| 53 | Turn limit exceeded |
+| 1 | General error or API failure: an empty prompt, an invalid `--model` (stderr lists the models) or a conflicting `--effort` |
+| 2 | Usage error: an unknown flag or a flag missing its argument (help text is printed) |
+| 3 | `--print-timeout` fired: stderr carries `DEADLINE_EXCEEDED` and `print_timeout`, and stdout holds the partial response |
+| 42 | Input error (invalid prompt/arguments); not reproduced |
+| 53 | Turn limit exceeded; not reproduced |
 | 124 | `timeout` fired |
