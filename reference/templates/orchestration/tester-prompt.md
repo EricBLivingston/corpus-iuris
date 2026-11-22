@@ -15,7 +15,5 @@ Review: {Project Path}/Phase-X-Review.md
 Write a test report to: {Project Path}/Phase-X-Test-Report.md
 Include: tests run (scripts and logs by absolute path), pass/fail counts, coverage if available, and any failures with details.
 
-Your verification includes the §16 cross-boundary end-to-end gate wherever the phase's work crosses a boundary.
-
 Return only a one-line status summary indicating pass/fail and test counts.
 ```

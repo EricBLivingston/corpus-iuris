@@ -21,7 +21,7 @@
 
 - <Step: e.g. confirm library version / create directory scaffold / verify API credentials>
 
-**Done** (recommended): <e.g. `import X` succeeds; directory exists; `cargo check` passes.>
+**Done** (recommended): <e.g. the new module loads; the directory exists; the build check passes.>
 
 ---
 
@@ -51,10 +51,7 @@
 
 ## Verification (OPTIONAL)
 
-<The acceptance gate the tester agent owns: the measured targets, assertions and fixture tests that operationalize Design §8 and discharge the PRD's §4 acceptance criteria and §3 guardrails, plus the exact commands. Language-parameterize:>
-
-- Python: `uv run pytest <test_path> -v`
-- Rust: `cargo test --workspace`
+<The acceptance gate the tester agent owns: the measured targets, assertions and fixture tests that operationalize Design §8 and discharge the PRD's §4 acceptance criteria and §3 guardrails, plus the exact commands in the project's toolchain.>
 
 <May live as a final phase instead (e.g. "Phase N — Verification"). Delete only where the per-phase **Done** checks, plus any final verification phase, fully cover acceptance.>
 

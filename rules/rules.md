@@ -16,7 +16,7 @@
 
 **※7. Never Read Agent/Skill Definition Files in the Main Session** — Doing so pollutes main context with content that should be loaded using the proper harness mechanisms, which ensures context insertion occurs appropriately (*e.g.*, within a subagent context).
 
-**※8. Production Workflow Chain** — Non-trivial work runs analyzer → coder → reviewer → tester, sized under ⊨5. Independent review, non-code refactors included, is never skippable, and its cycle is a remedial cycle under ⊨7. Testing includes the §16 cross-boundary end-to-end gate wherever applicable. Meta-artifacts created by the workflow are exempt from this chain (no recursion).
+**※8. Production Workflow Chain** — Non-trivial work runs analyzer → coder → reviewer → tester, sized under ⊨5. Independent review, non-code refactors included, is never skippable, and its cycle is a remedial cycle under ⊨7. Meta-artifacts created by the workflow are exempt from this chain (no recursion).
 
 **※9. Version Control** — Read-only Git commands are encouraged. Do not run mutating Git commands unless the user explicitly requests it. The user reviews, refines, and commits manually.
 

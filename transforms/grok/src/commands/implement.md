@@ -20,7 +20,6 @@ Execute an implementation plan through the `writing-code` skill.
 
    - The coder must update the plan file's Deviations section before invoking the reviewer.
    - The reviewer also verifies Deviations was filled and that ACs have verifier hints.
-   - The tester's verification includes the §16 cross-boundary end-to-end gate wherever the plan's work crosses a boundary.
    - `governing-work` documents when holding the produced work to the plan's charter earns a governor dispatch, and the routing of its verdict.
 
 3. **Completion Report**

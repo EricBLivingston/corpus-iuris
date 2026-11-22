@@ -56,10 +56,6 @@ class DataExtractor:
         self.log = config.log.getChild("DataExtractor")
 ```
 
-## §12. Testing
-
-Tests run under pytest, categorized by markers, at an 80% coverage threshold; `make test`, `make lint`, `make format` and `make typecheck` are the entry points.
-
 ## §py1. Code Standards
 
 ### File Layout

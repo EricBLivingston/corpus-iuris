@@ -120,7 +120,7 @@ Pre-authorized deviations from project principles (e.g. threading a parameter th
 
 - Baseline Capture: record any pre-existing test failures before Phase 1 starts.
 - <e.g. "Unit tests only: no full training pipelines per MEMORY.md">
-- <e.g. "GPU-dependent tests marked `#[ignore]`; CI runs them separately">
+- <e.g. "GPU-dependent tests are excluded from the default run and run separately">
 
 ---
 

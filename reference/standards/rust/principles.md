@@ -136,8 +136,8 @@ self_named_module_files = "deny"
 ```
 
 - Tests are exempt from `unwrap_used` through `allow-unwrap-in-tests = true` in `clippy.toml`, which covers `#[test]` functions and `#[cfg(test)]` items; an integration-test crate declares its helper modules `#[cfg(test)]`
-- Each admitted `unsafe` block has a `// SAFETY:` comment, each `unsafe fn` a `# Safety` doc section, and each `unsafe impl Send`/`Sync` the same justification; CI runs Miri over whatever of it Miri can execute
-- CI runs `RUSTFLAGS="-D warnings" cargo clippy --all-targets`
+- Each admitted `unsafe` block has a `// SAFETY:` comment, each `unsafe fn` a `# Safety` doc section, and each `unsafe impl Send`/`Sync` the same justification; whatever of it Miri can execute runs clean under Miri
+- `RUSTFLAGS="-D warnings" cargo clippy --all-targets` passes
 
 ## §rs4. Code Quality
 

@@ -70,23 +70,23 @@ See Principle §2 (YAGNI); name adjacent work only where excluding it removes re
 
 ## Acceptance Criteria
 
-<Each `- [ ]` item contains a verifier hint: `(cargo test: <name>)`, `(grep: <pattern>)`, `(manual: <inverse check>)`, `(build: <warning/error>)`, `(benchmark: <metric vs baseline>)`, `(metric: <quantitative threshold>)`. Coin further tags as cases dictate: `(visual:)`, `(golden:)`, `(script:)`, `(log:)`. A missing hint is flagged by the reviewer, not rejected.>
+<Each `- [ ]` item contains a verifier hint: `(test: <name>)`, `(grep: <pattern>)`, `(manual: <inverse check>)`, `(build: <warning/error>)`, `(benchmark: <metric vs baseline>)`, `(metric: <quantitative threshold>)`. Coin further tags as cases dictate: `(visual:)`, `(golden:)`, `(script:)`, `(log:)`. A missing hint is flagged by the reviewer, not rejected.>
 
-- [ ] <Observable outcome 1> (cargo test: `<test_name>`)
+- [ ] <Observable outcome 1> (test: `<test_name>`)
 - [ ] <Observable outcome 2> (grep: `<pattern>` returns zero hits)
 - [ ] <Observable outcome 3> (manual: delete line X, verify build fails with `<error>`, restore)
-- [ ] <Observable outcome 4> (build: zero new `dead_code` warnings on new fields)
-- [ ] <Observable outcome 5> (cargo test: `<test_name>` — new test asserting the disabled-path branch)
+- [ ] <Observable outcome 4> (build: zero new unused-code warnings on new fields)
+- [ ] <Observable outcome 5> (test: `<test_name>` — new test asserting the disabled-path branch)
 
 ---
 
 ## Testing
 
-<Copy-pastable commands for the tester agent. No prose. Language-parameterize: the lines below are the Rust spelling.>
+<Copy-pastable commands for the tester agent, in the project's toolchain. No prose.>
 
-- `cargo test -p <crate>`
-- `cargo test -p <crate> <test_filter>`
-- `cargo check -p <crate> --tests 2>&1 | grep -i 'warning:' | wc -l`  # expected: 0
+- `<command running the phase's tests>`
+- `<command running one named test>`
+- `<command counting build warnings>` # expected: 0
 - <Any manual inverse check, with exact steps>
 
 ---

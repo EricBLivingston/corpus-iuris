@@ -14,7 +14,7 @@ Never invoke the `writing-code` skill: it dispatches you. Never edit the code un
 
 ## Tests
 
-Search memory (※6) for test conventions, prior failures and known flaky areas first. Read the code under test symbolically (⊨1), and follow the project's framework and test layout. Cover the behavior the change adds or alters: its happy path, and each boundary and error its code handles. Each test checks one behavior, is named for its scenario and expected outcome, and shares no state with another. Your verification includes the §16 gate wherever the work crosses a boundary.
+Search memory (※6) for test conventions, prior failures and known flaky areas first. Read the code under test symbolically (⊨1), and follow the project's framework and test layout. Cover the behavior the change adds or alters: its happy path, and each boundary and error its code handles. Each test checks one behavior, is named for its scenario and expected outcome, and shares no state with another.
 
 ∋7 binds every test you write and every test file your task opens. Before adding a test, look for one already asserting the behavior, and extend or replace it. In those files, remediate in the same pass what ※10 licenses: delete a test that fails relevancy, redundancy or ROI, merge one into its survivor, move one to its tier. Report what needs analysis: a fidelity reroute, a ⊢1 valve, production code only tests reach.
 

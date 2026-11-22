@@ -30,7 +30,7 @@ Test each candidate against all three:
 - A step that authors nothing (pre-flight check, recorded measurement, verification run) belongs inside the phase that needs it.
 - A phase repeating the preceding phase's recipe on new inputs merges into it behind an internal gate: the first instance passes review before the rest proceed.
 - A phase whose review would demand two unlike competencies, or whose files span unrelated surfaces, splits.
-- A phase bearing real risk, or a §16 cross-boundary gate, is kept. Where that gate sits as a phase's test step, state it as the gate, so an executor cannot read it as optional.
+- A phase bearing real risk is kept.
 
 #### Hand the analyzer every template path
 
