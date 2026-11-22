@@ -24,7 +24,7 @@ jobs:
       matrix:
         # The hook is stdlib-only and pinned to no version; the matrix is the claim
         # that it stays that way across the interpreters an adopter is likely to have.
-        python-version: ["3.10", "3.11", "3.12", "3.13"]
+        python-version: ["3.11", "3.12", "3.13", "3.14"]
 
     steps:
       - uses: actions/checkout@v4
